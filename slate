@@ -5,7 +5,7 @@ config windowHintsIgnoreHiddenWindows false
 config windowHintsSpread true
 
 # key bindings
-bind e:cmd hint ASDFGHJKLQWERTYUIOPCVBN # use whatever keys you want
+bind esc:cmd hint ASDFGHJKLQWERTYUIOPCVBN # use whatever keys you want
 bind g:cmd,alt grid padding:5 0:5,2 1:4,1 2:4,4
 # bind tab:cmd switch
 
