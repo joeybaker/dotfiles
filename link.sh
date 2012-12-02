@@ -6,8 +6,9 @@ F=`pwd |sed -e "s#$HOME/\?##"`
  
 for P in *
 do
-    # skip setup
+    # skip files
     if [ "$P" = "link.sh" ]; then continue; fi
+    if [ "$P" = "readme.md" ]; then continue; fi
  
     # ensure permissions
     chmod -R o-rwx,g-rwx $P
