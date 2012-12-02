@@ -58,6 +58,9 @@ plugins=(git npm github gem sublime rails3 osx heroku brew z)
 
 source $ZSH/oh-my-zsh.sh
 
+# enable vi mode in terminal
+bindkey -v
+
 # Customize to your needs...
 export PATH=/usr/local/bin:/usr/local/sbin:/usr/local/Cellar:/Applications/MAMP/Library/bin:$PATH
 export PATH="/usr/local/heroku/bin:$PATH" ### Added by the Heroku Toolbelt
