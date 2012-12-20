@@ -30,6 +30,7 @@ alias git status='git status -sb'
 alias html2text='python /Users/joeybaker/scripts/html2text/html2text.py '
 function findin(){ find ./ -type f -exec grep -Hn "$1" {} \;;}
 alias deploy="./deploy.sh -u joey"
+alias httpserve="python -m SimpleHTTPServer"
 alias pgstart='postgres -D /usr/local/var/postgres'
 alias pgstop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
 
