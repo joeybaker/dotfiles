@@ -62,7 +62,7 @@ source $ZSH/oh-my-zsh.sh
 bindkey -v
 
 # Customize to your needs...
-export PATH=/usr/local/bin:/usr/local/sbin:/usr/local/Cellar:/Applications/MAMP/Library/bin:$PATH
+export PATH=/usr/local/bin:/usr/local/sbin:/usr/local/Cellar:$PATH
 export PATH="/usr/local/heroku/bin:$PATH" ### Added by the Heroku Toolbelt
 export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
