@@ -6,7 +6,7 @@ config windowHintsSpread true
 
 # key bindings
 # bind esc:cmd hint ASDFGHJKLQWERTYUIOPCVBN # use whatever keys you want
-bind g:cmd,alt grid padding:5 0:5,3 1:4,1 2:4,4
+bind g:cmd,alt grid padding:5 0:5,3 1:4,1 2:4,1 3:4,1
 # bind tab:cmd switch
 
 # screen posiitions
