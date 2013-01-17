@@ -60,3 +60,9 @@ augroup cprog
 "     <c-r>=InsertTabWrapper('back')<cr>
 "
      set encoding=utf-8
+
+
+" keep visual mode on after indentation
+
+vnoremap < <gv
+vnoremap > >gv
