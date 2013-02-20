@@ -1,6 +1,6 @@
 [user]
-	name = Joey Baker
-	email = joey@meraki.com
+  name = Joey Baker
+  email = joey@meraki.com
 [merge]
   renamelimit = 5000
 [alias]
