@@ -35,6 +35,10 @@ alias httpserve="python -m SimpleHTTPServer"
 alias pgstart='postgres -D /usr/local/var/postgres'
 alias pgstop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
 
+# git aliases
+alias gc="git commit -a"
+alias gx="git checkout"
+
 # set the rack env to dev for ruby (rails)
 export RACK_ENV='development'
 
