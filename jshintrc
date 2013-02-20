@@ -20,7 +20,7 @@
   , "eqnull"   : true // == null is cool
   , "es5": true // using es5 features is okay. Use a polyfill like webshimes.
   , "expr"     : true // expressions that should result in an assignment or fn call don't error
-  , "laxbreak" : false // unsafe line breaks are okay
+  , "laxbreak" : true // unsafe line breaks are okay, necessary to get ternary opterators to break okay
   , "laxcomma": true // comma first!
   , "regexdash": false // `-` in regex is okay
   , "smarttabs": false // mixed tabs and spaces are okay
