@@ -63,12 +63,9 @@ export RACK_ENV='development'
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git npm github gem sublime rails3 osx heroku brew z)
+plugins=(git npm github gem sublime rails3 osx heroku brew vi-mode)
 
 source $ZSH/oh-my-zsh.sh
-
-# enable vi mode in terminal
-bindkey -v
 
 # Customize to your needs...
 export PATH=/usr/local/bin:/usr/local/sbin:/usr/local/Cellar:$PATH
