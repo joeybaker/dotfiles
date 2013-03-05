@@ -66,6 +66,7 @@ export RACK_ENV='development'
 plugins=(git npm github gem sublime rails3 osx heroku brew vi-mode)
 
 source $ZSH/oh-my-zsh.sh
+source `brew --prefix`/etc/profile.d/z.sh
 
 # Customize to your needs...
 export PATH=/usr/local/bin:/usr/local/sbin:/usr/local/Cellar:$PATH
