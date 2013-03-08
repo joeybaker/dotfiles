@@ -1,5 +1,7 @@
 " Use color syntax highlighting.
 syntax on
+" Turn on Line nubmers
+set number
 
 " Color specifications. Change them as you would like.
 "
@@ -86,11 +88,16 @@ Bundle 'Lokaltog/vim-easymotion'
 Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 Bundle 'tpope/vim-rails.git'
 Bundle 'goldfeld/vim-seek'
+Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/syntastic'
+Bundle 'kien/ctrlp.vim'
+Bundle 'airblade/vim-gitgutter'
 " vim-scripts repos
 Bundle 'L9'
 Bundle 'FuzzyFinder'
+Bundle 'closetag.vim'
 " non github repos
-Bundle 'git://git.wincent.com/command-t.git'
+" Bundle 'git://git.wincent.com/command-t.git'
 " ...
 
 filetype plugin indent on     " required!
