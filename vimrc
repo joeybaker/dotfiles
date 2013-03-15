@@ -1,7 +1,5 @@
 " Use color syntax highlighting.
 syntax on
-" Turn on Line nubmers
-set number
 
 " Color specifications. Change them as you would like.
 "
@@ -32,7 +30,26 @@ hi xmlEndTag ctermfg=blue cterm=bold guifg=white
 
 " Options.
 
+" Turn on Line nubmers
+set number
+
+set hlsearch
+set incsearch
+set ignorecase
+set history=1000
+set cursorline
 set autoindent
+if has("unnamedplus")
+  set clipboard=unnamedplus
+elseif has("clipboard")
+  set clipboard=unnamed
+endif
+
+set expandtab
+set shiftwidth=2
+set tabstop=2
+set softtabstop=2
+
 set fileformat=unix     " No crazy CR/LF
 set nojoinspaces        " One space after a "." rather than 2
 set ruler               " Show the line position at the bottom of the window
@@ -76,6 +93,21 @@ filetype off                   " required!
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
+" Nerdtree
+  " Open on start
+  " autocmd vimenter * NERDTree
+let NERDTreeShowBookmarks=1
+let NERDTreeChDirMode=0
+let NERDTreeQuitOnOpen=0
+let NERDTreeMouseMode=2
+let NERDTreeShowHidden=1
+let NERDTreeIgnore=['\.pyc','\~$','\.swo$','\.swp$','\.git','\.hg','\.svn','\.bzr']
+let NERDTreeKeepTreeInNewTab=1
+let g:nerdtree_tabs_open_on_gui_startup=0
+ 
+
+" colorscheme Tomorrow-Night
+
 " let Vundle manage Vundle
 " required! 
 Bundle 'gmarik/vundle'
@@ -83,18 +115,27 @@ Bundle 'gmarik/vundle'
 " My Bundles here:
 "
 " original repos on github
+" Fugitive, the Git Manager
 Bundle 'tpope/vim-fugitive'
+" JavaScript, plugin for JS syntax and indentation
+Bundle 'pangloss/vim-javascript'
+" Powerline, beautiful status line
+Bundle 'Lokaltog/vim-powerline'
 Bundle 'Lokaltog/vim-easymotion'
+" EditorConfig
+Bundle 'editorconfig/editorconfig-vim'
 Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 Bundle 'tpope/vim-rails.git'
 Bundle 'goldfeld/vim-seek'
+" Bundle 'mnoble/tomorrow-night-vim'
+" NerdTREE, the file browser
 Bundle 'scrooloose/nerdtree'
+Bundle 'ervandew/supertab'
 Bundle 'scrooloose/syntastic'
 Bundle 'kien/ctrlp.vim'
 Bundle 'airblade/vim-gitgutter'
 " vim-scripts repos
 Bundle 'L9'
-Bundle 'FuzzyFinder'
 Bundle 'closetag.vim'
 " non github repos
 " Bundle 'git://git.wincent.com/command-t.git'
