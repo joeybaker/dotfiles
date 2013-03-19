@@ -57,28 +57,28 @@ set showmatch           " Show parentheses matching
 set whichwrap=<,>,[,],h,l " Allows for left/right keys to wrap across lines
 set writebackup         " Write temporary backup files in case we crash
 " I don't know why I need this...
-augroup cprog
-     au!
-     augroup end
+"augroup cprog
+"  au!
+"augroup end
 
-    " Based on VIM tip 102: automatic tab completion of keywords
-     function InsertTabWrapper(dir)
-         let col = col('.') - 1
-            if !col || getline('.')[col - 1] !~ '\k'
-                return "\<tab>"
-            elseif "back" == a:dir
-                return "\<c-p>"
-            else
-                return "\<c-n>"
-            endif
-     endfunction
+" Based on VIM tip 102: automatic tab completion of keywords
+function InsertTabWrapper(dir)
+  let col = col('.') - 1
+  if !col || getline('.')[col - 1] !~ '\k'
+    return "\<tab>"
+  elseif "back" == a:dir
+    return "\<c-p>"
+  else
+    return "\<c-n>"
+  endif
+endfunction
 
 "     inoremap <tab>
 "     <c-r>=InsertTabWrapper('fwd')<cr>
 "     inoremap <s-tab>
 "     <c-r>=InsertTabWrapper('back')<cr>
-"
-     set encoding=utf-8
+
+set encoding=utf-8
 
 
 " keep visual mode on after indentation
