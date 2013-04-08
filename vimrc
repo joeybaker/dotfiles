@@ -130,6 +130,8 @@ Bundle 'goldfeld/vim-seek'
 " Bundle 'mnoble/tomorrow-night-vim'
 " NerdTREE, the file browser
 Bundle 'scrooloose/nerdtree'
+" tabs for NerdTree
+Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'ervandew/supertab'
 Bundle 'scrooloose/syntastic'
 Bundle 'kien/ctrlp.vim'
