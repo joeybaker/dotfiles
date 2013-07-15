@@ -48,6 +48,10 @@ alias gsl='git stash list'
 
 # set the rack env to dev for ruby (rails)
 export RACK_ENV='development'
+# set node env
+export NODE_ENV='development'
+# misc env vars
+[[ -s "$HOME/.env" ]] && source "$HOME/.env"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
