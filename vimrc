@@ -104,12 +104,12 @@ let NERDTreeShowHidden=1
 let NERDTreeIgnore=['\.pyc','\~$','\.swo$','\.swp$','\.git','\.hg','\.svn','\.bzr']
 let NERDTreeKeepTreeInNewTab=1
 let g:nerdtree_tabs_open_on_gui_startup=0
- 
+
 
 " colorscheme Tomorrow-Night
 
 " let Vundle manage Vundle
-" required! 
+" required!
 Bundle 'gmarik/vundle'
 
 " My Bundles here:
@@ -124,6 +124,8 @@ Bundle 'Lokaltog/vim-powerline'
 Bundle 'Lokaltog/vim-easymotion'
 " EditorConfig
 Bundle 'editorconfig/editorconfig-vim'
+" Multiple Cursors
+Bundle 'terryma/vim-multiple-cursors'
 Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 Bundle 'tpope/vim-rails.git'
 Bundle 'goldfeld/vim-seek'
@@ -136,12 +138,11 @@ Bundle 'ervandew/supertab'
 Bundle 'scrooloose/syntastic'
 Bundle 'kien/ctrlp.vim'
 Bundle 'airblade/vim-gitgutter'
+Bundle 'myusuf3/numbers.vim'
 " vim-scripts repos
 Bundle 'L9'
 Bundle 'closetag.vim'
-" non github repos
 " Bundle 'git://git.wincent.com/command-t.git'
-" ...
 
 filetype plugin indent on     " required!
 "
@@ -194,3 +195,6 @@ augroup JumpCursorOnEdit
 "save folds on exit
 au BufWinLeave * silent! mkview
 au BufWinEnter * silent! loadview
+
+" turn on spell check in git commit messages
+autocmd Filetype gitcommit setlocal spell textwidth=72
