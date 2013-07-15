@@ -16,6 +16,7 @@
   ; git ours file during a merge will pick one our file over theirs
   ours   = "!f() { git checkout --ours $@ && git add $@; }; f"
   theirs = "!f() { git checkout --theirs $@ && git add $@; }; f"
+  del = !git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch "$@"' --prune-empty --tag-name-filter cat -- --all
 
 [hub]
 protocol = ssh
