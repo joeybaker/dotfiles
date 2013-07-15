@@ -7,7 +7,7 @@
   undo = reset --hard HEAD
   prune-all = !git remote | xargs -n 1 git remote prune
   sortdiff = !sh -c 'git diff "$@" | grep "^[+-]" | sort --key=1.2 | uniq -u -s1'
-  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
   ; http://blog.apiaxle.com/post/handy-git-tips-to-stop-you-getting-fired/
   ; git assume file will mark it as unchanged for the commit
   assume   = update-index --assume-unchanged
