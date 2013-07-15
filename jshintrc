@@ -18,7 +18,6 @@
   , "asi": true // no semicolons are ok
   , "boss"     : false // if (a = 1) isn't a typo
   , "eqnull"   : true // == null is cool
-  , "es5": true // using es5 features is okay. Use a polyfill like webshimes.
   , "expr"     : true // expressions that should result in an assignment or fn call don't error
   , "laxbreak" : true // unsafe line breaks are okay, necessary to get ternary opterators to break okay
   , "laxcomma": true // comma first!
@@ -29,7 +28,5 @@
   , "browser": true
   , "jquery": true
   , "predef": [ // set globals
-    "Backbone"
-    , "_"
   ]
 }
