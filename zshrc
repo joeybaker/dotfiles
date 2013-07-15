@@ -12,6 +12,9 @@ ZSH=$HOME/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 ZSH_THEME="maran"
 
+#zmv
+autoload zmv
+
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
@@ -19,10 +22,6 @@ alias subl='/Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl'
 alias tolf="find . -type f -not -iname '*.png' -not -iname '*.jpg' -not -iname '*.jpeg' -not -iname '*.gif' -not -iname '*.tif' -not -iname '*.tiff' -not -iname '.git' -exec perl -pi -e 's/\r\n?/\n/g' {} \;"
 alias mysql='mysql -u root -proot'
 alias sshj='ssh joeybaker@byjoeybaker.com'
-alias dal12="ssh -t joey@dal12.meraki.com '(cd /var/www/testweb.meraki.net; /bin/bash;)'"
-alias sdg5="ssh -t joey@64.156.192.181 '(cd /var/www/www.meraki.com; /bin/bash;)'"
-alias dev100="ssh -A joey@dev100.meraki.com"
-
 
 alias l='ls -AG'
 alias gitp='git pull; git push;'
