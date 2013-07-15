@@ -71,7 +71,7 @@ export NODE_ENV='development'
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git npm github gem sublime rails3 osx heroku brew vi-mode bower)
+plugins=(git npm gem sublime osx heroku brew vi-mode bower cloudapp supervisor last-working-dir history-substring-search zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 source `brew --prefix`/etc/profile.d/z.sh
@@ -95,6 +95,5 @@ export HISTCONTROL=ignoreboth
 
 
 # Load RVM into a shell session *as a function*
-# [[ -s "/Users/joeybaker/.rvm/scripts/rvm" ]] && source "/Users/joeybaker/.rvm/scripts/rvm"
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
