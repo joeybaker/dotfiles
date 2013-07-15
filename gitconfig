@@ -1,6 +1,6 @@
 [user]
   name = Joey Baker
-  email = joey@byjoeybaker.com
+	email = joey.baker@ubnt.com
 [merge]
   renamelimit = 5000
 [alias]
@@ -30,3 +30,5 @@ excludesfile = /opt/boxen/config/git/gitignore
 	default = simple
 [diff]
 	algorithm = patience
+[url "git://github.com/"]
+	insteadOf = gh:
