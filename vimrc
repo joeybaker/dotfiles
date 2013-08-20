@@ -144,7 +144,11 @@ Bundle 'L9'
 Bundle 'closetag.vim'
 " Bundle 'git://git.wincent.com/command-t.git'
 
+" a good setting for git commit messages as well
+" http://zachholman.com/talk/more-git-and-github-secrets/
 filetype plugin indent on     " required!
+
+
 "
 " Brief help
 " :BundleList          - list configured bundles
