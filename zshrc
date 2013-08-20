@@ -18,7 +18,7 @@ autoload zmv
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias subl='/Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl'
+alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
 alias tolf="find . -type f -not -iname '*.png' -not -iname '*.jpg' -not -iname '*.jpeg' -not -iname '*.gif' -not -iname '*.tif' -not -iname '*.tiff' -not -iname '.git' -exec perl -pi -e 's/\r\n?/\n/g' {} \;"
 alias mysql='mysql -u root -proot'
 alias sshj='ssh joeybaker@byjoeybaker.com'
@@ -33,7 +33,6 @@ git gc —aggressive;'
 alias git status='git status -sb'
 alias html2text='python /Users/joeybaker/scripts/html2text/html2text.py '
 function findin(){ find ./ -type f -exec grep -Hn "$1" {} \;;}
-alias deploy="./deploy.sh -u joey"
 function whodid(){ git log --pretty=format:"%Cblue%ad %Cgreen%aN %Cred https://github.com/meraki/monty/commit/%H%n%Creset%d%n%B" --date=short --reverse --all --since=2.days.ago $@}
 alias httpserve="python -m SimpleHTTPServer"
 alias pgstart='postgres -D /usr/local/var/postgres'
