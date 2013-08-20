@@ -24,6 +24,7 @@ alias mysql='mysql -u root -proot'
 alias sshj='ssh joeybaker@byjoeybaker.com'
 
 alias l='ls -AG'
+function mkcd() { mkdir -p "$@" && cd "$_"; }
 alias gitp='git pull; git push;'
 alias gitcleanup='git fsck —unreachable;
 git reflog expire —expire=0 —all;
