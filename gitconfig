@@ -29,6 +29,9 @@ excludesfile = /opt/boxen/config/git/gitignore
 [push]
 	default = simple
 [diff]
+  ; better line matching
 	algorithm = patience
 [url "git://github.com/"]
 	insteadOf = gh:
+[help]
+	autocorrect = 1
