@@ -81,7 +81,7 @@ export PATH=/usr/local/bin:/usr/local/sbin:/usr/local/Cellar:$PATH
 export PATH="/usr/local/heroku/bin:$PATH" ### Added by the Heroku Toolbelt
 export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
-export EDITOR='subl -w'
+export EDITOR='vi'
 export HOMEBREW_TEMP=~/.homebrew_temp
 export NODE_PATH=/usr/local/lib/node_modules
 # don't put duplicate lines in the history. See bash(1) for more options
