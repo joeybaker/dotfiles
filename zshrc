@@ -46,6 +46,9 @@ alias gx="git checkout"
 alias gs='git stash'
 alias gsp='git stash pop'
 alias gsl='git stash list'
+alias couchstop='launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.couchdb.plist'
+alias couchstart='launchctl load ~/Library/LaunchAgents/homebrew.mxcl.couchdb.plist'
+
 # nocorrections please
 alias jitsu='nocorrect jitsu'
 
