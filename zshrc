@@ -46,6 +46,8 @@ alias gx="git checkout"
 alias gs='git stash'
 alias gsp='git stash pop'
 alias gsl='git stash list'
+# nocorrections please
+alias jitsu='nocorrect jitsu'
 
 # set the rack env to dev for ruby (rails)
 export RACK_ENV='development'
