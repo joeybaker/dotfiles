@@ -7,6 +7,7 @@
   , "indent": 2 // indent 2 spaces
   , "latedef": true // define vars before using them. Hoisting and whatnot.
   , "newcap": true // capitalize constructor functions. new MyThing() not new myThing()
+  , "freeze": true // disable modifications to native objects
   , "noarg": true // no .caller or .callee. They're gone in ES5
   , "quotmark": "single" // use single, not double quotes. It's just consistent, and nicer when playing with the DOM
   // , "regexp": true // no unsafe `.` in regex
