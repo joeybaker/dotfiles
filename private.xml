@@ -86,7 +86,7 @@
     <name>Right Option to "Hyper"</name>
     <appendix>OS X doesn't have a native Hyper key. Let's define Hyper as Control+Shift+Option+Command.</appendix>
     <appendix>(This maps Right Option to our definition of Hyper.)</appendix>
-    <identifier>com.jasonrudolph.right_option_hyper</identifier>
+    <!-- <identifier>com.jasonrudolph.right_option_hyper</identifier> -->
 
     <!--
       "ModifierFlag::OPTION_R | ModifierFlag::NONE" causes this remapping to
