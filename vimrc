@@ -139,6 +139,7 @@ Bundle 'scrooloose/syntastic'
 Bundle 'kien/ctrlp.vim'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'myusuf3/numbers.vim'
+Bundle 'corntrace/bufexplorer'
 " vim-scripts repos
 Bundle 'L9'
 Bundle 'closetag.vim'
