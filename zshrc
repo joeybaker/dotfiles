@@ -98,6 +98,8 @@ export HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}ignoredups
 export HISTCONTROL=ignoreboth
 # http://jonisalonen.com/2012/your-bash-prompt-needs-this/
 # export PS1="\[\033[G\]$PS1"
+# geocouch
+export ERL_FLAGS="-pa /opt/boxen/homebrew/share/geocouch/ebin"
 
 
 # Load RVM into a shell session *as a function*
