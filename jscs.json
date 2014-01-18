@@ -8,7 +8,6 @@
     "disallowSpacesInsideObjectBrackets": true,
     "disallowSpacesInsideArrayBrackets": true,
     "disallowSpacesInsideParentheses": true,
-    "disallowDanglingUnderscores": true,
     "disallowSpaceAfterObjectKeys": true,
     "disallowCommaBeforeLineBreak": true,
     "disallowLeftStickedOperators": ["?", "+", "-", "/", "*", "=", "==", "===", "!=", "!==", ">", ">=", "<", "<="],
