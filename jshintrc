@@ -1,33 +1,34 @@
 {
-  // make it strict
-  "bitwise": true // no || not OR, && not AND
-  , "camelcase": true // variable names should be camelCased or UPPER_CASED
-  , "eqeqeq": true // use === not ==
-  , "immed": true // wrap immediate function invocations with parens
-  , "indent": 2 // indent 2 spaces
-  , "latedef": true // define vars before using them. Hoisting and whatnot.
-  , "newcap": true // capitalize constructor functions. new MyThing() not new myThing()
-  , "freeze": true // disable modifications to native objects
-  , "noarg": true // no .caller or .callee. They're gone in ES5
-  , "quotmark": "single" // use single, not double quotes. It's just consistent, and nicer when playing with the DOM
-  // , "regexp": true // no unsafe `.` in regex
-  , "undef": true // global vars are bad!
-  , "unused": true // defined and unused vars are bad
-  , "strict": false // "strict mode" required
-  , "trailing": true // no trailing whitespace
-  // relax the rules a bit
-  , "asi": true // no semicolons are ok
-  , "boss"     : false // if (a = 1) isn't a typo
-  , "eqnull"   : true // == null is cool
-  , "expr"     : true // expressions that should result in an assignment or fn call don't error
-  , "laxbreak" : true // unsafe line breaks are okay, necessary to get ternary opterators to break okay
-  , "laxcomma": true // comma first!
-  , "regexdash": false // `-` in regex is okay
-  , "smarttabs": false // mixed tabs and spaces are okay
-  // globals from these environments are okay
+  "bitwise": true
+  , "camelcase": true
+  , "eqeqeq": true
+  , "forin": true
+  , "immed": true
+
+  , "latedef": true
+  , "newcap": true
+  , "noarg": true
+  , "quotmark": "single"
+  , "freeze": true
+
+  , "regexp": false
+  , "undef": true
+  , "unused": true
+  , "globalstrict": true
+  , "strict": true
+  , "trailing": true
+
+  , "asi"       : true
+  , "boss"      : false
+  , "eqnull"    : true
+  , "expr"      : true
+  , "laxbreak"  : true
+  , "laxcomma"  : true
+  , "regexdash" : false
+  , "smarttabs" : false
+
   , "node": true
   , "browser": true
-  , "jquery": true
-  , "predef": [ // set globals
+  , "predef": [
   ]
 }
