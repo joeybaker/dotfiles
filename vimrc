@@ -118,8 +118,6 @@ Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-fugitive'
 " JavaScript, plugin for JS syntax and indentation
 Bundle 'pangloss/vim-javascript'
-" Powerline, beautiful status line
-Bundle 'Lokaltog/vim-powerline'
 Bundle 'Lokaltog/vim-easymotion'
 " EditorConfig
 Bundle 'editorconfig/editorconfig-vim'
@@ -138,6 +136,8 @@ Bundle 'scrooloose/nerdtree'
 " tabs for NerdTree
 Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'ervandew/supertab'
+" status bar
+Bundle 'bling/vim-airline'
 Bundle 'scrooloose/syntastic'
 Bundle 'kien/ctrlp.vim'
 Bundle 'airblade/vim-gitgutter'
