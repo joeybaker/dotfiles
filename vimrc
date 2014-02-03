@@ -106,7 +106,6 @@ let NERDTreeKeepTreeInNewTab=1
 let g:nerdtree_tabs_open_on_gui_startup=0
 
 
-" colorscheme Tomorrow-Night
 
 " let Vundle manage Vundle
 " required!
@@ -129,7 +128,11 @@ Bundle 'terryma/vim-multiple-cursors'
 Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 Bundle 'tpope/vim-rails.git'
 Bundle 'goldfeld/vim-seek'
-" Bundle 'mnoble/tomorrow-night-vim'
+
+" color scheme
+Bundle 'Lokaltog/vim-distinguished'
+Bundle 'altercation/vim-colors-solarized'
+
 " NerdTREE, the file browser
 Bundle 'scrooloose/nerdtree'
 " tabs for NerdTree
@@ -147,7 +150,7 @@ Bundle 'closetag.vim'
 
 " a good setting for git commit messages as well
 " http://zachholman.com/talk/more-git-and-github-secrets/
-filetype plugin indent on     " required!
+filetype plugin indent on     " required by Vundle
 
 
 "
@@ -203,3 +206,7 @@ au BufWinEnter * silent! loadview
 
 " turn on spell check in git commit messages
 autocmd Filetype gitcommit setlocal spell textwidth=72
+
+" color scheme
+set background=dark
+colorscheme solarized
