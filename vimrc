@@ -61,18 +61,6 @@ set writebackup         " Write temporary backup files in case we crash
 "  au!
 "augroup end
 
-" Based on VIM tip 102: automatic tab completion of keywords
-function InsertTabWrapper(dir)
-  let col = col('.') - 1
-  if !col || getline('.')[col - 1] !~ '\k'
-    return "\<tab>"
-  elseif "back" == a:dir
-    return "\<c-p>"
-  else
-    return "\<c-n>"
-  endif
-endfunction
-
 "     inoremap <tab>
 "     <c-r>=InsertTabWrapper('fwd')<cr>
 "     inoremap <s-tab>
@@ -104,8 +92,6 @@ let NERDTreeShowHidden=1
 let NERDTreeIgnore=['\.pyc','\~$','\.swo$','\.swp$','\.git','\.hg','\.svn','\.bzr']
 let NERDTreeKeepTreeInNewTab=1
 let g:nerdtree_tabs_open_on_gui_startup=0
-
-
 
 " let Vundle manage Vundle
 " required!
