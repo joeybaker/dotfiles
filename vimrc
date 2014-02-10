@@ -103,19 +103,21 @@ Bundle 'gmarik/vundle'
 " Fugitive, the Git Manager
 Bundle 'tpope/vim-fugitive'
 " JavaScript, plugin for JS syntax and indentation
+Bundle 'jelera/vim-javascript-syntax'
 Bundle 'pangloss/vim-javascript'
 Bundle 'Lokaltog/vim-easymotion'
+Bundle 'nathanaelkane/vim-indent-guides'
 " EditorConfig
 Bundle 'editorconfig/editorconfig-vim'
 " Multiple Cursors
 Bundle 'terryma/vim-multiple-cursors'
-Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 Bundle 'tpope/vim-rails.git'
 Bundle 'goldfeld/vim-seek'
 
 " color scheme
 Bundle 'Lokaltog/vim-distinguished'
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'nanotech/jellybeans.vim'
 
 " NerdTREE, the file browser
 Bundle 'scrooloose/nerdtree'
@@ -124,6 +126,11 @@ Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'ervandew/supertab'
 " status bar
 Bundle 'bling/vim-airline'
+" use the same status bar in tmux
+Bundle 'edkolev/tmuxline.vim'
+" automatically set the closing bracket
+Bundle 'Raimondi/delimitMate'
+
 Bundle 'scrooloose/syntastic'
 Bundle 'kien/ctrlp.vim'
 Bundle 'airblade/vim-gitgutter'
@@ -132,6 +139,7 @@ Bundle 'corntrace/bufexplorer'
 " vim-scripts repos
 Bundle 'L9'
 Bundle 'closetag.vim'
+Bundle 'phd'
 " Bundle 'git://git.wincent.com/command-t.git'
 
 " a good setting for git commit messages as well
@@ -148,6 +156,12 @@ filetype plugin indent on     " required by Vundle
 "
 " see :h vundle for more details or wiki for FAQ
 " NOTE: comments after Bundle command are not allowed..
+
+" vim airline
+
+" so that airline appears in the first split
+set laststatus=2
+let g:airline_powerline_fonts = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Tell vim to remember certain things when we exit
@@ -194,5 +208,8 @@ au BufWinEnter * silent! loadview
 autocmd Filetype gitcommit setlocal spell textwidth=72
 
 " color scheme
+" force vim into 256 colors
+set t_Co=256
 set background=dark
 colorscheme solarized
+
