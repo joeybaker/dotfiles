@@ -1,6 +1,9 @@
 # Load Boxen
 [ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
 
+# set the default user
+DEFAULT_USER=joeybaker
+
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
@@ -15,7 +18,7 @@ fi
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="maran"
+ZSH_THEME="agnoster"
 
 #zmv
 autoload zmv
