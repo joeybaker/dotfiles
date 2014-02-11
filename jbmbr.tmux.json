@@ -1,0 +1,20 @@
+[
+  {
+    "left": "cd ~; tmux rename-window -t 1 'shell'; brew update; npm-check-updates -g; brew outdated"
+  }
+  , {
+    "top": {
+      "left": "z uwn-artiist && nodemon"
+      , "right": "z uwn-artiist; tmux rename-window -t 2 'artiist'; tmux select-layout -t 3 even-horizontal"
+    }
+    , "bottom": "z uwn-artiist && nodemon -x mocha -- test"
+  }
+  , {
+    "left": "z wheelhouse-router; tmux rename-window -t 3 'router'"
+    , "right": "z wheelhouse-router && nodemon -x grunt -i test/fixtures/main.compiled.js -- test"
+  }
+  , {
+    "left": "z wheelhouse-resource; tmux rename-window -t 4 'resource'"
+    , "right": "z wheelhouse-resource && npm run dev"
+  }
+]
