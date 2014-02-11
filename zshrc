@@ -26,7 +26,7 @@ autoload zmv
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
+alias subl='~/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
 alias tolf="find . -type f -not -iname '*.png' -not -iname '*.jpg' -not -iname '*.jpeg' -not -iname '*.gif' -not -iname '*.tif' -not -iname '*.tiff' -not -iname '.git' -exec perl -pi -e 's/\r\n?/\n/g' {} \;"
 alias mysql='mysql -u root -proot'
 alias sshj='ssh joeybaker@byjoeybaker.com'
