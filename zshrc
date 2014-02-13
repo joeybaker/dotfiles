@@ -23,7 +23,7 @@ autoload zmv
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias subl='~/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
+alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
 alias tolf="find . -type f -not -iname '*.png' -not -iname '*.jpg' -not -iname '*.jpeg' -not -iname '*.gif' -not -iname '*.tif' -not -iname '*.tiff' -not -iname '.git' -exec perl -pi -e 's/\r\n?/\n/g' {} \;"
 alias mysql='mysql -u root -proot'
 alias sshj='ssh joeybaker@byjoeybaker.com'
@@ -96,6 +96,7 @@ export PATH="/usr/local/heroku/bin:$PATH" ### Added by the Heroku Toolbelt
 export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 export EDITOR='vi'
+export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 export HOMEBREW_TEMP=~/.homebrew_temp
 export NODE_PATH=/usr/local/lib/node_modules
 # don't put duplicate lines in the history. See bash(1) for more options
