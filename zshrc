@@ -1,6 +1,3 @@
-# Load Boxen
-[ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
-
 # set the default user
 DEFAULT_USER=joeybaker
 
@@ -109,8 +106,7 @@ export HISTCONTROL=ignoreboth
 # http://jonisalonen.com/2012/your-bash-prompt-needs-this/
 # export PS1="\[\033[G\]$PS1"
 # geocouch
-export ERL_FLAGS="-pa /opt/boxen/homebrew/share/geocouch/ebin"
-
+export ERL_FLAGS="-pa /usr/local/share/geocouch/ebin"
 
 # Load RVM into a shell session *as a function*
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
