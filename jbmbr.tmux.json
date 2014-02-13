@@ -4,8 +4,8 @@
   }
   , {
     "top": {
-      "left": "z uwn-artiist && nodemon"
-      , "right": "z uwn-artiist; tmux rename-window -t 2 'artiist'; tmux select-layout -t 3 even-horizontal"
+      "left": "z tussle && nodemon"
+      , "right": "z tussle; tmux rename-window -t 2 'tussle'; tmux select-layout -t 2 even-horizontal"
     }
     , "bottom": "z uwn-artiist && nodemon -x mocha -- test"
   }
