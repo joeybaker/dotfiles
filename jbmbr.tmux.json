@@ -10,6 +10,10 @@
     , "bottom": "z uwn-artiist && nodemon -x mocha -- test"
   }
   , {
+    "left": "z staticblog; tmux rename-window -t 3 'blog'"
+    , "right": "z staticblog && grunt code"
+  }
+  , {
     "left": "z wheelhouse-router; tmux rename-window -t 3 'router'"
     , "right": "z wheelhouse-router && nodemon -x grunt -i test/fixtures/main.compiled.js -- test"
   }
