@@ -18,14 +18,8 @@
   theirs = "!f() { git checkout --theirs $@ && git add $@; }; f"
   del = !git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch "$@"' --prune-empty --tag-name-filter cat -- --all
 
-[hub]
-protocol = ssh
-
-[credential]
-helper = /opt/boxen/bin/boxen-git-credential
-
 [core]
-excludesfile = /opt/boxen/config/git/gitignore
+excludesfile = ~/.gitignore_global
 [push]
 	default = simple
 [diff]
