@@ -14,11 +14,15 @@
     , "right": "z staticblog && grunt code"
   }
   , {
-    "left": "z wheelhouse-router; tmux rename-window -t 3 'router'"
+    "left": "z wheelhouse-router; tmux rename-window -t 4 'router'"
     , "right": "z wheelhouse-router && nodemon -x grunt -i test/fixtures/main.compiled.js -- test"
   }
   , {
-    "left": "z wheelhouse-resource; tmux rename-window -t 4 'resource'"
+    "left": "z wheelhouse-resource; tmux rename-window -t 5 'resource'"
     , "right": "z wheelhouse-resource && npm run dev"
+  }
+  , {
+    "left": "z readinglist-pocket; tmux rename-window -t 6 'pocket'"
+    , "right": "z readinglist-pocket && nodemon -x mocha -- test"
   }
 ]
