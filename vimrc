@@ -118,6 +118,8 @@ Bundle 'goldfeld/vim-seek'
 Bundle 'Lokaltog/vim-distinguished'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'nanotech/jellybeans.vim'
+Bundle 'lsdr/monokai'
+Bundle 'tomasr/molokai'
 
 " NerdTREE, the file browser
 Bundle 'scrooloose/nerdtree'
@@ -211,5 +213,5 @@ autocmd Filetype gitcommit setlocal spell textwidth=72
 " force vim into 256 colors
 set t_Co=256
 set background=dark
-colorscheme solarized
+colorscheme molokai
 
