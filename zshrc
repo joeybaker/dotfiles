@@ -19,6 +19,10 @@ ZSH_THEME="agnoster"
 
 #zmv
 autoload zmv
+# easier access to online help
+unalias run-help
+autoload run-helpd
+HELPDIR=/usr/local/share/zsh/helpfiles
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
