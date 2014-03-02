@@ -162,7 +162,7 @@ filetype plugin indent on     " required by Vundle
 
 " so that airline appears in the first split
 set laststatus=2
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts=1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Tell vim to remember certain things when we exit
@@ -204,13 +204,14 @@ augroup JumpCursorOnEdit
 "save folds on exit
 au BufWinLeave * silent! mkview
 au BufWinEnter * silent! loadview
-
 " turn on spell check in git commit messages
 autocmd Filetype gitcommit setlocal spell textwidth=72
 
-" color scheme
-" force vim into 256 colors
-set t_Co=256
+" set to 256 colors
+if $TERM == "xterm-256color"
+  set t_Co=256
+endif
+" set color scheme
 set background=dark
 colorscheme molokai
 
