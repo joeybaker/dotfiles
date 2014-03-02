@@ -118,11 +118,7 @@ Bundle 'tpope/vim-rails.git'
 Bundle 'goldfeld/vim-seek'
 
 " color scheme
-Bundle 'Lokaltog/vim-distinguished'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'nanotech/jellybeans.vim'
-Bundle 'lsdr/monokai'
-Bundle 'tomasr/molokai'
+Bundle 'flazz/vim-colorschemes'
 
 " NerdTREE, the file browser
 Bundle 'scrooloose/nerdtree'
