@@ -17,6 +17,8 @@
   ours   = "!f() { git checkout --ours $@ && git add $@; }; f"
   theirs = "!f() { git checkout --theirs $@ && git add $@; }; f"
   del = !git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch "$@"' --prune-empty --tag-name-filter cat -- --all
+  ; http://travisjeffery.com/b/2012/02/search-a-git-repo-like-a-ninja/
+	g = grep --break --heading --line-number
 
 [core]
   excludesfile = ~/.gitignore_global
@@ -29,3 +31,7 @@
 	insteadOf = gh:
 [help]
 	autocorrect = 1
+; http://travisjeffery.com/b/2012/02/search-a-git-repo-like-a-ninja/
+[grep]
+	extendRegexp = true
+	lineNumber = true
