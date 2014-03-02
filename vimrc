@@ -96,6 +96,9 @@ let NERDTreeIgnore=['\.pyc','\~$','\.swo$','\.swp$','\.git','\.hg','\.svn','\.bz
 let NERDTreeKeepTreeInNewTab=1
 let g:nerdtree_tabs_open_on_gui_startup=0
 
+" force syntax
+au! BufRead,BufNewFile *.json set filetype=json
+
 " let Vundle manage Vundle
 " required!
 Bundle 'gmarik/vundle'
@@ -131,6 +134,9 @@ Bundle 'bling/vim-airline'
 Bundle 'edkolev/tmuxline.vim'
 " automatically set the closing bracket
 Bundle 'Raimondi/delimitMate'
+
+" Syntaxes
+Bundle 'jakar/vim-json'
 
 Bundle 'scrooloose/syntastic'
 Bundle 'kien/ctrlp.vim'
