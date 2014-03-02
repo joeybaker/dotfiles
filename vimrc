@@ -45,6 +45,9 @@ elseif has("clipboard")
   set clipboard=unnamed
 endif
 
+" turn off concealing which modifies code not under the cusor
+let g:vim_json_syntax_conceal = 0
+
 set expandtab
 set shiftwidth=2
 set tabstop=2
