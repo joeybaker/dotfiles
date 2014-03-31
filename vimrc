@@ -99,9 +99,6 @@ let g:nerdtree_tabs_open_on_gui_startup=0
 " force syntax
 au! BufRead,BufNewFile *.json set filetype=json
 
-" avoid permission-to-write issues! /thanks @pkrumins
-noremap sudow w !sudo tee % >/dev/null
-
 " let Vundle manage Vundle
 " required!
 Bundle 'gmarik/vundle'
@@ -142,9 +139,7 @@ Bundle 'Raimondi/delimitMate'
 Bundle 'jakar/vim-json'
 
 Bundle 'scrooloose/syntastic'
-
 Bundle 'kien/ctrlp.vim'
-
 Bundle 'airblade/vim-gitgutter'
 Bundle 'myusuf3/numbers.vim'
 Bundle 'corntrace/bufexplorer'
@@ -157,6 +152,7 @@ Bundle 'phd'
 " a good setting for git commit messages as well
 " http://zachholman.com/talk/more-git-and-github-secrets/
 filetype plugin indent on     " required by Vundle
+
 
 "
 " Brief help
