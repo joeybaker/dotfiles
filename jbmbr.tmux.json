@@ -1,28 +1,46 @@
-[
-  {
-    "left": "cd ~; tmux rename-window -t 1 'shell'; brew update; npm-check-updates -g; brew outdated"
-  }
-  , {
-    "top": {
-      "left": "z tussle && nodemon"
-      , "right": "z tussle; tmux rename-window -t 2 'tussle'; tmux select-layout -t 2 even-horizontal"
+{
+  "title": "tmux-layout-jbmbr",
+  "windows": [
+    {
+      "title": "zsh",
+      "layout": {
+        "left": "cd ~; brew update; brew outdated"
+        , "right": "cd ~; npm-check-updates -g"
+      }
+    },
+    {
+      "title": "constructable",
+      "layout": {
+        "top": {
+          "left": "z constructable && nodemon -i node_modules develop.js",
+          "right": "z constructable; tmux select-layout -t 2 even-horizontal"
+        },
+        "bottom": "z constructable; nodemon -i node_modules -x npm -- test"
+      }
+    },
+    {
+      "title": "tussle",
+      "layout": {
+        "top": {
+          "left": "z tussle && nodemon",
+          "right": "z tussle; tmux select-layout -t 3 even-horizontal"
+        },
+        "bottom": "z tussle"
+      }
+    },
+    {
+      "title": "blog",
+      "layout": {
+        "left": "z staticblog && grunt code",
+        "right": "z staticblog"
+      }
+    },
+    {
+      "title": "pocket",
+      "layout": {
+        "left": "z readinglist-pocket",
+        "right": "z readinglist-pocket && nodemon -x mocha -i node_modules -- test"
+      }
     }
-    , "bottom": "z uwn-artiist && nodemon -x mocha -- test"
-  }
-  , {
-    "left": "z staticblog; tmux rename-window -t 3 'blog'"
-    , "right": "z staticblog && grunt code"
-  }
-  , {
-    "left": "z wheelhouse-router; tmux rename-window -t 4 'router'"
-    , "right": "z wheelhouse-router && nodemon -x grunt -i test/fixtures/main.compiled.js -- test"
-  }
-  , {
-    "left": "z wheelhouse-resource; tmux rename-window -t 5 'resource'"
-    , "right": "z wheelhouse-resource && npm run dev"
-  }
-  , {
-    "left": "z readinglist-pocket; tmux rename-window -t 6 'pocket'"
-    , "right": "z readinglist-pocket && nodemon -x mocha -- test"
-  }
-]
+  ]
+}
