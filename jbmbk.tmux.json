@@ -1,0 +1,5 @@
+[
+  {
+    "left": "cd ~; tmux rename-window -t 1 'shell'; brew update; npm-check-updates -g; brew outdated"
+  }
+]
