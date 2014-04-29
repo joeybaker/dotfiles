@@ -94,7 +94,9 @@ source $ZSH/oh-my-zsh.sh
 source `brew --prefix`/etc/profile.d/z.sh
 
 # Customize to your needs...
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:PATH
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH
+# for brew
+export PATH=/usr/local/sbin:$PATH
 # export PATH="$(brew --prefix josegonzalez/php/php54)/bin:$PATH" # for brew's version of PHP
 export PATH="/usr/local/heroku/bin:$PATH" ### Added by the Heroku Toolbelt
 export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
