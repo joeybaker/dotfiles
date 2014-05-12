@@ -427,6 +427,11 @@
     <productid>0x005b</productid>
   </deviceproductdef>
 
+  <devicelocationdef>
+    <locationname>MBR_RIGHT</locationname>
+    <locationid>0x14500000</locationid>
+  </devicelocationdef>
+
   <item>
     <name>Map Application Key to Command</name>
     <identifier>private.application_to_command</identifier>
@@ -439,8 +444,8 @@
 
   <item>
     <name>Swap CMD and OPTION for Goldtouch</name>
-    <identifier>private.option_to_command</identifier>
-    <device_only>DeviceVendor::GOLDTOUCH, DeviceProduct::MACV2</device_only>
+    <identifier>private.option_to_command_on_right_usb</identifier>
+    <device_only>DeviceVendor::GOLDTOUCH, DeviceProduct::MACV2, DeviceLocation::MBR_RIGHT</device_only>
 
     <autogen>--KeyToKey--
       KeyCode::OPTION_L, KeyCode::COMMAND_L
