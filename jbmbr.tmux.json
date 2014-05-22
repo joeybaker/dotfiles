@@ -4,18 +4,18 @@
     {
       "title": "zsh",
       "layout": {
-        "left": "cd ~; brew update; brew outdated"
-        , "right": "cd ~; npm-check-updates -g"
+        "left": "z dot; brew update; brew outdated"
+        , "right": "z dot; npm-check-updates -g"
       }
     },
     {
       "title": "constructable",
       "layout": {
         "top": {
-          "left": "z constructable && nodemon -i node_modules develop.js",
+          "left": "z constructable && nodemon --ignore node_modules/ develop.js",
           "right": "z constructable; tmux select-layout -t 2 even-horizontal"
         },
-        "bottom": "z constructable; nodemon -i node_modules -x npm -- test"
+        "bottom": "z constructable; nodemon --ignore node_modules/ -x npm -- test"
       }
     },
     {
