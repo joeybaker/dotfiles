@@ -31,7 +31,7 @@
     {
       "title": "blog",
       "layout": {
-        "left": "z staticblog && grunt code",
+        "left": "z staticblog",
         "right": "z staticblog"
       }
     },
@@ -39,7 +39,28 @@
       "title": "pocket",
       "layout": {
         "left": "z readinglist-pocket",
-        "right": "z readinglist-pocket && nodemon -x mocha -i node_modules -- test"
+        "right": "z readinglist-pocket"
+      }
+    },
+    {
+      "title": "atomify",
+      "layout": {
+        "left": "z atomify",
+        "right": "z atomify"
+      }
+    },
+    {
+      "title": "ribcage-gen",
+      "layout": {
+        "left": "z ribcage-gen",
+        "right": "z ribcage-gen"
+      }
+    },
+    {
+      "title": "ribcage-preview",
+      "layout": {
+        "left": "z ribcage-preview",
+        "right": "z ribcage-preview"
       }
     }
   ]
