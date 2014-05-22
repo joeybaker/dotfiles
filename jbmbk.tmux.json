@@ -1,5 +1,11 @@
-[
-  {
-    "left": "cd ~; tmux rename-window -t 1 'shell'; brew update; npm-check-updates -g; brew outdated"
-  }
-]
+{
+  "title": "jbmbk-tmux-layout"
+  , "windows": [
+    {
+      "title": "shell"
+      , "layout": {
+        "left": "cd ~; brew update; npm-check-updates -g; brew outdated"
+      }
+    }
+  ]
+}
