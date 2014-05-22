@@ -140,6 +140,7 @@ Bundle 'Raimondi/delimitMate'
 
 " Syntaxes
 Bundle 'jakar/vim-json'
+Bundle 'plasticboy/vim-markdown'
 
 Bundle 'scrooloose/syntastic'
 
