@@ -93,6 +93,9 @@ plugins=(git npm gem sublime osx heroku brew vi-mode bower cloudapp supervisor l
 source $ZSH/oh-my-zsh.sh
 source `brew --prefix`/etc/profile.d/z.sh
 
+bindkey '\e[A' history-substring-search-up
+bindkey '\e[B' history-substring-search-down
+
 # Customize to your needs...
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH
 # for brew
