@@ -9,6 +9,7 @@ do
     # skip files
     if [ "$P" = "link.sh" ]; then continue; fi
     if [ "$P" = "readme.md" ]; then continue; fi
+    if [ "$P" = "hosts" ]; then continue; fi
     if [ "$P" = "private.xml" ]; then
       # skip existing links
       if [ -h "$HOME/Library/Application Support/KeyRemap4MacBook/$P" ]; then continue; fi
