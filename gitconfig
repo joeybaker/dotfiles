@@ -36,3 +36,5 @@
 [grep]
 	extendRegexp = true
 	lineNumber = true
+[rerere]
+	enabled = true
