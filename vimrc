@@ -219,6 +219,31 @@ au BufWinEnter * silent! loadview
 " turn on spell check in git commit messages
 autocmd Filetype gitcommit setlocal spell textwidth=72
 
+" auto-set paste mode in tmux, disables auto-indenting while pasting
+" https://coderwall.com/p/if9mda
+function! WrapForTmux(s)
+  if !exists('$TMUX')
+    return a:s
+  endif
+
+  let tmux_start = "\<Esc>Ptmux;"
+  let tmux_end = "\<Esc>\\"
+
+  return tmux_start . substitute(a:s, "\<Esc>", "\<Esc>\<Esc>", 'g') . tmux_end
+endfunction
+
+let &t_SI .= WrapForTmux("\<Esc>[?2004h")
+let &t_EI .= WrapForTmux("\<Esc>[?2004l")
+
+function! XTermPasteBegin()
+  set pastetoggle=<Esc>[201~
+  set paste
+  return ""
+endfunction
+
+inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
+
+
 " set to 256 colors
 if $TERM == "xterm-256color"
   set t_Co=256
