@@ -4,7 +4,7 @@
     {
       "title": "zsh",
       "layout": {
-        "left": "z dot; brew update; brew outdated"
+        "left": "tmux move-window -t 1; z dot; brew update; brew outdated"
         , "right": "z dot; npm-check-updates -g"
       }
     },
@@ -13,55 +13,34 @@
       "layout": {
         "top": {
           "left": "z constructable && nodemon -e js,json,hbs develop.js",
-          "right": "z constructable; tmux select-layout -t 2 even-horizontal"
+          "right": "z constructable;tmux move-window -t 3;  tmux select-layout -t 3 even-horizontal"
         },
         "bottom": "z constructable; nodemon --ignore node_modules/ -x npm -- test"
       }
     },
     {
-      "title": "tussle",
+      "title": "atomify",
       "layout": {
-        "top": {
-          "left": "z tussle && nodemon",
-          "right": "z tussle; tmux select-layout -t 3 even-horizontal"
-        },
-        "bottom": "z tussle"
+        "left": "z atomify; tmux move-window -t 4",
+        "right": "z atomify"
       }
     },
     {
       "title": "blog",
       "layout": {
-        "left": "z staticblog",
+        "left": "z staticblog; tmux move-window -t 6",
         "right": "z staticblog"
       }
     },
     {
-      "title": "pocket",
+      "title": "racheandjoey",
       "layout": {
-        "left": "z readinglist-pocket",
-        "right": "z readinglist-pocket"
+        "top": {
+          "left": "z rachelandjoey",
+          "right": "z rachelandjoey; tmux move-window -t 5; tmux select-layout -t 5 even-horizontal"
+        },
+        "bottom": "z rachelandjoey"
       }
     },
-    {
-      "title": "atomify",
-      "layout": {
-        "left": "z atomify",
-        "right": "z atomify"
-      }
-    },
-    {
-      "title": "ribcage-gen",
-      "layout": {
-        "left": "z ribcage-gen",
-        "right": "z ribcage-gen"
-      }
-    },
-    {
-      "title": "ribcage-preview",
-      "layout": {
-        "left": "z ribcage-preview",
-        "right": "z ribcage-preview"
-      }
-    }
   ]
 }
