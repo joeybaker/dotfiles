@@ -102,7 +102,8 @@ export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH
 export PATH=/usr/local/sbin:$PATH
 # export PATH="$(brew --prefix josegonzalez/php/php54)/bin:$PATH" # for brew's version of PHP
 export PATH="/usr/local/heroku/bin:$PATH" ### Added by the Heroku Toolbelt
-export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+# for rbenv
+export PATH=$PATH:~/.rbenv/shims
 
 export EDITOR='vi'
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
@@ -118,6 +119,5 @@ export HISTCONTROL=ignoreboth
 # geocouch
 export ERL_FLAGS="-pa /usr/local/share/geocouch/ebin"
 
-# Load RVM into a shell session *as a function*
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-
+# load rbenv
+eval "$(rbenv init -)"
