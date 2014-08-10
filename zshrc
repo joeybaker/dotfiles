@@ -82,8 +82,6 @@ export PATH=/usr/local/sbin:$PATH
 # for rbenv
 export PATH=$PATH:~/.rbenv/shims
 
-export EDITOR='vi'
-export VISUAL=$EDITOR
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 export HOMEBREW_TEMP=~/.homebrew_temp
 export NODE_PATH=/usr/local/lib/node_modules
