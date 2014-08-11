@@ -4,7 +4,7 @@
     {
       "title": "zsh",
       "layout": {
-        "left": "tmux select-layout even-horizontal; z sublime; brew update; brew outdated"
+        "left": "tmux kill-window -t 1; tmux move-window -s 2 -t 1; tmux select-layout -t 2 even-horizontal; z sublime; brew update; brew outdated"
         , "right": "z dot; update_zprezto; npm-check-updates -g"
       }
     },
@@ -13,7 +13,7 @@
       "layout": {
         "top": {
           "left": "z constructable && sh ~/sh/start_constructable.sh",
-          "right": "z constructable; tmux select-layout even-horizontal"
+          "right": "z constructable; tmux select-layout -t 3 even-horizontal"
         },
         "bottom": "z constructable; nodemon --ignore node_modules/ -x npm -- test"
       }
@@ -21,7 +21,7 @@
     {
       "title": "atomify",
       "layout": {
-        "left": "z atomify; tmux select-layout even-horizontal",
+        "left": "z atomify; tmux select-layout -t 4 even-horizontal",
         "right": "z atomify"
       }
     },
@@ -30,7 +30,7 @@
       "layout": {
         "top": {
           "left": "z rachelandjoey",
-          "right": "z rachelandjoey; tmux select-layout even-horizontal"
+          "right": "z rachelandjoey; tmux select-layout -t 5 even-horizontal"
         },
         "bottom": "z rachelandjoey"
       }
@@ -38,7 +38,7 @@
     {
       "title": "blog",
       "layout": {
-        "left": "z staticblog; tmux select-layout even-horizontal",
+        "left": "z staticblog; tmux select-layout -t 6 even-horizontal",
         "right": "z staticblog"
       }
     }
