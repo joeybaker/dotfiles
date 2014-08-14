@@ -387,12 +387,12 @@
       <autogen>--KeyToKey-- KeyCode::KEY_3,         ModifierFlag::SHIFT_L, KeyCode::VK_NONE</autogen>
       <autogen>--KeyToKey-- KeyCode::KEY_4,         ModifierFlag::SHIFT_L, KeyCode::VK_NONE</autogen>
       <autogen>--KeyToKey-- KeyCode::KEY_5,         ModifierFlag::SHIFT_L, KeyCode::VK_NONE</autogen>
+      <autogen>--KeyToKey-- KeyCode::KEY_6,         ModifierFlag::SHIFT_L, KeyCode::VK_NONE</autogen>
 
       <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT,  ModifierFlag::SHIFT_R, KeyCode::VK_NONE</autogen>
       <autogen>--KeyToKey-- KeyCode::BRACKET_RIGHT, ModifierFlag::SHIFT_R, KeyCode::VK_NONE</autogen>
       <autogen>--KeyToKey-- KeyCode::BACKSLASH,     ModifierFlag::SHIFT_R, KeyCode::VK_NONE</autogen>
 
-      <autogen>--KeyToKey-- KeyCode::KEY_6,  ModifierFlag::SHIFT_R, KeyCode::VK_NONE</autogen>
       <autogen>--KeyToKey-- KeyCode::KEY_7,  ModifierFlag::SHIFT_R, KeyCode::VK_NONE</autogen>
       <autogen>--KeyToKey-- KeyCode::KEY_8,  ModifierFlag::SHIFT_R, KeyCode::VK_NONE</autogen>
       <autogen>--KeyToKey-- KeyCode::KEY_9,  ModifierFlag::SHIFT_R, KeyCode::VK_NONE</autogen>
