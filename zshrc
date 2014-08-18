@@ -45,7 +45,7 @@ alias bower='noglob bower'
 
 alias l='ls -AG'
 function mkcd() { mkdir -p "$@" && cd "$_"; }
-alias gitp='git pull --rebase --prune && git push;'
+alias gitp='git pull --rebase --prune && git push && git push --tags;'
 alias gitb='git branch'
 alias gitbd='git branch -D'
 alias gitcleanup='git fsck —unreachable;
