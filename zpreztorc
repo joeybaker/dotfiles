@@ -37,7 +37,8 @@ zstyle ':prezto:load' pmodule \
   'tmux' \
   'git' \
   'archive' \
-  'syntax-highlighting'
+  'syntax-highlighting' \
+  'sublime'
 
 #
 # Editor
