@@ -57,6 +57,9 @@ alias pgstop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
 alias couchstop='launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.couchdb.plist'
 alias couchstart='launchctl load ~/Library/LaunchAgents/homebrew.mxcl.couchdb.plist'
 
+# sshrc
+alias ssh=sshrc
+
 # git aliases
 alias gc="git commit -a"
 alias gx="git checkout"
