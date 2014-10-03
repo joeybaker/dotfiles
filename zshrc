@@ -76,6 +76,8 @@ alias gsl='git stash list'
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH
 ## for brew
 export PATH=/usr/local/sbin:$PATH
+## use brew's GNU utils instead of the built in ones
+export PATH=$(brew --prefix coreutils)/libexec/gnubin:$PATH
 ## for brew's version of PHP
 # export PATH="$(brew --prefix josegonzalez/php/php54)/bin:$PATH"
 # for rbenv
