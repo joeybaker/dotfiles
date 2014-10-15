@@ -3,6 +3,7 @@
   "preset": "jquery",
   "plugins": [
     "esformatter-quotes",
+    "esformatter-literal-notation",
     "rocambole-commafirst",
     "esformatter-dot-notation"
   ],
@@ -15,16 +16,16 @@
   },
   "whiteSpace": {
     "before": {
-      "ArgumentList": 1,
-      "ArgumentListObjectExpression": 1,
-      "ArgumentListFunctionExpression": 1,
-      "ArgumentListArrayExpression": 1
+      "ArgumentList": 0,
+      "ArgumentListObjectExpression": 0,
+      "ArgumentListFunctionExpression": 0,
+      "ArgumentListArrayExpression": 0
     },
     "after": {
-      "ArgumentList": 1,
-      "ArgumentListObjectExpression": 1,
-      "ArgumentListFunctionExpression": 1,
-      "ArgumentListArrayExpression": 1
+      "ArgumentList": 0,
+      "ArgumentListObjectExpression": 0,
+      "ArgumentListFunctionExpression": 0,
+      "ArgumentListArrayExpression": 0
     }
   }
 }
