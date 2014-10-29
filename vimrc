@@ -137,6 +137,8 @@ Bundle 'bling/vim-airline'
 Bundle 'edkolev/tmuxline.vim'
 " automatically set the closing bracket
 Bundle 'Raimondi/delimitMate'
+" yell at you if you don't commit
+Bundle 'esneider/YUNOcommit.vim'
 
 " Syntaxes
 Bundle 'jakar/vim-json'
