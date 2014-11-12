@@ -48,6 +48,7 @@ git reflog expire —expire=0 —all;
 git repack -a -d -l;
 git prune;
 git gc —aggressive;'
+alias gitcleanremote='git branch -r --merged | grep -v master | sed 's/origin\///' | xargs -n 1 git push --delete origin'
 alias git status='git status -sb'
 alias html2text='python /Users/joeybaker/scripts/html2text/html2text.py '
 function findin(){ find ./ -type f -exec grep -Hn "$1" {} \;;}
