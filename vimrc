@@ -82,7 +82,11 @@ set nocompatible               " be iMproved
 filetype off                   " required!
 
 set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+call vundle#begin()
+
+" let Vundle manage Vundle
+" required!
+Bundle 'gmarik/vundle'
 
 " Nerdtree
   " Open on start
@@ -101,10 +105,6 @@ au! BufRead,BufNewFile *.json set filetype=json
 
 " avoid permission-to-write issues! /thanks @pkrumins
 noremap sudow w !sudo tee % >/dev/null
-
-" let Vundle manage Vundle
-" required!
-Bundle 'gmarik/vundle'
 
 " My Bundles here:
 "
@@ -158,6 +158,8 @@ Bundle 'closetag.vim'
 Bundle 'phd'
 " Bundle 'git://git.wincent.com/command-t.git'
 
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
 " a good setting for git commit messages as well
 " http://zachholman.com/talk/more-git-and-github-secrets/
 filetype plugin indent on     " required by Vundle
