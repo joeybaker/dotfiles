@@ -81,12 +81,12 @@ vnoremap > >gv
 set nocompatible               " be iMproved
 filetype off                   " required!
 
-set rtp+=~/.vim/bundle/vundle/
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 " let Vundle manage Vundle
 " required!
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/vundle'
 
 " Nerdtree
   " Open on start
@@ -110,53 +110,53 @@ noremap sudow w !sudo tee % >/dev/null
 "
 " original repos on github
 " Fugitive, the Git Manager
-Bundle 'tpope/vim-fugitive'
+Plugin 'tpope/vim-fugitive'
 " JavaScript, plugin for JS syntax and indentation
-Bundle 'jelera/vim-javascript-syntax'
-Bundle 'pangloss/vim-javascript'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'nathanaelkane/vim-indent-guides'
+Plugin 'jelera/vim-javascript-syntax'
+Plugin 'pangloss/vim-javascript'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'nathanaelkane/vim-indent-guides'
 " EditorConfig
-Bundle 'editorconfig/editorconfig-vim'
+Plugin 'editorconfig/editorconfig-vim'
 " Multiple Cursors
-Bundle 'terryma/vim-multiple-cursors'
-Bundle 'tpope/vim-rails.git'
-Bundle 'goldfeld/vim-seek'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'tpope/vim-rails.git'
+Plugin 'goldfeld/vim-seek'
 
 " color scheme
-Bundle 'flazz/vim-colorschemes'
+Plugin 'flazz/vim-colorschemes'
 
 " NerdTREE, the file browser
-Bundle 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdtree'
 " tabs for NerdTree
-Bundle 'jistr/vim-nerdtree-tabs'
-Bundle 'ervandew/supertab'
+Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'ervandew/supertab'
 " status bar
-Bundle 'bling/vim-airline'
+Plugin 'bling/vim-airline'
 " use the same status bar in tmux
-Bundle 'edkolev/tmuxline.vim'
+Plugin 'edkolev/tmuxline.vim'
 " automatically set the closing bracket
-Bundle 'Raimondi/delimitMate'
+Plugin 'Raimondi/delimitMate'
 " yell at you if you don't commit
-Bundle 'esneider/YUNOcommit.vim'
+Plugin 'esneider/YUNOcommit.vim'
 
 " Syntaxes
-Bundle 'jakar/vim-json'
-Bundle 'plasticboy/vim-markdown'
-Bundle 'toyamarinyon/vim-swift'
+Plugin 'jakar/vim-json'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'toyamarinyon/vim-swift'
 
-Bundle 'scrooloose/syntastic'
+Plugin 'scrooloose/syntastic'
 
-Bundle 'kien/ctrlp.vim'
+Plugin 'kien/ctrlp.vim'
 
-Bundle 'airblade/vim-gitgutter'
-Bundle 'myusuf3/numbers.vim'
-Bundle 'corntrace/bufexplorer'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'myusuf3/numbers.vim'
+Plugin 'corntrace/bufexplorer'
 " vim-scripts repos
-Bundle 'L9'
-Bundle 'closetag.vim'
-Bundle 'phd'
-" Bundle 'git://git.wincent.com/command-t.git'
+Plugin 'L9'
+Plugin 'closetag.vim'
+Plugin 'phd'
+" Plugin 'git://git.wincent.com/command-t.git'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -172,7 +172,7 @@ filetype plugin indent on     " required by Vundle
 " :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
 "
 " see :h vundle for more details or wiki for FAQ
-" NOTE: comments after Bundle command are not allowed..
+" NOTE: comments after Plugin command are not allowed..
 
 " vim airline
 
