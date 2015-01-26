@@ -1,1 +1,2 @@
 set -o vi
+zsh
