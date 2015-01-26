@@ -144,6 +144,7 @@ Plugin 'esneider/YUNOcommit.vim'
 Plugin 'jakar/vim-json'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'toyamarinyon/vim-swift'
+Plugin 'mmalecki/vim-node.js'
 
 Plugin 'scrooloose/syntastic'
 
