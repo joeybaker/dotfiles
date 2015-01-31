@@ -59,7 +59,7 @@ alias couchstop='launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.couchdb.p
 alias couchstart='launchctl load ~/Library/LaunchAgents/homebrew.mxcl.couchdb.plist'
 
 # sshrc
-alias ssh=sshrc
+# alias ssh=sshrc
 
 # git aliases
 alias gc="git commit -a"
