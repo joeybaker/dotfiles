@@ -1,2 +1,2 @@
 set -o vi
-zsh
+export SHELL=$(which zsh)
