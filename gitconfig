@@ -20,6 +20,7 @@
   ; http://travisjeffery.com/b/2012/02/search-a-git-repo-like-a-ninja/
 	g = grep --break --heading --line-number
   pullforce = !git fetch --all && git reset --hard origin/$(git rev-parse --abbrev-ref HEAD)
+  bclean = "!f() { git branch --merged ${1-master} | grep -v \"${1-master}\" | xargs -n 1 git branch -d }; f"
 
 [core]
   excludesfile = ~/.gitignore_global
