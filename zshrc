@@ -68,6 +68,9 @@ alias gs='git stash'
 alias gsp='git stash pop'
 alias gsl='git stash list'
 
+# tmux
+alias tmux-embed="unset TMUX && tmux"
+
 # I think these were for oh-my-zsh only
 # bindkey '\e[A' history-substring-search-up
 # bindkey '\e[B' history-substring-search-down
