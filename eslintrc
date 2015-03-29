@@ -26,8 +26,8 @@
     "jsx": true
   },
   "env": {
-    "browser": 2,
-    "node": 2
+    "browser": true,
+    "node": true
   },
   "rules": {
     "no-comma-dangle": 2,
@@ -175,7 +175,7 @@
     "no-nested-ternary": 0,
     "no-new-object": 2,
     "no-space-before-semi": 2,
-    "no-spaced-func": 2,
+    "no-spaced-func": 1,
     "no-ternary": 0,
     "no-trailing-spaces": 2,
     "no-underscore-dangle": 0,
@@ -236,7 +236,8 @@
         ]
       }
     ],
-    "wrap-regex": 0
+    "wrap-regex": 0,
+
     "react/display-name": 1,
     "react/jsx-uses-react": 1,
     "react/jsx-uses-vars": 1,
