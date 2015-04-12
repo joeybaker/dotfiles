@@ -41,3 +41,5 @@
 [rerere]
 	enabled = true
 	autoupdate = true
+[github]
+	user = joeybaker
