@@ -150,6 +150,10 @@ Plugin 'scrooloose/syntastic'
 
 Plugin 'kien/ctrlp.vim'
 
+" gist support
+Plugin 'mattn/webapi-vim'
+Plugin 'mattn/gist-vim'
+
 Plugin 'airblade/vim-gitgutter'
 Plugin 'myusuf3/numbers.vim'
 Plugin 'corntrace/bufexplorer'
@@ -174,6 +178,12 @@ filetype plugin indent on     " required by Vundle
 "
 " see :h vundle for more details or wiki for FAQ
 " NOTE: comments after Plugin command are not allowed..
+
+" Gist
+let g:gist_post_private = 1
+let g:gist_show_privates = 1
+let g:gist_detect_filetype = 1
+let g:gist_clip_command = 'reattach-to-user-namespace pbcopy'
 
 " vim airline
 
