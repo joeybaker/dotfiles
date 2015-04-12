@@ -209,7 +209,7 @@
     "space-before-blocks": 0,
     "space-before-function-parentheses": [
       1,
-      "never"
+      "always"
     ],
     "space-in-brackets": [
       1,
