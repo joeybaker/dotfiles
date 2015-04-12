@@ -40,3 +40,4 @@
 	lineNumber = true
 [rerere]
 	enabled = true
+	autoupdate = true
