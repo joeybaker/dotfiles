@@ -82,11 +82,11 @@
     # authorize ghcopy, will prompt
     ghcopy-authorize
     ```
-* [keyremap4macbook](http://pqrs.org/macosx/keyremap4macbook/)
+* [Karabiner](http://pqrs.org/macosx/karabiner/)
   * copy private.xml
 
     ```
-      mkdir -p ~/Library/Application\ Support/KeyRemap4MacBook && ln -s ~/Sync/dotfiles/private.xml ~/Library/Application\ Support/KeyRemap4MacBook/private.xml
+      mkdir -p ~/Library/Application\ Support/Karabiner && ln -s ~/Sync/dotfiles/private.xml ~/Library/Application\ Support/Karabiner/private.xml
     ```
     * simultaneous Vi mode > simultaneous key presses [S+D] turns on “sim…
     * simultaneous Vi mode > change [] to backward-word…
@@ -95,7 +95,7 @@
     * f19 to escape/hyper
     * turn off menubar
     * Key Repeat > Key Overlaid Modifier > Timeout: 200
-* [pckeyboardhack](http://pqrs.org/macosx/keyremap4macbook/pckeyboardhack.html.en)
+* [seil](http://pqrs.org/macosx/Karabiner/seil.html.en)
     * caps lock to f19 (key code: 80)
     * be sure to disable caps lock in keyboard settings
     * better instructions: https://github.com/jasonrudolph/keyboard
