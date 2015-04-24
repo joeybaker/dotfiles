@@ -24,7 +24,7 @@
         installcommandlinetools="xcode-select --install"
         eval $installcommandlinetools
 
-        brew install brew-cask z node tmux sshrc reattach-to-user-namespace git zsh ack coreutils findutils bash shellcheck homebrew/dupes/grep
+        brew install brew-cask z node tmux sshrc reattach-to-user-namespace git zsh ack coreutils findutils bash shellcheck homebrew/dupes/grep httpie
         brew cask alfred link
         brew cask install google-chrome firefox iterm2 adium slate istat-menus airmail-beta spotify cloudup sublime-text-dev google-chrome-canary karabiner seil f-lux sidestep bartender onepassword alfred kitematic syncthing vlc atext --appdir=/Applications
         # great quicklook plugins [via](https://github.com/sindresorhus/quick-look-plugins)
