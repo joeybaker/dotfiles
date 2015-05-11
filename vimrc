@@ -112,7 +112,7 @@ noremap sudow w !sudo tee % >/dev/null
 " Fugitive, the Git Manager
 Plugin 'tpope/vim-fugitive'
 " JavaScript, plugin for JS syntax and indentation
-Plugin 'jelera/vim-javascript-syntax'
+Plugin 'https://github.com/othree/yajs.vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'nathanaelkane/vim-indent-guides'
