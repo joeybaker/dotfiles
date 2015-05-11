@@ -115,6 +115,8 @@ export NODE_ENV='development'
 eval "$(rbenv init -)"
 # z
 source `brew --prefix`/etc/profile.d/z.sh
+# npm
+. <(npm completion)
 
 # update function for zprezto
 function update_zprezto() {
