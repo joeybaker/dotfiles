@@ -3,6 +3,7 @@
 #
 # Authors:
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
+#   Joey Baker <joey@byjoeybaker.com>
 #
 
 # Source Prezto.
