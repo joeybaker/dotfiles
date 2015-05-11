@@ -10,6 +10,10 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
+# set a high ulimit because the OS can handle it an node file watching processes
+# are hungry
+ulimit -n 10000
+
 # This bunch of code displays red dots when autocompleting
 expand-or-complete-with-dots() {
   # a command with the tab key, "Oh-my-zsh"-style.
