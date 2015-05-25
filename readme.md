@@ -18,7 +18,6 @@
         brew tap phinze/cask
         brew tap caskroom/versions
         brew tap caskroom/fonts
-        brew tap jingweno/ccat
 
         # Install command line tools
         # quote because syntax highlighting sucks
