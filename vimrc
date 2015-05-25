@@ -272,6 +272,18 @@ endfunction
 
 inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
 
+" cursor shape with tmux and iterm
+" I'm not sure this actually does anything?
+" http://tangosource.com/blog/a-tmux-crash-course-tips-and-tweaks/
+if exists('$ITERM_PROFILE')
+  if exists('$TMUX')
+    let &t_SI = "\<Esc>[3 q"
+    let &t_EI = "\<Esc>[0 q"
+  else
+    let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+    let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+  endif
+end
 
 " set to 256 colors
 if $TERM == "xterm-256color"
