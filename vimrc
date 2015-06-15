@@ -296,6 +296,10 @@ function! s:Repl()
   return "p@=RestoreRegister()\<cr>"
 endfunction
 vmap <silent> <expr> p <sid>Repl()
+
+" Quickly select text you just pasted:
+" http://sheerun.net/2014/03/21/how-to-boost-your-vim-productivity/
+noremap gV `[v`]`
 " set to 256 colors
 if $TERM == "xterm-256color"
   set t_Co=256
