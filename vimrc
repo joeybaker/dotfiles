@@ -236,7 +236,7 @@ augroup JumpCursorOnEdit
   autocmd BufWinEnter *
   \ if exists("b:doopenfold") |
   \ exe "normal zv" |
-  \ if(b:doopenfold > 1) |
+  \ if (b:doopenfold > 1) |
   \ exe "+".1 |
   \ endif |
   \ unlet b:doopenfold |
