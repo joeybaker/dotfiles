@@ -145,6 +145,8 @@ Plugin 'jakar/vim-json'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'toyamarinyon/vim-swift'
 Plugin 'mmalecki/vim-node.js'
+Plugin 'mxw/vim-jsx'
+
 " tern gives JS autocomplete and selection super powers
 Plugin 'marijnh/tern_for_vim'
 
