@@ -285,6 +285,17 @@ if exists('$ITERM_PROFILE')
   endif
 end
 
+" vp doesn't replace paste buffer
+" http://sheerun.net/2014/03/21/how-to-boost-your-vim-productivity/
+function! RestoreRegister()
+  let @= s:restore_reg
+   return ''
+endfunction
+function! s:Repl()
+  let s:restore_reg = @"
+  return "p@=RestoreRegister()\<cr>"
+endfunction
+vmap <silent> <expr> p <sid>Repl()
 " set to 256 colors
 if $TERM == "xterm-256color"
   set t_Co=256
