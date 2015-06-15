@@ -300,6 +300,21 @@ vmap <silent> <expr> p <sid>Repl()
 " Quickly select text you just pasted:
 " http://sheerun.net/2014/03/21/how-to-boost-your-vim-productivity/
 noremap gV `[v`]`
+
+" Make Ctrl-P plugin a lot faster for Git projects
+" Put following in your .vimrc (it configures CtrlP to use git or silver
+" searcher for autocompletion):
+let g:ctrlp_use_caching = 0
+if executable('ag')
+ set grepprg=ag\ --nogroup\ --nocolor
+ let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+else
+ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
+ let g:ctrlp_prompt_mappings = {
+     \ 'AcceptSelection("e")': ['<space>', '<cr>', '<2-LeftMouse>']
+     \ }
+endif
+
 " set to 256 colors
 if $TERM == "xterm-256color"
   set t_Co=256
