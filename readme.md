@@ -37,6 +37,12 @@
         brew cleanup
         ```
 
+* install oceanic-next iterm theme (the main theme is in the sync folder)
+
+    ```sh
+    git clone https://github.com/mhartington/oceanic-next-shell.git ~/.config/oceanic-next-shell
+    ```
+
 * follow install instructions for [zprezto](https://github.com/sorin-ionescu/prezto).
     ```bash
     # Launch Zsh

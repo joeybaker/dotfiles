@@ -130,3 +130,10 @@ function update_zprezto() {
   git pull upstream master && git submodule update --init --recursive
   cd -
 }
+
+# setup iterm for 256 colors for the oceanic-next theme
+# https://github.com/mhartington/oceanic-next-shell
+# if [ -f "$HOME/.config/oceanic-next-shell/oceanic-next.dark.sh" ]; then
+#  BASE16_SHELL="$HOME/.config/oceanic-next-shell/oceanic-next.dark.sh"
+#  [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
+# fi

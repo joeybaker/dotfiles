@@ -125,6 +125,7 @@ Plugin 'goldfeld/vim-seek'
 
 " color scheme
 Plugin 'flazz/vim-colorschemes'
+Plugin 'yosiat/oceanic-next-vim'
 
 " NerdTREE, the file browser
 Plugin 'scrooloose/nerdtree'
