@@ -62,6 +62,7 @@ alias pgstart='postgres -D /usr/local/var/postgres'
 alias pgstop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
 alias couchstop='launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.couchdb.plist'
 alias couchstart='launchctl load ~/Library/LaunchAgents/homebrew.mxcl.couchdb.plist'
+alias dokku="$HOME/server/dokku/contrib/dokku_client.sh"
 
 # sshrc
 # alias ssh=sshrc
