@@ -4,7 +4,7 @@
     * enable tap to click
     * enable triple hold to move
     * enable four finger swipe down for expose
-    * disable launch pad guesture
+    * disable launch pad gesture
     * enable filevault
 * turn on filevault
 * app store for OS updates [restart]
@@ -44,6 +44,7 @@
     ```
 
 * follow install instructions for [zprezto](https://github.com/sorin-ionescu/prezto).
+
     ```bash
     # Launch Zsh
     zsh
@@ -57,21 +58,25 @@
     # set ZSH as default
     chsh -s /bin/zsh
     ```
+
 * setup syncthing
 * dotfile link
     * NOTE: with symlinks and such, the zsh dotfiles might need to be moved to another location inside the `.zprezto` folder
     * `sh ~/Sync/dotfiles/link.sh "my-computer-name"`
 * `git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/Vundle.vim && vim +PluginInstall +qall`
 * configure git
+
     ```sh
     git config --global user.name "Joey Baker"
     git config --global user.email "joey@byjoeybaker.com"
     ```
+
 * Install tmux plugin manager `git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`
     * start tmux with `tmux attach`
     * then: `<prefix> <ctrl-I>`
 * `sudo sh ~/sh/osx.sh "my-computer-name"`
 * install [nodejs](http://nodejs.org) & relevant global packages
+
     ```bash
     # no sudo for global installs!
     sudo chown -R $(whoami) ~/.npm; sudo chown -R $(whoami) /usr/local/lib/node_modules
@@ -88,12 +93,14 @@
     # authorize ghcopy, will prompt
     ghcopy-authorize
     ```
+
 * [Karabiner](http://pqrs.org/macosx/karabiner/)
   * copy private.xml
 
     ```
       mkdir -p ~/Library/Application\ Support/Karabiner && ln -s ~/Sync/dotfiles/private.xml ~/Library/Application\ Support/Karabiner/private.xml
     ```
+
     * simultaneous Vi mode > simultaneous key presses [S+D] turns on “sim…
     * simultaneous Vi mode > change [] to backward-word…
     * shifts to parenteses
@@ -126,6 +133,7 @@
             bottom: 0;
         }
         ```
+
 * [sublime text](http://www.sublimetext.com/3)
     * [sublime packages](https://github.com/joeybaker/my_sublime_packages/tree/st3)
     * For better vintage mode in sublimetext `defaults write com.sublimetext.2 ApplePressAndHoldEnabled -bool false && defaults write com.sublimetext.3 ApplePressAndHoldEnabled -bool false`
