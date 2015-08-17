@@ -113,7 +113,6 @@ noremap sudow w !sudo tee % >/dev/null
 Plugin 'tpope/vim-fugitive'
 " JavaScript, plugin for JS syntax and indentation
 Plugin 'https://github.com/othree/yajs.vim'
-Plugin 'pangloss/vim-javascript'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'nathanaelkane/vim-indent-guides'
 " EditorConfig
@@ -146,6 +145,7 @@ Plugin 'jakar/vim-json'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'toyamarinyon/vim-swift'
 Plugin 'mmalecki/vim-node.js'
+Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 
 " tern gives JS autocomplete and selection super powers
