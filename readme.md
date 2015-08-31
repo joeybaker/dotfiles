@@ -197,4 +197,5 @@
     * `defaults write com.apple.dashboard mcx-disabled -boolean true && killall Dock`
 * setup time machine
 * [install github ssh keys](https://help.github.com/articles/generating-ssh-keys)
+* [secure sudo](http://blog.rongarret.info/2015/08/psa-beware-of-sudo-on-os-x.html)
 * don't forget to install Adobe things if necessary
