@@ -124,7 +124,7 @@ Plugin 'goldfeld/vim-seek'
 
 " color scheme
 Plugin 'flazz/vim-colorschemes'
-Plugin 'yosiat/oceanic-next-vim'
+Plugin 'mhartington/oceanic-next'
 
 " NerdTREE, the file browser
 Plugin 'scrooloose/nerdtree'
@@ -195,6 +195,7 @@ let g:gist_clip_command = 'reattach-to-user-namespace pbcopy'
 " so that airline appears in the first split
 set laststatus=2
 let g:airline_powerline_fonts=1
+let g:airline_theme='oceanicnext'
 
 " setup syntastic
 set statusline+=%#warningmsg#
@@ -319,10 +320,11 @@ else
 endif
 
 " set to 256 colors
-if $TERM == "xterm-256color"
-  set t_Co=256
-endif
+" if $TERM == "xterm-256color"
+"   set t_Co=256
+" endif
+set t_Co=256
 " set color scheme
 set background=dark
-colorscheme molokai
+colorscheme OceanicNext
 
