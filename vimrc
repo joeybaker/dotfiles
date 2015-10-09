@@ -102,6 +102,9 @@ let g:nerdtree_tabs_open_on_gui_startup=0
 
 " force syntax
 au! BufRead,BufNewFile *.json set filetype=json
+" per http://www.swamphogg.com/2015/vim-setup/
+au! BufRead,BufNewFile *.markdown set filetype=mkd
+au! BufRead,BufNewFile *.md       set filetype=mkd
 
 " avoid permission-to-write issues! /thanks @pkrumins
 noremap sudow w !sudo tee % >/dev/null
@@ -139,6 +142,8 @@ Plugin 'edkolev/tmuxline.vim'
 Plugin 'Raimondi/delimitMate'
 " yell at you if you don't commit
 Plugin 'esneider/YUNOcommit.vim'
+" Pencil, for writing and markdown
+Plugin 'reedes/vim-pencil'
 
 " Syntaxes
 Plugin 'jakar/vim-json'
@@ -207,6 +212,13 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 let g:syntastic_javascript_checkers = ['eslint']
+
+" Pencil setup
+augroup pencil
+autocmd!
+  autocmd FileType markdown,mkd,md call pencil#init()
+  autocmd FileType text            call pencil#init()
+augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Tell vim to remember certain things when we exit
