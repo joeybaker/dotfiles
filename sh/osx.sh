@@ -3,6 +3,12 @@
 set -euo pipefail
 IFS=$'\n\t'
 
+#
+# More here: https://github.com/herrbischoff/awesome-osx-command-line
+#
+
+
+
 # call with the computer name e.g. bash osx.sh "my computer name"
 function config_osx () {
   local computer_name=${1:-"jbmbk"}
