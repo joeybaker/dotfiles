@@ -1,43 +1,161 @@
-" Use color syntax highlighting.
-syntax on
+" sections via: http://dougblack.io/words/a-good-vimrc.html
 
-" Color specifications. Change them as you would like.
 "
-"hi Comment      term=none       ctermfg=gray    guifg=Gray
-"hi Constant     term=underline  ctermfg=cyan    guifg=Cyan
-"hi Identifier   term=underline  ctermfg=green   guifg=White
-"hi Statement    term=bold       ctermfg=white   guifg=White
-"hi PreProc      term=underline  ctermfg=magenta guifg=Magenta
-"hi Type         term=underline  ctermfg=white   guifg=White
-"hi Special      term=bold       ctermfg=blue    guifg=Blue
-" hi Nontext      term=bold       ctermfg=red     guifg=Red
-" hi Normal       guifg=Yellow    guibg=#00007F
-" hi Normal       ctermfg=darkgreen
+" UI CONFIG
+"
+set number " Turn on Line nubmers
+set showcmd " show command in bottom bar, doesn't actually work b/c of airline
+set cursorline " highlight the current line
+set wildmenu " visual autocomplete for command menu
+set lazyredraw " redraw only when we need to, should speed up macros and such
+set showmatch " Show parentheses matching
 
-" hi Comment      cterm=none      gui=none
-" hi Constant     cterm=bold      gui=none
-" hi Identifier   cterm=none      gui=none
-" hi Statement    cterm=bold      gui=none
-" hi PreProc      cterm=bold      gui=none
-" hi Type         cterm=bold      gui=none
-" hi Special      cterm=bold      gui=none
-" hi NonText      cterm=bold      gui=none
+"
+" SEARCH
+"
 
-" Special highlighting for XML
-" hi xmlTag ctermfg=blue cterm=bold guifg=white
-" hi xmlTagName ctermfg=blue cterm=bold guifg=white
-" hi xmlEndTag ctermfg=blue cterm=bold guifg=white
+set incsearch " incremental search. moves through the file as you search
+set hlsearch " highlight search. highlights the matches
 
-" Options.
+"
+" FOLDING
+"
 
-" Turn on Line nubmers
-set number
+set foldenable " enable folding
+set foldlevelstart=10 " 0 is all collapsed. 99 is all open
+set foldnestmax=10      " folds can be nested. more than 10 is crazy
+set foldmethod=indent   " fold on indent level. :help foldmethod for more
 
-set hlsearch
-set incsearch
+"
+" SPACING
+"
+
+set shiftwidth=2
+set tabstop=2 " 2 spaces per tab
+set softtabstop=2 " the spaces in a tab when hitting the TAB key
+set expandtab " turn the TAB key into spaces
+
+"
+" CUSTOM MAPPING
+"
+
+" Quickly select text you just pasted:
+" http://sheerun.net/2014/03/21/how-to-boost-your-vim-productivity/
+noremap gV `[v`]`
+
+
+" open ag.vim
+nnoremap <leader>a :Ag
+
+" keep visual mode on after indentation
+vnoremap < <gv
+vnoremap > >gv
+
+
+"
+" STARTUP FUNCTIONS
+"
+
+" cursor change for tmux
+" allows cursor change in tmux mode
+if exists('$TMUX')
+  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+else
+  let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+  let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+endif
+
+" cursor shape with tmux and iterm
+" I'm not sure this actually does anything?
+" http://tangosource.com/blog/a-tmux-crash-course-tips-and-tweaks/
+if exists('$ITERM_PROFILE')
+  if exists('$TMUX')
+    let &t_SI = "\<Esc>[3 q"
+    let &t_EI = "\<Esc>[0 q"
+  else
+    let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+    let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+  endif
+end
+
+" auto-set paste mode in tmux, disables auto-indenting while pasting
+" https://coderwall.com/p/if9mda
+function! WrapForTmux(s)
+  if !exists('$TMUX')
+    return a:s
+  endif
+
+  let tmux_start = "\<Esc>Ptmux;"
+  let tmux_end = "\<Esc>\\"
+
+  return tmux_start . substitute(a:s, "\<Esc>", "\<Esc>\<Esc>", 'g') . tmux_end
+endfunction
+
+let &t_SI .= WrapForTmux("\<Esc>[?2004h")
+let &t_EI .= WrapForTmux("\<Esc>[?2004l")
+
+function! XTermPasteBegin()
+  set pastetoggle=<Esc>[201~
+  set paste
+  return ""
+endfunction
+
+inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
+
+" leave the backup files prefiex with ~ on, but save to /tmp instead of cwd
+set backup
+set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set backupskip=/tmp/*,/private/tmp/*
+set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set writebackup
+
+"
+" AUTOGROUPS
+"
+
+" Pencil setup
+augroup pencil
+autocmd!
+  autocmd FileType markdown,mkd,md call pencil#init()
+  autocmd FileType text            call pencil#init()
+augroup END
+
+
+" when we reload, tell vim to restore the cursor to the saved position
+augroup JumpCursorOnEdit
+  au!
+  autocmd BufReadPost *
+  \ if expand("<afile>:p:h") !=? $TEMP |
+  \ if line("'\"") > 1 && line("'\"") <= line("$") |
+  \ let JumpCursorOnEdit_foo = line("'\"") |
+  \ let b:doopenfold = 1 |
+  \ if (foldlevel(JumpCursorOnEdit_foo) > foldlevel(JumpCursorOnEdit_foo - 1)) |
+  \ let JumpCursorOnEdit_foo = JumpCursorOnEdit_foo - 1 |
+  \ let b:doopenfold = 2 |
+  \ endif |
+  \ exe JumpCursorOnEdit_foo |
+  \ endif |
+  \ endif
+  " Need to postpone using "zv" until after reading the modelines.
+  autocmd BufWinEnter *
+  \ if exists("b:doopenfold") |
+  \ exe "normal zv" |
+  \ if (b:doopenfold > 1) |
+  \ exe "+".1 |
+  \ endif |
+  \ unlet b:doopenfold |
+  \ endif
+
+"save folds on exit
+au BufWinLeave * silent! mkview
+au BufWinEnter * silent! loadview
+" turn on spell check in git commit messages
+autocmd Filetype gitcommit setlocal spell textwidth=72
+
+
 set ignorecase
 set history=1000
-set cursorline
 set autoindent
 if has("unnamedplus")
   set clipboard=unnamedplus
@@ -45,36 +163,17 @@ elseif has("clipboard")
   set clipboard=unnamed
 endif
 
-" turn off concealing which modifies code not under the cusor
+" turn off concealing, which modifies code not under the cusor
 let g:vim_json_syntax_conceal = 0
-
-set expandtab
-set shiftwidth=2
-set tabstop=2
-set softtabstop=2
 
 set fileformat=unix     " No crazy CR/LF
 set nojoinspaces        " One space after a "." rather than 2
 set ruler               " Show the line position at the bottom of the window
-set showmatch           " Show parentheses matching
 set whichwrap=<,>,[,],h,l " Allows for left/right keys to wrap across lines
 set writebackup         " Write temporary backup files in case we crash
-" I don't know why I need this...
-"augroup cprog
-"  au!
-"augroup end
-
-"     inoremap <tab>
-"     <c-r>=InsertTabWrapper('fwd')<cr>
-"     inoremap <s-tab>
-"     <c-r>=InsertTabWrapper('back')<cr>
 
 set encoding=utf-8
 
-
-" keep visual mode on after indentation
-vnoremap < <gv
-vnoremap > >gv
 
 " Vundle https://github.com/gmarik/vundle
 
@@ -213,13 +312,6 @@ let g:syntastic_check_on_wq = 0
 
 let g:syntastic_javascript_checkers = ['eslint']
 
-" Pencil setup
-augroup pencil
-autocmd!
-  autocmd FileType markdown,mkd,md call pencil#init()
-  autocmd FileType text            call pencil#init()
-augroup END
-
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Tell vim to remember certain things when we exit
 " " http://vim.wikia.com/wiki/VimTip80
@@ -232,73 +324,6 @@ augroup END
 "  n... : where to save the viminfo files
 set viminfo='10,\"100,:20,%,n~/.viminfo
 
-" when we reload, tell vim to restore the cursor to the saved position
-augroup JumpCursorOnEdit
-  au!
-  autocmd BufReadPost *
-  \ if expand("<afile>:p:h") !=? $TEMP |
-  \ if line("'\"") > 1 && line("'\"") <= line("$") |
-  \ let JumpCursorOnEdit_foo = line("'\"") |
-  \ let b:doopenfold = 1 |
-  \ if (foldlevel(JumpCursorOnEdit_foo) > foldlevel(JumpCursorOnEdit_foo - 1)) |
-  \ let JumpCursorOnEdit_foo = JumpCursorOnEdit_foo - 1 |
-  \ let b:doopenfold = 2 |
-  \ endif |
-  \ exe JumpCursorOnEdit_foo |
-  \ endif |
-  \ endif
-  " Need to postpone using "zv" until after reading the modelines.
-  autocmd BufWinEnter *
-  \ if exists("b:doopenfold") |
-  \ exe "normal zv" |
-  \ if (b:doopenfold > 1) |
-  \ exe "+".1 |
-  \ endif |
-  \ unlet b:doopenfold |
-  \ endif
-
-"save folds on exit
-au BufWinLeave * silent! mkview
-au BufWinEnter * silent! loadview
-" turn on spell check in git commit messages
-autocmd Filetype gitcommit setlocal spell textwidth=72
-
-" auto-set paste mode in tmux, disables auto-indenting while pasting
-" https://coderwall.com/p/if9mda
-function! WrapForTmux(s)
-  if !exists('$TMUX')
-    return a:s
-  endif
-
-  let tmux_start = "\<Esc>Ptmux;"
-  let tmux_end = "\<Esc>\\"
-
-  return tmux_start . substitute(a:s, "\<Esc>", "\<Esc>\<Esc>", 'g') . tmux_end
-endfunction
-
-let &t_SI .= WrapForTmux("\<Esc>[?2004h")
-let &t_EI .= WrapForTmux("\<Esc>[?2004l")
-
-function! XTermPasteBegin()
-  set pastetoggle=<Esc>[201~
-  set paste
-  return ""
-endfunction
-
-inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
-
-" cursor shape with tmux and iterm
-" I'm not sure this actually does anything?
-" http://tangosource.com/blog/a-tmux-crash-course-tips-and-tweaks/
-if exists('$ITERM_PROFILE')
-  if exists('$TMUX')
-    let &t_SI = "\<Esc>[3 q"
-    let &t_EI = "\<Esc>[0 q"
-  else
-    let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-    let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-  endif
-end
 
 " vp doesn't replace paste buffer
 " http://sheerun.net/2014/03/21/how-to-boost-your-vim-productivity/
@@ -312,13 +337,16 @@ function! s:Repl()
 endfunction
 vmap <silent> <expr> p <sid>Repl()
 
-" Quickly select text you just pasted:
-" http://sheerun.net/2014/03/21/how-to-boost-your-vim-productivity/
-noremap gV `[v`]`
+"
+" PLUGIN CONFIG
+"
+
+" ag starts searching from project root instead of cwd
+let g:ag_working_path_mode="r"
 
 " Make Ctrl-P plugin a lot faster for Git projects
-" Put following in your .vimrc (it configures CtrlP to use git or silver
-" searcher for autocompletion):
+" configures CtrlP to use git or silver searcher for autocompletion
+" NOTE: this means you'll need a .agignore file to exculde from search
 let g:ctrlp_use_caching = 0
 if executable('ag')
  set grepprg=ag\ --nogroup\ --nocolor
@@ -330,6 +358,18 @@ else
      \ }
 endif
 
+" ctrlp: sort file matches top to bottom
+let g:ctrlp_match_window = 'bottom,order:ttb'
+" ctrlp: always open in a new buffer
+let g:ctrlp_switch_buffer = 0
+" ctrlp: allows us to change the cwd during a session
+let g:ctrlp_working_path_mode = 0
+
+
+"
+" # COLORS
+"
+
 " set to 256 colors
 if $TERM == "xterm-256color"
   set t_Co=256
@@ -337,4 +377,34 @@ endif
 " set color scheme
 set background=dark
 colorscheme molokai
+
+" Use color syntax highlighting.
+syntax on
+
+" Color specifications. Change them as you would like.
+"
+"hi Comment      term=none       ctermfg=gray    guifg=Gray
+"hi Constant     term=underline  ctermfg=cyan    guifg=Cyan
+"hi Identifier   term=underline  ctermfg=green   guifg=White
+"hi Statement    term=bold       ctermfg=white   guifg=White
+"hi PreProc      term=underline  ctermfg=magenta guifg=Magenta
+"hi Type         term=underline  ctermfg=white   guifg=White
+"hi Special      term=bold       ctermfg=blue    guifg=Blue
+" hi Nontext      term=bold       ctermfg=red     guifg=Red
+" hi Normal       guifg=Yellow    guibg=#00007F
+" hi Normal       ctermfg=darkgreen
+
+" hi Comment      cterm=none      gui=none
+" hi Constant     cterm=bold      gui=none
+" hi Identifier   cterm=none      gui=none
+" hi Statement    cterm=bold      gui=none
+" hi PreProc      cterm=bold      gui=none
+" hi Type         cterm=bold      gui=none
+" hi Special      cterm=bold      gui=none
+" hi NonText      cterm=bold      gui=none
+
+" Special highlighting for XML
+" hi xmlTag ctermfg=blue cterm=bold guifg=white
+" hi xmlTagName ctermfg=blue cterm=bold guifg=white
+" hi xmlEndTag ctermfg=blue cterm=bold guifg=white
 
