@@ -80,7 +80,7 @@
     ```bash
     # no sudo for global installs!
     sudo chown -R $(whoami) ~/.npm; sudo chown -R $(whoami) /usr/local/lib/node_modules
-    npm i -g nave grunt-cli bower supervisor nodemon npm-check-updates jscs jshint mocha ghwd ghcopy json trash irish-pub localhapi
+    npm i -g nave grunt-cli bower supervisor nodemon npm-check-updates jscs jshint mocha ghwd ghcopy json trash-cli  irish-pub localhapi
     nave usemain stable
     npm config set init.author.name 'Joey Baker'
     npm config set init.author.email 'joey@byjoeybaker.com'
