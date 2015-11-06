@@ -179,10 +179,8 @@ set encoding=utf-8
 
 
 " Vundle https://github.com/gmarik/vundle
-
 set nocompatible               " be iMproved
 filetype off                   " required!
-
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
