@@ -367,6 +367,10 @@ let g:ctrlp_match_window = 'bottom,order:ttb'
 let g:ctrlp_switch_buffer = 0
 " ctrlp: allows us to change the cwd during a session
 let g:ctrlp_working_path_mode = 0
+" allow finding dotfiles using CtrlP
+let g:ctrlp_show_hidden=1
+" prevent CtrlP from caching directory listings, b/c silver searcher is fast
+let g:ctrlp_use_caching=0
 
 
 "
