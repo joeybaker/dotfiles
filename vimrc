@@ -115,10 +115,13 @@ set writebackup
 "
 
 " Pencil setup
+" the default is hard
+let g:pencil#wrapModeDefault = 'soft'
+
 augroup pencil
 autocmd!
   autocmd FileType markdown,mkd,md call pencil#init()
-  autocmd FileType text            call pencil#init()
+  autocmd FileType text            call pencil#init({'wrap': 'hard'})
 augroup END
 
 
