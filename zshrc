@@ -126,8 +126,8 @@ source `brew --prefix`/etc/profile.d/z.sh
 # update function for zprezto
 function update_zprezto() {
   cd ~/.zprezto
-  git pull origin master && git submodule update --init --recursive
-  git pull upstream master && git submodule update --init --recursive
+  git pull --rebase origin master && git submodule update --init --recursive
+  git pull --rebase upstream master && git submodule update --init --recursive
   cd -
 }
 
