@@ -26,7 +26,7 @@
 
         brew install reattach-to-user-namespace brew-cask z the_silver_searcher ccat node tmux sshrc git zsh ack coreutils findutils bash shellcheck homebrew/dupes/grep httpie
         brew cask alfred link
-        brew cask install google-chrome firefox iterm2 adium slate istat-menus airmail-beta spotify cloudup sublime-text-dev google-chrome-canary karabiner seil f-lux sidestep bartender onepassword alfred kitematic syncthing vlc atext --appdir=/Applications
+        brew cask install google-chrome firefox iterm2 adium slate istat-menus airmail-beta spotify cloudup sublime-text-dev google-chrome-canary karabiner seil f-lux sidestep bartender onepassword alfred kitematic syncthing vlc spillo atext --appdir=/Applications
         # great quicklook plugins [via](https://github.com/sindresorhus/quick-look-plugins)
         brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch quicklook-csv betterzipql webp-quicklook qlImageSize webpquicklook suspicious-package qlmarkdown && qlmanage -r
         # fonts
