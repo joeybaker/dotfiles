@@ -47,6 +47,10 @@ function link () {
     # create link
     echo -n "Link "
     ln -v -s "$F/$P" "$HOME/.$P"
+
+    # Hook up some dotfiles for git
+    # via http://codeinthehole.com/writing/a-useful-template-for-commit-messages/
+    git config --global commit.template ~/.git_commit_msg.txt
   done
 }
 link $@
