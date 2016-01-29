@@ -90,6 +90,8 @@
     npm config set save-prefix "^"
     npm config set save true
     npm config set version true
+    # sets the npm cache on an external volume so that we don't trash the builtin ssd
+    npm config set cache /Volumes/jbdb/npm
     # authorize ghcopy, will prompt
     ghcopy-authorize
     ```
