@@ -26,6 +26,7 @@
 [core]
   excludesfile = ~/.gitignore_global
 	editor = /usr/bin/vim
+	pager = diff-highlight | diff-so-fancy | less --tabs=1,5 -R
 [push]
 	default = simple
 [diff]
@@ -50,3 +51,8 @@
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
 	required = true
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
