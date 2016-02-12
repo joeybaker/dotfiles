@@ -269,6 +269,16 @@ Plugin 'mattn/gist-vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'myusuf3/numbers.vim'
 Plugin 'corntrace/bufexplorer'
+
+" snippets
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
+
+" snippet installs
+Plugin 'honza/vim-snippets'
+Plugin 'grvcoelho/vim-javascript-snippets'
+
 " vim-scripts repos
 Plugin 'L9'
 Plugin 'closetag.vim'
