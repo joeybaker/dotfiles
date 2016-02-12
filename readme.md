@@ -25,6 +25,8 @@
         eval $installcommandlinetools
 
         brew install reattach-to-user-namespace brew-cask z the_silver_searcher ccat node tmux sshrc git zsh ack coreutils findutils bash shellcheck homebrew/dupes/grep httpie
+        # b/c newer is better, and for diff-so-fancy
+        brew install gnu-sed --with-default-names
         brew cask alfred link
         brew cask install gitify google-chrome firefox iterm2 adium slate istat-menus airmail-beta spotify cloudup sublime-text-dev google-chrome-canary karabiner seil f-lux sidestep bartender onepassword alfred kitematic syncthing vlc spillo atext --appdir=/Applications
         # great quicklook plugins [via](https://github.com/sindresorhus/quick-look-plugins)
@@ -69,6 +71,12 @@
     ```sh
     git config --global user.name "Joey Baker"
     git config --global user.email "joey@byjoeybaker.com"
+    # use diff-so-fancy
+    git config --global core.pager "diff-highlight | diff-so-fancy | less --tabs=1,5 -R"
+    git config --global color.diff-highlight.oldNormal "red bold"
+    git config --global color.diff-highlight.oldHighlight "red bold 52"
+    git config --global color.diff-highlight.newNormal "green bold"
+    git config --global color.diff-highlight.newHighlight "green bold 22"
     ```
 
 * Install tmux plugin manager `git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`
@@ -80,7 +88,7 @@
     ```bash
     # no sudo for global installs!
     sudo chown -R $(whoami) ~/.npm; sudo chown -R $(whoami) /usr/local/lib/node_modules
-    npm i -g nave grunt-cli bower supervisor nodemon npm-check-updates jscs jshint mocha ghwd ghcopy json trash-cli  irish-pub localhapi
+    npm i -g nave supervisor nodemon npm-check-updates ghwd ghcopy json trash-cli irish-pub localhapi diff-so-fancy
     nave usemain stable
     npm config set init.author.name 'Joey Baker'
     npm config set init.author.email 'joey@byjoeybaker.com'
