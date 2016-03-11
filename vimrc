@@ -270,6 +270,12 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'myusuf3/numbers.vim'
 Plugin 'corntrace/bufexplorer'
 
+" autocomplete. Note: this requires additional install steps
+" https://github.com/Valloric/YouCompleteMe#mac-os-x
+" cd ~/.vim/bundle/YouCompleteMe
+" ./install.py --tern-completer
+Plugin 'Valloric/YouCompleteMe'
+
 " snippets
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
