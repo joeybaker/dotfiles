@@ -256,7 +256,7 @@ Plugin 'avakhov/vim-yaml'
 Plugin 'tpope/vim-git'
 
 " tern gives JS autocomplete and selection super powers
-Plugin 'marijnh/tern_for_vim'
+Plugin 'ternjs/tern_for_vim'
 
 Plugin 'scrooloose/syntastic'
 
@@ -342,6 +342,12 @@ let g:syntastic_javascript_checkers = ['eslint']
 "  % : saves and restores the buffer list
 "  n... : where to save the viminfo files
 set viminfo='10,\"100,:20,%,n~/.viminfo
+
+" configure tern http://www.dotnetsurfers.com/blog/2016/02/08/using-vim-as-a-javascript-ide
+  "enable keyboard shortcuts
+  let g:tern_map_keys=1
+  "show argument hints
+  let g:tern_show_argument_hints='on_hold'
 
 
 " vp doesn't replace paste buffer
