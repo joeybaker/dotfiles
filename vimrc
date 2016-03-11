@@ -227,7 +227,9 @@ Plugin 'goldfeld/vim-seek'
 
 " color scheme
 Plugin 'flazz/vim-colorschemes'
-Plugin 'yosiat/oceanic-next-vim'
+" Plugin 'yosiat/oceanic-next-vim'
+" This seems to be a better version of oceanic next
+Plugin 'mhartington/oceanic-next'
 
 " NerdTREE, the file browser
 Plugin 'scrooloose/nerdtree'
