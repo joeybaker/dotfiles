@@ -54,6 +54,7 @@ function mkcd() { mkdir -p "$@" && cd "$_"; }
 alias gitp='git pull --rebase --prune && git bclean && sleep 0.1 && test $(git --no-pager log --oneline -n1 origin/master..HEAD | cut -d" " -f1) && git push && git push --tags --no-verify;'
 alias gitb='git branch'
 alias gitbd='git branch -D'
+alias gitx='gitup'
 alias gitcleanup='git fsck —unreachable;
 git reflog expire —expire=0 —all;
 git repack -a -d -l;
