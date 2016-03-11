@@ -237,7 +237,8 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'ervandew/supertab'
 " status bar
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 " use the same status bar in tmux
 Plugin 'edkolev/tmuxline.vim'
 " automatically set the closing bracket
@@ -319,7 +320,18 @@ let g:gist_clip_command = 'pbcopy'
 
 " so that airline appears in the first split
 set laststatus=2
-let g:airline_powerline_fonts=1
+" via https://gist.github.com/bsag/39eb930087c46521b763
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
+let g:airline#extensions#tabline#fnamecollapse = 0
+let g:airline#extensions#virtualenv#enabled = 1
+let g:airline#extensions#tmuxline#enabled = 0
+let g:airline_inactive_collapse = 0
+let g:virtualenv_auto_activate = 1
+" for tmuxline
+let g:tmuxline_preset = 'full'
+let g:airline_theme='oceanicnext'
 
 " setup syntastic
 set statusline+=%#warningmsg#
@@ -406,8 +418,8 @@ if $TERM == "xterm-256color"
   set t_Co=256
 endif
 " set color scheme
-set background=dark
 colorscheme molokai
+set background=dark
 
 " Use color syntax highlighting.
 syntax on
