@@ -194,6 +194,7 @@
 * bartender
     * start at login
     * move select apps inside
+* github notifier https://github.com/zalmoxisus/social-expert
 
 * [hosts file](http://someonewhocares.org/hosts/hosts)
     * `sudo rm /etc/hosts && cp ~/Sync/dotfiles/hosts /etc/hosts && sudo chmod 644 hosts`
