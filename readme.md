@@ -1,5 +1,7 @@
 # dotfiles #
 
+_This might be useful to turn this readme into a script: https://github.com/bkuhlmann/osx/blob/master/README.md_
+
 * sys prefs
     * enable tap to click
     * enable triple hold to move
