@@ -90,6 +90,8 @@ alias tmux-embed="unset TMUX && tmux"
 # Customize to your needs...
 ## default
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH
+## add local node_modules so things work like the do in npm https://twitter.com/RReverser/status/720749239224123393
+export PATH=./node_modules/.bin:$PATH
 ## for brew
 export PATH=/usr/local/sbin:$PATH
 ## use brew's GNU utils instead of the built in ones
