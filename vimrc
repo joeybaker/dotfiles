@@ -247,6 +247,8 @@ Plugin 'Raimondi/delimitMate'
 Plugin 'esneider/YUNOcommit.vim'
 " Pencil, for writing and markdown
 Plugin 'reedes/vim-pencil'
+" better tmux and vim integration
+Plugin 'wincent/terminus'
 
 " Syntaxes
 Plugin 'jakar/vim-json'
