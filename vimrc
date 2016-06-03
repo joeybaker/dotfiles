@@ -259,6 +259,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'avakhov/vim-yaml'
 Plugin 'tpope/vim-git'
+Plugin 'tmux-plugins/vim-tmux'
 
 " tern gives JS autocomplete and selection super powers
 Plugin 'ternjs/tern_for_vim'
