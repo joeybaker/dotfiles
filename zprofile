@@ -44,7 +44,16 @@ typeset -gU cdpath fpath mailpath path
 # Set the list of directories that Zsh searches for programs.
 path=(
   /usr/local/{bin,sbin}
+  ## add local node_modules so things work like the do in npm https://twitter.com/RReverser/status/720749239224123393
+  ./node_modules/.bin
+  ## for brew's version of PHP
+  ## export PATH="$(brew --prefix josegonzalez/php/php54)/bin:$PATH"
+  ## use brew's GNU utils instead of the built in ones
+  ## This has to be last so that the gnu utils override all else
+  /usr/local/opt/coreutils/libexec/gnubin
   $path
+  # for rbenv
+  ~/.rbenv/shims
 )
 
 #

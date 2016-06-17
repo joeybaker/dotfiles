@@ -10,19 +10,6 @@ if [[ "$SHLVL" -eq 1 && ! -o LOGIN && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprofile"
 fi
 
-## default
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH
-## add local node_modules so things work like the do in npm https://twitter.com/RReverser/status/720749239224123393
-export PATH=./node_modules/.bin:$PATH
-## for brew
-export PATH=/usr/local/sbin:$PATH
-## for brew's version of PHP
-# export PATH="$(brew --prefix josegonzalez/php/php54)/bin:$PATH"
-# for rbenv
-export PATH=$PATH:~/.rbenv/shims
-## use brew's GNU utils instead of the built in ones
-## This has to be last so that the gnu utils override all else
-export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 
 ## manpath
 export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
