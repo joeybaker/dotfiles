@@ -159,6 +159,7 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
     * disable spotlight keyboard shortcut
     * change default keyboard shortcut
 * app store
+    * 1blocker
     * the hit list
         * enable sync from 1P
         * enable global shortcut
