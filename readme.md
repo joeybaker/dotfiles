@@ -26,7 +26,8 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
         installcommandlinetools="xcode-select --install"
         eval $installcommandlinetools
 
-        brew install reattach-to-user-namespace brew-cask z the_silver_searcher ccat node tmux sshrc git zsh ack coreutils findutils bash shellcheck homebrew/dupes/grep httpie vim jo
+        brew install reattach-to-user-namespace brew-cask z the_silver_searcher ccat node tmux sshrc git zsh ack findutils bash shellcheck homebrew/dupes/grep httpie vim jo
+        brew install coreutils --with-default-names
         cd ~/.vim/bundle/YouCompleteMe
         ./install.py --tern-completer
         # b/c newer is better, and for diff-so-fancy
