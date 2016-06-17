@@ -47,7 +47,7 @@ alias tolf="find . -type f -not -iname '*.png' -not -iname '*.jpg' -not -iname '
 alias mysql='mysql -u root -proot'
 alias sshj='ssh joeybaker@byjoeybaker.com'
 
-alias l='ls -AG'
+alias l='/bin/ls -AG'
 # sleep 0.1 b/c the cleaning script locks git, and we need to wait for that to clear
 function mkcd() { mkdir -p "$@" && cd "$_"; }
 alias gitp='git pull --rebase --prune && git bclean && sleep 0.1 && test $(git --no-pager log --oneline -n1 origin/master..HEAD | cut -d" " -f1) && git push && git push --tags --no-verify;'
