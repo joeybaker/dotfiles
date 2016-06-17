@@ -16,12 +16,16 @@ export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH
 export PATH=./node_modules/.bin:$PATH
 ## for brew
 export PATH=/usr/local/sbin:$PATH
-## use brew's GNU utils instead of the built in ones
-export PATH=$(brew --prefix coreutils)/libexec/gnubin:$PATH
 ## for brew's version of PHP
 # export PATH="$(brew --prefix josegonzalez/php/php54)/bin:$PATH"
 # for rbenv
 export PATH=$PATH:~/.rbenv/shims
+## use brew's GNU utils instead of the built in ones
+## This has to be last so that the gnu utils override all else
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+
+## manpath
+export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 export HOMEBREW_TEMP=~/.homebrew_temp
