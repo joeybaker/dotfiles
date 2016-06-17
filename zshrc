@@ -27,6 +27,27 @@ bindkey "^I" expand-or-complete-with-dots
 
 # Customize to your needs...
 
+# npm
+. <(npm completion)
+# npm install autocomplete https://medium.com/@jamischarles/adding-autocomplete-to-npm-install-5efd3c424067#.sc3eethvx
+_npm_install_completion() {
+	local si=$IFS
+
+	# if 'install' or 'i ' is one of the subcommands, then...
+	if [[ ${words} =~ 'install' ]] || [[ ${words} =~ 'i ' ]]; then
+
+		# add the result of `ls ~/.npm` (npm cache) as completion options
+		compadd -- $(COMP_CWORD=$((CURRENT-1)) \
+			COMP_LINE=$BUFFER \
+			COMP_POINT=0 \
+      /bin/ls $(cat ~/.npmrc | grep cache= | sed s/cache=//) -- "${words[@]}" \
+			2>/dev/null)
+	fi
+
+	IFS=$si
+}
+compdef _npm_install_completion 'npm'
+
 # set the default user
 export DEFAULT_USER=joeybaker
 
@@ -97,8 +118,6 @@ alias tmux-embed="unset TMUX && tmux"
 # eval "$(rbenv init -)"
 # z
 source `brew --prefix`/etc/profile.d/z.sh
-# npm
-. <(npm completion)
 
 # update function for zprezto
 function update_zprezto() {
