@@ -268,6 +268,9 @@ Plugin 'scrooloose/syntastic'
 
 Plugin 'kien/ctrlp.vim'
 
+" Better in-file searching
+Plugin 'wincent/loupe'
+
 " gist support
 Plugin 'mattn/webapi-vim'
 Plugin 'mattn/gist-vim'
