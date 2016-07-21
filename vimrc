@@ -45,11 +45,14 @@ noremap gV `[v`]`
 
 
 " open ag.vim
-nnoremap <leader>a :Ag
+nnoremap <Leader>a :Ag
 
 " keep visual mode on after indentation
 vnoremap < <gv
 vnoremap > >gv
+
+" map leader key
+let mapleader="\<Space>"
 
 
 "
