@@ -443,6 +443,12 @@ let g:ctrlp_use_caching=0
   let g:NERDTrimTrailingWhitespace = 1
 
 
+" goldfeld/vim-seek
+let g:SeekKey = 't'
+" note: <S-Space> doesn't work in terminal vim.
+let g:SeekBackKey = 'T'
+
+
 "
 " # COLORS
 "
