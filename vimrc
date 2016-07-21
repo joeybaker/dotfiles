@@ -278,6 +278,9 @@ Plugin 'wincent/loupe'
 Plugin 'mattn/webapi-vim'
 Plugin 'mattn/gist-vim'
 
+" Keybindings for commenting lines
+Plugin 'scrooloose/nerdcommenter'
+
 Plugin 'airblade/vim-gitgutter'
 Plugin 'myusuf3/numbers.vim'
 Plugin 'corntrace/bufexplorer'
@@ -338,9 +341,9 @@ let g:airline#extensions#virtualenv#enabled = 1
 let g:airline#extensions#tmuxline#enabled = 0
 let g:airline_inactive_collapse = 0
 let g:virtualenv_auto_activate = 1
-" for tmuxline
-let g:tmuxline_preset = 'full'
-let g:airline_theme='oceanicnext'
+  " for tmuxline
+  let g:tmuxline_preset = 'full'
+  let g:airline_theme='oceanicnext'
 
 " setup syntastic
 set statusline+=%#warningmsg#
@@ -416,6 +419,28 @@ let g:ctrlp_working_path_mode = 0
 let g:ctrlp_show_hidden=1
 " prevent CtrlP from caching directory listings, b/c silver searcher is fast
 let g:ctrlp_use_caching=0
+
+" NERDComment
+  " Add spaces after comment delimiters by default
+  let g:NERDSpaceDelims = 1
+
+  " Use compact syntax for prettified multi-line comments
+  let g:NERDCompactSexyComs = 1
+
+  " Align line-wise comment delimiters flush left instead of following code indentation
+  let g:NERDDefaultAlign = 'left'
+
+  " Set a language to use its alternate delimiters by default
+  let g:NERDAltDelims_java = 1
+
+  " Add your own custom formats or override the defaults
+  " let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
+
+  " Allow commenting and inverting empty lines (useful when commenting a region)
+  let g:NERDCommentEmptyLines = 1
+
+  " Enable trimming of trailing whitespace when uncommenting
+  let g:NERDTrimTrailingWhitespace = 1
 
 
 "
