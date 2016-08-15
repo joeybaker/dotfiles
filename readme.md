@@ -33,7 +33,7 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
         # b/c newer is better, and for diff-so-fancy
         brew install gnu-sed --with-default-names
         brew cask alfred link
-        brew cask install gitify google-chrome firefox iterm2 adium slate istat-menus airmail-beta spotify cloudup sublime-text-dev google-chrome-canary karabiner seil f-lux sidestep bartender onepassword alfred kitematic syncthing vlc spillo atext --appdir=/Applications
+        brew cask install gitify google-chrome firefox iterm2 adium slate istat-menus airmail-beta spotify cloudup sublime-text-dev google-chrome-canary karabiner seil f-lux sidestep bartender onepassword alfred kitematic syncthing vlc spillo atext rocket --appdir=/Applications
         # great quicklook plugins [via](https://github.com/sindresorhus/quick-look-plugins)
         brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch quicklook-csv betterzipql webp-quicklook qlImageSize webpquicklook suspicious-package qlmarkdown && qlmanage -r
         # fonts
