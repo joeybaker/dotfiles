@@ -375,6 +375,12 @@ set viminfo='10,\"100,:20,%,n~/.viminfo
   "show argument hints
   let g:tern_show_argument_hints='on_hold'
 
+" configure snipmate
+let g:snipMate = get(g:, 'snipMate', {}) " Allow for vimrc re-sourcing
+let g:snipMate.scope_aliases = {}
+let g:snipMate.scope_aliases['ruby'] = 'ruby,rails'
+let g:snipMate.scope_aliases['javascript'] = 'javascript,js,babel'
+
 
 " vp doesn't replace paste buffer
 " http://sheerun.net/2014/03/21/how-to-boost-your-vim-productivity/
