@@ -27,37 +27,6 @@ bindkey "^I" expand-or-complete-with-dots
 
 # Customize to your needs...
 
-# npm
-. <(npm completion)
-# npm install autocomplete https://medium.com/@jamischarles/adding-autocomplete-to-npm-install-5efd3c424067#.sc3eethvx
-_npm_install_completion() {
-	local si=$IFS
-
-	# if 'install' or 'i ' is one of the subcommands, then...
-	if [[ ${words} =~ 'install' ]] || [[ ${words} =~ 'i ' ]]; then
-
-		# add the result of `ls ~/.npm` (npm cache) as completion options
-		compadd -- $(COMP_CWORD=$((CURRENT-1)) \
-			COMP_LINE=$BUFFER \
-			COMP_POINT=0 \
-      /bin/ls $(cat ~/.npmrc | grep cache= | sed s/cache=//) -- "${words[@]}" \
-			2>/dev/null)
-	fi
-
-	IFS=$si
-}
-compdef _npm_install_completion 'npm'
-
-# set the default user
-export DEFAULT_USER=joeybaker
-
-# 256 colors
-if [ -e /usr/share/terminfo/x/xterm-256color ]; then
-  export TERM='xterm-256color'
-else
-  export TERM='xterm-color'
-fi
-
 # aliases
 # prefer the brew vim to the system vim
   if [ -x /usr/bin/local/vim ]; then
@@ -133,3 +102,81 @@ function update_zprezto() {
 #  BASE16_SHELL="$HOME/.config/oceanic-next-shell/oceanic-next.dark.sh"
 #  [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 # fi
+
+# npm
+# npm install autocomplete https://medium.com/@jamischarles/adding-autocomplete-to-npm-install-5efd3c424067#.sc3eethvx
+_npm_install_completion() {
+  local si=$IFS
+
+  # if 'install' or 'i ' is one of the subcommands, then...
+  if [[ ${words} =~ 'install' ]] || [[ ${words} =~ 'i ' ]]; then
+
+    # add the result of `ls ~/.npm` (npm cache) as completion options
+    compadd -- $(COMP_CWORD=$((CURRENT-1)) \
+      COMP_LINE=$BUFFER \
+      COMP_POINT=0 \
+      /bin/ls $(cat ~/.npmrc | grep cache= | sed s/cache=//) -- "${words[@]}" \
+      2>/dev/null)
+  fi
+
+  IFS=$si
+}
+compdef _npm_install_completion 'npm'
+
+###-begin-npm-completion-###
+#
+# npm command completion script
+#
+# Installation: npm completion >> ~/.bashrc  (or ~/.zshrc)
+# Or, maybe: npm completion > /usr/local/etc/bash_completion.d/npm
+#
+
+if type complete &>/dev/null; then
+  _npm_completion () {
+    local words cword
+    if type _get_comp_words_by_ref &>/dev/null; then
+      _get_comp_words_by_ref -n = -n @ -w words -i cword
+    else
+      cword="$COMP_CWORD"
+      words=("${COMP_WORDS[@]}")
+    fi
+
+    local si="$IFS"
+    IFS=$'\n' COMPREPLY=($(COMP_CWORD="$cword" \
+                           COMP_LINE="$COMP_LINE" \
+                           COMP_POINT="$COMP_POINT" \
+                           npm completion -- "${words[@]}" \
+                           2>/dev/null)) || return $?
+    IFS="$si"
+  }
+  complete -o default -F _npm_completion npm
+elif type compdef &>/dev/null; then
+  _npm_completion() {
+    local si=$IFS
+    compadd -- $(COMP_CWORD=$((CURRENT-1)) \
+                 COMP_LINE=$BUFFER \
+                 COMP_POINT=0 \
+                 npm completion -- "${words[@]}" \
+                 2>/dev/null)
+    IFS=$si
+  }
+  compdef _npm_completion npm
+elif type compctl &>/dev/null; then
+  _npm_completion () {
+    local cword line point words si
+    read -Ac words
+    read -cn cword
+    let cword-=1
+    read -l line
+    read -ln point
+    si="$IFS"
+    IFS=$'\n' reply=($(COMP_CWORD="$cword" \
+                       COMP_LINE="$line" \
+                       COMP_POINT="$point" \
+                       npm completion -- "${words[@]}" \
+                       2>/dev/null)) || return $?
+    IFS="$si"
+  }
+  compctl -K _npm_completion npm
+fi
+###-end-npm-completion-###
