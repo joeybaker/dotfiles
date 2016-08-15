@@ -35,3 +35,13 @@ export RACK_ENV='development'
 # set node env
 export NODE_ENV='development'
 
+# set the default user
+export DEFAULT_USER=joeybaker
+
+# 256 colors
+if [ -e /usr/share/terminfo/x/xterm-256color ]; then
+  export TERM='xterm-256color'
+else
+  export TERM='xterm-color'
+fi
+
