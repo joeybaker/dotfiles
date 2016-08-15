@@ -52,7 +52,7 @@ vnoremap < <gv
 vnoremap > >gv
 
 " map leader key
-let mapleader="\<Space>"
+let mapleader=","
 
 
 "
