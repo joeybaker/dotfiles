@@ -38,7 +38,8 @@ zstyle ':prezto:load' pmodule \
   'git' \
   'archive' \
   'syntax-highlighting' \
-  'sublime'
+  'sublime' \
+  'node'
 
 #
 # Editor
