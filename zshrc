@@ -40,7 +40,7 @@ alias sshj='ssh joeybaker@byjoeybaker.com'
 alias l='/bin/ls -AG'
 # sleep 0.1 b/c the cleaning script locks git, and we need to wait for that to clear
 function mkcd() { mkdir -p "$@" && cd "$_"; }
-alias gitp="git pull --rebase --prune && git bclean && sleep 0.1 && test $(git --no-pager log --oneline -n1 origin/$(git rev-parse --abbrev-ref HEAD)..HEAD | cut -d" " -f1) && git push && git push --tags --no-verify;"
+alias gitp='git pull --rebase --prune && git bclean && sleep 0.1 && test $(git --no-pager log --oneline -n1 origin/$(git rev-parse --abbrev-ref HEAD)..HEAD | cut -d" " -f1) && git push && git push --tags --no-verify;'
 alias gitb='git branch'
 alias gitbd='git branch -D'
 alias gitx='gitup'
