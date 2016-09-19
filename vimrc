@@ -221,6 +221,8 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'https://github.com/othree/yajs.vim'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'nathanaelkane/vim-indent-guides'
+" special es6 stuff
+Plugin 'isRuslan/vim-es6'
 " EditorConfig
 Plugin 'editorconfig/editorconfig-vim'
 " Multiple Cursors
