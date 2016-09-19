@@ -268,6 +268,7 @@ Plugin 'tmux-plugins/vim-tmux'
 Plugin 'ternjs/tern_for_vim'
 
 Plugin 'scrooloose/syntastic'
+Plugin 'mtscout6/syntastic-local-eslint.vim'
 
 Plugin 'kien/ctrlp.vim'
 
@@ -350,12 +351,14 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
+" https://medium.com/@bill.turner/quick-dirty-guide-for-using-eslint-with-vim-a20662e6aab2#.5w7ar5kh7
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_loc_list_height = 5
+let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-let g:syntastic_javascript_checkers = ['eslint']
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Tell vim to remember certain things when we exit
