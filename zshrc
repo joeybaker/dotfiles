@@ -84,7 +84,7 @@ alias tmux-embed="unset TMUX && tmux"
 #
 
 # load rbenv
-# eval "$(rbenv init -)"
+eval "$(rbenv init -)"
 # z
 source `brew --prefix`/etc/profile.d/z.sh
 
