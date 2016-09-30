@@ -40,7 +40,18 @@ alias sshj='ssh joeybaker@byjoeybaker.com'
 alias l='/bin/ls -AG'
 # sleep 0.1 b/c the cleaning script locks git, and we need to wait for that to clear
 function mkcd() { mkdir -p "$@" && cd "$_"; }
-alias gitp='git pull --rebase --prune && git bclean && sleep 0.1 && test $(git --no-pager log --oneline -n1 origin/$(git rev-parse --abbrev-ref HEAD)..HEAD | cut -d" " -f1) && git push && git push --tags --no-verify;'
+function gitp () {
+git pull --rebase --prune | \
+    tee /dev/tty | \
+    grep '^ \- \[deleted\]' | \
+    awk -F/ '{print $2}' | \
+  xargs git branch -D && \
+  git bclean && \
+  sleep 0.1 && \
+  test $(git --no-pager log --oneline -n1 origin/$(git rev-parse --abbrev-ref HEAD)..HEAD | cut -d" " -f1) && \
+  git push && \
+  git push --tags --no-verify
+}
 alias gitb='git branch'
 alias gitbd='git branch -D'
 alias gitx='gitup'
@@ -49,7 +60,7 @@ git reflog expire —expire=0 —all;
 git repack -a -d -l;
 git prune;
 git gc —aggressive;'
-alias gitcleanremote='git branch -r --merged | grep -v master | sed 's/origin\///' | xargs -n 1 git push --delete origin'
+alias gitcleanremote='git branch -r --merged | grep -v master | sed "s/origin\///" | xargs -n 1 git push --delete origin'
 alias git status='git status -sb'
 alias html2text='python /Users/joeybaker/scripts/html2text/html2text.py '
 function findin(){ find ./ -type f -exec grep -Hn "$1" {} \;;}
