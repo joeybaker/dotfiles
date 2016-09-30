@@ -109,7 +109,8 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
     ghcopy-authorize
     ```
 
-* [Karabiner](http://pqrs.org/macosx/karabiner/)
+* Karabiner-elements and hammerspoon; copy configs
+* [Karabiner](http://pqrs.org/macosx/karabiner/) *THIS NO LONGER WORKS ON SIERRA, KEEPING IT UNTIL WE GET FULL FUNCTIONALITY BACK. SEE KARABINER-ELEMENTS AND HAMMERSPOON*
   * copy private.xml
 
     ```
