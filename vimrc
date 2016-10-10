@@ -399,6 +399,11 @@ function! s:Repl()
 endfunction
 vmap <silent> <expr> p <sid>Repl()
 
+" better auto-completion
+" http://vim.wikia.com/wiki/Omni_completion
+filetype plugin on
+set omnifunc=syntaxcomplete#Complete
+
 "
 " PLUGIN CONFIG
 "
