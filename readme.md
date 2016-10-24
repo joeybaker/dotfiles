@@ -202,7 +202,7 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
 * github notifier https://github.com/zalmoxisus/social-expert
 
 * [hosts file](http://someonewhocares.org/hosts/hosts)
-    * `sudo rm /etc/hosts && cp ~/Sync/dotfiles/hosts /etc/hosts && sudo chmod 644 hosts`
+    * `sudo rm /etc/hosts && sudo cp ~/Sync/dotfiles/hosts /etc/hosts && sudo chmod 644 hosts && dscacheutil -flushcache`
 * [sidestep](http://chetansurpur.com/projects/sidestep/)
     * [enable localhost](https://github.com/chetan51/sidestep/issues/32#issuecomment-16606585)
     * Network -> select device -> Advanced -> Proxies -> Bypass proxy settings: add "localhost"
