@@ -26,7 +26,7 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
         installcommandlinetools="xcode-select --install"
         eval $installcommandlinetools
 
-        brew install reattach-to-user-namespace brew-cask z the_silver_searcher ccat node tmux sshrc git zsh ack findutils bash shellcheck homebrew/dupes/grep httpie vim jo
+        brew install reattach-to-user-namespace brew-cask z the_silver_searcher ccat node tmux sshrc git zsh ack findutils bash shellcheck homebrew/dupes/grep httpie vim jo mas
         brew install coreutils --with-default-names
         cd ~/.vim/bundle/YouCompleteMe
         ./install.py --tern-completer
@@ -161,16 +161,22 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
     * disable spotlight keyboard shortcut
     * change default keyboard shortcut
 * app store
+
+    ```sh
+    mas install 432764806 #the hit list
+    mas install 488566438 #aText
+    mas install 1107421413 #1blocker
+    mas install 557168941 #tweetbot
+    mas install 425424353 #The Unarchiver
+    mas install 435410196 #stay
+    mas install 975937182 #fantastical
+    ```
+
     * 1blocker
     * the hit list
         * enable sync from 1P
         * enable global shortcut
         * enable dock badge count
-    * growl
-        * enable on login
-        * enable osx notifications
-        * turn off menubar
-        * turn off rollup
     * atext
         * hide in dock
         * launch on startup
