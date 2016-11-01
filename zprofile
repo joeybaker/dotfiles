@@ -56,6 +56,9 @@ path=(
   ~/.rbenv/shims
 )
 
+# autoenv
+source $(brew --prefix autoenv)/activate.sh
+
 #
 # Less
 #
