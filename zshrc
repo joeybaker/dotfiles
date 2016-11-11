@@ -29,9 +29,11 @@ bindkey "^I" expand-or-complete-with-dots
 
 # aliases
 # prefer the brew vim to the system vim
-  if [ -x /usr/bin/local/vim ]; then
-    alias vim='/usr/bin/local/vim'
-    alias vi='/usr/bin/local/vim'
+  if [ -x /usr/local/bin/vim ]; then
+    alias vim='/usr/local/bin/vim'
+    alias vi='/usr/local/bin/vim'
+  else 
+    echo no
   fi
 alias tolf="find . -type f -not -iname '*.png' -not -iname '*.jpg' -not -iname '*.jpeg' -not -iname '*.gif' -not -iname '*.tif' -not -iname '*.tiff' -not -iname '.git' -exec perl -pi -e 's/\r\n?/\n/g' {} \;"
 alias mysql='mysql -u root -proot'
