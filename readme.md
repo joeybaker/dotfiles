@@ -22,18 +22,15 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
         brew tap caskroom/fonts
 
         # Install command line tools
-        # quote because syntax highlighting sucks
-        installcommandlinetools="xcode-select --install"
-        eval $installcommandlinetools
+        xcode-select --install
 
-        brew install reattach-to-user-namespace brew-cask z the_silver_searcher ccat node tmux sshrc git zsh ack findutils bash shellcheck homebrew/dupes/grep httpie vim jo mas autoenv
-        brew install coreutils --with-default-names
+        brew install reattach-to-user-namespace z the_silver_searcher ccat node tmux sshrc git zsh ack findutils bash shellcheck homebrew/dupes/grep httpie vim jo mas autoenv coreutils
         cd ~/.vim/bundle/YouCompleteMe
         ./install.py --tern-completer
         # b/c newer is better, and for diff-so-fancy
         brew install gnu-sed --with-default-names
+        brew cask install gitify google-chrome firefox iterm2 adium slate istat-menus airmail cloudup sublime-text google-chrome-canary karabiner-elements  flux sidestep bartender 1password alfred syncthing vlc spillo atext rocket dash
         brew cask alfred link
-        brew cask install gitify google-chrome firefox iterm2 adium slate istat-menus airmail-beta spotify cloudup sublime-text-dev google-chrome-canary karabiner seil f-lux sidestep bartender onepassword alfred kitematic syncthing vlc spillo atext rocket dash
         # great quicklook plugins [via](https://github.com/sindresorhus/quick-look-plugins)
         brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch quicklook-csv betterzipql webp-quicklook qlImageSize webpquicklook suspicious-package qlmarkdown && qlmanage -r
         # fonts
@@ -164,7 +161,6 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
 
     ```sh
     mas install 432764806 #the hit list
-    mas install 488566438 #aText
     mas install 1107421413 #1blocker
     mas install 557168941 #tweetbot
     mas install 425424353 #The Unarchiver
@@ -205,10 +201,10 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
 * bartender
     * start at login
     * move select apps inside
-* github notifier https://github.com/zalmoxisus/social-expert
+* [github notifier](https://github.com/manosim/gitify)
 
 * [hosts file](http://someonewhocares.org/hosts/hosts)
-    * `sudo rm /etc/hosts && sudo cp ~/Sync/dotfiles/hosts /etc/hosts && sudo chmod 644 hosts && dscacheutil -flushcache`
+    * `sudo rm /etc/hosts && sudo cp ~/Sync/dotfiles/hosts /etc/hosts && sudo chmod 644 /etc/hosts && dscacheutil -flushcache`
 * [sidestep](http://chetansurpur.com/projects/sidestep/)
     * [enable localhost](https://github.com/chetan51/sidestep/issues/32#issuecomment-16606585)
     * Network -> select device -> Advanced -> Proxies -> Bypass proxy settings: add "localhost"
@@ -217,8 +213,6 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
     * ublock extension:
         * enable easy list
         * add: https://monzta.maltekraus.de/adblock_social.txt
-* kill the dashboard
-    * `defaults write com.apple.dashboard mcx-disabled -boolean true && killall Dock`
 * setup time machine
 * [install github ssh keys](https://help.github.com/articles/generating-ssh-keys)
 * [secure sudo](http://blog.rongarret.info/2015/08/psa-beware-of-sudo-on-os-x.html)
