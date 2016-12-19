@@ -24,7 +24,9 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
         # Install command line tools
         xcode-select --install
 
-        brew install reattach-to-user-namespace z the_silver_searcher ccat node tmux sshrc git zsh ack findutils bash shellcheck homebrew/dupes/grep httpie vim jo mas autoenv coreutils
+        # cmake is for youcompleteme a vim plugin
+        brew install vim --override-system-vi
+        brew install reattach-to-user-namespace z the_silver_searcher ccat node tmux sshrc git zsh ack findutils bash shellcheck homebrew/dupes/grep httpie jo mas autoenv coreutils cmake
         cd ~/.vim/bundle/YouCompleteMe
         ./install.py --tern-completer
         # b/c newer is better, and for diff-so-fancy
