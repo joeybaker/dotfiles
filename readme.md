@@ -39,7 +39,7 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
         # [Source Code Pro](https://github.com/adobe/source-code-pro/downloads)
         # [patched fonts for terminal](https://github.com/Lokaltog/powerline-fonts)
         # [Inconsolata-g](http://leonardo-m.livejournal.com/77079.html)
-        brew cask install font-inconsolata font-inconsolata-dz-for-powerline font-source-code-pro font-sauce-code-powerline
+        brew cask install font-inconsolata font-inconsolata-dz-for-powerline font-source-code-pro font-source-code-pro-for-powerline
         brew cleanup
         ```
 
