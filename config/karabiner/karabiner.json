@@ -1,4 +1,8 @@
 {
+    "global": {
+        "check_for_updates_on_startup": true,
+        "show_in_menu_bar": true
+    },
     "profiles": [
         {
             "devices": [
@@ -27,12 +31,22 @@
                 "f9": "vk_mission_control"
             },
             "name": "Goldtouch",
+            "one_to_many_mappings": {
+                "left_control": [
+                    "left_control",
+                    "left_option",
+                    "left_command"
+                ]
+            },
             "selected": false,
             "simple_modifications": {
-                "caps_lock": "hyper_minus_shift"
+                "caps_lock": "left_control"
             },
-            "standalone_modifiers": {
-                "hyper_minus_shift": "escape"
+            "standalone_keys": {
+                "caps_lock": "escape"
+            },
+            "virtual_hid_keyboard": {
+                "standalone_keys_delay_milliseconds": 150
             }
         },
         {
@@ -45,8 +59,7 @@
                         "product_id": 91,
                         "vendor_id": 1226
                     },
-                    "ignore": false,
-                    "keyboard_type": 0
+                    "ignore": false
                 }
             ],
             "fn_function_keys": {
@@ -64,12 +77,22 @@
                 "f9": "vk_consumer_next"
             },
             "name": "Internal",
-            "selected": true,
-            "simple_modifications": {
-                "caps_lock": "hyper_minus_shift"
+            "one_to_many_mappings": {
+                "caps_lock": [
+                    "left_control",
+                    "left_option",
+                    "left_command"
+                ]
             },
-            "standalone_modifiers": {
-                "hyper_minus_shift": "escape"
+            "selected": true,
+            "simple_modifications": {},
+            "standalone_keys": {
+                "caps_lock": "escape"
+            },
+            "virtual_hid_keyboard": {
+                "caps_lock_delay_milliseconds": 0,
+                "keyboard_type": "ansi",
+                "standalone_keys_delay_milliseconds": 150
             }
         }
     ]
