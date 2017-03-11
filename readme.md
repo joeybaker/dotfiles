@@ -220,3 +220,5 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
 * [secure sudo](http://blog.rongarret.info/2015/08/psa-beware-of-sudo-on-os-x.html)
 * don't forget to install Adobe things if necessary
 * Dash license from 1Password
+
+Test
