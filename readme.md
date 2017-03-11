@@ -217,8 +217,9 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
         * add: https://monzta.maltekraus.de/adblock_social.txt
 * setup time machine
 * [install github ssh keys](https://help.github.com/articles/generating-ssh-keys)
+    * Set a secure SSH key: https://blog.g3rt.nl/upgrade-your-ssh-keys.html
+    * Set a gpg key for github: https://github.com/pstadler/keybase-gpg-github If you don't use keybase: https://blog.erincall.com/p/signing-your-git-commits-with-gpg
+    * After setting gpg in git, set for npm: `npm config set sign-git-tag true`
 * [secure sudo](http://blog.rongarret.info/2015/08/psa-beware-of-sudo-on-os-x.html)
 * don't forget to install Adobe things if necessary
 * Dash license from 1Password
-
-Test3
