@@ -31,7 +31,7 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
         ./install.py --tern-completer
         # b/c newer is better, and for diff-so-fancy
         brew install gnu-sed grep --with-default-names
-        brew cask install gitify google-chrome firefox iterm2 adium slate istat-menus cloudup sublime-text google-chrome-canary karabiner-elements  flux sidestep bartender 1password alfred syncthing vlc spillo atext rocket dash
+        brew cask install gitify google-chrome firefox iterm2 adium slate istat-menus cloudup sublime-text google-chrome-canary karabiner-elements  flux sidestep bartender 1password alfred syncthing-bar vlc spillo atext rocket dash
         brew cask alfred link
         # great quicklook plugins [via](https://github.com/sindresorhus/quick-look-plugins)
         brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch quicklook-csv betterzipql webp-quicklook qlImageSize webpquicklook suspicious-package qlmarkdown && qlmanage -r
