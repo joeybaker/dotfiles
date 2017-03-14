@@ -65,6 +65,7 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
     chsh -s /bin/zsh
     ```
 
+* setup 1password
 * setup syncthing
 * dotfile link
     * NOTE: with symlinks and such, the zsh dotfiles might need to be moved to another location inside the `.zprezto` folder
