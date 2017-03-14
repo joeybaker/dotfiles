@@ -27,8 +27,6 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
         # cmake is for youcompleteme a vim plugin
         brew install vim --override-system-vi
         brew install reattach-to-user-namespace z the_silver_searcher ccat node tmux sshrc git zsh ack findutils  bash shellcheck httpie jo mas autoenv coreutils cmake gpg
-        cd ~/.vim/bundle/YouCompleteMe
-        ./install.py --tern-completer
         # b/c newer is better, and for diff-so-fancy
         brew install gnu-sed grep --with-default-names
         brew cask install gitify google-chrome firefox iterm2 adium slate istat-menus cloudup sublime-text google-chrome-canary karabiner-elements  flux sidestep bartender 1password alfred syncthing-bar vlc spillo atext rocket dash
@@ -69,7 +67,12 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
 * dotfile link
     * NOTE: with symlinks and such, the zsh dotfiles might need to be moved to another location inside the `.zprezto` folder
     * `sh ~/Sync/dotfiles/link.sh "my-computer-name"`
-* `git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/Vundle.vim && vim +PluginInstall +qall`
+* Install vim
+    ```
+    git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/Vundle.vim && vim +PluginInstall +qall
+    cd ~/.vim/bundle/YouCompleteMe
+    ./install.py --tern-completer
+    ```
 * configure git
 
     ```sh
