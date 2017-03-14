@@ -14,15 +14,15 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
     * [some helpful tips](http://lapwinglabs.com/blog/hacker-guide-to-setting-up-your-mac) (incorporated below)
 
         ```bash
-        ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+        /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
         mkdir ~/.homebrew_temp
         brew tap homebrew/dupes
         brew tap phinze/cask
         brew tap caskroom/versions
         brew tap caskroom/fonts
 
-        # Install command line tools
-        xcode-select --install
+        # Install command line tools; brew does this for us now
+        # xcode-select --install
 
         # cmake is for youcompleteme a vim plugin
         brew install vim --override-system-vi
