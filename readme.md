@@ -87,8 +87,8 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
     ```
 
 * Install tmux plugin manager `git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`
-    * start tmux with `tmux attach`
-    * then: `<prefix> <ctrl-I>`
+    * start tmux with `tmux`
+    * then: `<prefix> <shift-I>`
 * `sudo sh ~/sh/osx.sh "my-computer-name"`
 * install [nodejs](http://nodejs.org) & relevant global packages
 
