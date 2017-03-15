@@ -158,6 +158,7 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
     * For better vintage mode in sublimetext `defaults write com.sublimetext.2 ApplePressAndHoldEnabled -bool false && defaults write com.sublimetext.3 ApplePressAndHoldEnabled -bool false`
 * [iterm2](http://www.iterm2.com/#/section/home)
     * link to preferences on Sync
+    * ensure sourcecode pro powerline font is selected
 * [alfred](http://www.alfredapp.com)
     * license in 1P
     * setup sync folder
