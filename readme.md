@@ -210,6 +210,11 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
     * start at login
     * move select apps inside
 * [github notifier](https://github.com/manosim/gitify)
+* cloudup: start and login
+* syncthing: start and login
+* airmail: start and add accounts
+* slate: start
+* d/l and start http://privateinternetaccess.com
 
 * [hosts file](http://someonewhocares.org/hosts/hosts)
     * `sudo rm /etc/hosts && sudo cp ~/Sync/dotfiles/hosts /etc/hosts && sudo chmod 644 /etc/hosts && dscacheutil -flushcache`
@@ -221,11 +226,12 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
     * ublock extension:
         * enable easy list
         * add: https://monzta.maltekraus.de/adblock_social.txt
+    * set default search to duckduckgo.com
 * setup time machine
 * [install github ssh keys](https://help.github.com/articles/generating-ssh-keys)
     * Set a secure SSH key: https://blog.g3rt.nl/upgrade-your-ssh-keys.html
     * Set a gpg key for github: https://github.com/pstadler/keybase-gpg-github If you don't use keybase: https://blog.erincall.com/p/signing-your-git-commits-with-gpg
     * After setting gpg in git, set for npm: `npm config set sign-git-tag true`
-* [secure sudo](http://blog.rongarret.info/2015/08/psa-beware-of-sudo-on-os-x.html)
+* [secure sudo](http://blog.rongarret.info/2015/08/psa-beware-of-sudo-on-os-x.html) ← no longer necessary on sierra
 * don't forget to install Adobe things if necessary
 * Dash license from 1Password
