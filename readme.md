@@ -132,10 +132,10 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
     * better instructions: https://github.com/jasonrudolph/keyboard
     
 * chrome canary
-    * settings > content settings > plugins > click to play
+    * chrome://settings/content/flash only play important content
     * settings > on startup > continue where I left off
     * settings > search > enable instant
-    * [check for certification revocation](http://i.imgur.com/DsB8Oz0.png)
+    * ![check for certification revocation](http://i.imgur.com/DsB8Oz0.png)
     * vimium options, add to the css:
 
         ```css
