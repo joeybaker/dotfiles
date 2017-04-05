@@ -15,8 +15,8 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 ## manpath
 export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 
-export HOMEBREW_CASK_OPTS="--appdir=/Applications"
-export HOMEBREW_TEMP=~/.homebrew_temp
+# export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+# export HOMEBREW_TEMP=~/.homebrew_temp
 # disable homebrew analytics b/c privacy
 export HOMEBREW_NO_ANALYTICS=1
 export NODE_PATH=/usr/local/lib/node_modules
