@@ -18,14 +18,6 @@ function link () {
     if [ "$P" = "hosts" ]; then continue; fi
     if [ "$P" = "appify" ]; then continue; fi
     if [ "$P" = "osx" ]; then continue; fi
-    if [ "$P" = "private.xml" ]; then
-      # skip existing links
-      if [ -h "$HOME/Library/Application Support/Karabiner/$P" ]; then continue; fi
-      mkdir -p "$HOME/Library/Application Support/Karabiner/"
-      # create link
-      echo -n "Link "
-      ln -v -s "$F/$P" "$HOME/Library/Application Support/Karabiner/$P"
-    fi
 
     # ensure permissions
     chmod -R o-rwx,g-rwx $P
