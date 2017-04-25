@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "flow": "^0.2.3",
+    "flow-typed": "^2.0.0",
+    "jscodeshift": "^0.3.30",
+    "textlint": "^7.4.0"
+  }
+}
