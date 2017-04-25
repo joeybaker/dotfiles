@@ -1,3 +1,5 @@
 .DS_Store
 *.swp
 karabiner.d/log
+config/yarn/global/node_modules
+config/hub
