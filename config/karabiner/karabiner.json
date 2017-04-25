@@ -1,54 +1,10 @@
 {
     "global": {
         "check_for_updates_on_startup": true,
-        "show_in_menu_bar": true
+        "show_in_menu_bar": true,
+        "show_profile_name_in_menu_bar": false
     },
     "profiles": [
-        {
-            "devices": [
-                {
-                    "identifiers": {
-                        "is_keyboard": true,
-                        "is_pointing_device": false,
-                        "product_id": 91,
-                        "vendor_id": 1226
-                    },
-                    "ignore": false
-                }
-            ],
-            "fn_function_keys": {
-                "f1": "vk_consumer_previous",
-                "f10": "vk_consumer_brightness_down",
-                "f11": "vk_consumer_brightness_up",
-                "f12": "vk_launchpad",
-                "f2": "vk_consumer_play",
-                "f3": "vk_consumer_next",
-                "f4": "volume_down",
-                "f5": "volume_up",
-                "f6": "mute",
-                "f7": "vk_consumer_illumination_down",
-                "f8": "vk_consumer_illumination_up",
-                "f9": "vk_mission_control"
-            },
-            "name": "Goldtouch",
-            "one_to_many_mappings": {
-                "left_control": [
-                    "left_control",
-                    "left_option",
-                    "left_command"
-                ]
-            },
-            "selected": false,
-            "simple_modifications": {
-                "caps_lock": "left_control"
-            },
-            "standalone_keys": {
-                "caps_lock": "escape"
-            },
-            "virtual_hid_keyboard": {
-                "standalone_keys_delay_milliseconds": 150
-            }
-        },
         {
             "devices": [
                 {
