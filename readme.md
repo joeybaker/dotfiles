@@ -130,7 +130,7 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
     * caps lock to f19 (key code: 80)
     * be sure to disable caps lock in keyboard settings
     * better instructions: https://github.com/jasonrudolph/keyboard
-    
+
 * chrome canary
     * chrome://settings/content/flash only play important content
     * settings > on startup > continue where I left off
@@ -235,3 +235,4 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
 * [secure sudo](http://blog.rongarret.info/2015/08/psa-beware-of-sudo-on-os-x.html) ← no longer necessary on sierra
 * don't forget to install Adobe things if necessary
 * Dash license from 1Password
+* increase the system file descriptor limits for dev https://facebook.github.io/watchman/docs/install.html#max-os-file-descriptor-limits
