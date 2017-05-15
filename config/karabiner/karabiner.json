@@ -41,9 +41,12 @@
                 ]
             },
             "selected": true,
-            "simple_modifications": {},
+            "simple_modifications": {
+                "return_or_enter": "right_control"
+            },
             "standalone_keys": {
-                "caps_lock": "escape"
+                "caps_lock": "escape",
+                "return_or_enter": "return_or_enter"
             },
             "virtual_hid_keyboard": {
                 "caps_lock_delay_milliseconds": 0,
