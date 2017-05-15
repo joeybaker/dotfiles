@@ -95,7 +95,7 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
     ```bash
     # no sudo for global installs!
     sudo chown -R $(whoami) ~/.npm; sudo chown -R $(whoami) /usr/local/lib/node_modules
-    yarn global add nave supervisor nodemon npm-check ghwd ghcopy json trash-cli irish-pub localhapi diff-so-fancy
+    yarn global add nave supervisor nodemon ghwd ghcopy json trash-cli irish-pub localhapi diff-so-fancy concurrently
     nave usemain stable
     npm config set init.author.name 'Joey Baker'
     npm config set init.author.email 'joey@byjoeybaker.com'
