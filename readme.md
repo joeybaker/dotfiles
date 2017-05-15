@@ -26,7 +26,7 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
 
         # cmake is for youcompleteme a vim plugin
         brew install vim --override-system-vi
-        brew install reattach-to-user-namespace z the_silver_searcher ccat node tmux sshrc git zsh ack findutils bash shellcheck httpie jo mas autoenv coreutils cmake gpg rbenv hub
+        brew install reattach-to-user-namespace z the_silver_searcher ccat node tmux sshrc git zsh ack findutils bash shellcheck httpie jo mas autoenv coreutils cmake gpg rbenv hub yarn
         # b/c newer is better, and for diff-so-fancy
         brew install gnu-sed grep --with-default-names
         brew cask install gitify google-chrome firefox iterm2 adium slate istat-menus cloudup sublime-text google-chrome-canary karabiner-elements  flux sidestep bartender 1password alfred syncthing-bar vlc spillo atext rocket dash safari-technology-preview gitup
@@ -95,7 +95,7 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
     ```bash
     # no sudo for global installs!
     sudo chown -R $(whoami) ~/.npm; sudo chown -R $(whoami) /usr/local/lib/node_modules
-    npm i -g nave supervisor nodemon npm-check ghwd ghcopy json trash-cli irish-pub localhapi diff-so-fancy yarn
+    yarn global add nave supervisor nodemon npm-check ghwd ghcopy json trash-cli irish-pub localhapi diff-so-fancy
     nave usemain stable
     npm config set init.author.name 'Joey Baker'
     npm config set init.author.email 'joey@byjoeybaker.com'
