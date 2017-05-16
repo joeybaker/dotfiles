@@ -13,7 +13,7 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
 * install [brew](http://brew.sh)
     * [some helpful tips](http://lapwinglabs.com/blog/hacker-guide-to-setting-up-your-mac) (incorporated below)
 
-        ```bash
+        ```sh
         /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
         mkdir ~/.homebrew_temp
         brew tap homebrew/dupes
@@ -24,8 +24,8 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
         # Install command line tools; brew does this for us now
         # xcode-select --install
 
-        # cmake is for youcompleteme a vim plugin
-        brew install vim --override-system-vi
+        # lua is for the neocomplete plugin vim plugin
+        brew install vim --override-system-vi --with-python3 --with-lua
         brew install reattach-to-user-namespace z the_silver_searcher ccat node tmux sshrc git zsh ack findutils bash shellcheck httpie jo mas autoenv coreutils cmake gpg rbenv hub yarn
         # b/c newer is better, and for diff-so-fancy
         brew install gnu-sed grep --with-default-names
@@ -40,7 +40,7 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
         brew cleanup
         ```
 
-* install oceanic-next iterm theme (the main theme is in the sync folder)
+* install oceanic-next iTerm theme (the main theme is in the sync folder)
 
     ```sh
     git clone https://github.com/mhartington/oceanic-next-shell.git ~/.config/oceanic-next-shell
@@ -69,9 +69,8 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
     * `sh ~/Sync/dotfiles/link.sh "my-computer-name"`
 * Install vim
     ```
-    git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/Vundle.vim && vim +PluginInstall +qall
-    cd ~/.vim/bundle/YouCompleteMe
-    ./install.py --tern-completer
+    curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     ```
 * configure git
 
