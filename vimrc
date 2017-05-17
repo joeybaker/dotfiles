@@ -200,6 +200,8 @@ nmap <leader>h :bprevious<CR>
 " This replicates the idea of closing a tab
 nmap <leader>bq :bp <BAR> bd #<CR>
 
+" use flow for jump to definition
+nmap <leader>j :FlowJumpToDef<cr>
 
 
 
