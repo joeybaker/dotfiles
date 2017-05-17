@@ -366,15 +366,6 @@ let g:flow#enable = 0
 
 
 
-" YouCompleteMe
-" let g:ycm_error_symbol = '🔴'
-" let g:ycm_warning_symbol = '🔸'
-" let g:ycm_complete_in_comments = 1
-" " pre-populate the autocomplete with language syntax
-" let g:ycm_seed_identifiers_with_syntax = 0
-
-
-
 
 
 " Neocomplete
