@@ -438,7 +438,8 @@ let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 
 
 " neosnippet
-let g:neosnippet#enable_completed_snippet = 1
+" disable, doesn't seem to complete snippets with autocomplete?
+" let g:neosnippet#enable_completed_snippet = 1
 
 
 
