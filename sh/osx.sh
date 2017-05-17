@@ -368,7 +368,7 @@ function config_osx () {
   defaults write com.apple.terminal StringEncodings -array 4
 
   # Use a modified version of the Pro theme by default in Terminal.app
-  open "$HOME/init/Mathias.terminal"
+  # open "$HOME/init/Mathias.terminal"
   sleep 1 # Wait a bit to make sure the theme is loaded
   defaults write com.apple.Terminal "Default Window Settings" -string "Mathias"
   defaults write com.apple.Terminal "Startup Window Settings" -string "Mathias"
