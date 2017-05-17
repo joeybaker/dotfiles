@@ -302,7 +302,7 @@ let g:airline_skip_empty_sections = 1
 let g:ctrlp_use_caching = 0
 if executable('ag')
  set grepprg=ag\ --nogroup\ --nocolor
- let g:ctrlp_user_command = 'ag %s -l --smart-case --skip-vcs-ignores --nocolor -g ""'
+ let g:ctrlp_user_command = 'ag %s -l --smart-case --silent --nocolor -g ""'
 else
  let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
  let g:ctrlp_prompt_mappings = {
@@ -507,7 +507,7 @@ let g:ale_sign_warning = '🔸'
 
 " ack, use the_silver_searcher
 if executable('ag')
-  let g:ackprg = 'ag --vimgrep --smart-case --skip-vcs-ignores'
+  let g:ackprg = 'ag --vimgrep --smart-case --silent'
 endif
 nnoremap <Leader>a :Ack<space>
 
