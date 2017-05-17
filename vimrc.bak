@@ -1,0 +1,86 @@
+" color scheme
+Plugin 'flazz/vim-colorschemes'
+
+" NerdTREE, the file browser
+Plugin 'scrooloose/nerdtree'
+" tabs for NerdTree
+Plugin 'jistr/vim-nerdtree-tabs'
+
+" tern gives JS autocomplete and selection super powers
+" disabled, it seems to not be working. Also, flow is better.
+" Plugin 'ternjs/tern_for_vim'
+
+
+
+" gist support
+Plugin 'mattn/webapi-vim'
+Plugin 'mattn/gist-vim'
+
+" snippets
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
+
+" snippet installs
+Plugin 'honza/vim-snippets'
+Plugin 'grvcoelho/vim-javascript-snippets'
+
+
+" Nerdtree
+  " Open on start
+  " autocmd vimenter * NERDTree
+let NERDTreeShowBookmarks=1
+let NERDTreeChDirMode=0
+let NERDTreeQuitOnOpen=0
+let NERDTreeMouseMode=2
+let NERDTreeShowHidden=1
+let NERDTreeIgnore=['\.pyc','\~$','\.swo$','\.swp$','\.git','\.hg','\.svn','\.bzr']
+let NERDTreeKeepTreeInNewTab=1
+let g:nerdtree_tabs_open_on_gui_startup=0
+
+
+" avoid permission-to-write issues! /thanks @pkrumins
+noremap sudow w !sudo tee % >/dev/null
+
+"
+" FOLDING
+"
+
+set foldenable " enable folding
+set foldlevelstart=10 " 0 is all collapsed. 99 is all open
+set foldnestmax=10      " folds can be nested. more than 10 is crazy
+set foldmethod=indent   " fold on indent level. :help foldmethod for more
+
+"
+" CUSTOM MAPPING
+"
+
+" Quickly select text you just pasted:
+" http://sheerun.net/2014/03/21/how-to-boost-your-vim-productivity/
+noremap gV `[v`]`
+
+
+
+"
+" AUTOGROUPS
+"
+
+
+" turn off concealing, which modifies code not under the cusor
+let g:vim_json_syntax_conceal = 0
+
+
+
+
+" Gist
+let g:gist_post_private = 1
+let g:gist_show_privates = 1
+let g:gist_detect_filetype = 1
+let g:gist_clip_command = 'pbcopy'
+
+
+" configure tern http://www.dotnetsurfers.com/blog/2016/02/08/using-vim-as-a-javascript-ide
+  "enable keyboard shortcuts
+  let g:tern_map_keys=1
+  "show argument hints
+  let g:tern_show_argument_hints='on_hold'
