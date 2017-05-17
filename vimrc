@@ -102,6 +102,9 @@ call plug#begin('~/.vim/plugged')
   " search and replace across project
   Plug 'brooth/far.vim'
 
+  " being able to `:Gblame` is nice
+  Plug 'tpope/vim-fugitive'
+
 " Initialize plugin system
 call plug#end()
 
