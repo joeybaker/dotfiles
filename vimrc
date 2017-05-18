@@ -472,21 +472,78 @@ let g:SeekBackKey = 'T'
 
 
 " pencil and lexical
+function! Prose()
+  " use hard wrapping to keep everything on the screen. markdown is smart
+  " enough to still format correctly
+  call pencil#init({'wrap': 'hard"})
+  " lexical is a good idea, but it slows down neocomplete to a crawl
+  " call lexical#init()
+  " call litecorrect#init()
+  " call textobj#quote#init()
+  " call textobj#sentence#init()
+
+  " manual reformatting shortcuts
+  " nnoremap <buffer> <silent> Q gqap
+  " xnoremap <buffer> <silent> Q gq
+  " nnoremap <buffer> <silent> <leader>Q vapJgqap
+
+  " force top correction on most recent misspelling
+  nnoremap <buffer> <c-s> [s1z=<c-o>
+  inoremap <buffer> <c-s> <c-g>u<Esc>[s1z=`]A<c-g>u
+
+  " replace common punctuation
+  iabbrev <buffer> -- –
+  iabbrev <buffer> --- —
+  iabbrev <buffer> << «
+  iabbrev <buffer> >> »
+
+  " open most folds
+  setlocal foldlevel=20
+  " disable numbers.vim. It doesn't play nicely and causes numbers to
+  " appear/disappear when toggling modes
+  call NumbersDisable()
+
+  " replace typographical quotes (reedes/vim-textobj-quote)
+  " map <silent> <buffer> <leader>qc <Plug>ReplaceWithCurly
+  " map <silent> <buffer> <leader>qs <Plug>ReplaceWithStraight
+
+  " highlight words (reedes/vim-wordy)
+  " noremap <silent> <buffer> <F8> :<C-u>NextWordy<cr>
+  " xnoremap <silent> <buffer> <F8> :<C-u>NextWordy<cr>
+  " inoremap <silent> <buffer> <F8> <C-o>:NextWordy<cr>
+
+  " enable spell checking. Disable languages that I don't use for perf
+  setl spell spl=en_us fdl=4 noru nonu nornu
+  " open folds on search http://vimdoc.sourceforge.net/htmldoc/options.html#'foldopen'
+  setl fdo+=search
+endfunction
+
 augroup pencil
   autocmd!
-  autocmd FileType markdown,mkd,md call pencil#init({'autoformat': 1})
-                              " lexical is a good idea, but
-                              " it slows down neocomplete to
-                              " a crawl
-                               " \ | call lexical#init()
+  autocmd FileType markdown,mkd,md call Prose()
   autocmd FileType text,txt     call pencil#init({'wrap': 'hard'})
-                        \ | call lexical#init()
+                        " \ | call lexical#init()
+  autocmd Filetype git,gitsendemail,*commit*,*COMMIT*
+                            \   call pencil#init({'wrap': 'hard', 'textwidth': 72})
 augroup END
+
+" invoke manually by command for other file types
+command! -nargs=0 Prose call Prose()
 
 " the default is hard
 let g:pencil#wrapModeDefault = 'soft'
 let g:pencil#conceallevel = 0     " 0=disable, 1=one char, 2=hide char, 3=hide all (def)
-
+let g:pencil#autoformat = 1      " 0=disable, 1=enable (def)
+let g:pencil#textwidth = 80
+let g:pencil#cursorwrap = 1     " 0=disable, 1=enable (def)
+let g:pencil#conceallevel = 3     " 0=disable, 1=one char, 2=hide char, 3=hide all (def)
+let g:pencil#concealcursor = 'c'  " n=normal, v=visual, i=insert, c=command (def)
+" custom aireline config
+let g:airline_section_x = '%{PencilMode()}'
+" tell lexial to enable spelling
+let g:lexical#spell = 1         " 0=disabled, 1=enabled
+" show a list of suggestions with a Keybindings
+let g:lexical#spell_key = '<leader>s'
 
 
 
