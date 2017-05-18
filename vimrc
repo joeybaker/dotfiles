@@ -44,8 +44,7 @@ call plug#begin('~/.vim/plugged')
 
   " autocompletion via neocomplete
   Plug 'Shougo/neocomplete.vim'
-  " autocompletion via deoplete
-  " flow autocompleteion
+  " flow autocompletion
   Plug 'wokalski/autocomplete-flow'
   " For func argument completion
   Plug 'Shougo/neosnippet'
