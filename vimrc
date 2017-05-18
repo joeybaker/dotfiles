@@ -143,6 +143,11 @@ set writebackup
 set splitbelow
 set splitright
 
+" always insert a new line at the end of the file
+" (I'm not sure this works)
+set fixendofline
+set endofline
+
 
 
 
