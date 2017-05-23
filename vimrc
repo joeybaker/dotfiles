@@ -485,7 +485,9 @@ let g:SeekBackKey = 'T'
 function! Prose()
   " use hard wrapping to keep everything on the screen. markdown is smart
   " enough to still format correctly
-  call pencil#init({'wrap': 'hard"})
+  " but… it fucks with other things. Turning this off for now
+  " call pencil#init({'wrap': 'hard"})
+  call pencil#init()
   " lexical is a good idea, but it slows down neocomplete to a crawl
   " call lexical#init()
   " call litecorrect#init()
@@ -531,7 +533,7 @@ endfunction
 augroup pencil
   autocmd!
   autocmd FileType markdown,mkd,md call Prose()
-  autocmd FileType text,txt     call pencil#init({'wrap': 'hard'})
+  autocmd FileType text,txt     call Prose()
                         " \ | call lexical#init()
   autocmd Filetype git,gitsendemail,*commit*,*COMMIT*
                             \   call pencil#init({'wrap': 'hard', 'textwidth': 72})
