@@ -164,6 +164,8 @@ set tabstop=2 " 2 spaces per tab
 set softtabstop=2 " the spaces in a tab when hitting the TAB key
 " disable, I think smarttab does this? in vim-sensible
 " set expandtab " turn the TAB key into spaces
+" even though we want expand tab normally, make files are special
+autocmd FileType make setlocal noexpandtab
 set fileformat=unix     " No crazy CR/LF
 set nojoinspaces        " One space after a "." rather than 2
 
