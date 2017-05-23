@@ -585,6 +585,15 @@ let g:ale_javascript_eslint_executable = 'eslint_d'
 
 
 
+
+" javascript syntax highlighting
+" enable flow support
+let g:javascript_plugin_flow = 1
+
+
+
+
+
 " ack, use the_silver_searcher
 if executable('ag')
   let g:ackprg = 'ag --vimgrep --smart-case --silent --hidden'
