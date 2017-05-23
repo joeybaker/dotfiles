@@ -105,6 +105,8 @@ call plug#begin('~/.vim/plugged')
   " being able to `:Gblame` is nice
   Plug 'tpope/vim-fugitive'
 
+  " file management commands like :Move
+  Plug 'tpope/vim-eunuch'
 " Initialize plugin system
 call plug#end()
 
