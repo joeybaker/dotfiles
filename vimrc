@@ -64,6 +64,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-git'
   Plug 'tmux-plugins/vim-tmux'
   Plug 'tpope/vim-rails'
+  Plug 'fleischie/vim-styled-components'
 
   " Spellcheck for certain file types
   Plug 'reedes/vim-lexical'
