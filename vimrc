@@ -576,6 +576,9 @@ let g:gitgutter_eager = 200
 let g:ale_sign_error = '🔴'
 let g:ale_sign_warning = '🔸'
 
+" use eslint_d instead of the local eslint for speed!
+let g:ale_javascript_eslint_executable = 'eslint_d'
+
 
 
 
