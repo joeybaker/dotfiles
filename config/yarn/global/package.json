@@ -2,6 +2,7 @@
   "dependencies": {
     "concurrently": "^3.4.0",
     "diff-so-fancy": "^0.11.4",
+    "eslint_d": "^4.2.5",
     "flow": "^0.2.3",
     "flow-typed": "^2.1.2",
     "ghcopy": "^0.3.0",
