@@ -594,6 +594,19 @@ let g:ale_sign_warning = '🔸'
 " use eslint_d instead of the local eslint for speed!
 let g:ale_javascript_eslint_executable = 'eslint_d'
 
+" setup ale autofixing
+let g:ale_fixers = {}
+let g:ale_fixers.javascript = [
+\ 'eslint',
+\]
+" via https://github.com/tunnckoCore/ale/commit/01202de661489606423a1a9545762dd8315347a3
+" https://github.com/w0rp/ale/issues/541 might have a builtin option someday
+autocmd InsertLeave *.js,*.jsx call ale#fix#Fix()
+autocmd BufWrite *.js,*.jsx call ale#fix#Fix()
+
+
+
+
 
 
 
