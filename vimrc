@@ -210,7 +210,12 @@ nmap <leader>h :bprevious<CR>
 nmap <leader>bq :bp <BAR> bd #<CR>
 
 " use flow for jump to definition
-nmap <leader>j :FlowJumpToDef<cr>
+nmap <leader>j :FlowJumpToDef<CR>
+
+" Autofix entire buffer with eslint_d:
+" https://www.npmjs.com/package/eslint_d#automatic-fixing
+nnoremap <leader>f mF:%!eslint_d --cache --stdin --fix-to-stdout<CR>`F
+
 
 
 
