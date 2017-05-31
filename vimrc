@@ -612,12 +612,11 @@ let g:ale_fixers = {}
 let g:ale_fixers.javascript = [
 \ 'eslint',
 \]
-" via https://github.com/tunnckoCore/ale/commit/01202de661489606423a1a9545762dd8315347a3
-" https://github.com/w0rp/ale/issues/541 might have a builtin option someday
-autocmd InsertLeave *.js,*.jsx call ale#fix#Fix()
-autocmd BufWrite *.js,*.jsx call ale#fix#Fix()
+let g:ale_fix_on_save = 1
 
-
+" use the bundle version of rubocop
+let g:ale_ruby_rubocop_executable = 'bundle exec rubocop'
+let g:ale_ruby_rubocop_options = '--cache=true --rails'
 
 
 
