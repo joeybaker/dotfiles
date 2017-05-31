@@ -155,6 +155,10 @@ set splitright
 set fixendofline
 set endofline
 
+" save when switching buffers
+" http://vim.wikia.com/wiki/Auto_save_files_when_focus_is_lost
+set autowrite
+
 
 
 
