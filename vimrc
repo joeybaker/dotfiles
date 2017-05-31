@@ -111,6 +111,8 @@ call plug#begin('~/.vim/plugged')
   " auto complete brackets, parens, etc
   Plug 'jiangmiao/auto-pairs'
 
+  " auto nice `gf` smarts for require calls
+  Plug 'moll/vim-node'
 " Initialize plugin system
 call plug#end()
 
