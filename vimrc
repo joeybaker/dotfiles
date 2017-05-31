@@ -286,6 +286,9 @@ inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
 " turn on spell check in git commit messages
 autocmd Filetype gitcommit setlocal spell textwidth=72
 
+" save on focus lost, ignore buffers that have never been written
+" http://vim.wikia.com/wiki/Auto_save_files_when_focus_is_lost
+autocmd FocusLost * silent! wa
 
 
 
