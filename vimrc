@@ -107,6 +107,10 @@ call plug#begin('~/.vim/plugged')
 
   " file management commands like :Move
   Plug 'tpope/vim-eunuch'
+
+  " auto complete brackets, parens, etc
+  Plug 'jiangmiao/auto-pairs'
+
 " Initialize plugin system
 call plug#end()
 
