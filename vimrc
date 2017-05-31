@@ -604,6 +604,8 @@ let g:ale_sign_warning = '🔸'
 
 " use eslint_d instead of the local eslint for speed!
 let g:ale_javascript_eslint_executable = 'eslint_d'
+" so that we prefer eslint_d over the local version :\
+let g:ale_javascript_eslint_use_global = 1
 
 " setup ale autofixing
 let g:ale_fixers = {}
