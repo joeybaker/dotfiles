@@ -92,6 +92,14 @@ alias tmux-embed="unset TMUX && tmux"
 # bindkey '\e[A' history-substring-search-up
 # bindkey '\e[B' history-substring-search-down
 
+# easier file creation
+# recursively touch, e.g. touch + mkdir -p
+# so files can easily be created at depth
+# https://coderwall.com/p/ghwp5a/canhaz-recursive-touch-in-shell
+mk () {
+  mkdir -p -- "${1%/*}" && touch -- "$1"
+}
+
 #
 # Load stuff in
 #
