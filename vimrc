@@ -409,9 +409,6 @@ let g:ctrlp_show_hidden=1
 " prevent CtrlP from caching directory listings, b/c silver searcher is fast
 let g:ctrlp_use_caching=0
 
-" ag starts searching from project root instead of cwd
-let g:ag_working_path_mode="r"
-
 " via http://joshldavis.com/2014/04/05/vim-tab-madness-buffers-vs-tabs/
 " Setup some default ignores
 let g:ctrlp_custom_ignore = {
