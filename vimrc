@@ -427,7 +427,9 @@ let g:ctrlp_working_path_mode = 'r'
 " Use a leader instead of the actual named binding
 nmap <leader>p :CtrlP<cr>
 
-
+" if a package.json is found, use that as the root directory instead of trying
+" to find .git
+let g:ctrlp_root_markers = ['package.json']
 
 
 
