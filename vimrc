@@ -169,6 +169,14 @@ else
   autocmd BufEnter * silent! lcd %:p:h:gs/ /\\ /
 endif
 
+" remove delay when leaving insert mode by airline
+" https://github.com/vim-airline/vim-airline/wiki/FAQ#there-is-a-pause-when-leaving-insert-mode
+set ttimeoutlen=10
+
+
+
+
+
 
 
 
