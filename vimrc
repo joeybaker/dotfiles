@@ -161,6 +161,14 @@ set endofline
 " http://vim.wikia.com/wiki/Auto_save_files_when_focus_is_lost
 set autowrite
 
+" set the current directory to the buffer's directory. This makes it easy to
+" create new files relative to the current file
+if exists('+autochdir')
+  set autochdir
+else
+  autocmd BufEnter * silent! lcd %:p:h:gs/ /\\ /
+endif
+
 
 
 
