@@ -310,24 +310,59 @@ autocmd FocusLost * silent! wa
 let g:airline_powerline_fonts = 1
 
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#left_sep = ''
+let g:airline#extensions#tabline#left_alt_sep = ''
 " Show just the filename
-let g:airline#extensions#tabline#fnamemod = ':t'
+" let g:airline#extensions#tabline#fnamemod = ':t'
 
 let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
 let g:airline#extensions#tabline#fnamecollapse = 1
 let g:airline#extensions#virtualenv#enabled = 0
-let g:airline#extensions#tmuxline#enabled = 0
-let g:airline_inactive_collapse = 0
+let g:airline_inactive_collapse = 1
 let g:virtualenv_auto_activate = 1
 
 " for tmuxline
+let g:airline#extensions#tmuxline#enabled = 1
 let g:tmuxline_preset = 'full'
-let g:airline_theme='oceanicnext'
+" enable/disable tmuxline integration
+let g:airline#extensions#tmuxline#enabled = 1
+" no need for the powerline separators, they just take up room
+let g:tmuxline_powerline_separators = 0
+" customize the sections https://github.com/edkolev/tmuxline.vim#custom-preset
+let g:tmuxline_preset = {
+      \'a'    : '',
+      \'b'    : '',
+      \'c'    : '',
+      \'win'  : '#I #W',
+      \'cwin' : '#I #W',
+      \'x'    : '%a %R',
+      \'y'    : '',
+      \'z'    : '#H'}
 
-" Do not draw separators for empty sections (only for the active window) >
+
+let g:airline_theme='base16_spacemacs'
+
+" Do not draw separators for empty sections (only for the active window)
 let g:airline_skip_empty_sections = 1
+
+" determine whether inactive windows should have the left section collapsed to
+" only the filename of that buffer.
+let g:airline_inactive_collapse=1
+
+" enable/disable showing a summary of changed hunks under source control. >
+let g:airline#extensions#hunks#enabled = 1
+
+" replace the branch indicator with the current working directory, followed by
+" the filename.
+" let g:airline_section_b = '%{getcwd()}'
+" let g:airline_section_c = '%{getcwd()}%t'
+" replace the file encoding section, it's kinda worthless
+" https://github.com/vim-airline/vim-airline/blob/466198adc015a9d81e975374d8e206dcf3efd173/autoload/airline/init.vim#L182
+if winwidth(0) > 180
+  let g:airline_section_y = airline#section#create_right(['ffenc'])
+else
+  let g:airline_section_y = ''
+endif
 
 
 
