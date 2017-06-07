@@ -235,3 +235,14 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
 * don't forget to install Adobe things if necessary
 * Dash license from 1Password
 * increase the system file descriptor limits for dev https://facebook.github.io/watchman/docs/install.html#max-os-file-descriptor-limits
+
+
+## Vim setup
+
+- `ctrl-l` with an autocomplete dropdown open will complete a snippet. Press again to skip to the next delimiter
+- `leader-h` previous tab
+- `leader-l` next tab
+- `leader-j` jump to definition in js
+- `leader-f` autofix file in js
+- `leader-n` clear search highlighting
+- `leader-s` save the file (works in insert and normal mode)
