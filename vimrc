@@ -59,7 +59,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'toyamarinyon/vim-swift'
   Plug 'mmalecki/vim-node.js'
   Plug 'pangloss/vim-javascript'
-  Plug 'maxmellon/vim-jsx-pretty'
+  Plug 'maxmellon/vim-jsx-pretty' "requires pangloss/vim-javascript or othree/yajs.vim
   Plug 'avakhov/vim-yaml'
   Plug 'tpope/vim-git'
   Plug 'tmux-plugins/vim-tmux'
