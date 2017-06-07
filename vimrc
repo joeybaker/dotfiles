@@ -328,8 +328,12 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ''
 let g:airline#extensions#tabline#left_alt_sep = ''
+let g:airline#extensions#tabline#right_sep = ''
+let g:airline#extensions#tabline#right_alt_sep = ''
 " Show just the filename
 " let g:airline#extensions#tabline#fnamemod = ':t'
+" rename label for buffers (default: 'buffers')
+let g:airline#extensions#tabline#buffers_label = ''
 
 let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
 let g:airline#extensions#tabline#fnamecollapse = 1
@@ -372,6 +376,15 @@ let g:airline#extensions#hunks#enabled = 1
 " the filename.
 " let g:airline_section_b = '%{getcwd()}'
 " let g:airline_section_c = '%{getcwd()}%t'
+
+" don't show the current branch, it takes up a bunch of space an it's usually
+" visible in another winde
+if winwidth(0) > 180
+  let g:airline_section_b = airline#section#create(['hunks', 'branch'])
+else
+  let g:airline_section_b = airline#section#create(['hunks'])
+endif
+
 " replace the file encoding section, it's kinda worthless
 " https://github.com/vim-airline/vim-airline/blob/466198adc015a9d81e975374d8e206dcf3efd173/autoload/airline/init.vim#L182
 if winwidth(0) > 180
