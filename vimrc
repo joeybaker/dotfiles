@@ -342,7 +342,6 @@ let g:airline_inactive_collapse = 1
 let g:virtualenv_auto_activate = 1
 
 " for tmuxline
-let g:airline#extensions#tmuxline#enabled = 1
 let g:tmuxline_preset = 'full'
 " enable/disable tmuxline integration
 let g:airline#extensions#tmuxline#enabled = 1
@@ -355,11 +354,12 @@ let g:tmuxline_preset = {
       \'c'    : '',
       \'win'  : '#I #W',
       \'cwin' : '#I #W',
-      \'x'    : '%a %R',
+      \'x'    : '%a %d %b  %R',
       \'y'    : '',
       \'z'    : '#H'}
 
 
+let g:tmuxline_theme = 'base16_spacemacs'
 let g:airline_theme='base16_spacemacs'
 
 " Do not draw separators for empty sections (only for the active window)
