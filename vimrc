@@ -751,6 +751,10 @@ function! Multiple_cursors_after()
   endif
 endfunction
 
+" allow moving between normal/visual/insert mode with multiple cursors
+" https://github.com/terryma/vim-multiple-cursors#gmulti_cursor_exit_from_visual_mode-default-1
+let g:multi_cursor_exit_from_insert_mode = 0
+let g:multi_cursor_exit_from_visual_mode = 0
 
 
 
