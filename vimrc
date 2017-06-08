@@ -622,6 +622,9 @@ function! Prose()
   setl spell spl=en_us fdl=4 noru nonu nornu
   " open folds on search http://vimdoc.sourceforge.net/htmldoc/options.html#'foldopen'
   setl fdo+=search
+
+  let g:airline#extensions#tmuxline#enabled = 0
+  call airline#switch_theme('silver')
 endfunction
 
 augroup pencil
