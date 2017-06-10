@@ -703,10 +703,6 @@ let g:ale_fixers.javascript = [
 \]
 let g:ale_fix_on_save = 1
 
-" use the bundle version of rubocop
-let g:ale_ruby_rubocop_executable = 'bundle exec rubocop'
-let g:ale_ruby_rubocop_options = '--cache=true --rails'
-
 
 
 
