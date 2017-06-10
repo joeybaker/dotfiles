@@ -610,8 +610,8 @@ function! Prose()
   " nnoremap <buffer> <silent> <leader>Q vapJgqap
 
   " force top correction on most recent misspelling
-  nnoremap <buffer> <c-s> [s1z=<c-o>
-  inoremap <buffer> <c-s> <c-g>u<Esc>[s1z=`]A<c-g>u
+  nnoremap <buffer> <c-z> [s1z=<c-o>
+  inoremap <buffer> <c-z> <c-g>u<Esc>[s1z=`]A<c-g>u
 
   " replace common punctuation
   iabbrev <buffer> -- –
@@ -668,7 +668,7 @@ let g:airline_section_x = '%{PencilMode()}'
 " tell lexial to enable spelling
 let g:lexical#spell = 1         " 0=disabled, 1=enabled
 " show a list of suggestions with a Keybindings
-let g:lexical#spell_key = '<leader>s'
+let g:lexical#spell_key = '<leader>z'
 
 
 
