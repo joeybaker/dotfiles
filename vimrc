@@ -358,7 +358,9 @@ let g:virtualenv_auto_activate = 1
 " for tmuxline
 let g:tmuxline_preset = 'full'
 " enable/disable tmuxline integration
-let g:airline#extensions#tmuxline#enabled = 1
+" keep it disabled, we'll just rely on the tmuxline file. Re-enable if you
+" want to change the theme
+let g:airline#extensions#tmuxline#enabled = 0
 " no need for the powerline separators, they just take up room
 let g:tmuxline_powerline_separators = 0
 " customize the sections https://github.com/edkolev/tmuxline.vim#custom-preset
