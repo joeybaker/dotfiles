@@ -257,6 +257,10 @@ nnoremap <leader>f mF:%!eslint_d --cache --stdin --fix-to-stdout<CR>`F
 nnoremap <leader>s :w<cr>
 inoremap <leader>s <C-c>:w<cr>
 
+" copy the current file path
+" http://vim.1045645.n5.nabble.com/Copy-the-full-path-of-the-file-opened-in-my-current-buffer-tt5721712.html#a5721716
+nnoremap <Leader>yf :let @*=expand("%:p")<cr>
+
 
 
 
