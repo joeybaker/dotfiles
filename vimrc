@@ -116,6 +116,9 @@ call plug#begin('~/.vim/plugged')
 
   " When using :Gblame from vim-fugitive, shows the commit message
   Plug 'tommcdo/vim-fugitive-blame-ext'
+
+  " Run :ToGithub to open the current file/line in GH
+  Plug 'tonchis/vim-to-github'
 " Initialize plugin system
 call plug#end()
 
