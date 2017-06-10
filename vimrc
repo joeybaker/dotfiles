@@ -119,6 +119,10 @@ call plug#begin('~/.vim/plugged')
 
   " Run :ToGithub to open the current file/line in GH
   Plug 'tonchis/vim-to-github'
+
+  " Navigate between both vim and tmux panes with just ctrl-<direction key>
+  Plug 'christoomey/vim-tmux-navigator'
+
 " Initialize plugin system
 call plug#end()
 
@@ -764,6 +768,13 @@ let g:multi_cursor_exit_from_visual_mode = 0
 
 
 
+
+
+
+" vim-tmux-navigator
+"
+" Write all buffers before navigating from Vim to tmux pane
+let g:tmux_navigator_save_on_switch = 2
 
 
 
