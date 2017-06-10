@@ -27,8 +27,6 @@ export HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}ignoredups
 export HISTCONTROL=ignoreboth
 # http://jonisalonen.com/2012/your-bash-prompt-needs-this/
 # export PS1="\[\033[G\]$PS1"
-# geocouch
-export ERL_FLAGS="-pa /usr/local/share/geocouch/ebin"
 # via https://github.com/golang/go/wiki/GOPATH
 export GOPATH="$HOME/server/go"
 export PATH="$PATH:${GOPATH//://bin:}/bin"
