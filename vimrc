@@ -113,6 +113,9 @@ call plug#begin('~/.vim/plugged')
 
   " auto nice `gf` smarts for require calls
   Plug 'moll/vim-node'
+
+  " When using :Gblame from vim-fugitive, shows the commit message
+  Plug 'tommcdo/vim-fugitive-blame-ext'
 " Initialize plugin system
 call plug#end()
 
