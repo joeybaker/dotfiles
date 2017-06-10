@@ -246,3 +246,5 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
 - `leader-f` autofix file in js
 - `leader-n` clear search highlighting
 - `leader-s` save the file (works in insert and normal mode)
+- `leader-yf` copy the current file path
+- `leader-c<space>` toggle comment
