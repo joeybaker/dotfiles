@@ -6,52 +6,146 @@
     },
     "profiles": [
         {
-            "devices": [
-                {
-                    "disable_built_in_keyboard_if_exists": false,
-                    "identifiers": {
-                        "is_keyboard": true,
-                        "is_pointing_device": false,
-                        "product_id": 91,
-                        "vendor_id": 1226
+            "complex_modifications": {
+                "rules": [
+                    {
+                        "manipulators": [
+                            {
+                                "description": "Change return_or_enter to control when held",
+                                "from": {
+                                    "key_code": "return_or_enter",
+                                    "modifiers": {
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "left_control"
+                                    }
+                                ],
+                                "to_if_alone": [
+                                    {
+                                        "key_code": "return_or_enter"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
                     },
-                    "ignore": false
-                }
-            ],
-            "fn_function_keys": {
-                "f1": "vk_consumer_brightness_down",
-                "f10": "mute",
-                "f11": "volume_down",
-                "f12": "volume_up",
-                "f2": "vk_consumer_brightness_up",
-                "f3": "vk_mission_control",
-                "f4": "vk_launchpad",
-                "f5": "vk_consumer_illumination_down",
-                "f6": "vk_consumer_illumination_up",
-                "f7": "vk_consumer_previous",
-                "f8": "vk_consumer_play",
-                "f9": "vk_consumer_next"
-            },
-            "name": "Internal",
-            "one_to_many_mappings": {
-                "caps_lock": [
-                    "left_control",
-                    "left_option",
-                    "left_command"
+                    {
+                        "manipulators": [
+                            {
+                                "description": "Change left_shift to ( when pressed.",
+                                "from": {
+                                    "key_code": "left_shift",
+                                    "modifiers": {
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "left_shift"
+                                    }
+                                ],
+                                "to_if_alone": [
+                                    {
+                                        "key_code": "9",
+                                        "modifiers": [
+                                            "left_shift"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "manipulators": [
+                            {
+                                "description": "Change right_shift to ) when pressed.",
+                                "from": {
+                                    "key_code": "right_shift",
+                                    "modifiers": {
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "right_shift"
+                                    }
+                                ],
+                                "to_if_alone": [
+                                    {
+                                        "key_code": "0",
+                                        "modifiers": [
+                                            "left_shift"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "manipulators": [
+                            {
+                                "description": "Change caps_lock to command+control+option+shift when held, escape when pressed.",
+                                "from": {
+                                    "key_code": "caps_lock",
+                                    "modifiers": {
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "left_command",
+                                        "modifiers": [
+                                            "left_control",
+                                            "left_option"
+                                        ]
+                                    }
+                                ],
+                                "to_if_alone": [
+                                    {
+                                        "key_code": "escape"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    }
                 ]
             },
+            "devices": [],
+            "fn_function_keys": {
+                "f1": "display_brightness_decrement",
+                "f10": "mute",
+                "f11": "volume_decrement",
+                "f12": "volume_increment",
+                "f2": "display_brightness_increment",
+                "f3": "mission_control",
+                "f4": "launchpad",
+                "f5": "illumination_decrement",
+                "f6": "illumination_increment",
+                "f7": "rewind",
+                "f8": "play_or_pause",
+                "f9": "fastforward"
+            },
+            "name": "Default profile",
             "selected": true,
-            "simple_modifications": {
-                "return_or_enter": "right_control"
-            },
-            "standalone_keys": {
-                "caps_lock": "escape",
-                "return_or_enter": "return_or_enter"
-            },
+            "simple_modifications": {},
+            "standalone_keys": {},
             "virtual_hid_keyboard": {
                 "caps_lock_delay_milliseconds": 0,
-                "keyboard_type": "ansi",
-                "standalone_keys_delay_milliseconds": 150
+                "keyboard_type": "ansi"
             }
         }
     ]
