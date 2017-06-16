@@ -252,6 +252,11 @@ nmap <leader>j :FlowJumpToDef<CR>
 " https://www.npmjs.com/package/eslint_d#automatic-fixing
 autocmd FileType javascript nnoremap <leader>f mF:%!eslint_d --cache --stdin --fix-to-stdout<CR>`F
 
+" Autofix entire buffer with python for JSON
+" requires `json` to be installed
+" `yarn global add json`
+" https://github.com/trentm/json
+autocmd FileType json nnoremap <leader>f mF:%!json<CR>`F
 
 " map leader-s to save. This works even in insert mode!
 " https://hashrocket.com/blog/posts/8-great-vim-mappings#number-1-save-file-with-leader-s
