@@ -484,9 +484,23 @@ let g:NERDTrimTrailingWhitespace = 1
 
 
 
+"
 " flow
+"
+
 " we don't want the autofix window on save
 let g:flow#enable = 0
+let g:flow#autoclose = 1
+
+" Use locally installed flow
+" https://github.com/flowtype/vim-flow/issues/24
+let local_flow = finddir('node_modules', '.;') . '/.bin/flow'
+if matchstr(local_flow, "^\/\\w") == ''
+    let local_flow= getcwd() . "/" . local_flow
+endif
+if executable(local_flow)
+  let g:flow#flowpath = local_flow
+endif
 
 
 
