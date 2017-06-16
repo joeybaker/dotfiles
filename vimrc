@@ -250,7 +250,8 @@ nmap <leader>j :FlowJumpToDef<CR>
 
 " Autofix entire buffer with eslint_d:
 " https://www.npmjs.com/package/eslint_d#automatic-fixing
-nnoremap <leader>f mF:%!eslint_d --cache --stdin --fix-to-stdout<CR>`F
+autocmd FileType javascript nnoremap <leader>f mF:%!eslint_d --cache --stdin --fix-to-stdout<CR>`F
+
 
 " map leader-s to save. This works even in insert mode!
 " https://hashrocket.com/blog/posts/8-great-vim-mappings#number-1-save-file-with-leader-s
