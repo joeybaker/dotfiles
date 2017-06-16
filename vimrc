@@ -245,8 +245,11 @@ nmap <leader>h :bprevious<CR>
 " This replicates the idea of closing a tab
 nmap <leader>bq :bp <BAR> bd #<CR>
 
+" restrict commands to a filetype
+" https://stackoverflow.com/a/20105502
+
 " use flow for jump to definition
-nmap <leader>j :FlowJumpToDef<CR>
+autocmd FileType javascript nmap <leader>j :FlowJumpToDef<CR>
 
 " Autofix entire buffer with eslint_d:
 " https://www.npmjs.com/package/eslint_d#automatic-fixing
