@@ -1,14 +1,14 @@
 {
   "dependencies": {
     "concurrently": "^3.4.0",
-    "diff-so-fancy": "^0.11.4",
+    "diff-so-fancy": "^1.0.0",
     "eslint_d": "^4.2.5",
     "flow": "^0.2.3",
     "flow-typed": "^2.1.2",
     "ghcopy": "^0.3.0",
-    "ghwd": "^1.1.2",
+    "ghwd": "^1.1.3",
     "irish-pub": "^0.2.0",
-    "jscodeshift": "^0.3.30",
+    "jscodeshift": "^0.3.31",
     "json": "^9.0.6",
     "localhapi": "^1.1.1",
     "nave": "^2.2.3",
