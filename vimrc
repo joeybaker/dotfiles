@@ -173,11 +173,12 @@ set autowrite
 
 " set the current directory to the buffer's directory. This makes it easy to
 " create new files relative to the current file
-if exists('+autochdir')
-  set autochdir
-else
-  autocmd BufEnter * silent! lcd %:p:h:gs/ /\\ /
-endif
+" disabled because it messes with ack
+" if exists('+autochdir')
+"   set autochdir
+" else
+"   autocmd BufEnter * silent! lcd %:p:h:gs/ /\\ /
+" endif
 
 " remove delay when leaving insert mode by airline
 " https://github.com/vim-airline/vim-airline/wiki/FAQ#there-is-a-pause-when-leaving-insert-mode
