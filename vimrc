@@ -663,8 +663,12 @@ function! Prose()
   " open folds on search http://vimdoc.sourceforge.net/htmldoc/options.html#'foldopen'
   setl fdo+=search
 
-  let g:airline#extensions#tmuxline#enabled = 0
-  call airline#switch_theme('silver')
+  let set_theme=$USE_WRITING_THEME
+  if set_theme == '1'
+    let g:airline#extensions#tmuxline#enabled = 0
+    call airline#switch_theme('silver')
+    set background=light
+  endif
 endfunction
 
 augroup pencil
