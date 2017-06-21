@@ -20,6 +20,11 @@
                     ]
                   }
                 },
+                "parameters": {
+                  "basic": {
+                    "to_if_alone_timeout_milliseconds": 150
+                  }
+                },
                 "to": [
                   {
                     "key_code": "left_control"
@@ -30,12 +35,7 @@
                     "key_code": "return_or_enter"
                   }
                 ],
-                "type": "basic",
-                "parameters": {
-                  "basic": {
-                    "to_if_alone_timeout_milliseconds": 500
-                  }
-                }
+                "type": "basic"
               }
             ]
           },
@@ -51,6 +51,11 @@
                     ]
                   }
                 },
+                "parameters": {
+                  "basic": {
+                    "to_if_alone_timeout_milliseconds": 150
+                  }
+                },
                 "to": [
                   {
                     "key_code": "left_shift"
@@ -64,12 +69,7 @@
                     ]
                   }
                 ],
-                "type": "basic",
-                "parameters": {
-                  "basic": {
-                    "to_if_alone_timeout_milliseconds": 500
-                  }
-                }
+                "type": "basic"
               }
             ]
           },
@@ -85,6 +85,11 @@
                     ]
                   }
                 },
+                "parameters": {
+                  "basic": {
+                    "to_if_alone_timeout_milliseconds": 150
+                  }
+                },
                 "to": [
                   {
                     "key_code": "right_shift"
@@ -98,12 +103,7 @@
                     ]
                   }
                 ],
-                "type": "basic",
-                "parameters": {
-                  "basic": {
-                    "to_if_alone_timeout_milliseconds": 500
-                  }
-                }
+                "type": "basic"
               }
             ]
           },
