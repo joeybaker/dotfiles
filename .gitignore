@@ -5,3 +5,4 @@ config/yarn/global/node_modules
 config/hub
 config/configstore/update-notifier-*
 config/configstore/*-usage.json
+config/heroku
