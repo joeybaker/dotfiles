@@ -26,7 +26,7 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
 
         # lua is for the neocomplete plugin vim plugin
         brew install vim --override-system-vi --with-python3 --with-lua
-        brew install reattach-to-user-namespace z the_silver_searcher ccat node tmux sshrc git zsh ack findutils bash shellcheck httpie jo mas autoenv coreutils cmake gpg rbenv hub yarn thefuck proselint
+        brew install reattach-to-user-namespace z the_silver_searcher ccat node tmux sshrc git zsh ack findutils bash shellcheck httpie jo mas autoenv coreutils cmake gpg rbenv hub yarn thefuck proselint nvm
         # b/c newer is better, and for diff-so-fancy
         brew install gnu-sed grep --with-default-names
         brew cask install gitify google-chrome firefox iterm2 adium slate istat-menus cloudup sublime-text google-chrome-canary karabiner-elements  flux sidestep bartender 1password alfred syncthing-bar vlc spillo atext rocket dash safari-technology-preview gitup
@@ -94,8 +94,8 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
     ```bash
     # no sudo for global installs!
     sudo chown -R $(whoami) ~/.npm; sudo chown -R $(whoami) /usr/local/lib/node_modules
-    yarn global add nave supervisor nodemon ghwd ghcopy json trash-cli irish-pub localhapi diff-so-fancy concurrently
-    nave usemain stable
+    yarn global add supervisor nodemon ghwd ghcopy json trash-cli irish-pub localhapi diff-so-fancy concurrently
+    nvm alias default stable
     npm config set init.author.name 'Joey Baker'
     npm config set init.author.email 'joey@byjoeybaker.com'
     npm config set init.author.site 'http://byjoeybaker.com'
