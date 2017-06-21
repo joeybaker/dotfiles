@@ -110,26 +110,7 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
     ghcopy-authorize
     ```
 
-* Karabiner-elements; copy configs
-* ~[Karabiner](http://pqrs.org/macosx/karabiner/)~ *THIS NO LONGER WORKS ON SIERRA, KEEPING IT UNTIL WE GET FULL FUNCTIONALITY BACK. SEE KARABINER-ELEMENTS AND HAMMERSPOON*
-  * copy private.xml
-
-    ```
-      mkdir -p ~/Library/Application\ Support/Karabiner && ln -s ~/Sync/dotfiles/private.xml ~/Library/Application\ Support/Karabiner/private.xml
-    ```
-
-    * simultaneous Vi mode > simultaneous key presses [S+D] turns on “sim…
-    * simultaneous Vi mode > change [] to backward-word…
-    * shifts to parenteses
-    * use correct shift keys
-    * f19 to escape/hyper
-    * turn off menubar
-    * Key Repeat > Key Overlaid Modifier > Timeout: 200
-* ~[seil](http://pqrs.org/macosx/Karabiner/seil.html.en)~
-    * caps lock to f19 (key code: 80)
-    * be sure to disable caps lock in keyboard settings
-    * better instructions: https://github.com/jasonrudolph/keyboard
-
+* [Karabiner](https://github.com/tekezo/Karabiner-Elements) configs in dotfiles
 * chrome canary
     * chrome://settings/content/flash only play important content
     * settings > on startup > continue where I left off
