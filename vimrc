@@ -746,7 +746,10 @@ let g:javascript_plugin_flow = 1
 if executable('ag')
   let g:ackprg = 'ag --vimgrep --smart-case --silent --hidden --follow'
 endif
-nnoremap <Leader>a :Ack<space>
+" map to leader-a but don't jump to the first result
+" https://github.com/mileszs/ack.vim#i-dont-want-to-jump-to-the-first-result-automatically
+cnoreabbrev Ack Ack!
+nnoremap <Leader>a :Ack!<Space>
 
 
 
