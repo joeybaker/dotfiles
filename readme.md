@@ -67,7 +67,7 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
 * dotfile link
     * NOTE: with symlinks and such, the zsh dotfiles might need to be moved to another location inside the `.zprezto` folder
     * `sh ~/Sync/dotfiles/link.sh "my-computer-name"`
-* Install vim
+* Install vim plugins
     ```
     curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -217,6 +217,24 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
 * Dash license from 1Password
 * increase the system file descriptor limits for dev https://facebook.github.io/watchman/docs/install.html#max-os-file-descriptor-limits
 
+## open-in-vi
+Create a new automator app to open files in vi
+
+```applescript
+on run {input}
+	set the_path to POSIX path of input
+	set cmd to "export USE_WRITING_THEME=1; vi " & quoted form of the_path
+	tell application "System Events" to set terminalIsRunning to exists application process "Terminal"
+	tell application "Terminal"
+		activate
+		if terminalIsRunning is true then
+			do script with command cmd
+		else
+			do script with command cmd in window 1
+		end if
+	end tell
+end run
+```
 
 ## Vim setup
 
