@@ -26,7 +26,7 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
 
         # lua is for the neocomplete plugin vim plugin
         brew install vim --override-system-vi --with-python3 --with-lua
-        brew install reattach-to-user-namespace z the_silver_searcher ccat node tmux sshrc git zsh ack findutils bash shellcheck httpie jo mas autoenv coreutils cmake gpg rbenv hub yarn thefuck proselint nvm
+        brew install reattach-to-user-namespace z the_silver_searcher ccat node tmux sshrc git zsh ack findutils bash shellcheck httpie jo mas autoenv coreutils cmake gpg rbenv hub yarn thefuck proselint nvm neovim/neovim/neovim
         # b/c newer is better, and for diff-so-fancy
         brew install gnu-sed grep --with-default-names
         brew cask install gitify google-chrome firefox iterm2 adium slate istat-menus cloudup sublime-text google-chrome-canary karabiner-elements  flux sidestep bartender 1password alfred syncthing-bar vlc spillo atext dash safari-technology-preview gitup
@@ -38,6 +38,8 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
         # [Inconsolata-g](http://leonardo-m.livejournal.com/77079.html)
         brew cask install font-inconsolata font-inconsolata-dz-for-powerline font-source-code-pro font-sourcecodepro-nerd-font
         brew cleanup
+        # install for neovim
+        gem install neovim
         ```
 
 * install oceanic-next iTerm theme (the main theme is in the sync folder)
