@@ -123,6 +123,8 @@ call plug#begin('~/.vim/plugged')
   " Navigate between both vim and tmux panes with just ctrl-<direction key>
   Plug 'christoomey/vim-tmux-navigator'
 
+  " Enable jump-to-definition in ruby
+  Plug 'xmisao/rubyjump.vim'
 " Initialize plugin system
 call plug#end()
 
@@ -251,6 +253,9 @@ nmap <leader>bq :bp <BAR> bd #<CR>
 
 " use flow for jump to definition
 autocmd FileType javascript nmap <leader>j :FlowJumpToDef<CR>
+" use rubyjump.vim for jump to definition
+autocmd FileType ruby nmap <silent> <leader>j <Plug>(rubyjump_cursor)
+
 
 " Autofix entire buffer with eslint_d:
 " https://www.npmjs.com/package/eslint_d#automatic-fixing
