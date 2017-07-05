@@ -232,7 +232,7 @@ nnoremap <C-H> <C-W><C-H>
 " better tab navigations via http://joshldavis.com/2014/04/05/vim-tab-madness-buffers-vs-tabs/
 " This allows buffers to be hidden if you've modified a buffer.
 " This is almost a must if you wish to use buffers in this way.
-set hidden
+" set hidden
 
 " To open a new empty buffer
 " This replaces :tabnew which I used to bind to this mapping
