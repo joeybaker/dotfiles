@@ -32,7 +32,6 @@ export HISTCONTROL=ignoreboth
 # export PS1="\[\033[G\]$PS1"
 # via https://github.com/golang/go/wiki/GOPATH
 export GOPATH="$HOME/server/go"
-export PATH="$PATH:${GOPATH//://bin:}/bin"
 
 # set the rack env to dev for ruby (rails)
 export RACK_ENV='development'

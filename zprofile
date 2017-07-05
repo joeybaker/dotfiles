@@ -54,6 +54,8 @@ path=(
   $path
   # for rbenv
   ~/.rbenv/shims
+  # for go
+  ${GOPATH//://bin:}/bin
 )
 
 # autoenv
