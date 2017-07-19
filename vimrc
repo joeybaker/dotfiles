@@ -268,7 +268,13 @@ inoremap <leader>s <C-c>:w<cr>
 " http://vim.1045645.n5.nabble.com/Copy-the-full-path-of-the-file-opened-in-my-current-buffer-tt5721712.html#a5721716
 nnoremap <Leader>yf :let @*=expand("%:p")<cr>
 
-
+" via https://github.com/sdemjanenko/vimstuff/blob/master/.vimrc
+" Use ,d (or ,dd or ,dj or 20,dd) to delete a line without adding it to the
+" yanked stack (also, in visual mode)
+nmap <silent> <leader>d "_d
+vmap <silent> <leader>d "_d
+" Quick yanking to the end of the line
+nmap Y y$
 
 
 
