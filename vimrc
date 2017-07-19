@@ -100,7 +100,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-surround'
 
   " search and replace across project
-  Plug 'brooth/far.vim'
+  " Plug 'brooth/far.vim'
+  Plug 'skwp/greplace.vim'
 
   " being able to `:Gblame` is nice
   Plug 'tpope/vim-fugitive'
@@ -766,7 +767,12 @@ nnoremap <Leader>a :Ack!<Space>
 
 
 " far, set a similar leader as ack b/c they do similar things
-nnoremap <Leader>A :Far<space>
+" disable far and use greplace, far is too buggy
+" nnoremap <Leader>A :Far<space>
+nnoremap <Leader>A :Gsearch<space>
+" use ag for searching
+set grepprg=ag
+let g:grep_cmd_opts = '--line-numbers --noheading'
 
 
 
