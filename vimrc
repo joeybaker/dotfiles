@@ -228,7 +228,7 @@ let mapleader=","
 
 " To open a new empty buffer
 " This replaces :tabnew which I used to bind to this mapping
-nmap <leader>b :enew<cr>
+nmap <leader>bn :enew<cr>
 
 " Move to the next buffer
 nmap <leader>l :bnext<CR>
