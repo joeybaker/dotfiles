@@ -154,6 +154,8 @@ zstyle ':prezto:module:terminal' auto-title 'yes'
 # Tmux
 #
 
+zstyle ':prezto:module:tmux:session' name hostname
+
 # Auto start a session when Zsh is launched in a local terminal.
 # zstyle ':prezto:module:tmux:auto-start' local 'yes'
 
