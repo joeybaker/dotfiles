@@ -635,9 +635,9 @@ function! Prose()
   " call textobj#sentence#init()
 
   " manual reformatting shortcuts
-  " nnoremap <buffer> <silent> Q gqap
-  " xnoremap <buffer> <silent> Q gq
-  " nnoremap <buffer> <silent> <leader>Q vapJgqap
+  nnoremap <buffer> <silent> Q gqap
+  xnoremap <buffer> <silent> Q gq
+  nnoremap <buffer> <silent> <leader>Q vapJgqap
 
   " force top correction on most recent misspelling
   nnoremap <buffer> <c-z> [s1z=<c-o>
