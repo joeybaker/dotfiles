@@ -736,6 +736,10 @@ let g:ale_fixers = {}
 let g:ale_fixers.javascript = [
 \ 'eslint',
 \]
+let g:ale_ruby_rubocop_options = '--rails'
+let g:ale_fixers.ruby = [
+\ 'rubocop',
+\]
 let g:ale_fix_on_save = 1
 
 
@@ -820,6 +824,12 @@ let g:multi_cursor_exit_from_visual_mode = 0
 "
 " Write all buffers before navigating from Vim to tmux pane
 let g:tmux_navigator_save_on_switch = 2
+
+
+
+
+
+
 
 
 
