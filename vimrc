@@ -126,6 +126,9 @@ call plug#begin('~/.vim/plugged')
 
   " Enable jump-to-definition in ruby
   Plug 'xmisao/rubyjump.vim'
+
+  " Vim sessions. This is paired with tmux for auto-restore of vim
+  Plug 'tpope/vim-obsession'
 " Initialize plugin system
 call plug#end()
 
