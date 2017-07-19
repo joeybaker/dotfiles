@@ -1,8 +1,8 @@
 {
   "dependencies": {
-    "concurrently": "^3.4.0",
+    "concurrently": "^3.5.0",
     "diff-so-fancy": "^1.0.0",
-    "eslint_d": "^4.2.5",
+    "eslint_d": "^4",
     "flow": "^0.2.3",
     "flow-typed": "^2.1.2",
     "ghcopy": "^0.3.0",
