@@ -226,18 +226,6 @@ vnoremap > >gv
 " map leader key
 let mapleader=","
 
-" Easier split navigations
-" https://robots.thoughtbot.com/vim-splits-move-faster-and-more-naturally#easier-split-navigations
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
-
-" better tab navigations via http://joshldavis.com/2014/04/05/vim-tab-madness-buffers-vs-tabs/
-" This allows buffers to be hidden if you've modified a buffer.
-" This is almost a must if you wish to use buffers in this way.
-" set hidden
-
 " To open a new empty buffer
 " This replaces :tabnew which I used to bind to this mapping
 nmap <leader>b :enew<cr>
