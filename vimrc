@@ -31,7 +31,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'flowtype/vim-flow'
 
   " file searching is good
-  Plug 'kien/ctrlp.vim'
+  Plug 'ctrlpvim/ctrlp.vim'
 
   " remember cursor position and such when opening a file
   Plug 'farmergreg/vim-lastplace'
