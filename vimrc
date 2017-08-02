@@ -746,6 +746,8 @@ let g:lexical#spell_key = '<leader>z'
 let g:gitgutter_enabled = 1
 let g:gitgutter_realtime = 200
 let g:gitgutter_eager = 200
+" default mappings start with `h` with messes with navigating buffers
+let g:gitgutter_map_keys = 0
 
 
 
