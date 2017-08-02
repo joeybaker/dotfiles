@@ -439,9 +439,8 @@ endif
 
 " Make Ctrl-P plugin a lot faster for Git projects
 " configures CtrlP to use git or silver searcher for autocompletion
-" NOTE: this means you'll need a .agignore file to exculde from search
+" NOTE: this means you'll need an `.ignore` file to exculde from search
 " http://sheerun.net/2014/03/21/how-to-boost-your-vim-productivity/
-let g:ctrlp_use_caching = 0
 if executable('ag')
  set grepprg=ag\ --nogroup\ --nocolor
  let g:ctrlp_user_command = 'ag %s --files-with-matches --follow --hidden --smart-case --silent --nocolor -g ""'
@@ -454,12 +453,15 @@ endif
 
 " ctrlp: sort file matches top to bottom
 let g:ctrlp_match_window = 'bottom,order:ttb'
-" ctrlp: always open in a new buffer
-let g:ctrlp_switch_buffer = 0
+" ctrlp: always open in a new buffer, but if a file is already open, open it
+" again in a new pane instead of switching to the existing pane
+let g:ctrlp_switch_buffer = 'et'
 " ctrlp: allows us to change the cwd during a session
 let g:ctrlp_working_path_mode = 0
 " allow finding dotfiles using CtrlP
 let g:ctrlp_show_hidden=1
+" follow symlinks, because why not?
+let g:ctrlp_follow_symlinks = 1
 " prevent CtrlP from caching directory listings, b/c silver searcher is fast
 let g:ctrlp_use_caching=0
 
@@ -472,8 +474,9 @@ let g:ctrlp_custom_ignore = {
 
 " Use the nearest .git directory as the cwd
 " This makes a lot of sense if you are working on a project that is in version
-" control. It also supports works with .svn, .hg, .bzr.
-let g:ctrlp_working_path_mode = 'r'
+" control. It also supports works with .svn, .hg, .bzr. Fallback to using the
+" cwd
+let g:ctrlp_working_path_mode = 'ra'
 
 " Use a leader instead of the actual named binding
 nmap <leader>p :CtrlP<cr>
