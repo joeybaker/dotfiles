@@ -40,6 +40,8 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
         brew cleanup
         # install for neovim
         gem install neovim
+        # install for deoplete in neovim
+        pip3 install neovim
         ```
 
 * install oceanic-next iTerm theme (the main theme is in the sync folder)
