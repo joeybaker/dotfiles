@@ -752,9 +752,19 @@ let g:gitgutter_eager = 200
 
 
 
+"
 " ale linting
+"
 let g:ale_sign_error = '▻'
 let g:ale_sign_warning = '▻'
+
+" ale can really slow things down in big files, so make it check less
+" frequently
+" can be "insert", "normal", or "always"
+" let g:ale_lint_on_text_changed = 'normal'
+" don't actually do that unless you have to, always is a better experience
+let g:ale_lint_on_text_changed = 'always'
+let g:ale_lint_delay = 100
 
 " use eslint_d instead of the local eslint for speed!
 let g:ale_javascript_eslint_executable = 'eslint_d'
