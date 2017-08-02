@@ -196,7 +196,14 @@ set autowrite
 set ttimeoutlen=10
 
 
-
+" persist undo past leaving a buffer
+" https://stackoverflow.com/questions/5969807/how-can-i-retain-vim-undo-history-but-disallow-hiding-modified-buffers
+if filewritable(&undodir) == 0 | call mkdir(&undodir, "p") | endif
+set undodir=~/.vim/undo
+set undofile
+" https://stackoverflow.com/questions/2732267/vim-loses-undo-history-when-changing-buffers
+set undolevels=1000
+set undoreload=10000
 
 
 
