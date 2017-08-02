@@ -45,9 +45,6 @@ call plug#begin('~/.vim/plugged')
   " Keybindings for commenting lines
   Plug 'scrooloose/nerdcommenter'
 
-  " yell at you if you don't commit
-  Plug 'esneider/YUNOcommit.vim'
-
   " autocompletion via neocomplete
   Plug 'Shougo/neocomplete.vim'
   " flow autocompletion
