@@ -28,7 +28,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'wincent/terminus'
 
   " Flow for js autocompletion
-  Plug 'flowtype/vim-flow'
+  Plug 'flowtype/vim-flow', { 'for': 'javascript' }
 
   " file searching is good
   Plug 'ctrlpvim/ctrlp.vim'
@@ -48,7 +48,7 @@ call plug#begin('~/.vim/plugged')
   " autocompletion via neocomplete
   Plug 'Shougo/neocomplete.vim'
   " flow autocompletion
-  Plug 'wokalski/autocomplete-flow'
+  Plug 'wokalski/autocomplete-flow', { 'for': 'javascript' }
   " For func argument completion
   Plug 'Shougo/neosnippet'
   Plug 'Shougo/neosnippet-snippets'
@@ -57,17 +57,19 @@ call plug#begin('~/.vim/plugged')
   Plug 'goldfeld/vim-seek'
 
   " Syntaxes
-  Plug 'jakar/vim-json'
-  Plug 'plasticboy/vim-markdown'
-  Plug 'toyamarinyon/vim-swift'
-  Plug 'mmalecki/vim-node.js'
-  Plug 'pangloss/vim-javascript'
-  Plug 'maxmellon/vim-jsx-pretty' "requires pangloss/vim-javascript or othree/yajs.vim
-  Plug 'avakhov/vim-yaml'
+  Plug 'jakar/vim-json', { 'for': 'json' }
+  Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+  Plug 'toyamarinyon/vim-swift', { 'for': 'swift' }
+  Plug 'mmalecki/vim-node.js', { 'for': 'javascript' }
+  Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+  Plug 'maxmellon/vim-jsx-pretty', { 'for': 'javascript' } "requires pangloss/vim-javascript or othree/yajs.vim
+  Plug 'avakhov/vim-yaml', { 'for': 'yaml' }
   Plug 'tpope/vim-git'
   Plug 'tmux-plugins/vim-tmux'
-  Plug 'tpope/vim-rails'
   Plug 'fleischie/vim-styled-components'
+  Plug 'tpope/vim-rails', { 'for': 'ruby' }
+  Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries', 'for': 'go' }
+  Plug 'hail2u/vim-css3-syntax', { 'for': [ 'javascript', 'css' ] } " reccomended by vim-styled-components
 
   " Spellcheck for certain file types
   Plug 'reedes/vim-lexical'
@@ -116,7 +118,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'jiangmiao/auto-pairs'
 
   " auto nice `gf` smarts for require calls
-  Plug 'moll/vim-node'
+  Plug 'moll/vim-node', { 'for': 'javascript' }
 
   " When using :Gblame from vim-fugitive, shows the commit message
   Plug 'tommcdo/vim-fugitive-blame-ext'
@@ -128,7 +130,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'christoomey/vim-tmux-navigator'
 
   " Enable jump-to-definition in ruby
-  Plug 'xmisao/rubyjump.vim'
+  Plug 'xmisao/rubyjump.vim', { 'for': 'ruby' }
 
   " Vim sessions. This is paired with tmux for auto-restore of vim
   Plug 'tpope/vim-obsession'
