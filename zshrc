@@ -205,3 +205,7 @@ fi
 ###-end-npm-completion-###
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# tabtab source for yarn package
+# uninstall by removing these lines or running `tabtab uninstall yarn`
+[[ -f /Users/joeybaker/server/dotfiles/config/yarn/global/node_modules/tabtab/.completions/yarn.zsh ]] && . /Users/joeybaker/server/dotfiles/config/yarn/global/node_modules/tabtab/.completions/yarn.zsh
