@@ -153,6 +153,7 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
     ```sh
     mas install 432764806 #the hit list
     mas install 1107421413 #1blocker
+    mas install 1121192229 #Better
     mas install 557168941 #tweetbot
     mas install 425424353 #The Unarchiver
     mas install 435410196 #stay
