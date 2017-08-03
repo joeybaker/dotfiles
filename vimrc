@@ -559,10 +559,10 @@ endif
 " Neocomplete/Deoplete
 "
 
+"Note: This option must be set in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
+" Disable AutoComplPop.
+let g:acp_enableAtStartup = 0
 if !has('nvim')
-  "Note: This option must be set in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
-  " Disable AutoComplPop.
-  let g:acp_enableAtStartup = 0
   " Use neocomplete.
   let g:neocomplete#enable_at_startup = 1
   " Use smartcase.
@@ -599,7 +599,21 @@ if !has('nvim')
   " https://github.com/c9s/perlomni.vim
   let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 else
+  " turn it on
   let g:deoplete#enable_at_startup = 1
+
+  " reduce the delay from the default of 50
+  let g:deoplete#auto_complete_delay = 10
+  " reduce from the default of 500
+  let g:deoplete#auto_refresh_delay = 200
+
+  " Define dictionary.
+  let g:deoplete#sources#dictionary#dictionaries = {
+      \ 'default' : '',
+      \ 'vimshell' : $HOME.'/.vimshell_hist',
+      \ 'scheme' : $HOME.'/.gosh_completions'
+          \ }
+
 endif
 
 " Recommended key-mappings.
