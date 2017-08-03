@@ -21,7 +21,7 @@
 	g = grep --break --heading --line-number
   pullforce = !git fetch --all && git reset --hard origin/$(git rev-parse --abbrev-ref HEAD)
   bclean = "!f() { git branch --merged ${1-master} | grep -v \"${1-master}\" | grep -v '*' | grep -v '^master$' | xargs -n 1 git branch -d; }; f"
-  pr = "!f() { current_branch=$(git rev-parse --abbrev-ref HEAD); [ $current_branch != 'master' ] && git push -u origin $current_branch $@ && hub pull-request -o || echo 'Can not deploy master!'; }; f"
+  pr = "!f() { current_branch=$(git rev-parse --abbrev-ref HEAD); [ $current_branch = 'master' ] && echo 'Cannot make a pull request to master!' || ( git push -u origin $current_branch $@ && hub pull-request -o ) ; }; f"
 
 [core]
   excludesfile = ~/.gitignore_global
