@@ -41,10 +41,13 @@ export NODE_ENV='development'
 # set the default user
 export DEFAULT_USER=joeybaker
 
+# This doesn't appear to work on macOS, just assump 256 color
 # 256 colors
-if [ -e /usr/share/terminfo/x/xterm-256color ]; then
-  export TERM='xterm-256color'
-else
-  export TERM='xterm-color'
-fi
-
+# if [ -e /usr/share/terminfo/x/xterm-256color ]; then
+#   export TERM='xterm-256color'
+# else
+#   export TERM='xterm-color'
+# fi
+#
+# nvim wants screen-256color: `nvim +CheckHealth`
+export TERM='screen-256color'
