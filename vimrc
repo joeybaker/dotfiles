@@ -53,6 +53,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'zchee/deoplete-go', { 'do': 'make'}
 
     " flow autocompletion
+    " Note: this is unmaintained, but does seem to work https://github.com/wokalski/autocomplete-flow/issues/5#issuecomment-320328020
     Plug 'wokalski/autocomplete-flow', { 'for': 'javascript' }
   else
     " neocomplete for vim, it's not as good as deoplete but vim is old
