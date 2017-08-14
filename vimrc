@@ -922,7 +922,7 @@ vmap <silent> <expr> p <sid>Repl()
 "
 
 " set to 256 colors
-if $TERM == "xterm-256color"
+if $TERM == "xterm-256color" || $TERM == "screen-256color"
   set t_Co=256
 endif
 " set color scheme
