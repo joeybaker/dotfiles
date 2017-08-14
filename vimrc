@@ -262,7 +262,26 @@ nmap <leader>h :bprevious!<CR>
 
 " Close the current buffer and move to the previous one
 " This replicates the idea of closing a tab
-nmap <leader>bq :bp <BAR> bd #<CR>
+function! BufferDelete()
+  if &modified
+    echohl ErrorMsg
+    echomsg "No write since last change. Not closing buffer."
+    echohl NONE
+  else
+    let s:total_nr_buffers = len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))
+
+    if s:total_nr_buffers == 1
+        silent! bdelete!
+        echo "Buffer deleted. Created new buffer."
+    else
+        silent! bprevious!
+        silent! bdelete!
+        echo "Buffer deleted."
+    endif
+  endif
+endfunction
+
+nmap <leader>q :call BufferDelete()<CR>
 
 " restrict commands to a filetype
 " https://stackoverflow.com/a/20105502
