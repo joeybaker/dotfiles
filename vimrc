@@ -565,6 +565,7 @@ if matchstr(local_flow, "^\/\\w") == ''
     let local_flow= getcwd() . "/" . local_flow
 endif
 if executable(local_flow)
+  " for vim-flow
   let g:flow#flowpath = local_flow
 endif
 
