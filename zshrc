@@ -31,8 +31,8 @@ bindkey "^I" expand-or-complete-with-dots
 # prefer the brew vim to the system vim
 # Actually, replace vim with nvim
 if [ -x /usr/local/bin/vim ]; then
-  alias vi='[ -f Session.vim ] && /usr/local/bin/nvim -S Session.vim || /usr/local/bin/nvim'
-  alias vim='[ -f Session.vim ] && /usr/local/bin/nvim -S Session.vim || /usr/local/bin/nvim'
+  alias vi='session_file=Session$(echo ${TMUX_PANE-} | sed "s/\%//").vim; [ -f $session_file ] && /usr/local/bin/nvim -S $session_file || /usr/local/bin/nvim'
+  alias vim=vi
   # alias vim='/usr/local/bin/vim'
   # alias vi='/usr/local/bin/vim'
 fi
