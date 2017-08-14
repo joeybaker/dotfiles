@@ -45,18 +45,20 @@ call plug#begin('~/.vim/plugged')
   " Keybindings for commenting lines
   Plug 'scrooloose/nerdcommenter'
 
-  " autocompletion via neocomplete
-  if !has('nvim')
-    Plug 'Shougo/neocomplete.vim'
-  else
+  " autocompletion
+  if has('nvim')
     " neocomplete isn't nvim compatible, use deoplete instead
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
     " go autocompletion
     Plug 'zchee/deoplete-go', { 'do': 'make'}
+
+    " flow autocompletion
+    Plug 'wokalski/autocomplete-flow', { 'for': 'javascript' }
+  else
+    " neocomplete for vim, it's not as good as deoplete but vim is old
+    Plug 'Shougo/neocomplete.vim'
   endif
-  " flow autocompletion
-  Plug 'wokalski/autocomplete-flow', { 'for': 'javascript' }
-  " For func argument completion
+  " For function argument completion
   Plug 'Shougo/neosnippet'
   Plug 'Shougo/neosnippet-snippets'
 
@@ -212,6 +214,9 @@ set undofile
 set undolevels=1000
 set undoreload=10000
 
+" don't show a preview window when doing autocompletion, it's silly an
+" unecessary https://github.com/Shougo/deoplete.nvim/issues/298
+set completeopt-=preview
 
 
 
