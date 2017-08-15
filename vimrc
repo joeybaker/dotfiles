@@ -144,6 +144,9 @@ call plug#begin('~/.vim/plugged')
 
   " Vim sessions. This is paired with tmux for auto-restore of vim
   Plug 'tpope/vim-obsession'
+
+  " :Reveal to show file in Finder
+  Plug 'henrik/vim-reveal-in-finder'
 " Initialize plugin system
 call plug#end()
 
