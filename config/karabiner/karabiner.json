@@ -961,7 +961,6 @@
                     }
                 ]
             },
-            "devices": [],
             "fn_function_keys": {
                 "f1": "rewind",
                 "f10": "mute",
