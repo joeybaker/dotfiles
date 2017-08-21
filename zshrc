@@ -88,7 +88,7 @@ alias gx="git checkout"
 alias gs='git stash'
 alias gsp='git stash pop'
 alias gsl='git stash list'
-alias gre='git rebase -i master'
+alias gre='git rebase -i origin/master'
 
 # tmux
 alias tmux-embed="unset TMUX && tmux"
