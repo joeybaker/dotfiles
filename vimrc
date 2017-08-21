@@ -927,6 +927,15 @@ let g:tmux_navigator_save_on_switch = 2
 
 
 
+" indent-guides
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_start_level = 5
+let g:indent_guides_guide_size = 1
+let g:indent_guide_color_change_percent = 5
+let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
+" use <leader>ig to toggle, this is the default
+let g:indent_guides_default_mapping = 0
+nmap <silent> <Leader>ig <Plug>IndentGuidesToggle
 
 
 
