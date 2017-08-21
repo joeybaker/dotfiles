@@ -9,7 +9,8 @@ endif
 " Specify a directory for plugins (for Neovim: ~/.local/share/nvim/plugged)
 call plug#begin('~/.vim/plugged')
 
-  " Think of sensible.vim as one step above 'nocompatible' mode: a universal set of defaults that (hopefully) everyone can agree on.
+  " Think of sensible.vim as one step above 'nocompatible' mode: a universal
+  " set of defaults that (hopefully) everyone can agree on.
   Plug 'tpope/vim-sensible'
 
   " EditorConfig
