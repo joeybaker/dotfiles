@@ -266,6 +266,9 @@ nmap <leader>l :bnext!<CR>
 " Move to the previous buffer
 nmap <leader>h :bprevious!<CR>
 
+" Close all buffers
+nmap <leader>bc :silent! bdelete! <c-a><CR><CR>
+
 " Close the current buffer and move to the previous one
 " This replicates the idea of closing a tab
 function! BufferDelete()
