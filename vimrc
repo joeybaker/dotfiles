@@ -77,7 +77,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'avakhov/vim-yaml', { 'for': 'yaml' }
   Plug 'tpope/vim-git'
   Plug 'tmux-plugins/vim-tmux'
-  Plug 'fleischie/vim-styled-components', { 'for': 'javascript' }
+  " disabled until https://github.com/fleischie/vim-styled-components/issues/23 gets fixed
+  " Plug 'fleischie/vim-styled-components', { 'for': 'javascript' }
   Plug 'tpope/vim-rails', { 'for': 'ruby' }
   Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries', 'for': 'go' }
   Plug 'hail2u/vim-css3-syntax', { 'for': [ 'javascript', 'css' ] } " reccomended by vim-styled-components
