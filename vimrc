@@ -162,6 +162,7 @@ call plug#end()
 " UI CONFIG
 "
 set number " Turn on Line nubmers
+set relativenumber " The current line will have the absolute number, but all other lines will be relative
 set cursorline " highlight the current line
 set lazyredraw " redraw only when we need to, should speed up macros and such
 set showmatch " Show parentheses matching
