@@ -664,13 +664,13 @@ function! s:my_cr_function()
 endfunction
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" <C-h>, <BS>: close popup and delete backword char.
+" <C-h>, <BS>: close popup and delete backword char. (for multiple-cursors)
 if has('nvim')
-  inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-  inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-else
   inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
   inoremap <expr><BS> deoplete#smart_close_popup()."\<C-h>"
+else
+  inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+  inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 endif
 " Close popup by <Space>.
 "inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
