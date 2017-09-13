@@ -300,6 +300,8 @@ nmap <leader>q :call BufferDelete()<CR>
 autocmd FileType javascript nmap <leader>j :FlowJumpToDef<CR>
 " use rubyjump.vim for jump to definition
 autocmd FileType ruby nmap <silent> <leader>j <Plug>(rubyjump_cursor)
+" use vim-go in go
+autocmd FileType go nmap <silent> <leader>j <Plug>(go-def)
 
 
 " Autofix entire buffer with eslint_d:
@@ -943,6 +945,19 @@ let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'qf']
 " use <leader>ig to toggle, this is the default
 let g:indent_guides_default_mapping = 0
 nmap <silent> <Leader>ig <Plug>IndentGuidesToggle
+
+
+
+
+
+" vim-go
+" https://github.com/fatih/vim-go-tutorial
+" auto-add the right import declartion on fmt
+let g:go_fmt_command = "goimports"
+" don't use the location list, it's harder to close and navigate
+let g:go_list_type = "quickfix"
+
+
 
 
 
