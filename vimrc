@@ -149,6 +149,9 @@ call plug#begin('~/.vim/plugged')
 
   " :Reveal to show file in Finder
   Plug 'henrik/vim-reveal-in-finder'
+
+  " easy moving from one line to multi
+  Plug 'AndrewRadev/splitjoin.vim'
 " Initialize plugin system
 call plug#end()
 
