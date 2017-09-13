@@ -30,12 +30,14 @@ bindkey "^I" expand-or-complete-with-dots
 # aliases
 # prefer the brew vim to the system vim
 # Actually, replace vim with nvim
-if [ -x /usr/local/bin/vim ]; then
-  alias vi='session_file=Session$(echo ${TMUX_PANE-}).vim; [ -f $session_file ] && /usr/local/bin/nvim -S $session_file || /usr/local/bin/nvim'
+if [ -x /usr/local/bin/nvim ]; then
+  alias vi='session_file=Session$(echo ${TMUX_PANE-} | sed "s/\%//").vim; [ -f $session_file ] && /usr/local/bin/nvim -S "$session_file" || /usr/local/bin/nvim'
   alias vim=vi
-  # alias vim='/usr/local/bin/vim'
-  # alias vi='/usr/local/bin/vim'
+elif [ -x /usr/local/bin/vim ]; then
+  alias vi='session_file=Session$(echo ${TMUX_PANE-} | sed "s/\%//").vim; [ -f $session_file ] && /usr/local/bin/vim -S "$session_file" || /usr/local/bin/vim'
+  alias vim=vi
 fi
+
 alias tolf="find . -type f -not -iname '*.png' -not -iname '*.jpg' -not -iname '*.jpeg' -not -iname '*.gif' -not -iname '*.tif' -not -iname '*.tiff' -not -iname '.git' -exec perl -pi -e 's/\r\n?/\n/g' {} \;"
 alias sshj='ssh joeybaker@byjoeybaker.com'
 
