@@ -822,7 +822,7 @@ let g:gitgutter_map_keys = 0
 " ale linting
 "
 let g:ale_sign_error = '▻'
-let g:ale_sign_warning = '▻'
+let g:ale_sign_warning = '•'
 
 " ale can really slow things down in big files, so make it check less
 " frequently
