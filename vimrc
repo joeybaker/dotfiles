@@ -602,9 +602,7 @@ endif
 " Neocomplete/Deoplete
 "
 
-"Note: This option must be set in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
-" Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
+" Enable deoplete when InsertEnter.
 if !has('nvim')
   " Use neocomplete.
   let g:neocomplete#enable_at_startup = 1
@@ -671,11 +669,32 @@ endfunction
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " <C-h>, <BS>: close popup and delete backword char. (for multiple-cursors)
 if has('nvim')
-  inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
-  inoremap <expr><BS> deoplete#smart_close_popup()."\<C-h>"
+  function! g:Multiple_cursors_before()
+    let g:deoplete#disable_auto_complete = 1
+    let b:deoplete_disable_auto_complete = 1
+  endfunction
+  function! g:Multiple_cursors_after()
+    let g:deoplete#disable_auto_complete = 0
+    let b:deoplete_disable_auto_complete = 0
+  endfunction
+  " inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
+  " inoremap <expr><BS> deoplete#smart_close_popup()."\<C-h>"
 else
-  inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-  inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+  " Called once right before you start selecting multiple cursors
+  function! Multiple_cursors_before()
+    if exists(':NeoCompleteLock')==2
+      exe 'NeoCompleteLock'
+    endif
+  endfunction
+
+  " Called once only when the multiple selection is canceled (default <Esc>)
+  function! Multiple_cursors_after()
+    if exists(':NeoCompleteUnlock')==2
+      exe 'NeoCompleteUnlock'
+    endif
+  endfunction
+  " inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+  " inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 endif
 " Close popup by <Space>.
 "inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
@@ -900,22 +919,6 @@ vmap <C-v> <Plug>(expand_region_shrink)
 
 
 " mutliple-cursors
-" prevent a conflict with neocomplete
-" https://github.com/terryma/vim-multiple-cursors#multiple_cursors_beforemultiple_cursors_after-default-nothing
-" Called once right before you start selecting multiple cursors
-function! Multiple_cursors_before()
-  if exists(':NeoCompleteLock')==2
-    exe 'NeoCompleteLock'
-  endif
-endfunction
-
-" Called once only when the multiple selection is canceled (default <Esc>)
-function! Multiple_cursors_after()
-  if exists(':NeoCompleteUnlock')==2
-    exe 'NeoCompleteUnlock'
-  endif
-endfunction
-
 " allow moving between normal/visual/insert mode with multiple cursors
 " https://github.com/terryma/vim-multiple-cursors#gmulti_cursor_exit_from_visual_mode-default-1
 let g:multi_cursor_exit_from_insert_mode = 0
