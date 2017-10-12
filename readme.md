@@ -27,7 +27,7 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
         # lua is for the neocomplete plugin vim plugin
         brew install vim --override-system-vi --with-python3 --with-lua
         brew tap ValeLint/vale
-        brew install reattach-to-user-namespace z the_silver_searcher ccat node tmux sshrc git zsh ack findutils bash shellcheck httpie jo mas autoenv coreutils cmake gpg rbenv yarn thefuck nvm neovim/neovim/neovim python3 python2 vale
+        brew install reattach-to-user-namespace z the_silver_searcher ccat node tmux sshrc git zsh ack findutils bash shellcheck httpie jo mas autoenv coreutils cmake gpg rbenv yarn thefuck nvm neovim/neovim/neovim python3 python2 vale fd
         brew install hub --devel # 2.3.0 has been blocked for a year. We want it for PR templates
         # b/c newer is better, and for diff-so-fancy
         brew install gnu-sed grep --with-default-names
