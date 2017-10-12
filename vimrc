@@ -152,6 +152,11 @@ call plug#begin('~/.vim/plugged')
 
   " easy moving from one line to multi
   Plug 'AndrewRadev/splitjoin.vim'
+
+  " you should probably just use `gx`, but if you need to open multiple urls,
+  " this is handy
+  Plug 'henrik/vim-open-url'
+
 " Initialize plugin system
 call plug#end()
 
