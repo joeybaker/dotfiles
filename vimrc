@@ -31,9 +31,6 @@ call plug#begin('~/.vim/plugged')
   " Flow for js autocompletion
   Plug 'flowtype/vim-flow', { 'for': 'javascript' }
 
-  " file searching is good
-  Plug 'ctrlpvim/ctrlp.vim'
-
   " remember cursor position and such when opening a file
   Plug 'farmergreg/vim-lastplace'
 
@@ -107,9 +104,6 @@ call plug#begin('~/.vim/plugged')
   " async linting, b/c it's 2017
   Plug 'w0rp/ale'
 
-  " ack + the silver searcher for fast in project find
-  Plug 'mileszs/ack.vim'
-
   " expand regions for easier selections
   Plug 'terryma/vim-expand-region'
 
@@ -156,6 +150,10 @@ call plug#begin('~/.vim/plugged')
   " you should probably just use `gx`, but if you need to open multiple urls,
   " this is handy
   Plug 'henrik/vim-open-url'
+
+  " fzf for fuzzy finding files. It's like ctrl-p but newer
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+  Plug 'junegunn/fzf.vim'
 
 " Initialize plugin system
 call plug#end()
@@ -498,53 +496,64 @@ endif
 
 
 
-" Make Ctrl-P plugin a lot faster for Git projects
-" configures CtrlP to use git or silver searcher for autocompletion
-" NOTE: this means you'll need an `.ignore` file to exculde from search
-" http://sheerun.net/2014/03/21/how-to-boost-your-vim-productivity/
-if executable('ag')
- set grepprg=ag\ --nogroup\ --nocolor
- let g:ctrlp_user_command = 'ag %s --files-with-matches --follow --hidden --smart-case --silent --nocolor -g ""'
-else
- let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
- let g:ctrlp_prompt_mappings = {
-     \ 'AcceptSelection("e")': ['<space>', '<cr>', '<2-LeftMouse>']
-     \ }
+
+
+
+
+" fzf
+" https://medium.com/@crashybang/supercharge-vim-with-fzf-and-ripgrep-d4661fc853d2
+" --column: Show column number
+" --line-number: Show line number
+" --no-heading: Do not show file headings in results
+" --fixed-strings: Search term as a literal string
+" --ignore-case: Case insensitive search
+" --no-ignore: Do not respect .gitignore, etc...
+" --hidden: Search hidden files and folders
+" --follow: Follow symlinks
+" --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
+" --color: Search color options
+command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!{.git/*,**/node_modules/*,yarn.lock,node_modules/*,vendor/*,dist/*,.cache/*}" --color "always" '.shellescape(<q-args>), 1, <bang>0)
+if executable('rg')
+  set grepprg=rg\ --vimgrep
 endif
 
-" ctrlp: sort file matches top to bottom
-let g:ctrlp_match_window = 'bottom,order:ttb'
-" ctrlp: always open in a new buffer, but if a file is already open, open it
-" again in a new pane instead of switching to the existing pane
-let g:ctrlp_switch_buffer = 'et'
-" ctrlp: allows us to change the cwd during a session
-let g:ctrlp_working_path_mode = 0
-" allow finding dotfiles using CtrlP
-let g:ctrlp_show_hidden=1
-" follow symlinks, because why not?
-let g:ctrlp_follow_symlinks = 1
-" prevent CtrlP from caching directory listings, b/c silver searcher is fast
-let g:ctrlp_use_caching=0
+" map this just like ctrl-p
+nmap <leader>p :Files<CR>
+nmap <c-p> :Files<CR>
 
-" via http://joshldavis.com/2014/04/05/vim-tab-madness-buffers-vs-tabs/
-" Setup some default ignores
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.(git|hg|svn)|\_site)$',
-  \ 'file': '\v\.(exe|so|dll|class|png|jpg|jpeg)$',
-\}
+" Add a custom :Find command to find in files
+" https://medium.com/@crashybang/supercharge-vim-with-fzf-and-ripgrep-d4661fc853d2
+" --column: Show column number
+" --line-number: Show line number
+" --no-heading: Do not show file headings in results
+" --fixed-strings: Search term as a literal string
+" --ignore-case: Case insensitive search
+" --no-ignore: Do not respect .gitignore, etc...
+" --hidden: Search hidden files and folders
+" --follow: Follow symlinks
+" --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
+" --color: Search color options
+command! -bang -nargs=* FindCustom call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!{.git/*,**/node_modules/*,yarn.lock,node_modules/*,vendor/*,dist/*,.cache/*}" --color "always" '.shellescape(<q-args>), 1, <bang>0)
+nmap <leader>a :FindCustom<CR>
 
-" Use the nearest .git directory as the cwd
-" This makes a lot of sense if you are working on a project that is in version
-" control. It also supports works with .svn, .hg, .bzr. Fallback to using the
-" cwd
-let g:ctrlp_working_path_mode = 'ra'
+" Customize fzf colors to match your color scheme
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
 
-" Use a leader instead of the actual named binding
-nmap <leader>p :CtrlP<cr>
 
-" if a package.json is found, use that as the root directory instead of trying
-" to find .git
-let g:ctrlp_root_markers = ['package.json']
+
 
 
 
@@ -888,16 +897,6 @@ let g:javascript_plugin_flow = 1
 
 
 
-" ack, use the_silver_searcher
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep --smart-case --silent --hidden --follow'
-endif
-" map to leader-a but don't jump to the first result
-" https://github.com/mileszs/ack.vim#i-dont-want-to-jump-to-the-first-result-automatically
-cnoreabbrev Ack Ack!
-nnoremap <Leader>a :Ack!<Space>
-
-
 
 
 
@@ -969,6 +968,8 @@ nmap <silent> <Leader>ig <Plug>IndentGuidesToggle
 let g:go_fmt_command = "goimports"
 " don't use the location list, it's harder to close and navigate
 let g:go_list_type = "quickfix"
+
+
 
 
 
