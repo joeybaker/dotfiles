@@ -152,6 +152,9 @@ call plug#begin('~/.vim/plugged')
   " this is handy
   Plug 'henrik/vim-open-url'
 
+  " see all the undo history, mapped to U below
+  Plug 'mbbill/undotree'
+
   " fzf for fuzzy finding files. It's like ctrl-p but newer
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
@@ -337,6 +340,9 @@ nmap <silent> <leader>d "_d
 vmap <silent> <leader>d "_d
 " Quick yanking to the end of the line
 nmap Y y$
+
+" undotree
+nnoremap U :UndotreeToggle<cr>
 
 
 
