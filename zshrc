@@ -78,6 +78,25 @@ alias couchstop='launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.couchdb.p
 alias couchstart='launchctl load ~/Library/LaunchAgents/homebrew.mxcl.couchdb.plist'
 alias guard='bundle exec guard'
 
+function upgrade_all_the_things () {
+  vim +PlugUpdate
+  yarn global upgrade-interactive
+  npm-check -gu
+  brew update && brew outdated
+  while true; do
+    read "cmd?Run a command (probably brew upgrade) [\"done\" to keep going]: "
+
+    case $cmd in
+     [done]* ) echo "Moving on…"
+             break;;
+     * )     eval $cmd;;
+    esac
+  done
+  mas outdated
+  mas upgrade
+  update_zprezto
+}
+
 # brew-cask
 alias brewcaskup='bash ~/sh/brew-cask-upgrade.sh'
 
