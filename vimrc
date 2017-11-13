@@ -179,6 +179,7 @@ set lazyredraw " redraw only when we need to, should speed up macros and such
 set showmatch " Show parentheses matching
 set updatetime=250 " as reccomended by gitgutter https://github.com/airblade/vim-gitgutter#getting-started
 set showcmd " shows the current command to the right below airline
+set hidden " don't warn when switching buffers is buffer is unsaved https://stackoverflow.com/questions/2414626/unsaved-buffer-warning-when-switching-files-buffers
 
 " link to system clipboard
 if has("unnamedplus")
