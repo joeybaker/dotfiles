@@ -521,12 +521,14 @@ endif
 " --color: Search color options
 command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!{.git/*,**/node_modules/*,yarn.lock,node_modules/*,vendor/*,dist/*,.cache/*}" --color "always" '.shellescape(<q-args>), 1, <bang>0)
 if executable('rg')
-  set grepprg=rg\ --vimgrep
+  set grepprg=rg\ --vimgrep\ --no-heading\ --ignore-case\ --hidden\ --follow\ --glob\ "!{.git/*,node_modules/*,yarn.lock,node_modules/*,vendor/*,dist/*,.cache/*}"
+  set grepformat=%f:%l:%c:%m,%f:%l:%m
 endif
+let g:fzf_command_prefix = 'Fzf'
 
 " map this just like ctrl-p
-nmap <leader>p :Files<CR>
-nmap <c-p> :Files<CR>
+nmap <leader>p :FzfFiles<CR>
+nmap <c-p> :FzfFiles<CR>
 
 " Add a custom :Find command to find in files
 " https://medium.com/@crashybang/supercharge-vim-with-fzf-and-ripgrep-d4661fc853d2
@@ -540,7 +542,7 @@ nmap <c-p> :Files<CR>
 " --follow: Follow symlinks
 " --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
 " --color: Search color options
-command! -bang -nargs=* FindCustom call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!{.git/*,**/node_modules/*,yarn.lock,node_modules/*,vendor/*,dist/*,.cache/*}" --color "always" '.shellescape(<q-args>), 1, <bang>0)
+command! -bang -nargs=* FindCustom call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!{.git/*,node_modules/*,yarn.lock,node_modules/*,vendor/*,dist/*,.cache/*}" --color "always" '.shellescape(<q-args>), 1, <bang>0)
 nmap <leader>a :FindCustom<CR>
 
 " Customize fzf colors to match your color scheme
