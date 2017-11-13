@@ -79,6 +79,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-rails', { 'for': 'ruby' }
   Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries', 'for': 'go' }
   Plug 'hail2u/vim-css3-syntax', { 'for': [ 'javascript', 'css' ] } " reccomended by vim-styled-components
+  Plug 'vim-scripts/nginx.vim', { 'for': 'nginx' }
 
   " Spellcheck for certain file types
   Plug 'reedes/vim-lexical'
@@ -409,6 +410,9 @@ autocmd Filetype gitcommit setlocal spell textwidth=72
 " save on focus lost, ignore buffers that have never been written
 " http://vim.wikia.com/wiki/Auto_save_files_when_focus_is_lost
 autocmd FocusLost * silent! wa
+
+" setup the custom nginx syntax
+au BufRead,BufNewFile */nginx/*.conf if &ft == '' | setfiletype nginx | endif
 
 
 
