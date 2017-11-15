@@ -297,7 +297,9 @@ function! BufferDelete()
         echo "Buffer deleted. Created new buffer."
     else
         silent! bdelete!
-        silent! bprevious!
+        " in vim, we need to go to the previous buffer. This doesn't appear to
+        " be necessary in nvim
+        " silent! bprevious!
         echo "Buffer deleted."
     endif
   endif
