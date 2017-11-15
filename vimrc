@@ -528,7 +528,7 @@ endif
 " --color: Search color options
 command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!{.git/*,**/node_modules/*,yarn.lock,node_modules/*,vendor/*,dist/*,.cache/*}" --color "always" '.shellescape(<q-args>), 1, <bang>0)
 if executable('rg')
-  set grepprg=rg\ --vimgrep\ --no-heading\ --ignore-case\ --hidden\ --follow\ --glob\ "!{.git/*,node_modules/*,yarn.lock,node_modules/*,vendor/*,dist/*,.cache/*}"
+  set grepprg=rg\ --vimgrep\ --no-heading\ --ignore-case\ --hidden\ --follow\ --glob\ "!{.git/*,node_modules/*,node_modules/*,vendor/*,dist/*,.cache/*,tmp/*,Session*.vim,flow-typed/*,*.lock}"
   set grepformat=%f:%l:%c:%m,%f:%l:%m
 endif
 let g:fzf_command_prefix = 'Fzf'
