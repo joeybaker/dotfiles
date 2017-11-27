@@ -57,7 +57,7 @@ export TERM='screen-256color'
 # --hidden: Search hidden files and folders
 # --follow: Follow symlinks
 # --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
-export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!**/{.git,node_modules,vendor,dist,.cache,__snapshots__,coverage}/*"'
+export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!**/{.git,node_modules,vendor,dist,.cache,__snapshots__,coverage,tmp}/*" --glob "!*.lock"'
 
 if [ -f "$HOME/.config/.env" ]; then
   source "$HOME/.config/.env"
