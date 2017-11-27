@@ -76,6 +76,10 @@ call plug#begin('~/.vim/plugged')
   Plug 'tmux-plugins/vim-tmux'
   " disabled until https://github.com/fleischie/vim-styled-components/issues/23 gets fixed
   " Plug 'fleischie/vim-styled-components', { 'for': 'javascript' }
+  " This branch fixes the above issue, but something is conflicting with this
+  " and vim-javascript to cause all syntax highlighting to be randomly
+  " disabled
+  " Plug 'styled-components/vim-styled-components', { 'branch': 'rewrite', 'for': 'javascript' }
   Plug 'tpope/vim-rails', { 'for': 'ruby' }
   Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries', 'for': 'go' }
   Plug 'hail2u/vim-css3-syntax', { 'for': [ 'javascript', 'css' ] } " reccomended by vim-styled-components
