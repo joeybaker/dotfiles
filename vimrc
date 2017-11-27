@@ -520,6 +520,7 @@ let g:fzf_command_prefix = 'Fzf'
 " map this just like ctrl-p
 nmap <leader>p :FzfFiles<CR>
 nmap <c-p> :FzfFiles<CR>
+nmap ; :FzfBuffers<CR>
 
 " Add a custom :Find command to find in files
 " https://medium.com/@crashybang/supercharge-vim-with-fzf-and-ripgrep-d4661fc853d2
