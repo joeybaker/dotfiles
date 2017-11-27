@@ -987,6 +987,15 @@ let g:go_list_type = "quickfix"
 
 
 
+"
+" loupe
+"
+" This is a good idea, but it messes with any typing of `/` in the command
+" line, and requires removal before searching for `<<<` which is common when
+" resolving git conflicts
+let g:LoupeVeryMagic = 0
+
+
 
 
 
