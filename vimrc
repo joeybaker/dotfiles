@@ -112,7 +112,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-surround'
 
   " search and replace across project
-  " Plug 'brooth/far.vim'
   Plug 'skwp/greplace.vim'
 
   " being able to `:Gblame` is nice
@@ -516,21 +515,6 @@ endif
 
 " fzf
 " https://medium.com/@crashybang/supercharge-vim-with-fzf-and-ripgrep-d4661fc853d2
-" --column: Show column number
-" --line-number: Show line number
-" --no-heading: Do not show file headings in results
-" --fixed-strings: Search term as a literal string
-" --ignore-case: Case insensitive search
-" --no-ignore: Do not respect .gitignore, etc...
-" --hidden: Search hidden files and folders
-" --follow: Follow symlinks
-" --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
-" --color: Search color options
-command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!{.git/*,**/node_modules/*,yarn.lock,node_modules/*,vendor/*,dist/*,.cache/*}" --color "always" '.shellescape(<q-args>), 1, <bang>0)
-if executable('rg')
-  set grepprg=rg\ --vimgrep\ --no-heading\ --ignore-case\ --hidden\ --follow\ --glob\ "!{.git/*,node_modules/*,node_modules/*,vendor/*,dist/*,.cache/*,tmp/*,Session*.vim,flow-typed/*,*.lock}"
-  set grepformat=%f:%l:%c:%m,%f:%l:%m
-endif
 let g:fzf_command_prefix = 'Fzf'
 
 " map this just like ctrl-p
@@ -549,7 +533,7 @@ nmap <c-p> :FzfFiles<CR>
 " --follow: Follow symlinks
 " --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
 " --color: Search color options
-command! -bang -nargs=* FindCustom call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!{.git/*,node_modules/*,yarn.lock,node_modules/*,vendor/*,dist/*,.cache/*}" --color "always" '.shellescape(<q-args>), 1, <bang>0)
+command! -bang -nargs=* FindCustom call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!**/{.git,node_modules,vendor,dist,.cache,__snapshots__,coverage,tmp}/*" --glob "!*.lock" --color "always" '.shellescape(<q-args>), 1, <bang>0)
 nmap <leader>a :FindCustom<CR>
 
 " Customize fzf colors to match your color scheme
@@ -567,8 +551,13 @@ let g:fzf_colors =
   \ 'marker':  ['fg', 'Keyword'],
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
+let g:fzf_history_dir = '~/.vim/fzf'
 
 
+if executable('rg')
+  set grepprg=rg\ --vimgrep\ --no-heading\ --ignore-case\ --hidden\ --follow\ --glob\ '!**/{.git,node_modules,vendor,dist,.cache,__snapshots__,coverage,tmp}/*'\ --glob\ '!*.lock'\
+  set grepformat=%f:%l:%c:%m
+endif
 
 
 
@@ -916,14 +905,11 @@ let g:javascript_plugin_flow = 1
 
 
 
+"
+" Greplace
+"
 
-" far, set a similar leader as ack b/c they do similar things
-" disable far and use greplace, far is too buggy
-" nnoremap <Leader>A :Far<space>
 nnoremap <Leader>A :Gsearch<space>
-" use ag for searching
-set grepprg=ag
-let g:grep_cmd_opts = '--line-numbers --noheading'
 
 
 
