@@ -612,6 +612,13 @@ if executable(local_flow)
 endif
 
 
+"
+" autocomplete-flow
+"
+
+" this is a good idea, but it's really annoying
+let g:autocomplete_flow#insert_paren_after_function = 0
+
 
 
 
