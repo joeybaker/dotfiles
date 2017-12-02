@@ -168,6 +168,9 @@ call plug#begin('~/.vim/plugged')
   " better handling of ruby which doesn't use curlies
   Plug 'vim-ruby/vim-ruby'
 
+  " for a distraction free wirting experience
+  Plug 'junegunn/goyo.vim'
+
 " Initialize plugin system
 call plug#end()
 
@@ -779,75 +782,74 @@ let g:SeekBackKey = 'T'
 
 
 
+" goyo
+let g:goyo_height=100
 
+function! s:goyo_enter()
+  " silent !tmux set status off
+  " silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
+  " set noshowmode
+  " set noshowcmd
+  " set scrolloff=999
 
-" pencil and lexical
-function! Prose()
   " use hard wrapping to keep everything on the screen. markdown is smart
   " enough to still format correctly
   " but… it fucks with other things. Turning this off for now
   " call pencil#init({'wrap': 'hard"})
   call pencil#init()
-  " lexical is a good idea, but it slows down neocomplete to a crawl
-  " call lexical#init()
-  " call litecorrect#init()
-  " call textobj#quote#init()
-  " call textobj#sentence#init()
 
-  " manual reformatting shortcuts
-  nnoremap <buffer> <silent> Q gqap
-  xnoremap <buffer> <silent> Q gq
-  nnoremap <buffer> <silent> <leader>Q vapJgqap
-
-  " force top correction on most recent misspelling
-  nnoremap <buffer> <c-z> [s1z=<c-o>
-  inoremap <buffer> <c-z> <c-g>u<Esc>[s1z=`]A<c-g>u
-
-  " replace common punctuation
-  iabbrev <buffer> -- –
-  iabbrev <buffer> --- —
-  iabbrev <buffer> << «
-  iabbrev <buffer> >> »
-
-  " open most folds
-  setlocal foldlevel=20
   " disable numbers.vim. It doesn't play nicely and causes numbers to
   " appear/disappear when toggling modes
   call NumbersDisable()
 
-  " replace typographical quotes (reedes/vim-textobj-quote)
-  " map <silent> <buffer> <leader>qc <Plug>ReplaceWithCurly
-  " map <silent> <buffer> <leader>qs <Plug>ReplaceWithStraight
-
-  " highlight words (reedes/vim-wordy)
-  " noremap <silent> <buffer> <F8> :<C-u>NextWordy<cr>
-  " xnoremap <silent> <buffer> <F8> :<C-u>NextWordy<cr>
-  " inoremap <silent> <buffer> <F8> <C-o>:NextWordy<cr>
 
   " enable spell checking. Disable languages that I don't use for perf
   setl spell spl=en_us fdl=4 noru nonu nornu
-  " open folds on search http://vimdoc.sourceforge.net/htmldoc/options.html#'foldopen'
-  setl fdo+=search
+  " an alternative spell command from https://statico.github.io/vim3.html
+  " set spell noci nosi noai nolist noshowmode noshowcmd
 
-  let set_theme=$USE_WRITING_THEME
-  if set_theme == '1'
-    let g:airline#extensions#tmuxline#enabled = 0
-    call airline#switch_theme('silver')
-    set background=light
-  endif
+  set background=light
 endfunction
+
+function! s:goyo_leave()
+  " silent !tmux set status on
+  " silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
+  " set showmode
+  " set showcmd
+  " set scrolloff=5
+
+  " turn off pencil
+  call pencil#init({'wrap': 'off'})
+
+  " enable relative line numbers
+  call NumbersEnable()
+
+  setl nospell
+
+  set background=dark
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
+
+nmap <leader>w :Goyo<CR>
+
+
+
+
+
+
+
+" pencil and lexical
 
 augroup pencil
   autocmd!
-  autocmd FileType markdown,mkd,md call Prose()
-  autocmd FileType text,txt     call Prose()
+  " autocmd FileType markdown,mkd,md call Prose()
+  " autocmd FileType text,txt     call Prose()
                         " \ | call lexical#init()
   autocmd Filetype git,gitsendemail,*commit*,*COMMIT*
                             \   call pencil#init({'wrap': 'hard', 'textwidth': 72})
 augroup END
-
-" invoke manually by command for other file types
-command! -nargs=0 Prose call Prose()
 
 " the default is hard
 let g:pencil#wrapModeDefault = 'soft'
