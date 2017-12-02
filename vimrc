@@ -325,6 +325,11 @@ autocmd FileType ruby nmap <silent> <leader>j <Plug>(rubyjump_cursor)
 " use vim-go in go
 autocmd FileType go nmap <silent> <leader>j <Plug>(go-def)
 
+" get type under cursor
+autocmd FileType javascript nmap <leader>t :FlowType<CR>
+" get type under cursor
+autocmd FileType go nmap <leader>t <Plug>(go-info)
+
 
 " Autofix entire buffer with eslint_d:
 " https://www.npmjs.com/package/eslint_d#automatic-fixing
