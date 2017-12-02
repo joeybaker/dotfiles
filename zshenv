@@ -59,7 +59,10 @@ export TERM='screen-256color'
 # --hidden: Search hidden files and folders
 # --follow: Follow symlinks
 # --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
-export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!**/{.git,node_modules,vendor,dist,.cache,__snapshots__,coverage,tmp}/*" --glob "!*.lock"'
+export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!**/{.git,vendor,dist,.cache,__snapshots__,coverage,tmp}/*" --glob "!*.lock"'
+# I'm not sure this is necessary, but several docs say it is? https://statico.github.io/vim3.html
+# vim seems to break when I enable it.
+# export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 if [ -f "$HOME/.config/.env" ]; then
   source "$HOME/.config/.env"
