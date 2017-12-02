@@ -165,6 +165,9 @@ call plug#begin('~/.vim/plugged')
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
 
+  " better handling of ruby which doesn't use curlies
+  Plug 'vim-ruby/vim-ruby'
+
 " Initialize plugin system
 call plug#end()
 
