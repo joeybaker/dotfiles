@@ -114,6 +114,8 @@ call plug#begin('~/.vim/plugged')
 
   " surround allows using `s` to direct quotes etc
   Plug 'tpope/vim-surround'
+  " makes surround commands repeatable with .
+  Plug 'tpope/vim-repeat'
 
   " search and replace across project
   Plug 'skwp/greplace.vim'
