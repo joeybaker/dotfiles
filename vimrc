@@ -548,8 +548,11 @@ nmap ; :FzfBuffers<CR>
 " --follow: Follow symlinks
 " --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
 " --color: Search color options
-command! -bang -nargs=* FindCustom call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!**/{.git,node_modules,vendor,dist,.cache,__snapshots__,coverage,tmp}/*" --glob "!*.lock" --color "always" '.shellescape(<q-args>), 1, <bang>0)
-nmap <leader>a :FindCustom<CR>
+" command! -bang -nargs=* FindCustom call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!**/{.git,node_modules,vendor,dist,.cache,__snapshots__,coverage,tmp}/*" --glob "!*.lock" --color "always" '.shellescape(<q-args>), 1, <bang>0)
+" turns out, the above command is wayyy slower to index than using the builtin
+" Ag commandkkk
+" nmap <leader>a :FindCustom<CR>
+nmap <leader>a :FzfAg<CR>
 
 " Customize fzf colors to match your color scheme
 let g:fzf_colors =
@@ -570,7 +573,8 @@ let g:fzf_history_dir = '~/.vim/fzf'
 
 
 if executable('rg')
-  set grepprg=rg\ --vimgrep\ --no-heading\ --ignore-case\ --hidden\ --follow\ --glob\ '!**/{.git,node_modules,vendor,dist,.cache,__snapshots__,coverage,tmp}/*'\ --glob\ '!*.lock'\
+  set grepprg=rg\ --vimgrep
+        "\ --no-heading\ --ignore-case\ --hidden\ --follow\ --glob\ '!**/{.git,node_modules,vendor,dist,.cache,__snapshots__,coverage,tmp}/*'\ --glob\ '!*.lock'\
   set grepformat=%f:%l:%c:%m
 endif
 
