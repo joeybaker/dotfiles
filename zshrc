@@ -235,6 +235,11 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 [[ -f /Users/joeybaker/server/dotfiles/config/yarn/global/node_modules/tabtab/.completions/yarn.zsh ]] && . /Users/joeybaker/server/dotfiles/config/yarn/global/node_modules/tabtab/.completions/yarn.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# fzf via Homebrew
+if [ -e /usr/local/bin/fzf/shell/completion.zsh ]; then
+  source /usr/local/bin/fzf/shell/key-bindings.zsh
+  source /usr/local/bin/fzf/shell/completion.zsh
+fi
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
