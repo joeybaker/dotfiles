@@ -19,7 +19,9 @@ export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 # export HOMEBREW_TEMP=~/.homebrew_temp
 # disable homebrew analytics b/c privacy
 export HOMEBREW_NO_ANALYTICS=1
-export NODE_PATH=/usr/local/lib/node_modules
+# disable this, nvm should set it?
+# export NODE_PATH=/usr/local/lib/node_modules
+export NODE_PATH=$NVM_BIN/../lib/node_modules/
 # don't put duplicate lines in the history. See bash(1) for more options
 # don't overwrite GNU Midnight Commander's setting of `ignorespace'.
 export HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}ignoredups
