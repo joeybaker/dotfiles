@@ -796,6 +796,7 @@ let g:SeekBackKey = 'T'
 
 " goyo
 let g:goyo_height=100
+let g:goyo_linenr = 1
 
 function! s:goyo_enter()
   " silent !tmux set status off
@@ -849,9 +850,8 @@ nmap <leader>w :Goyo<CR>
 
 augroup pencil
   autocmd!
-  " autocmd FileType markdown,mkd,md call Prose()
-  " autocmd FileType text,txt     call Prose()
-                        " \ | call lexical#init()
+  autocmd FileType markdown,mkd,md call s:goyo_enter()
+  autocmd FileType text,txt     call s:goyo_enter()
   autocmd Filetype git,gitsendemail,*commit*,*COMMIT*
                             \   call pencil#init({'wrap': 'hard', 'textwidth': 72})
 augroup END
