@@ -168,6 +168,9 @@ call plug#begin('~/.vim/plugged')
   " for a distraction free wirting experience
   Plug 'junegunn/goyo.vim'
 
+  " easy motion is kinda nice
+  Plug 'easymotion/vim-easymotion'
+
 " Initialize plugin system
 call plug#end()
 
