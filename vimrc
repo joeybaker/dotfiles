@@ -174,6 +174,10 @@ call plug#begin('~/.vim/plugged')
   " automatic indenting is good
   Plug 'tpope/vim-sleuth'
 
+  " automatic ending keyword insertation for ruby, vimscript, C, and a few
+  " others
+  Plug 'tpope/vim-endwise'
+
 " Initialize plugin system
 call plug#end()
 
