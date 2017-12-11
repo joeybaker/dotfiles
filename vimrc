@@ -178,6 +178,9 @@ call plug#begin('~/.vim/plugged')
   " others
   Plug 'tpope/vim-endwise'
 
+  " auto close xml/html style tags on </
+  Plug 'docunext/closetag.vim'
+
 " Initialize plugin system
 call plug#end()
 
