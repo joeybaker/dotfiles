@@ -875,6 +875,18 @@ let g:lexical#spell_key = '<leader>z'
 
 
 
+" vim-markdown
+let g:vim_markdown_folding_level = 5
+
+
+
+
+
+
+
+
+
+
 
 
 
