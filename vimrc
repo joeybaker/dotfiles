@@ -100,9 +100,6 @@ call plug#begin('~/.vim/plugged')
   " show git diff in the gutter
   Plug 'airblade/vim-gitgutter'
 
-  " relative line numbers
-  Plug 'myusuf3/numbers.vim'
-
   " Indent Guides is a plugin for visually displaying indent levels in Vim.
   Plug 'nathanaelkane/vim-indent-guides'
 
@@ -798,10 +795,6 @@ function! s:goyo_enter()
   " call pencil#init({'wrap': 'hard"})
   call pencil#init()
 
-  " disable numbers.vim. It doesn't play nicely and causes numbers to
-  " appear/disappear when toggling modes
-  call NumbersDisable()
-
 
   " enable spell checking. Disable languages that I don't use for perf
   setl spell spl=en_us fdl=4 noru nonu nornu
@@ -819,10 +812,7 @@ function! s:goyo_leave()
   " set scrolloff=5
 
   " turn off pencil
-  call pencil#init({'wrap': 'off'})
-
-  " enable relative line numbers
-  call NumbersEnable()
+  " call pencil#init({'wrap': 'off'})
 
   setl nospell
 
