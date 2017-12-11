@@ -333,6 +333,7 @@ nmap <leader>q :call BufferDelete()<CR>
 
 " use flow for jump to definition
 autocmd FileType javascript nmap <leader>j :FlowJumpToDef<CR>
+autocmd FileType javascript.jsx nmap <leader>j :FlowJumpToDef<CR>
 " use rubyjump.vim for jump to definition
 autocmd FileType ruby nmap <silent> <leader>j <Plug>(rubyjump_cursor)
 " use vim-go in go
@@ -340,6 +341,7 @@ autocmd FileType go nmap <silent> <leader>j <Plug>(go-def)
 
 " get type under cursor
 autocmd FileType javascript nmap <leader>t :FlowType<CR>
+autocmd FileType javascript.jsx nmap <leader>t :FlowType<CR>
 " get type under cursor
 autocmd FileType go nmap <leader>t <Plug>(go-info)
 
