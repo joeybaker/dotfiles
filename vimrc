@@ -171,6 +171,9 @@ call plug#begin('~/.vim/plugged')
   " easy motion is kinda nice
   Plug 'easymotion/vim-easymotion'
 
+  " automatic indenting is good
+  Plug 'tpope/vim-sleuth'
+
 " Initialize plugin system
 call plug#end()
 
