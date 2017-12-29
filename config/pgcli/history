@@ -1,0 +1,9 @@
+
+# 2017-12-29 08:31:12.744796
++select * from phone_calls where call_id = 1
+
+# 2017-12-29 08:31:34.470254
++select * from phone_calls where call_id=1;
+
+# 2017-12-29 08:31:44.351415
++select * from phone_calls where id=1;
