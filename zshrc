@@ -85,6 +85,7 @@ alias guard='bundle exec guard'
 
 function upgrade_all_the_things () {
   vim +PlugUpdate
+  cd $(yarn global dir)
   yarn global upgrade-interactive
   npm-check -gu
   brew update && brew outdated
