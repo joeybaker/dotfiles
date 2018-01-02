@@ -4051,7 +4051,20 @@ node-status-codes@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/node-status-codes/-/node-status-codes-1.0.0.tgz#5ae5541d024645d32a58fcddc9ceecea7ae3ac2f"
 
-nodemon@^1.12.0, nodemon@^1.4.1:
+nodemon@^1.12.0:
+  version "1.14.7"
+  resolved "https://registry.npmjs.org/nodemon/-/nodemon-1.14.7.tgz#ef544baa64603155c2ee6dcfba9204a2cd46d355"
+  dependencies:
+    chokidar "^1.7.0"
+    debug "^2.6.8"
+    ignore-by-default "^1.0.1"
+    minimatch "^3.0.4"
+    pstree.remy "^1.1.0"
+    touch "^3.1.0"
+    undefsafe "0.0.3"
+    update-notifier "^2.3.0"
+
+nodemon@^1.4.1:
   version "1.14.5"
   resolved "https://registry.npmjs.org/nodemon/-/nodemon-1.14.5.tgz#0fc1ad9f325f7923d71c3f0ab0da1c6ba46822e5"
   dependencies:
