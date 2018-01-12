@@ -181,6 +181,9 @@ call plug#begin('~/.vim/plugged')
   " auto close xml/html style tags on </
   Plug 'docunext/closetag.vim'
 
+  " easy case conversion
+  Plug 'tpope/vim-abolish'
+
 " Initialize plugin system
 call plug#end()
 
