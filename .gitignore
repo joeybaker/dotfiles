@@ -7,3 +7,4 @@ config/configstore/update-notifier-*
 config/configstore/*-usage.json
 config/heroku
 config/.env
+config/pgcli/log
