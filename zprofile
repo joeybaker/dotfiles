@@ -47,7 +47,6 @@ path=(
   ## add local node_modules so things work like the do in npm https://twitter.com/RReverser/status/720749239224123393
   ./node_modules/.bin
   ## for yarn
-  $HOME/node_modules/.bin
   $HOME/.config/yarn/global/node_modules/.bin
   $HOME/.yarn/bin
   ## for brew's version of PHP
