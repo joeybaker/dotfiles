@@ -205,7 +205,7 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
 * d/l and start http://privateinternetaccess.com
 
 * [hosts file](http://someonewhocares.org/hosts/hosts)
-    * `sudo rm /etc/hosts && sudo cp ~/Sync/dotfiles/hosts /etc/hosts && sudo chmod 644 /etc/hosts && dscacheutil -flushcache`
+    * `sudo curl -sS http://someonewhocares.org/hosts/hosts -o /etc/hosts && dscacheutil -flushcache`
 * [sidestep](http://chetansurpur.com/projects/sidestep/)
     * [enable localhost](https://github.com/chetan51/sidestep/issues/32#issuecomment-16606585)
     * Network -> select device -> Advanced -> Proxies -> Bypass proxy settings: add "localhost"
