@@ -929,6 +929,8 @@ let g:ale_javascript_eslint_use_global = 1
 let g:ale_fixers = {}
 let g:ale_fixers.javascript = [
 \ 'eslint',
+\ 'prettier',
+\ 'standard',
 \]
 let g:ale_ruby_rubocop_options = '--rails'
 let g:ale_fixers.ruby = [
