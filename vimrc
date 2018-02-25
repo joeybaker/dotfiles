@@ -554,22 +554,6 @@ nmap <leader>p :FzfFiles<CR>
 nmap <c-p> :FzfFiles<CR>
 nmap ; :FzfBuffers<CR>
 
-" Add a custom :Find command to find in files
-" https://medium.com/@crashybang/supercharge-vim-with-fzf-and-ripgrep-d4661fc853d2
-" --column: Show column number
-" --line-number: Show line number
-" --no-heading: Do not show file headings in results
-" --fixed-strings: Search term as a literal string
-" --ignore-case: Case insensitive search
-" --no-ignore: Do not respect .gitignore, etc...
-" --hidden: Search hidden files and folders
-" --follow: Follow symlinks
-" --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
-" --color: Search color options
-" command! -bang -nargs=* FindCustom call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!**/{.git,node_modules,vendor,dist,.cache,__snapshots__,coverage,tmp}/*" --glob "!*.lock" --color "always" '.shellescape(<q-args>), 1, <bang>0)
-" turns out, the above command is wayyy slower to index than using the builtin
-" Ag commandkkk
-" nmap <leader>a :FindCustom<CR>
 nmap <leader>a :FzfAg<CR>
 
 " Customize fzf colors to match your color scheme
@@ -959,7 +943,16 @@ let g:javascript_plugin_flow = 1
 " Greplace
 "
 
-nnoremap <Leader>A :Gsearch<space>
+function! GlobalSearchReplace()
+  call inputsave()
+  let replacement = input('Search: ')
+  call inputrestore()
+  execute 'grep '.replacement
+  execute 'Gqfopen'
+endfunction
+" enter once to call the function, again to accept the results of grep and go
+" to the fix window
+nnoremap <Leader>A :call GlobalSearchReplace()<cr><cr>
 
 
 
