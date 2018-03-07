@@ -93,7 +93,10 @@ call plug#begin('~/.vim/plugged')
   Plug 'reedes/vim-pencil'
 
   " Multiple Cursors
-  Plug 'terryma/vim-multiple-cursors'
+  " disabled: it does not play with with InsertLeave autocommands
+  " disabled: it doesn't work with autocomplete
+  " https://medium.com/@schtoeffel/you-don-t-need-more-than-one-cursor-in-vim-2c44117d51db
+  " Plug 'terryma/vim-multiple-cursors'
 
   " Better in-file searching
   Plug 'wincent/loupe'
@@ -247,8 +250,8 @@ set autowrite
 " Instead, use a more manual approach only when entering insert mode, which is
 " when it's useful to have filename auto completion be relative.
 " via https://superuser.com/questions/604122/vim-file-name-completion-relative-to-current-file
-:autocmd InsertEnter * let project_cwd = getcwd() | set autochdir
-:autocmd InsertLeave * set noautochdir | execute 'cd' fnameescape(project_cwd)
+autocmd InsertEnter * let project_cwd = getcwd() | set autochdir
+autocmd InsertLeave * set noautochdir | execute 'cd' fnameescape(project_cwd)
 
 " remove delay when leaving insert mode by airline
 " https://github.com/vim-airline/vim-airline/wiki/FAQ#there-is-a-pause-when-leaving-insert-mode
