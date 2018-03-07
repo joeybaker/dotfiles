@@ -236,12 +236,18 @@ set autowrite
 
 " set the current directory to the buffer's directory. This makes it easy to
 " create new files relative to the current file
-" disabled because it messes with ack
+" don't use autochdir or it's older version because it messes with project
+" search (FZF)
 " if exists('+autochdir')
 "   set autochdir
 " else
-"   autocmd BufEnter * silent! lcd %:p:h:gs/ /\\ /
+"   autocmd BufEnter * silent! lcd %:p:h
 " endif
+" Instead, use a more manual approach only when entering insert mode, which is
+" when it's useful to have filename auto completion be relative.
+" via https://superuser.com/questions/604122/vim-file-name-completion-relative-to-current-file
+:autocmd InsertEnter * let project_cwd = getcwd() | set autochdir
+:autocmd InsertLeave * set noautochdir | execute 'cd' fnameescape(project_cwd)
 
 " remove delay when leaving insert mode by airline
 " https://github.com/vim-airline/vim-airline/wiki/FAQ#there-is-a-pause-when-leaving-insert-mode
@@ -572,6 +578,9 @@ let g:fzf_colors =
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
 let g:fzf_history_dir = '~/.vim/fzf'
+
+" show a history of visited files. Useful to undo a closed buffer.
+nmap <leader>b :FzfHistory<CR>
 
 
 if executable('rg')
@@ -1023,6 +1032,10 @@ let g:go_list_type = "quickfix"
 " line, and requires removal before searching for `<<<` which is common when
 " resolving git conflicts
 let g:LoupeVeryMagic = 0
+
+
+
+
 
 
 
