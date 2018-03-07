@@ -61,7 +61,7 @@ git pull --rebase --prune | \
   git bclean && \
   sleep 0.1 && \
   test $(git --no-pager log --oneline -n1 origin/$(git rev-parse --abbrev-ref HEAD)..HEAD | cut -d" " -f1) && \
-  git push && \
+  git push $* && \
   git push --tags --no-verify
 }
 alias gitb='git branch'
