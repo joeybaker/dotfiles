@@ -268,6 +268,10 @@ set undoreload=10000
 set completeopt-=preview
 
 
+" make `gf` work a little better in JavaScript files
+" https://gist.github.com/latentflip/57bf8f9edde531ee979e
+set suffixesadd+=.js
+set path+=$PWD/node_modules
 
 
 
