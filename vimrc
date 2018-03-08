@@ -74,6 +74,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'avakhov/vim-yaml', { 'for': 'yaml' }
   Plug 'tpope/vim-git'
   Plug 'tmux-plugins/vim-tmux'
+  Plug 'jparise/vim-graphql'
   " disabled until https://github.com/fleischie/vim-styled-components/issues/23 gets fixed
   " Plug 'fleischie/vim-styled-components', { 'for': 'javascript' }
   " This branch fixes the above issue, but something is conflicting with this
