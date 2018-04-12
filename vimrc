@@ -188,6 +188,8 @@ call plug#begin('~/.vim/plugged')
   " easy case conversion
   Plug 'tpope/vim-abolish'
 
+  " Use vim to query databases. Plays well with vim-rails
+  Plug 'tpope/vim-db'
 " Initialize plugin system
 call plug#end()
 
