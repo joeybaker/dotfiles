@@ -143,10 +143,12 @@ source `brew --prefix`/etc/profile.d/z.sh
 
 # update function for zprezto
 function update_zprezto() {
+  cwd=$(pwd)
   cd ~/.zprezto
-  git pull --rebase origin master && git submodule update --init --recursive
-  git pull --rebase upstream master && git submodule update --init --recursive
-  cd -
+  git submodule update --init --recursive
+  git pull --rebase origin master && git submodule update --recursive --remote
+  git pull --rebase upstream master && git submodule update --recursive --remote
+  cd $cwd
 }
 
 # setup iterm for 256 colors for the oceanic-next theme
