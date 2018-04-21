@@ -190,6 +190,9 @@ call plug#begin('~/.vim/plugged')
 
   " Use vim to query databases. Plays well with vim-rails
   Plug 'tpope/vim-db'
+
+  " can set the current directory to the project directory
+  Plug 'airblade/vim-rooter'
 " Initialize plugin system
 call plug#end()
 
@@ -239,21 +242,6 @@ set endofline
 " save when switching buffers
 " http://vim.wikia.com/wiki/Auto_save_files_when_focus_is_lost
 set autowrite
-
-" set the current directory to the buffer's directory. This makes it easy to
-" create new files relative to the current file
-" don't use autochdir or it's older version because it messes with project
-" search (FZF)
-" if exists('+autochdir')
-"   set autochdir
-" else
-"   autocmd BufEnter * silent! lcd %:p:h
-" endif
-" Instead, use a more manual approach only when entering insert mode, which is
-" when it's useful to have filename auto completion be relative.
-" via https://superuser.com/questions/604122/vim-file-name-completion-relative-to-current-file
-autocmd InsertEnter * let project_cwd = getcwd() | set autochdir
-autocmd InsertLeave * set noautochdir | execute 'cd' fnameescape(project_cwd)
 
 " remove delay when leaving insert mode by airline
 " https://github.com/vim-airline/vim-airline/wiki/FAQ#there-is-a-pause-when-leaving-insert-mode
@@ -1045,6 +1033,41 @@ let g:go_list_type = "quickfix"
 " line, and requires removal before searching for `<<<` which is common when
 " resolving git conflicts
 let g:LoupeVeryMagic = 0
+
+
+
+"
+" rooter
+"
+" if not in a project directory, set the current directory to the current dir
+let g:rooter_change_directory_for_non_project_files = 'current'
+" we'll trigger this ourselves on insert leave/enter
+let g:rooter_manual_only = 1
+" set the current directory to the buffer's directory. This makes it easy to
+" create new files relative to the current file
+" don't use autochdir or it's older version because it messes with project
+" search (FZF)
+" if exists('+autochdir')
+"   set autochdir
+" else
+"   autocmd BufEnter * silent! lcd %:p:h
+" endif
+"
+" Instead, use a more manual approach only when entering insert mode, which is
+" when it's useful to have filename auto completion be relative.
+" via https://superuser.com/questions/604122/vim-file-name-completion-relative-to-current-file
+"
+" Disabled and combined with rooter
+" autocmd InsertEnter * let project_cwd = getcwd() | set autochdir
+" autocmd InsertLeave * set noautochdir | execute 'cd' fnameescape(project_cwd)
+
+autocmd InsertEnter * set autochdir
+autocmd InsertLeave * set noautochdir | execute 'Rooter'
+
+
+
+
+
 
 
 
