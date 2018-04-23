@@ -8,3 +8,4 @@ config/configstore/*-usage.json
 config/heroku
 config/.env
 config/pgcli/log
+config/pgcli/history
