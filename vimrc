@@ -1040,13 +1040,15 @@ let g:LoupeVeryMagic = 0
 " rooter
 "
 " if not in a project directory, set the current directory to the current dir
-let g:rooter_change_directory_for_non_project_files = 'current'
+" let g:rooter_change_directory_for_non_project_files = 'current'
 " we'll trigger this ourselves on insert leave/enter
 let g:rooter_manual_only = 1
 " don't echo the dir change
 let g:rooter_silent_chdir = 1
 " resolve symbolic links
 let g:rooter_resolve_links = 1
+" only change for the current window
+let g:rooter_use_lcd = 1
 " set the current directory to the buffer's directory. This makes it easy to
 " create new files relative to the current file
 " don't use autochdir or it's older version because it messes with project
