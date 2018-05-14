@@ -3962,7 +3962,7 @@ localtunnel@1.8.3:
     request "2.81.0"
     yargs "3.29.0"
 
-localtunnel@^1.8.3:
+localtunnel@^1.9.0:
   version "1.9.0"
   resolved "https://registry.yarnpkg.com/localtunnel/-/localtunnel-1.9.0.tgz#8ffecdcf8c8a14f62df1056cf9d54acbb0bb9a8f"
   dependencies:
