@@ -19,13 +19,13 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
         brew tap phinze/cask
         brew tap caskroom/versions
         brew tap caskroom/fonts
+	brew tap ValeLint/vale
 
         # Install command line tools; brew does this for us now
         # xcode-select --install
 
         # lua is for the neocomplete plugin vim plugin
         brew install vim --override-system-vi --with-python3 --with-lua
-        brew tap ValeLint/vale
         brew install reattach-to-user-namespace z the_silver_searcher ccat node tmux sshrc git zsh ack findutils bash shellcheck httpie jo mas autoenv coreutils cmake gpg rbenv yarn thefuck nvm neovim/neovim/neovim python3 python2 vale fd ripgrep fzf pgcli progress
         brew install hub --devel # 2.3.0 has been blocked for a year. We want it for PR templates
         # b/c newer is better, and for diff-so-fancy
