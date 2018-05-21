@@ -37,7 +37,7 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
         # [Source Code Pro](https://github.com/adobe/source-code-pro/downloads)
         # [patched fonts for terminal](https://github.com/Lokaltog/powerline-fonts)
         # [Inconsolata-g](http://leonardo-m.livejournal.com/77079.html)
-        brew cask install font-inconsolata font-inconsolata-dz-for-powerline font-source-code-pro font-sourcecodepro-nerd-font
+        brew cask install font-inconsolata font-inconsolata-dz-for-powerline font-sourcecodepro-nerd-font-mono 
         brew cleanup
         # install for neovim
 	# NOTE: installing RVM later might mean this will need to be re-installed
@@ -120,9 +120,8 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
     ghcopy-authorize
     ```
 
-* [Karabiner](https://github.com/tekezo/Karabiner-Elements) configs in dotfiles
+* [Karabiner](https://github.com/tekezo/Karabiner-Elements) configs in dotfiles. Just open the app and all should be good.
 * chrome canary
-    * chrome://settings/content/flash only play important content
     * settings > on startup > continue where I left off
     * settings > search > enable instant
     * ![check for certification revocation](http://i.imgur.com/DsB8Oz0.png)
