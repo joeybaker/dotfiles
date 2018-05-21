@@ -16,7 +16,6 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
         ```sh
         /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
         mkdir ~/.homebrew_temp
-        brew tap homebrew/dupes
         brew tap phinze/cask
         brew tap caskroom/versions
         brew tap caskroom/fonts
