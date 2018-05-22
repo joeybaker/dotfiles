@@ -215,7 +215,8 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
     * install 1Password extensions
     * ublock extension:
         * enable easy list
-        * add: https://monzta.maltekraus.de/adblock_social.txt
+        * enable Fanboy's social blocking list (https://monzta.maltekraus.de/adblock_social.txt)
+	* enable anything else that looks good
     * set default search to duckduckgo.com
 * setup time machine
 * [install github ssh keys](https://help.github.com/articles/generating-ssh-keys)
