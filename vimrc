@@ -923,6 +923,9 @@ let g:ale_fixers.javascript = [
 \ 'prettier',
 \ 'standard',
 \]
+let g:ale_fixers.css = [
+\ 'prettier',
+\]
 let g:ale_ruby_rubocop_options = '--rails'
 let g:ale_fixers.ruby = [
 \ 'rubocop',
