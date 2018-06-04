@@ -581,7 +581,7 @@ let g:fzf_colors =
 let g:fzf_history_dir = '~/.vim/fzf'
 
 " show a history of visited files. Useful to undo a closed buffer.
-nmap <leader>b :FzfHistory<CR>
+nnoremap <silent> <leader>bh :FzfHistory<CR>
 
 
 if executable('rg')
