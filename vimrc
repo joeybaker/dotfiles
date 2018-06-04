@@ -554,11 +554,14 @@ endif
 let g:fzf_command_prefix = 'Fzf'
 
 " map this just like ctrl-p
-nmap <leader>p :FzfFiles<CR>
-nmap <c-p> :FzfFiles<CR>
-nmap ; :FzfBuffers<CR>
+nnoremap <silent> <leader>p :FzfFiles<CR>
+nnoremap <silent> <c-p> :FzfFiles<CR>
+nnoremap <silent> ; :FzfBuffers<CR>
 
-nmap <leader>a :FzfAg<CR>
+nnoremap <silent> <leader>a :FzfAg<CR>
+" enable searching the word under the cursor
+nnoremap <silent> <leader>wa :FzfAg <C-R><C-W><CR>
+
 
 " Customize fzf colors to match your color scheme
 let g:fzf_colors =
