@@ -932,8 +932,8 @@ let g:ale_fixers.ruby = [
 \]
 let g:ale_fix_on_save = 1
 
-nmap [s :ALEPrevioustWrap<cr>
-nmap ]s :ALENextWrap<cr>
+nmap [S :ALEPreviousWrap<cr>
+nmap ]S :ALENextWrap<cr>
 
 
 
