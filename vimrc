@@ -1055,6 +1055,9 @@ let g:rooter_silent_chdir = 1
 let g:rooter_resolve_links = 1
 " only change for the current window
 let g:rooter_use_lcd = 1
+" look at node_modules in addition to the defaults of .git and Rakefile, so
+" that we can detect monorepos
+let g:rooter_patterns = ['Rakefile', 'node_modules/', '.git/']
 " set the current directory to the buffer's directory. This makes it easy to
 " create new files relative to the current file
 " don't use autochdir or it's older version because it messes with project
