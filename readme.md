@@ -45,6 +45,7 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
         # install for deoplete in neovim
         pip3 install neovim
         pip2 install neovim
+        pip install diff-highlight
         ```
 
 * install oceanic-next iTerm theme (the main theme is in the sync folder)
