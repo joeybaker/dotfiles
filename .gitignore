@@ -5,6 +5,8 @@ config/yarn/global/node_modules
 config/hub
 config/configstore/update-notifier-*
 config/configstore/*-usage.json
+config/configstore/nodemon.json
+config/gcloud
 config/heroku
 config/.env
 config/pgcli/log
