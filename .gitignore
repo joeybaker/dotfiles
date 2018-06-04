@@ -9,3 +9,6 @@ config/heroku
 config/.env
 config/pgcli/log
 config/pgcli/history
+vim/undo
+vim/fzf
+vim/plugged
