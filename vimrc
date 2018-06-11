@@ -193,6 +193,9 @@ call plug#begin('~/.vim/plugged')
 
   " can set the current directory to the project directory
   Plug 'airblade/vim-rooter'
+
+  " Python rope gives us jump-to-definition in python
+  Plug 'python-mode/python-mode', { 'branch': 'develop', 'for': 'python' }
 " Initialize plugin system
 call plug#end()
 
@@ -1056,8 +1059,11 @@ let g:rooter_resolve_links = 1
 " only change for the current window
 let g:rooter_use_lcd = 1
 " look at node_modules in addition to the defaults of .git and Rakefile, so
-" that we can detect monorepos
-let g:rooter_patterns = ['Rakefile', 'node_modules/', '.git/']
+" that we can detect monorepos. This assumes that node_modules will live in
+" the project root but files like the Rakefile or requirements.txt will not.
+" If that's not a valid assumption… things will be difficult.
+" NOTE: order matters. Lower indexies are take priority.
+let g:rooter_patterns = [ 'Rakefile', 'requirements.txt', 'node_modules/', '.git', '.git/', '_darcs/', '.hg/', '.bzr/', '.svn/' ]
 " set the current directory to the buffer's directory. This makes it easy to
 " create new files relative to the current file
 " don't use autochdir or it's older version because it messes with project
@@ -1081,6 +1087,23 @@ autocmd InsertLeave * set noautochdir | execute 'Rooter'
 
 
 
+
+
+"
+" Py-mode
+"
+" Disable the line length warning
+let g:pymode_options_colorcolumn = 0
+" disable the warnings
+let g:pymode_warnings = 1
+" Let ALE do linting
+let g:pymode_lint = 0
+" rope gets us jump-to-definition
+let g:pymode_rope = 1
+" easy binding
+let g:pymode_rope_goto_definition_bind = '<leader>j'
+" Syntax is nice?
+let g:pymode_syntax = 1
 
 
 
