@@ -6,11 +6,14 @@ config/hub
 config/configstore/update-notifier-*
 config/configstore/*-usage.json
 config/configstore/nodemon.json
+config/configstore/*kap*.json
 config/gcloud
 config/heroku
 config/.env
 config/pgcli/log
 config/pgcli/history
+config/oni
 vim/undo
 vim/fzf
 vim/plugged
+vim/.netrwhist
