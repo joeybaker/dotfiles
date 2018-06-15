@@ -37,7 +37,7 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
         # [Source Code Pro](https://github.com/adobe/source-code-pro/downloads)
         # [patched fonts for terminal](https://github.com/Lokaltog/powerline-fonts)
         # [Inconsolata-g](http://leonardo-m.livejournal.com/77079.html)
-        brew cask install font-inconsolata font-inconsolata-dz-for-powerline font-sourcecodepro-nerd-font-mono 
+        brew cask install font-inconsolata font-inconsolata-dz-for-powerline font-sourcecodepro-nerd-font-mono
         brew cleanup
         # install for neovim
 	# NOTE: installing RVM later might mean this will need to be re-installed
@@ -160,7 +160,7 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
     mas install 432764806 #the hit list
     mas install 1107421413 #1blocker
     mas install 1121192229 #Better
-    mas install 557168941 #tweetbot
+    mas install 1384080005 #tweetbot
     mas install 425424353 #The Unarchiver
     mas install 435410196 #stay
     mas install 975937182 #fantastical
