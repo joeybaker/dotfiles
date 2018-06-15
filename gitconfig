@@ -20,7 +20,13 @@
   ; http://travisjeffery.com/b/2012/02/search-a-git-repo-like-a-ninja/
 	g = grep --break --heading --line-number
   pullforce = !git fetch --all && git reset --hard origin/$(git rev-parse --abbrev-ref HEAD)
-  bclean = "!f() { git branch --merged ${1-master} | grep -v \"${1-master}\" | grep -v '*' | grep -v '^master$' | xargs -n 1 git branch -d; }; f"
+  ; this bclean is safe, it only deletes branches it knows have been merged
+  ; into upstream master
+  ; bclean = "!f() { git branch --merged ${1-master} | grep -v \"${1-master}\" | grep -v '*' | grep -v '^master$' | xargs -n 1 git branch -d; }; f"
+  ; this bclean is less safe, it deletes all local branches that are tracking a
+  ; remote branch that has been deleted. This is useful if you squash remote
+  ; branches before you merge which doesn't create a merge commit.
+  bclean = "!git branch -vv | grep -e '[a-z0-9]\\+\\s\\[.*: gone\\]\\s' | awk '{print $1}' | xargs git branch -D"
   pr = "!f() { current_branch=$(git rev-parse --abbrev-ref HEAD); [ $current_branch = 'master' ] && echo 'Cannot make a pull request to master!' || ( git push -u origin $current_branch $@ && hub pull-request -o ) ; }; f"
 
 [core]
