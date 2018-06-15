@@ -208,12 +208,12 @@ call plug#end()
 "
 " UI CONFIG
 "
-set number " Turn on Line nubmers
+set number " Turn on Line numbers
 set relativenumber " The current line will have the absolute number, but all other lines will be relative
 set cursorline " highlight the current line
 set lazyredraw " redraw only when we need to, should speed up macros and such
 set showmatch " Show parentheses matching
-set updatetime=250 " as reccomended by gitgutter https://github.com/airblade/vim-gitgutter#getting-started
+set updatetime=250 " as recommended by gitgutter https://github.com/airblade/vim-gitgutter#getting-started
 set showcmd " shows the current command to the right below airline
 set hidden " don't warn when switching buffers is buffer is unsaved https://stackoverflow.com/questions/2414626/unsaved-buffer-warning-when-switching-files-buffers
 
@@ -224,7 +224,7 @@ elseif has("clipboard")
   set clipboard=unnamed
 endif
 
-" leave the backup files prefiex with ~ on, but save to /tmp instead of cwd
+" leave the backup files prefix with ~ on, but save to /tmp instead of cwd
 set backup
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set backupskip=/tmp/*,/private/tmp/*
