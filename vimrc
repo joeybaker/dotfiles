@@ -67,6 +67,7 @@ call plug#begin('~/.vim/plugged')
   " Syntaxes
   Plug 'jakar/vim-json', { 'for': 'json' }
   Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+  Plug 'jtratner/vim-flavored-markdown', { 'for': 'markdown' } " adds fenced code blocks
   Plug 'toyamarinyon/vim-swift', { 'for': 'swift' }
   Plug 'mmalecki/vim-node.js', { 'for': 'javascript' }
   Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
