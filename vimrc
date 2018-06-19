@@ -170,7 +170,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'vim-ruby/vim-ruby'
 
   " for a distraction free wirting experience
-  Plug 'junegunn/goyo.vim'
+  Plug 'junegunn/goyo.vim', {'on': 'Goyo'}
 
   " easy motion is kinda nice
   Plug 'easymotion/vim-easymotion'
