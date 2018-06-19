@@ -32,13 +32,12 @@ zstyle ':prezto:load' pmodule \
   'spectrum' \
   'utility' \
   'completion' \
-  'prompt' \
-  'history-substring-search' \
   'tmux' \
   'git' \
   'archive' \
   'syntax-highlighting' \
-  'sublime' \
+  'history-substring-search' \
+  'prompt' \
   'node'
 
 #
@@ -128,6 +127,7 @@ zstyle ':prezto:module:syntax-highlighting' highlighters \
   'main' \
   'brackets' \
   'pattern' \
+  'line' \
   'cursor' \
   'root'
 #
