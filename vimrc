@@ -1083,8 +1083,9 @@ let g:rooter_patterns = [ 'Rakefile', 'requirements.txt', 'node_modules/', '.git
 " autocmd InsertEnter * let project_cwd = getcwd() | set autochdir
 " autocmd InsertLeave * set noautochdir | execute 'cd' fnameescape(project_cwd)
 
-autocmd InsertEnter * set autochdir
-autocmd InsertLeave * set noautochdir | execute 'Rooter'
+autocmd InsertEnter * execute 'cd'.expand('%:p:h')
+autocmd InsertLeave * call setbufvar('%', 'rootDir', '') | :Rooter
+
 
 
 
