@@ -898,7 +898,8 @@ let g:gitgutter_realtime = 200
 let g:gitgutter_eager = 200
 " default mappings start with `h` with messes with navigating buffers
 let g:gitgutter_map_keys = 0
-
+nnoremap ]h :GitGutterNextHunk<cr>
+nnoremap [h :GitGutterPrevHunk<cr>
 
 
 
