@@ -234,13 +234,13 @@ Create a new automator app to open files in vi
 
 ```applescript
 on run {input}
-	set the_path to POSIX path of input
-	set cmd to "export USE_WRITING_THEME=1; vi " & quoted form of the_path
+	set filename to POSIX path of input
+	set cmd to "clear;cd $(dirname " & filename & ");nvim -c 'Goyo' " & quoted form of filename & "; exit"
 	tell application "System Events" to set terminalIsRunning to exists application process "Terminal"
 	tell application "Terminal"
 		activate
 		if terminalIsRunning is true then
-			do script with command cmd
+			set newWnd to do script with command cmd
 		else
 			do script with command cmd in window 1
 		end if
