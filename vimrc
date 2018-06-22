@@ -704,15 +704,13 @@ if !has('nvim')
   " https://github.com/c9s/perlomni.vim
   let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 else
-  " turn it on, but do it async so we don't slow things down
-  let g:deoplete#enable_at_startup = 0
-  autocmd InsertEnter * call deoplete#enable()
-
+  " turn it on
+  let g:deoplete#enable_at_startup = 1
 
   " reduce the delay from the default of 50
   let g:deoplete#auto_complete_delay = 10
-  " reduce from the default of 500
-  let g:deoplete#auto_refresh_delay = 200
+  " reduce from the default of 50
+  let g:deoplete#auto_refresh_delay = 20
 
   " Define dictionary.
   let g:deoplete#sources#dictionary#dictionaries = {
