@@ -60,6 +60,9 @@ call plug#begin('~/.vim/plugged')
   " For function argument completion
   Plug 'Shougo/neosnippet'
   Plug 'Shougo/neosnippet-snippets'
+  " More autocompletion sources
+  Plug 'wellle/tmux-complete.vim'
+  Plug 'fszymanski/deoplete-emoji'
 
   " seek with two chars instead on one on a single line
   Plug 'goldfeld/vim-seek'
@@ -1107,6 +1110,24 @@ let g:pymode_rope = 1
 let g:pymode_rope_goto_definition_bind = '<leader>j'
 " Syntax is nice?
 let g:pymode_syntax = 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+"
+" tmux-complete
+"
+" disable trigger since we have deoplete
+let g:tmuxcomplete#trigger = ''
 
 
 
