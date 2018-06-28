@@ -128,6 +128,9 @@ call plug#begin('~/.vim/plugged')
   " being able to `:Gblame` is nice
   Plug 'tpope/vim-fugitive'
 
+  " being able to `:Gbrowse` to github is nice
+  Plug 'tpope/vim-rhubarb'
+
   " file management commands like :Move
   Plug 'tpope/vim-eunuch'
 
@@ -140,9 +143,6 @@ call plug#begin('~/.vim/plugged')
 
   " When using :Gblame from vim-fugitive, shows the commit message
   Plug 'tommcdo/vim-fugitive-blame-ext'
-
-  " Run :ToGithub to open the current file/line in GH
-  Plug 'tonchis/vim-to-github'
 
   " Navigate between both vim and tmux panes with just ctrl-<direction key>
   Plug 'christoomey/vim-tmux-navigator'
