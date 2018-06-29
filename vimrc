@@ -200,6 +200,9 @@ call plug#begin('~/.vim/plugged')
 
   " Python rope gives us jump-to-definition in python
   Plug 'python-mode/python-mode', { 'branch': 'develop', 'for': 'python' }
+
+  " Get to recently closed files
+  Plug 'yegappan/mru'
 " Initialize plugin system
 call plug#end()
 
@@ -1137,6 +1140,19 @@ let g:tmuxcomplete#trigger = ''
 
 
 
+
+
+
+
+
+
+"
+" MRU
+"
+" set the cache to a resonable location
+let g:MRU_File = $HOME.'/.vim/mru'
+
+nnoremap <leader><shift>q :MRU<cr>
 
 
 
