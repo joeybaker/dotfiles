@@ -1152,7 +1152,7 @@ let g:tmuxcomplete#trigger = ''
 " set the cache to a resonable location
 let g:MRU_File = $HOME.'/.vim/mru'
 
-nnoremap <leader><shift>q :MRU<cr>
+nnoremap <leader><tab> :MRU<cr>
 
 
 
