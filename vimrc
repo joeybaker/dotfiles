@@ -328,6 +328,13 @@ function! BufferDelete()
     echomsg "No write since last change. Not closing buffer."
     echohl NONE
   else
+    " if we're in a split, just close the split
+    " https://stackoverflow.com/questions/4198503/number-of-windows-in-vim#4198963
+    if winnr() > 1
+      close
+      return
+    endif
+
     let s:total_nr_buffers = len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))
 
     if s:total_nr_buffers == 1
@@ -385,13 +392,19 @@ nnoremap <Leader>yf :let @*=expand("%:p")<cr>
 " via https://github.com/sdemjanenko/vimstuff/blob/master/.vimrc
 " Use ,d (or ,dd or ,dj or 20,dd) to delete a line without adding it to the
 " yanked stack (also, in visual mode)
-nmap <silent> <leader>d "_d
-vmap <silent> <leader>d "_d
+nnoremap <silent> <leader>d "_d
+vnoremap <silent> <leader>d "_d
 " Quick yanking to the end of the line
 nmap Y y$
 
 " undotree
 nnoremap U :UndotreeToggle<cr>
+
+" some niceties for splits. Inspired by: https://robots.thoughtbot.com/vim-splits-move-faster-and-more-naturally
+nnoremap <silent> <leader>= :exe "resize +10"<CR>
+nnoremap <silent> <leader>- :exe "resize -10"<CR>
+nnoremap <silent> <leader>+ <C-W>_
+nnoremap <silent> <leader>_ <C-W>|
 
 
 
