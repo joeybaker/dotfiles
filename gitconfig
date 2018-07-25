@@ -27,7 +27,7 @@
   ; remote branch that has been deleted. This is useful if you squash remote
   ; branches before you merge which doesn't create a merge commit.
   bclean = "!git branch -vv | grep -e '[a-z0-9]\\+\\s\\[.*: gone\\]\\s' | awk '{print $1}' | xargs git branch -D"
-  pr = "!f() { current_branch=$(git rev-parse --abbrev-ref HEAD); [ $current_branch = 'master' ] && echo 'Cannot make a pull request to master!' || ( git push -u origin $current_branch $@ && hub pull-request -o ) ; }; f"
+  pr = "!f() { current_branch=$(git rev-parse --abbrev-ref HEAD); [ $current_branch = 'master' ] && echo 'Cannot make a pull request to master!' || ( git push -u origin $current_branch && hub pull-request -o $@ ) ; }; f"
 
 [core]
   excludesfile = ~/.gitignore_global
