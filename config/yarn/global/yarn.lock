@@ -1946,7 +1946,7 @@ eslint@^4.19.1:
     table "4.0.2"
     text-table "~0.2.0"
 
-eslint_d@5.3.1:
+eslint_d@^5.3.1:
   version "5.3.1"
   resolved "https://registry.yarnpkg.com/eslint_d/-/eslint_d-5.3.1.tgz#d393bc3bd49dd8e60ce58ff22d1c8a50a23d4222"
   dependencies:
