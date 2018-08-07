@@ -965,6 +965,14 @@ let g:ale_fixers.ruby = [
 \ 'rubocop',
 \]
 let g:ale_fix_on_save = 1
+" prefer flow language server over the default flow. It's faster.
+let g:ale_linters = {}
+let g:ale_linters.javascript = [
+\ 'eslint',
+\ 'flow-language-server',
+\]
+
+
 
 nnoremap [; :ALEPreviousWrap<cr>
 nnoremap ]; :ALENextWrap<cr>
