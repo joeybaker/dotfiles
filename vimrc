@@ -872,8 +872,14 @@ augroup pencil
   autocmd!
   autocmd FileType markdown,mkd,md call s:goyo_enter()
   autocmd FileType text,txt     call s:goyo_enter()
+  " pencil isn't smart enough to understand that things like links take up
+  " physical room, but not display space
   autocmd Filetype git,gitsendemail,*commit*,*COMMIT*
-                            \   call pencil#init({'wrap': 'hard', 'textwidth': 72})
+                            " pencil is too easily confused by things like
+                            " links which should take up no wrap space in
+                            " markdown, or bullet lists, or subsequent lines
+                            " vim-fugitive does a much better job
+                            " \   call pencil#init({'wrap': 'hard', 'textwidth': 72})
 augroup END
 
 " the default is hard
