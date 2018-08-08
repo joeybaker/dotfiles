@@ -356,8 +356,10 @@ nmap <leader>q :call BufferDelete()<CR>
 " https://stackoverflow.com/a/20105502
 
 " use flow for jump to definition
-autocmd FileType javascript nmap <leader>j :FlowJumpToDef<CR>
-autocmd FileType javascript.jsx nmap <leader>j :FlowJumpToDef<CR>
+" autocmd FileType javascript nmap <leader>j :FlowJumpToDef<CR>
+" autocmd FileType javascript.jsx nmap <leader>j :FlowJumpToDef<CR>
+autocmd FileType javascript nnoremap <leader>j :ALEGoToDefinition<CR>
+autocmd FileType javascript.jsx nmap <leader>j :ALEGoToDefinition<CR>
 " use rubyjump.vim for jump to definition
 autocmd FileType ruby nmap <silent> <leader>j <Plug>(rubyjump_cursor)
 " use vim-go in go
