@@ -26,7 +26,7 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
 
         # lua is for the neocomplete plugin vim plugin
         brew install vim --override-system-vi --with-python3 --with-lua
-        brew install reattach-to-user-namespace z the_silver_searcher ccat node tmux sshrc git zsh ack findutils bash shellcheck httpie jo mas autoenv coreutils cmake gpg rbenv yarn thefuck nvm neovim/neovim/neovim python3 python2 vale fd ripgrep fzf pgcli progress
+        brew install reattach-to-user-namespace z the_silver_searcher ccat node tmux sshrc git zsh ack findutils bash shellcheck httpie jo mas autoenv coreutils cmake gpg rbenv yarn thefuck nvm neovim/neovim/neovim python3 python2 vale fd ripgrep fzf pgcli progress pinentry-mac
         brew install hub --devel # 2.3.0 has been blocked for a year. We want it for PR templates
         # b/c newer is better, and for diff-so-fancy
         brew install gnu-sed grep --with-default-names
@@ -223,6 +223,12 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
 * [install github ssh keys](https://help.github.com/articles/generating-ssh-keys)
     * Set a secure SSH key: https://blog.g3rt.nl/upgrade-your-ssh-keys.html
     * Set a gpg key for github: https://github.com/pstadler/keybase-gpg-github If you don't use keybase: https://blog.erincall.com/p/signing-your-git-commits-with-gpg
+
+          ```sh
+          mkdir -p ~/.gnupg
+          echo 'pinentry-program /usr/local/bin/pinentry-mac' > ~/.gnupg/gpg-agent.conf
+          echo 'no-tty' >> ~/.gnupg/gpg-agent.conf'
+          ```
     * After setting gpg in git, set for npm: `npm config set sign-git-tag true`
 * [secure sudo](http://blog.rongarret.info/2015/08/psa-beware-of-sudo-on-os-x.html) ← no longer necessary on sierra
 * don't forget to install Adobe things if necessary
