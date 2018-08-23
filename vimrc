@@ -352,6 +352,19 @@ endfunction
 
 nmap <leader>q :call BufferDelete()<CR>
 
+function! SaveTempBuffer()
+  if &modified && @% == ''
+    " save without letting vim know
+    " execute '%!tee '.$PWD.'/tmp-'.bufnr('%').'.vim'
+    " set a file name so that vim won't complain when we try to exit with temp
+    " buffers. NOTE: this does mean that the above line fanciness isn't really
+    " needed.
+    execute 'file tmp-'.bufnr('%').'.vim'
+  endif
+endfunction
+
+autocmd BufLeave,FocusLost,VimLeavePre * silent! call SaveTempBuffer()
+
 " restrict commands to a filetype
 " https://stackoverflow.com/a/20105502
 
