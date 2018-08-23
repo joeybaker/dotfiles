@@ -39,3 +39,4 @@ Thumbs.db
 *.sublime-workspace
 *.sublime-project
 Session*.vim
+tmp-*.vim
