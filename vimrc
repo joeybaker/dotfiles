@@ -356,20 +356,22 @@ nmap <leader>q :call BufferDelete()<CR>
 " https://stackoverflow.com/a/20105502
 
 " use flow for jump to definition
-" autocmd FileType javascript nmap <leader>j :FlowJumpToDef<CR>
-" autocmd FileType javascript.jsx nmap <leader>j :FlowJumpToDef<CR>
-autocmd FileType javascript nnoremap <leader>j :ALEGoToDefinition<CR>
-autocmd FileType javascript.jsx nmap <leader>j :ALEGoToDefinition<CR>
+" ALEGoToDefinition isn't nearly as accurate
+autocmd FileType javascript nmap <silent> <leader>j :FlowJumpToDef<CR>
+autocmd FileType javascript.jsx nmap <silent> <leader>j :FlowJumpToDef<CR>
+" autocmd FileType javascript nnoremap <leader>j :ALEGoToDefinition<CR>
+" autocmd FileType javascript.jsx nmap <leader>j :ALEGoToDefinition<CR>
 " use rubyjump.vim for jump to definition
 autocmd FileType ruby nmap <silent> <leader>j <Plug>(rubyjump_cursor)
 " use vim-go in go
 autocmd FileType go nmap <silent> <leader>j <Plug>(go-def)
 
 " get type under cursor
-" autocmd FileType javascript nmap <leader>t :FlowType<CR>
-" autocmd FileType javascript.jsx nmap <leader>t :FlowType<CR>
-autocmd FileType javascript nmap <leader>t :ALEHover<CR>
-autocmd FileType javascript.jsx nmap <leader>t :ALEHover<CR>
+" ALEHover is really slow
+autocmd FileType javascript nmap <silent> <leader>t :FlowType<CR>
+autocmd FileType javascript.jsx nmap <silent> <leader>t :FlowType<CR>
+" autocmd FileType javascript nmap <leader>t :ALEHover<CR>
+" autocmd FileType javascript.jsx nmap <leader>t :ALEHover<CR>
 " get type under cursor
 autocmd FileType go nmap <leader>t <Plug>(go-info)
 
@@ -949,6 +951,11 @@ let g:ale_sign_warning = '•'
 let g:ale_lint_on_text_changed = 'always'
 let g:ale_lint_delay = 100
 
+" turn on language server autocompletion (for flow)
+" disabled for now, it causes auto complete to lock while ale is computing, it
+" also just makes autocomplete feel really slow
+let g:ale_completion_enabled = 0
+
 " use eslint_d instead of the local eslint for speed!
 let g:ale_javascript_eslint_executable = 'eslint_d'
 " so that we prefer eslint_d over the local version :\
@@ -970,11 +977,13 @@ let g:ale_fixers.ruby = [
 \]
 let g:ale_fix_on_save = 1
 " prefer flow language server over the default flow. It's faster.
-let g:ale_linters = {}
-let g:ale_linters.javascript = [
-\ 'eslint',
-\ 'flow-language-server',
-\]
+" turn off language server to see if it's responsible for lack of flow linting
+" on `killall flow` and/or too many flow processes
+" let g:ale_linters = {}
+" let g:ale_linters.javascript = [
+" \ 'eslint',
+" \ 'flow-language-server',
+" \]
 
 
 
