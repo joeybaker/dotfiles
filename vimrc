@@ -972,15 +972,21 @@ let g:ale_fixers.javascript = [
 let g:ale_fixers.css = [
 \ 'prettier',
 \]
+let g:ale_fixers.json = [
+\ 'jq',
+\]
 let g:ale_ruby_rubocop_options = '--rails'
 let g:ale_fixers.ruby = [
 \ 'rubocop',
 \]
 let g:ale_fix_on_save = 1
+let g:ale_linters = {}
+let g:ale_linters.json = [
+      \ 'jsonlint',
+      \ ]
 " prefer flow language server over the default flow. It's faster.
 " turn off language server to see if it's responsible for lack of flow linting
 " on `killall flow` and/or too many flow processes
-" let g:ale_linters = {}
 " let g:ale_linters.javascript = [
 " \ 'eslint',
 " \ 'flow-language-server',
