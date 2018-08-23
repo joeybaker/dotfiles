@@ -355,36 +355,37 @@ nmap <leader>q :call BufferDelete()<CR>
 " restrict commands to a filetype
 " https://stackoverflow.com/a/20105502
 
+" use ale for default jump to definition
+" other filetypes can override
+nmap <silent> <leader>j :ALEGoToDefinition<CR>
 " use flow for jump to definition
 " ALEGoToDefinition isn't nearly as accurate
 autocmd FileType javascript nmap <silent> <leader>j :FlowJumpToDef<CR>
 autocmd FileType javascript.jsx nmap <silent> <leader>j :FlowJumpToDef<CR>
-" autocmd FileType javascript nnoremap <leader>j :ALEGoToDefinition<CR>
-" autocmd FileType javascript.jsx nmap <leader>j :ALEGoToDefinition<CR>
 " use rubyjump.vim for jump to definition
 autocmd FileType ruby nmap <silent> <leader>j <Plug>(rubyjump_cursor)
 " use vim-go in go
 autocmd FileType go nmap <silent> <leader>j <Plug>(go-def)
 
 " get type under cursor
+" Default to ALE
+nmap <silent> <leader>t :ALEHover<CR>
 " ALEHover is really slow
 autocmd FileType javascript nmap <silent> <leader>t :FlowType<CR>
 autocmd FileType javascript.jsx nmap <silent> <leader>t :FlowType<CR>
-" autocmd FileType javascript nmap <leader>t :ALEHover<CR>
-" autocmd FileType javascript.jsx nmap <leader>t :ALEHover<CR>
 " get type under cursor
 autocmd FileType go nmap <silent> <leader>t <Plug>(go-info)
 
 
+" disabled because we have ALEFix on save on
 " Autofix entire buffer with eslint_d:
 " https://www.npmjs.com/package/eslint_d#automatic-fixing
-autocmd FileType javascript nnoremap <leader>f mF:%!eslint_d --cache --stdin --fix-to-stdout<CR>`F
-
+" autocmd FileType javascript nnoremap <leader>f mF:%!eslint_d --cache --stdin --fix-to-stdout<CR>`F
 " Autofix entire buffer with python for JSON
 " requires `json` to be installed
 " `yarn global add json`
 " https://github.com/trentm/json
-autocmd FileType json nnoremap <leader>f mF:%!json<CR>`F
+" autocmd FileType json nnoremap <leader>f mF:%!json<CR>`F
 
 " map leader-s to save. This works even in insert mode!
 " https://hashrocket.com/blog/posts/8-great-vim-mappings#number-1-save-file-with-leader-s
