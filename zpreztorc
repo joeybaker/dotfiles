@@ -23,6 +23,10 @@ zstyle ':prezto:load' zfunction 'zargs' 'zmv'
 
 # Set the Prezto modules to load (browse modules).
 # The order matters.
+# - environment must be first
+# - synatx-highlighting must be loaded before prompt & history-substring-search
+# - completion must be after utlity
+# - autosuggestions must be after history-substring-search & syntax-highlighting
 zstyle ':prezto:load' pmodule \
   'environment' \
   'editor' \
@@ -35,6 +39,7 @@ zstyle ':prezto:load' pmodule \
   'archive' \
   'syntax-highlighting' \
   'history-substring-search' \
+  'autosuggestions' \
   'prompt' \
   'node'
 
