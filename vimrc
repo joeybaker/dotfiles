@@ -373,7 +373,7 @@ autocmd FileType javascript.jsx nmap <silent> <leader>t :FlowType<CR>
 " autocmd FileType javascript nmap <leader>t :ALEHover<CR>
 " autocmd FileType javascript.jsx nmap <leader>t :ALEHover<CR>
 " get type under cursor
-autocmd FileType go nmap <leader>t <Plug>(go-info)
+autocmd FileType go nmap <silent> <leader>t <Plug>(go-info)
 
 
 " Autofix entire buffer with eslint_d:
