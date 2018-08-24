@@ -971,6 +971,10 @@ let g:ale_completion_enabled = 0
 let g:ale_javascript_eslint_executable = 'eslint_d'
 " so that we prefer eslint_d over the local version :\
 let g:ale_javascript_eslint_use_global = 1
+" we have prettier_d installed globally, for speed
+let g:ale_markdown_prettier_executable = 'prettier_d'
+let g:ale_markdown_prettier_use_local_config = 1
+let g:ale_markdown_prettier_use_global = 1
 
 " setup ale autofixing
 let g:ale_fixers = {}
@@ -983,7 +987,10 @@ let g:ale_fixers.css = [
 \ 'prettier',
 \]
 let g:ale_fixers.json = [
-\ 'jq',
+\ 'prettier',
+\]
+let g:ale_fixers.markdown = [
+\ 'prettier',
 \]
 let g:ale_ruby_rubocop_options = '--rails'
 let g:ale_fixers.ruby = [
