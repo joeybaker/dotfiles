@@ -625,6 +625,10 @@ let g:fzf_history_dir = '~/.vim/fzf'
 " show a history of visited files. Useful to undo a closed buffer.
 nnoremap <silent> <leader><tab> :FzfHistory<CR>
 
+" hide the status line while using fzf, it's just unecessary
+autocmd! FileType fzf
+autocmd  FileType fzf set laststatus=0 noshowmode noruler
+  \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
 
 if executable('rg')
   set grepprg=rg\ --vimgrep
