@@ -48,7 +48,6 @@ path=(
   /usr/local/{bin,sbin}
   ## for yarn
   $HOME/.config/yarn/global/node_modules/.bin
-  $HOME/.yarn/bin
   ## for brew's version of PHP
   ## export PATH="$(brew --prefix josegonzalez/php/php54)/bin:$PATH"
   ## use brew's GNU utils instead of the built in ones
