@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@ozsay/yarn-completions": "^0.4.0",
     "alfred-github": "^1.1.0",
     "alfred-npms": "^1.1.0",
     "concurrently": "^4.0.1",
@@ -19,7 +20,6 @@
     "prettier_d": "^5.7.4",
     "serve": "^10.0.0",
     "supervisor": "^0.12.0",
-    "trash-cli": "^1.4.0",
-    "yarn-completions": "^0.0.8"
+    "trash-cli": "^1.4.0"
   }
 }
