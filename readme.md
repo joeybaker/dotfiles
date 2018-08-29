@@ -254,6 +254,7 @@ on run {input}
 		activate
 		if terminalIsRunning is true then
 			set newWnd to do script with command cmd
+      do script with command cmd in newWnd
 		else
 			do script with command cmd in window 1
 		end if
