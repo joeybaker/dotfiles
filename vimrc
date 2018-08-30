@@ -200,6 +200,9 @@ call plug#begin('~/.vim/plugged')
 
   " Python rope gives us jump-to-definition in python
   Plug 'python-mode/python-mode', { 'branch': 'develop', 'for': 'python' }
+
+  " Get to recently closed files
+  Plug 'yegappan/mru'
 " Initialize plugin system
 call plug#end()
 
@@ -623,7 +626,7 @@ let g:fzf_colors =
 let g:fzf_history_dir = '~/.vim/fzf'
 
 " show a history of visited files. Useful to undo a closed buffer.
-nnoremap <silent> <leader><tab> :FzfHistory<CR>
+nnoremap <silent> <leader>bh :FzfHistory<CR>
 
 " hide the status line while using fzf, it's just unecessary
 autocmd! FileType fzf
@@ -1212,6 +1215,14 @@ let g:tmuxcomplete#trigger = ''
 
 
 
+
+"
+" MRU
+"
+" set the cache to a resonable location
+let g:MRU_File = $HOME.'/.vim/mru'
+
+nnoremap <leader><tab> :MRU<cr>
 
 
 
