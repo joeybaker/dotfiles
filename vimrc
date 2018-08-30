@@ -1006,12 +1006,10 @@ let g:ale_linters.json = [
       \ 'jsonlint',
       \ ]
 " prefer flow language server over the default flow. It's faster.
-" turn off language server to see if it's responsible for lack of flow linting
-" on `killall flow` and/or too many flow processes
-" let g:ale_linters.javascript = [
-" \ 'eslint',
-" \ 'flow-language-server',
-" \]
+let g:ale_linters.javascript = [
+\ 'eslint',
+\ 'flow-language-server',
+\]
 
 
 
