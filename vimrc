@@ -625,9 +625,6 @@ let g:fzf_colors =
   \ 'header':  ['fg', 'Comment'] }
 let g:fzf_history_dir = '~/.vim/fzf'
 
-" show a history of visited files. Useful to undo a closed buffer.
-nnoremap <silent> <leader>bh :FzfHistory<CR>
-
 " hide the status line while using fzf, it's just unecessary
 autocmd! FileType fzf
 autocmd  FileType fzf set laststatus=0 noshowmode noruler
