@@ -11,11 +11,62 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
+#
+# Load stuff in
+#
+
+# lazy loading because nvm takes forever to install, there's a node module in
+# zprezto but it doesn't do lazy load :(
+# via https://gist.github.com/QinMing/364774610afc0e06cc223b467abe83c0
+lazy_load() {
+    # Act as a stub to another shell function/command. When first run, it will
+    # load the actual function/command then execute it. E.g. This made my zsh
+    # load 0.8 seconds faster by loading `nvm` when "nvm", "npm" or "node" is
+    # used for the first time
+    # $1: space separated list of alias to release after the first load
+    # $2: file to source
+    # $3: name of the command to run after it's loaded
+    # $4+: argv to be passed to $3
+    echo "Lazy loading $1 ..."
+
+    # $1.split(' ') using the s flag. In bash, this can be simply ($1)
+    # #http://unix.stackexchange.com/questions/28854/list-elements-with-spaces-in-zsh
+    # Single line won't work: local names=("${(@s: :)${1}}"). Due to
+    # http://stackoverflow.com/questions/14917501/local-arrays-in-zsh   (zsh
+    # 5.0.8 (x86_64-apple-darwin15.0))
+    local -a names
+    if [[ -n "$ZSH_VERSION" ]]; then
+        names=("${(@s: :)${1}}")
+    else
+        names=($1)
+    fi
+    unalias "${names[@]}"
+    . $2
+    shift 2
+    $*
+}
+
+group_lazy_load() {
+    local script
+    script=$1
+    shift 1
+    for cmd in "$@"; do
+        alias $cmd="lazy_load \"$*\" $script $cmd"
+    done
+}
+
 export NVM_LAZY_LOAD=true
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/nvm.sh" ] && group_lazy_load $HOME/.nvm/nvm.sh nvm node npm nodemon  # This loads nvm
+# Not using brew --prefix because it's really slow, even if it is safer
+# [ -s "$(brew --prefix nvm)/nvm.sh" ] && group_lazy_load '$(brew --prefix nvm)/nvm.sh' nvm node npm nodemon  # This loads nvm
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && group_lazy_load '/usr/local/opt/nvm/nvm.sh' nvm node npm  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+# load rbenv
+eval "$(rbenv init -)"
+# z
+source $(brew --prefix)/etc/profile.d/z.sh
 # set a high ulimit because the OS can handle it an node file watching processes
 # are hungry
 ulimit -n 10000
@@ -87,6 +138,7 @@ function upgrade_all_the_things () {
   vim +PlugUpdate
   yarn global upgrade-interactive --latest
   command npm-check && npm-check -gu || echo "npm-check not installed, skipping npm global dependency updates $(npm ls --depth=0 -g)"
+  echo 'Updating brew…'
   brew update && brew outdated
   while true; do
     read "cmd?Run a command (probably brew upgrade) [\"done\" to keep going]: "
@@ -131,14 +183,6 @@ mk () {
   mkdir -p -- "${1%/*}" && touch -- "$1"
 }
 
-#
-# Load stuff in
-#
-
-# load rbenv
-eval "$(rbenv init -)"
-# z
-source `brew --prefix`/etc/profile.d/z.sh
 
 # update function for zprezto
 function update_zprezto() {

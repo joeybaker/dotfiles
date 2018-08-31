@@ -41,7 +41,9 @@ zstyle ':prezto:load' pmodule \
   'history-substring-search' \
   'autosuggestions' \
   'prompt' \
-  'node'
+  # not using the node module because nvm takes forever to load + `brew
+  # --prefix nvm` is super slow. There's lazy loading in zshrc instead.
+  # 'node'
 
 #
 # Editor
