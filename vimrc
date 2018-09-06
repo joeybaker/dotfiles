@@ -372,9 +372,9 @@ autocmd BufLeave,FocusLost,VimLeavePre * silent! call SaveTempBuffer()
 " other filetypes can override
 nmap <silent> <leader>j :ALEGoToDefinition<CR>
 " use flow for jump to definition
-" ALEGoToDefinition isn't nearly as accurate
-autocmd FileType javascript nmap <silent> <leader>j :FlowJumpToDef<CR>
-autocmd FileType javascript.jsx nmap <silent> <leader>j :FlowJumpToDef<CR>
+" ALEGoToDefinition isn't nearly as accurate ← trying again
+" autocmd FileType javascript nmap <silent> <leader>j :FlowJumpToDef<CR>
+" autocmd FileType javascript.jsx nmap <silent> <leader>j :FlowJumpToDef<CR>
 " use rubyjump.vim for jump to definition
 autocmd FileType ruby nmap <silent> <leader>j <Plug>(rubyjump_cursor)
 " use vim-go in go
@@ -383,9 +383,9 @@ autocmd FileType go nmap <silent> <leader>j <Plug>(go-def)
 " get type under cursor
 " Default to ALE
 nmap <silent> <leader>t :ALEHover<CR>
-" ALEHover is really slow
-autocmd FileType javascript nmap <silent> <leader>t :FlowType<CR>
-autocmd FileType javascript.jsx nmap <silent> <leader>t :FlowType<CR>
+" ALEHover is really slow ← trying again
+" autocmd FileType javascript nmap <silent> <leader>t :FlowType<CR>
+" autocmd FileType javascript.jsx nmap <silent> <leader>t :FlowType<CR>
 " get type under cursor
 autocmd FileType go nmap <silent> <leader>t <Plug>(go-info)
 
