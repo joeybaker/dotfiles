@@ -58,6 +58,8 @@ path=(
   ~/.rbenv/shims
   # for go
   ${GOPATH//://bin:}/bin
+  ## python3
+  $HOME/Library/Python/3.7/bin
 )
 
 # autoenv
