@@ -137,7 +137,7 @@ alias guard='bundle exec guard'
 function upgrade_all_the_things () {
   vim +PlugUpdate
   yarn global upgrade-interactive --latest
-  command npm-check && npm-check -gu || echo "npm-check not installed, skipping npm global dependency updates $(npm ls --depth=0 -g)"
+  command -v npm-check >/dev/null 2>&1 && npm-check -gu || echo "npm-check not installed, skipping npm global dependency updates $(npm ls --depth=0 -g)"
   echo 'Updating brew…'
   brew update && brew outdated
   while true; do
@@ -152,6 +152,10 @@ function upgrade_all_the_things () {
   mas outdated
   mas upgrade
   update_zprezto && exec zsh
+}
+
+function ping() {
+  command -v prettyping >/dev/null 2>&1 && prettyping --nolegend $@ || ping $@
 }
 
 # brew-cask
