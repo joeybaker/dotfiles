@@ -1,9 +1,12 @@
+scriptencoding utf-8
 " sections via: http://dougblack.io/words/a-good-vimrc.html
 
 " auto-install plug if needed
 if empty(glob('~/.vim/autoload/plug.vim'))
-  silent execute "!curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
-  autocmd VimEnter * PlugInstall | source $MYVIMRC
+  silent execute '!curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  augroup vimPlug
+    autocmd VimEnter * PlugInstall | source $MYVIMRC
+  augroup END
 endif
 
 " Specify a directory for plugins (for Neovim: ~/.local/share/nvim/plugged)
@@ -225,9 +228,9 @@ set showcmd " shows the current command to the right below airline
 set hidden " don't warn when switching buffers is buffer is unsaved https://stackoverflow.com/questions/2414626/unsaved-buffer-warning-when-switching-files-buffers
 
 " link to system clipboard
-if has("unnamedplus")
+if has('unnamedplus')
   set clipboard=unnamedplus
-elseif has("clipboard")
+elseif has('clipboard')
   set clipboard=unnamed
 endif
 
@@ -260,7 +263,7 @@ set ttimeoutlen=10
 
 " persist undo past leaving a buffer
 " https://stackoverflow.com/questions/5969807/how-can-i-retain-vim-undo-history-but-disallow-hiding-modified-buffers
-if filewritable(&undodir) == 0 | call mkdir(&undodir, "p") | endif
+if filewritable(&undodir) == 0 | call mkdir(&undodir, 'p') | endif
 set undodir=~/.vim/undo
 set undofile
 " https://stackoverflow.com/questions/2732267/vim-loses-undo-history-when-changing-buffers
@@ -289,7 +292,9 @@ set softtabstop=2 " the spaces in a tab when hitting the TAB key
 " disable, I think smarttab does this? in vim-sensible
 " set expandtab " turn the TAB key into spaces
 " even though we want expand tab normally, make files are special
-autocmd FileType make setlocal noexpandtab
+augroup spacing
+  autocmd FileType make setlocal noexpandtab
+augroup END
 set fileformat=unix     " No crazy CR/LF
 set nojoinspaces        " One space after a "." rather than 2
 
@@ -305,7 +310,7 @@ vnoremap < <gv
 vnoremap > >gv
 
 " map leader key
-let mapleader=","
+let mapleader=','
 
 " To open a new empty buffer
 " This replaces :tabnew which I used to bind to this mapping
@@ -325,7 +330,7 @@ nnoremap <leader>bc :silent! bdelete! <c-a><CR><CR>
 function! BufferDelete()
   if &modified
     echohl ErrorMsg
-    echomsg "No write since last change. Not closing buffer."
+    echomsg 'No write since last change. Not closing buffer.'
     echohl NONE
   else
     " if we're in a split, just close the split
@@ -339,13 +344,13 @@ function! BufferDelete()
 
     if s:total_nr_buffers == 1
         silent! bdelete!
-        echo "Buffer deleted. Created new buffer."
+        echo 'Buffer deleted. Created new buffer.'
     else
         silent! bdelete!
         " in vim, we need to go to the previous buffer. This doesn't appear to
         " be necessary in nvim
         " silent! bprevious!
-        echo "Buffer deleted."
+        echo 'Buffer deleted.'
     endif
   endif
 endfunction
@@ -353,7 +358,7 @@ endfunction
 nmap <leader>q :call BufferDelete()<CR>
 
 function! SaveTempBuffer()
-  if &modified && @% == ''
+  if &modified && @% ==# ''
     " save without letting vim know
     " execute '%!tee '.$PWD.'/tmp-'.bufnr('%').'.vim'
     " set a file name so that vim won't complain when we try to exit with temp
@@ -363,7 +368,9 @@ function! SaveTempBuffer()
   endif
 endfunction
 
-autocmd BufLeave,FocusLost,VimLeavePre * silent! call SaveTempBuffer()
+augroup savetempbuffer
+  autocmd BufLeave,FocusLost,VimLeavePre * silent! call SaveTempBuffer()
+augroup END
 
 " restrict commands to a filetype
 " https://stackoverflow.com/a/20105502
@@ -376,9 +383,11 @@ nmap <silent> <leader>j :ALEGoToDefinition<CR>
 " autocmd FileType javascript nmap <silent> <leader>j :FlowJumpToDef<CR>
 " autocmd FileType javascript.jsx nmap <silent> <leader>j :FlowJumpToDef<CR>
 " use rubyjump.vim for jump to definition
-autocmd FileType ruby nmap <silent> <leader>j <Plug>(rubyjump_cursor)
-" use vim-go in go
-autocmd FileType go nmap <silent> <leader>j <Plug>(go-def)
+augroup goToDefinition
+  autocmd FileType ruby nmap <silent> <leader>j <Plug>(rubyjump_cursor)
+  " use vim-go in go
+  autocmd FileType go nmap <silent> <leader>j <Plug>(go-def)
+augroup END
 
 " get type under cursor
 " Default to ALE
@@ -387,7 +396,9 @@ nmap <silent> <leader>t :ALEHover<CR>
 " autocmd FileType javascript nmap <silent> <leader>t :FlowType<CR>
 " autocmd FileType javascript.jsx nmap <silent> <leader>t :FlowType<CR>
 " get type under cursor
-autocmd FileType go nmap <silent> <leader>t <Plug>(go-info)
+augroup getType
+  autocmd FileType go nmap <silent> <leader>t <Plug>(go-info)
+augroup END
 
 
 " disabled because we have ALEFix on save on
@@ -440,7 +451,9 @@ nnoremap <silent> <leader>_ <C-W>|
 if has('nvim')
   :set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor,a:blinkon0
   " restore cursor on vim exit
-  au VimLeave * set guicursor=a:block-blinkon0
+  augroup tmuxCursor
+    autocmd VimLeave * set guicursor=a:block-blinkon0
+  augroup END
 else
   " https://gist.github.com/andyfowler/1195581
   if exists('$TMUX')
@@ -471,7 +484,7 @@ let &t_EI .= WrapForTmux("\<Esc>[?2004l")
 function! XTermPasteBegin()
   set pastetoggle=<Esc>[201~
   set paste
-  return ""
+  return ''
 endfunction
 
 inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
@@ -486,16 +499,23 @@ inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
 "
 
 " turn on spell check in git commit messages
-autocmd Filetype gitcommit setlocal spell textwidth=72
+augroup git
+  autocmd Filetype gitcommit setlocal spell textwidth=72
+augroup END
 
 " save on focus lost, ignore buffers that have never been written
 " http://vim.wikia.com/wiki/Auto_save_files_when_focus_is_lost
-autocmd FocusLost * silent! wa
+augroup autoSave
+  autocmd FocusLost * silent! wa
+augroup END
 
-" setup the custom nginx syntax
-au BufRead,BufNewFile */nginx/*.conf if &ft == '' | setfiletype nginx | endif
-" recognize styl files
-au BufRead,BufNewFile *.styl if &ft == '' | setfiletype css | endif
+
+augroup customSyntax
+  " setup the custom nginx syntax
+  au BufRead,BufNewFile */nginx/*.conf if &ft == '' | setfiletype nginx | endif
+  " recognize styl files
+  au BufRead,BufNewFile *.styl if &ft == '' | setfiletype css | endif
+augroup END
 
 
 
@@ -572,7 +592,7 @@ let g:airline#extensions#hunks#enabled = 1
 " let g:airline_section_c = '%{getcwd()}%t'
 
 " don't show the current branch, it takes up a bunch of space an it's usually
-" visible in another winde
+" visible in another window
 if winwidth(0) > 180
   let g:airline_section_b = airline#section#create(['hunks', 'branch'])
 else
@@ -626,9 +646,11 @@ let g:fzf_colors =
 let g:fzf_history_dir = '~/.vim/fzf'
 
 " hide the status line while using fzf, it's just unecessary
+augroup FZF
 autocmd! FileType fzf
 autocmd  FileType fzf set laststatus=0 noshowmode noruler
   \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+augroup END
 
 if executable('rg')
   set grepprg=rg\ --vimgrep
@@ -675,8 +697,8 @@ let g:flow#autoclose = 1
 " Use locally installed flow
 " https://github.com/flowtype/vim-flow/issues/24
 let local_flow = finddir('node_modules', '.;') . '/.bin/flow'
-if matchstr(local_flow, "^\/\\w") == ''
-    let local_flow= getcwd() . "/" . local_flow
+if matchstr(local_flow, "^\/\\w") ==# ''
+    let local_flow= getcwd() . '/' . local_flow
 endif
 if executable(local_flow)
   " for vim-flow
@@ -764,7 +786,7 @@ endif
 " <CR>: close popup and save indent.
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 function! s:my_cr_function()
-  return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+  return (pumvisible() ? "\<C-y>" : '' ) . "\<CR>"
   " For no inserting <CR> key.
   "return pumvisible() ? "\<C-y>" : "\<CR>"
 endfunction
@@ -804,12 +826,14 @@ endif
 
 
 " Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-" this is too much junk, too many bad results
-" autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+augroup omnicomplete
+  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+  autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+  " this is too much junk, too many bad results
+  " autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+  autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+  autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+augroup END
 
 
 
@@ -876,8 +900,10 @@ function! s:goyo_leave()
   set background=dark
 endfunction
 
-autocmd! User GoyoEnter nested call <SID>goyo_enter()
-autocmd! User GoyoLeave nested call <SID>goyo_leave()
+augroup goyo
+  autocmd! User GoyoEnter nested call <SID>goyo_enter()
+  autocmd! User GoyoLeave nested call <SID>goyo_leave()
+augroup END
 
 nnoremap <leader>ww :Goyo<CR>
 
@@ -1104,9 +1130,9 @@ nmap <silent> <Leader>ig <Plug>IndentGuidesToggle
 " vim-go
 " https://github.com/fatih/vim-go-tutorial
 " auto-add the right import declartion on fmt
-let g:go_fmt_command = "goimports"
+let g:go_fmt_command = 'goimports'
 " don't use the location list, it's harder to close and navigate
-let g:go_list_type = "quickfix"
+let g:go_list_type = 'quickfix'
 
 
 
@@ -1157,8 +1183,10 @@ let g:rooter_patterns = [ 'Rakefile', 'requirements.txt', 'node_modules/', '.git
 " autocmd InsertEnter * let project_cwd = getcwd() | set autochdir
 " autocmd InsertLeave * set noautochdir | execute 'cd' fnameescape(project_cwd)
 
-autocmd InsertEnter * execute 'cd'.expand('%:p:h')
-autocmd InsertLeave,BufAdd,BufEnter * call setbufvar('%', 'rootDir', '') | :Rooter
+augroup rooter
+  autocmd InsertEnter * execute 'cd'.expand('%:p:h')
+  autocmd InsertLeave,BufAdd,BufEnter * call setbufvar('%', 'rootDir', '') | :Rooter
+augroup END
 
 
 
@@ -1248,7 +1276,7 @@ vmap <silent> <expr> p <sid>Repl()
 "
 
 " set to 256 colors
-if $TERM == "xterm-256color" || $TERM == "screen-256color"
+if $TERM ==? 'xterm-256color' || $TERM ==? 'screen-256color'
   set t_Co=256
 endif
 " set color scheme
