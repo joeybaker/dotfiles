@@ -40,6 +40,8 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
     # [Inconsolata-g](http://leonardo-m.livejournal.com/77079.html)
     brew cask install font-inconsolata font-inconsolata-dz-for-powerline font-sourcecodepro-nerd-font-mono
     brew cleanup
+    # viml linter
+    pip3 install vim-vint --user
     # install for neovim
     	# NOTE: installing RVM later might mean this will need to be re-installed
     gem install neovim
