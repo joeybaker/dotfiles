@@ -1612,7 +1612,7 @@ debug@2.6.8:
   dependencies:
     ms "2.0.0"
 
-debug@^2.1.2, debug@^2.2.0, debug@^2.3.3, debug@^2.6.8, debug@^2.6.9, debug@~2.6.4, debug@~2.6.6:
+debug@2.6.9, debug@^2.1.2, debug@^2.2.0, debug@^2.3.3, debug@^2.6.8, debug@^2.6.9, debug@~2.6.4, debug@~2.6.6:
   version "2.6.9"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.9.tgz#5d128515df134ff327e90a4c93f4e077a536341f"
   dependencies:
@@ -3290,12 +3290,12 @@ localtunnel@1.8.3:
     request "2.81.0"
     yargs "3.29.0"
 
-localtunnel@^1.9.0:
-  version "1.9.0"
-  resolved "https://registry.yarnpkg.com/localtunnel/-/localtunnel-1.9.0.tgz#8ffecdcf8c8a14f62df1056cf9d54acbb0bb9a8f"
+localtunnel@^1.9.1:
+  version "1.9.1"
+  resolved "https://registry.yarnpkg.com/localtunnel/-/localtunnel-1.9.1.tgz#1d1737eab658add5a40266d8e43f389b646ee3b1"
   dependencies:
     axios "0.17.1"
-    debug "2.6.8"
+    debug "2.6.9"
     openurl "1.1.1"
     yargs "6.6.0"
 
