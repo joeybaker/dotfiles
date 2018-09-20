@@ -97,9 +97,6 @@ call plug#begin('~/.vim/plugged')
   " Spellcheck for certain file types
   Plug 'reedes/vim-lexical'
 
-  " Better markdown editing
-  Plug 'reedes/vim-pencil'
-
   " Multiple Cursors
   " disabled: it does not play with with InsertLeave autocommands
   " disabled: it doesn't work with autocomplete
@@ -871,12 +868,6 @@ function! s:goyo_enter()
   " set noshowcmd
   " set scrolloff=999
 
-  " use hard wrapping to keep everything on the screen. markdown is smart
-  " enough to still format correctly
-  " but… it fucks with other things. Turning this off for now
-  " call pencil#init({'wrap': 'hard"})
-  call pencil#init()
-
 
   " enable spell checking. Disable languages that I don't use for perf
   setl spell spl=en_us fdl=4 noru nonu nornu
@@ -893,59 +884,20 @@ function! s:goyo_leave()
   " set showcmd
   " set scrolloff=5
 
-  " turn off pencil
-  " call pencil#init({'wrap': 'off'})
-
   setl nospell
 
   set background=dark
 endfunction
 
-augroup goyo
+augroup goyo_au
   autocmd! User GoyoEnter nested call <SID>goyo_enter()
   autocmd! User GoyoLeave nested call <SID>goyo_leave()
-augroup END
-
-nnoremap <leader>ww :Goyo<CR>
-
-
-
-
-
-
-
-" pencil and lexical
-
-augroup pencil
   autocmd!
   autocmd FileType markdown,mkd,md call s:goyo_enter()
   autocmd FileType text,txt     call s:goyo_enter()
-  " pencil isn't smart enough to understand that things like links take up
-  " physical room, but not display space
-  autocmd Filetype git,gitsendemail,*commit*,*COMMIT*
-                            " pencil is too easily confused by things like
-                            " links which should take up no wrap space in
-                            " markdown, or bullet lists, or subsequent lines
-                            " vim-fugitive does a much better job
-                            " \   call pencil#init({'wrap': 'hard', 'textwidth': 72})
 augroup END
 
-" the default is hard
-let g:pencil#wrapModeDefault = 'soft'
-let g:pencil#conceallevel = 0     " 0=disable, 1=one char, 2=hide char, 3=hide all (def)
-let g:pencil#autoformat = 1      " 0=disable, 1=enable (def)
-let g:pencil#textwidth = 80
-let g:pencil#cursorwrap = 1     " 0=disable, 1=enable (def)
-let g:pencil#conceallevel = 0     " 0=disable, 1=one char, 2=hide char, 3=hide all (def)
-let g:pencil#concealcursor = 'c'  " n=normal, v=visual, i=insert, c=command (def)
-let g:pencil#map#suspend_af = 'K'   " default is no mapping, allows turning off autoformat with Ko
-" custom aireline config
-let g:airline_section_x = '%{PencilMode()}'
-" tell lexial to enable spelling
-let g:lexical#spell = 1         " 0=disabled, 1=enabled
-" show a list of suggestions with a Keybindings
-let g:lexical#spell_key = '<leader>z'
-
+nnoremap <leader>ww :Goyo<CR>
 
 
 
