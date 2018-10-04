@@ -18,7 +18,7 @@
     "neovim": "^4.2.1",
     "nodemon": "^1.18.4",
     "prettier_d": "^5.7.4",
-    "serve": "^10.0.1",
+    "serve": "^10.0.2",
     "supervisor": "^0.12.0",
     "trash-cli": "^1.4.0"
   }
