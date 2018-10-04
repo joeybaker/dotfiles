@@ -606,6 +606,13 @@ else
   let g:airline_section_y = ''
 endif
 
+" Show obsession status
+let g:airline#extensions#obsession#enabled = 1
+" show ale errors
+let g:airline#extensions#ale#enabled = 1
+
+" This always displays, skip it and only show file encoding when it's weird
+let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
 
 
 
