@@ -342,13 +342,13 @@ function! BufferDelete()
 
     if s:total_nr_buffers == 1
         silent! bdelete!
-        echo 'Buffer deleted. Created new buffer.'
+        echomsg 'Buffer deleted. Created new buffer.'
     else
         silent! bdelete!
         " in vim, we need to go to the previous buffer. This doesn't appear to
         " be necessary in nvim
         " silent! bprevious!
-        echo 'Buffer deleted.'
+        echomsg 'Buffer deleted.'
     endif
   endif
 endfunction
@@ -424,7 +424,7 @@ nnoremap <Leader>yf :let @*=expand("%:p")<cr>
 nnoremap <silent> <leader>d "_d
 vnoremap <silent> <leader>d "_d
 " Quick yanking to the end of the line
-nmap Y y$
+noremap Y y$
 
 " undotree
 nnoremap U :UndotreeToggle<cr>
@@ -568,7 +568,8 @@ let g:tmuxline_preset = {
       \'cwin' : '#I #W',
       \'x'    : '%a %d %b  %R',
       \'y'    : '',
-      \'z'    : '#H'}
+      \'z'    : '#H',
+      \}
 
 
 let g:tmuxline_theme = 'base16_spacemacs'
@@ -645,9 +646,9 @@ let g:fzf_history_dir = '~/.vim/fzf'
 
 " hide the status line while using fzf, it's just unecessary
 augroup FZF
-autocmd! FileType fzf
-autocmd  FileType fzf set laststatus=0 noshowmode noruler
-  \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+  autocmd! FileType fzf
+  autocmd  FileType fzf set laststatus=0 noshowmode noruler
+    \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
 augroup END
 
 if executable('rg')
@@ -684,6 +685,7 @@ let g:NERDTrimTrailingWhitespace = 1
 
 
 
+" TODO: can we disable this now that we have ALE?
 "
 " flow
 "
@@ -862,6 +864,7 @@ let g:goyo_height=100
 let g:goyo_linenr = 1
 
 function! s:goyo_enter()
+  echom 'Entering Goyo'
   " silent !tmux set status off
   " silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
   " set noshowmode
@@ -878,6 +881,7 @@ function! s:goyo_enter()
 endfunction
 
 function! s:goyo_leave()
+  echom 'Leaving Goyo'
   " silent !tmux set status on
   " silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
   " set showmode
