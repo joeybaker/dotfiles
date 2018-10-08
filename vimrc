@@ -629,9 +629,9 @@ nnoremap <silent> <leader>p :FzfFiles<CR>
 nnoremap <silent> <c-p> :FzfFiles<CR>
 nnoremap <silent> ; :FzfBuffers<CR>
 
-nnoremap <silent> <leader>a :FzfAg<CR>
+nnoremap <silent> <leader>a :FzfRg<CR>
 " enable searching the word under the cursor
-nnoremap <silent> <leader>wa :FzfAg <C-R><C-W><CR>
+nnoremap <silent> <leader>wa :FzfRg <C-R><C-W><CR>
 
 
 " Customize fzf colors to match your color scheme
