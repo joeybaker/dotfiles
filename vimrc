@@ -951,9 +951,11 @@ let g:ale_sign_warning = '•'
 " ale can really slow things down in big files, so make it check less
 " frequently
 " can be "insert", "normal", or "always"
-" let g:ale_lint_on_text_changed = 'normal'
 " don't actually do that unless you have to, always is a better experience
-let g:ale_lint_on_text_changed = 'always'
+" let g:ale_lint_on_text_changed = 'always'
+" always is too slow in even moderately sized projects. It makes typing
+" painful
+let g:ale_lint_on_text_changed = 'normal'
 let g:ale_lint_on_enter = 1
 let g:ale_lint_delay = 100
 
