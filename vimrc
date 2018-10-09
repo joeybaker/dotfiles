@@ -204,6 +204,9 @@ call plug#begin('~/.vim/plugged')
 
   " Get to recently closed files
   Plug 'yegappan/mru'
+
+  " better netrw for better file browsing
+  Plug 'tpope/vim-vinegar'
 " Initialize plugin system
 call plug#end()
 
