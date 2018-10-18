@@ -1043,10 +1043,14 @@ let g:ale_linters.json = [
       \ 'jsonlint',
       \ ]
 " prefer flow language server over the default flow. It's faster.
+" TODO: use local flow?
+" https://github.com/angrypie/myneovim/blob/9e1ff0c6c2b75df4a29e4538e16cc33d75918c58/settings/set/main.vim#L110
 let g:ale_linters.javascript = [
 \ 'eslint',
-\ 'flow-language-server',
+\ 'flow',
 \]
+" FIXME: use flow instead of flow-language-server because flow 0.83.0 has
+" issues with ALE https://github.com/w0rp/ale/issues/2000
 
 
 
