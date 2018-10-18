@@ -72,8 +72,7 @@ call plug#begin('~/.vim/plugged')
 
   " Syntaxes
   Plug 'jakar/vim-json', { 'for': 'json' }
-  Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
-  Plug 'jtratner/vim-flavored-markdown', { 'for': 'markdown' } " adds fenced code blocks
+  Plug 'tpope/vim-markdown', { 'for': 'markdown' }
   Plug 'toyamarinyon/vim-swift', { 'for': 'swift' }
   Plug 'mmalecki/vim-node.js', { 'for': 'javascript' }
   Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
@@ -916,7 +915,7 @@ nnoremap <leader>ww :Goyo<CR>
 
 
 " vim-markdown
-let g:vim_markdown_folding_level = 5
+let g:markdown_fenced_languages = ['html', 'bash=sh', 'js=javascript']
 
 
 
