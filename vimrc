@@ -956,7 +956,7 @@ nnoremap <leader>ww :Goyo<CR>
 
 
 " vim-markdown
-let g:markdown_fenced_languages = ['html', 'bash=sh', 'js=javascript']
+let g:markdown_fenced_languages = ['html', 'bash=sh', 'js=javascript.jsx']
 
 
 
