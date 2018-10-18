@@ -31,9 +31,6 @@ call plug#begin('~/.vim/plugged')
   " better tmux and vim integration
   Plug 'wincent/terminus'
 
-  " Flow for js autocompletion
-  Plug 'flowtype/vim-flow', { 'for': 'javascript' }
-
   " remember cursor position and such when opening a file
   Plug 'farmergreg/vim-lastplace'
 
@@ -52,10 +49,6 @@ call plug#begin('~/.vim/plugged')
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
     " go autocompletion
     Plug 'zchee/deoplete-go', { 'do': 'make'}
-
-    " flow autocompletion
-    " Note: this is unmaintained, but does seem to work https://github.com/wokalski/autocomplete-flow/issues/5#issuecomment-320328020
-    Plug 'wokalski/autocomplete-flow', { 'for': 'javascript' }
   else
     " neocomplete for vim, it's not as good as deoplete but vim is old
     Plug 'Shougo/neocomplete.vim'
