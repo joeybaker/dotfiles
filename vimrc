@@ -206,6 +206,13 @@ call plug#begin('~/.vim/plugged')
 
   " better netrw for better file browsing
   Plug 'tpope/vim-vinegar'
+
+  " autocompletion via language server
+  Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+
 " Initialize plugin system
 call plug#end()
 
@@ -390,29 +397,71 @@ augroup END
 " restrict commands to a filetype
 " https://stackoverflow.com/a/20105502
 
-" use ale for default jump to definition
-" other filetypes can override
-nmap <silent> <leader>j :ALEGoToDefinition<CR>
-" use flow for jump to definition
-" ALEGoToDefinition isn't nearly as accurate ← trying again
-" autocmd FileType javascript nmap <silent> <leader>j :FlowJumpToDef<CR>
-" autocmd FileType javascript.jsx nmap <silent> <leader>j :FlowJumpToDef<CR>
-" use rubyjump.vim for jump to definition
-augroup goToDefinition
-  autocmd FileType ruby nmap <silent> <leader>j <Plug>(rubyjump_cursor)
-  " use vim-go in go
-  autocmd FileType go nmap <silent> <leader>j <Plug>(go-def)
-augroup END
+" only enable language server setup if it's enabled for the filetype
+" else, fallback to ALE and specific overrides
+" https://github.com/autozimu/LanguageClient-neovim/blob/next/doc/LanguageClient.txt
+function! LC_maps()
+  " use ale for default jump to definition
+  " other filetypes can override
+  " let's use language server for jump to def. It's the future, and ALE can be
+  " kinda slow
+  if has_key(g:LanguageClient_serverCommands, &filetype)
+    nmap <silent> <leader>j  :call LanguageClient#textDocument_definition()<CR>
+  else
+    nmap <silent> <leader>j :ALEGoToDefinition<CR>
+    " use flow for jump to definition
+    " ALEGoToDefinition isn't nearly as accurate ← trying again
+    " autocmd FileType javascript nmap <silent> <leader>j :FlowJumpToDef<CR>
+    " autocmd FileType javascript.jsx nmap <silent> <leader>j :FlowJumpToDef<CR>
+    " use rubyjump.vim for jump to definition
+    augroup goToDefinition
+      autocmd FileType ruby nmap <silent> <leader>j <Plug>(rubyjump_cursor)
+      " use vim-go in go
+      autocmd FileType go nmap <silent> <leader>j <Plug>(go-def)
+    augroup END
+  endif
 
-" get type under cursor
-" Default to ALE
-nmap <silent> <leader>t :ALEHover<CR>
-" ALEHover is really slow ← trying again
-" autocmd FileType javascript nmap <silent> <leader>t :FlowType<CR>
-" autocmd FileType javascript.jsx nmap <silent> <leader>t :FlowType<CR>
-" get type under cursor
-augroup getType
-  autocmd FileType go nmap <silent> <leader>t <Plug>(go-info)
+  " get type under cursor
+  " Default to ALE
+  " Disable ALE and try LSP, it's built for this.
+  if has_key(g:LanguageClient_serverCommands, &filetype)
+    nmap <silent> <leader>t   :call LanguageClient#textDocument_hover()<CR>
+  else
+    " nmap <silent> <leader>t :ALEHover<CR>
+    " ALEHover is really slow ← trying again
+    " autocmd FileType javascript nmap <silent> <leader>t :FlowType<CR>
+    " autocmd FileType javascript.jsx nmap <silent> <leader>t :FlowType<CR>
+    " get type under cursor
+    augroup getType
+      autocmd FileType go nmap <silent> <leader>t <Plug>(go-info)
+    augroup END
+  endif
+
+  if has_key(g:LanguageClient_serverCommands, &filetype)
+    " language server renaming. This seems risky, but let's try it.
+    " https://github.com/autozimu/LanguageClient-neovim/blob/9a8eb0a1ea20263ba1b6819c026c1b728bc25463/doc/LanguageClient.txt#L403-L416
+    " Rename - rn => rename
+    noremap <silent> <leader>rr :call LanguageClient#textDocument_rename()<CR>
+
+    " Rename - rc => rename camelCase
+    noremap <leader>rc :call LanguageClient#textDocument_rename(
+          \ {'newName': Abolish.camelcase(expand('<cword>'))})<CR>
+
+    " Rename - rs => rename snake_case
+    noremap <leader>rs :call LanguageClient#textDocument_rename(
+          \ {'newName': Abolish.snakecase(expand('<cword>'))})<CR>
+
+    " Rename - ru => rename UPPERCASE
+    noremap <leader>ru :call LanguageClient#textDocument_rename(
+          \ {'newName': Abolish.uppercase(expand('<cword>'))})<CR>
+    " `gq` will use language server if it can
+    " don't use this, it doesn't allow comments to auto-break which is the
+    " thing I do most.
+    " set formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
+  endif
+endfunction
+augroup lc_config
+  autocmd FileType * call LC_maps()
 augroup END
 
 
@@ -709,34 +758,6 @@ let g:NERDTrimTrailingWhitespace = 1
 
 
 
-" TODO: can we disable this now that we have ALE?
-"
-" flow
-"
-
-" we don't want the autofix window on save
-let g:flow#enable = 0
-let g:flow#autoclose = 1
-
-" Use locally installed flow
-" https://github.com/flowtype/vim-flow/issues/24
-let local_flow = finddir('node_modules', '.;') . '/.bin/flow'
-if matchstr(local_flow, "^\/\\w") ==# ''
-    let local_flow= getcwd() . '/' . local_flow
-endif
-if executable(local_flow)
-  " for vim-flow
-  let g:flow#flowpath = local_flow
-endif
-
-
-"
-" autocomplete-flow
-"
-
-" this is a good idea, but it's really annoying
-let g:autocomplete_flow#insert_paren_after_function = 0
-
 
 
 
@@ -791,6 +812,10 @@ if !has('nvim')
 else
   " turn it on
   let g:deoplete#enable_at_startup = 1
+  " language server results are way smarter than looking at other words in
+  " buffers. Perfer them.
+  call deoplete#custom#source('LC', 'rank', 9999)
+  call deoplete#custom#source('LanguageClient-neovim', 'rank', 9999)
 
   " reduce the delay from the default of 50
   let g:deoplete#auto_complete_delay = 10
@@ -977,8 +1002,8 @@ let g:ale_lint_on_enter = 1
 let g:ale_lint_delay = 100
 
 " turn on language server autocompletion (for flow)
-" disabled for now, it causes auto complete to lock while ale is computing, it
-" also just makes autocomplete feel really slow
+" disabled: ale causes some race condition with deoplete that causes wrong
+" suggestions after a flash of correct suggestions. LanguageClient is better
 let g:ale_completion_enabled = 0
 
 " use eslint_d instead of the local eslint for speed!
@@ -1057,6 +1082,9 @@ let g:airline_theme_patch_func = 'AirlineThemePatch'
 
 " Change color of the relevant section according to
 " ale#engine#IsCheckingBuffer, a global function exposed by ALE.
+" TODO: maybe use
+" https://github.com/autozimu/LanguageClient-neovim/blob/9a8eb0a1ea20263ba1b6819c026c1b728bc25463/doc/LanguageClient.txt#L542
+" instead? It may be more reliable?
 let s:ale_status_old = 0
 function! Get_ale_running()
   let ale_status = ale#engine#IsCheckingBuffer(bufnr(''))
@@ -1093,6 +1121,28 @@ let g:airline_section_y = airline#section#create(['ale_status'])
 " javascript syntax highlighting
 " enable flow support
 let g:javascript_plugin_flow = 1
+
+
+
+
+
+
+
+
+
+
+"
+" languageclient-neovim
+"
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+    \ 'javascript': ['npx', 'flow', 'lsp', '--from=nvim'],
+    \ 'javascript.jsx': ['npx', 'flow', 'lsp', '--from=nvim'],
+    \ 'python': ['/usr/local/bin/pyls'],
+    \ }
+" disable LC linting; use ALE instead
+" https://github.com/autozimu/LanguageClient-neovim/issues/569
+let g:LanguageClient_diagnosticsEnable=0
 
 
 
