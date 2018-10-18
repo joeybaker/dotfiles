@@ -65,7 +65,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'Shougo/neosnippet-snippets'
   " More autocompletion sources
   Plug 'wellle/tmux-complete.vim'
-  Plug 'fszymanski/deoplete-emoji'
+  Plug 'fszymanski/deoplete-emoji', { 'for': [ 'gitcommit', 'text', 'txt', 'markdown' ] }
 
   " seek with two chars instead on one on a single line
   Plug 'goldfeld/vim-seek'
