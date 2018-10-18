@@ -876,6 +876,7 @@ endif
 
 " Enable omni completion.
 augroup omnicomplete
+  autocmd!
   autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
   autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
   " this is too much junk, too many bad results
@@ -999,7 +1000,8 @@ let g:ale_sign_warning = '•'
 " painful
 let g:ale_lint_on_text_changed = 'normal'
 let g:ale_lint_on_enter = 1
-let g:ale_lint_delay = 100
+let g:ale_lint_delay = 50
+let g:ale_lint_on_insert_leave = 1
 
 " turn on language server autocompletion (for flow)
 " disabled: ale causes some race condition with deoplete that causes wrong
