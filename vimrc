@@ -803,17 +803,25 @@ if !has('nvim')
   " https://github.com/c9s/perlomni.vim
   let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 else
-  " turn it on
-  let g:deoplete#enable_at_startup = 1
+  " turn it on, but do it async
+  let g:deoplete#enable_at_startup = 0
+  augroup deoplete_config
+    autocmd!
+    autocmd InsertEnter * call deoplete#enable()
+  augroup END
+
+  call deoplete#custom#option({
+    \ 'auto_complete_delay': 50,
+    \ 'auto_refresh_delay': 50,
+    \ 'smart_case': v:true,
+    \ 'max_list': 500,
+    \ })
+
   " language server results are way smarter than looking at other words in
   " buffers. Perfer them.
   call deoplete#custom#source('LC', 'rank', 9999)
   call deoplete#custom#source('LanguageClient-neovim', 'rank', 9999)
 
-  " reduce the delay from the default of 50
-  let g:deoplete#auto_complete_delay = 10
-  " reduce from the default of 50
-  let g:deoplete#auto_refresh_delay = 20
 
   " Define dictionary.
   let g:deoplete#sources#dictionary#dictionaries = {
@@ -821,7 +829,6 @@ else
       \ 'vimshell' : $HOME.'/.vimshell_hist',
       \ 'scheme' : $HOME.'/.gosh_completions'
           \ }
-
 endif
 
 " Recommended key-mappings.
