@@ -180,7 +180,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-endwise'
 
   " auto close xml/html style tags on </
-  Plug 'amadeus/closetag.vim'
+  Plug 'joeybaker/closetag.vim'
 
   " easy case conversion
   Plug 'tpope/vim-abolish'
