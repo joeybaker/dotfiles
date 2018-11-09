@@ -948,7 +948,9 @@ augroup goyo_au
   autocmd! User GoyoLeave nested call <SID>goyo_leave()
   autocmd!
   autocmd FileType markdown,mkd,md call s:goyo_enter()
+  autocmd FileType markdown,mkd,md set syntax=markdown
   autocmd FileType text,txt     call s:goyo_enter()
+  autocmd FileType text,txt     set syntax=text
 augroup END
 
 nnoremap <leader>ww :Goyo<CR>
