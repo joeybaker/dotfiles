@@ -108,8 +108,8 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
   npm whoami # creates the necessary dirs
   # no sudo for global installs!
   sudo chown -R $(whoami) ~/.npm; sudo chown -R $(whoami) /usr/local/lib/node_modules
-  yarn global add supervisor nodemon ghwd ghcopy json trash-cli irish-pub localhapi diff-so-fancy concurrently alfred-npms alfred-github
   brew install yarn --without-node
+  yarn global add supervisor nodemon ghwd ghcopy json trash-cli irish-pub localhapi diff-so-fancy concurrently alfred-npms alfred-github bash-language-server
   npm config set init.author.name 'Joey Baker'
   npm config set init.author.email 'joey@byjoeybaker.com'
   npm config set init.author.site 'http://byjoeybaker.com'
