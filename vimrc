@@ -1059,62 +1059,6 @@ let g:ale_linters.javascript = [
 nnoremap [; :ALEPreviousWrap<cr>
 nnoremap ]; :ALENextWrap<cr>
 
-"
-" Show a warning when ALE is parsing.
-" Linters can be slow, and it's confusing to not know if the errors shown are
-" out of date or not.
-"
-" ref
-" https://github.com/vim-airline/vim-airline/commit/06351e86df61b79bd00971d6c2f33c286a048b22
-" https://github.com/maximbaz/lightline-ale/blob/master/autoload/lightline/ale.vim
-
-" https://github.com/vim-airline/vim-airline/blob/master/doc/airline.txt#L1324
-augroup Ale_Progress
-    autocmd!
-    autocmd User ALEJobStarted  call Get_ale_running()
-    autocmd User ALELintPre     call Get_ale_running()
-    autocmd User ALELintPost    call Get_ale_running()
-    autocmd User ALEFixPost     call Get_ale_running()
-augroup end
-
-" via https://github.com/vim-airline/vim-airline/wiki/Configuration-Examples-and-Snippets
-" Define new accents
-function! AirlineThemePatch(palette)
-  " [ guifg, guibg, ctermfg, ctermbg, opts ].
-  " See "help attr-list" for valid values for the "opt" value.
-  " http://vim.wikia.com/wiki/Xterm256_color_names_for_console_Vim
-  let a:palette.accents.done = [ '', '', '', '', '' ]
-  let a:palette.accents.running = [ '#5f0000', '' , 'red', '', '' ]
-endfunction
-let g:airline_theme_patch_func = 'AirlineThemePatch'
-
-" Change color of the relevant section according to
-" ale#engine#IsCheckingBuffer, a global function exposed by ALE.
-" TODO: maybe use
-" https://github.com/autozimu/LanguageClient-neovim/blob/9a8eb0a1ea20263ba1b6819c026c1b728bc25463/doc/LanguageClient.txt#L542
-" instead? It may be more reliable?
-let s:ale_status_old = 0
-function! Get_ale_running()
-  let ale_status = ale#engine#IsCheckingBuffer(bufnr(''))
-
-  if ale_status != s:ale_status_old
-
-    if ale_status
-      call airline#parts#define_accent('ale_status', 'running')
-    else
-      call airline#parts#define_accent('ale_status', 'done')
-    endif
-
-    let g:airline_section_y = airline#section#create(['ale_status'])
-    AirlineRefresh
-    let s:ale_status_old = ale_status
-  endif
-
-  return ale_status ? 'Parsing…' : ''
-endfunction
-
-call airline#parts#define_function('ale_status', 'Get_ale_running')
-let g:airline_section_y = airline#section#create(['ale_status'])
 
 
 
