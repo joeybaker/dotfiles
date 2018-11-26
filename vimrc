@@ -307,7 +307,11 @@ set softtabstop=2 " the spaces in a tab when hitting the TAB key
 " set expandtab " turn the TAB key into spaces
 " even though we want expand tab normally, make files are special
 augroup spacing
+  autocmd!
   autocmd FileType make setlocal noexpandtab
+  autocmd FileType markdown setlocal shiftwidth=4
+  autocmd FileType markdown setlocal tabstop=4
+  autocmd FileType markdown setlocal softtabstop=4
 augroup END
 set fileformat=unix     " No crazy CR/LF
 set nojoinspaces        " One space after a "." rather than 2
