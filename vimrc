@@ -82,7 +82,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries', 'for': 'go' }
   Plug 'hail2u/vim-css3-syntax', { 'for': [ 'javascript', 'css' ] } " reccomended by vim-styled-components
   Plug 'vim-scripts/nginx.vim', { 'for': 'nginx' }
-  Plug 'udalov/kotlin-vim'
+  Plug 'udalov/kotlin-vim', { 'for': 'kotlin' }
 
   " Spellcheck for certain file types
   Plug 'reedes/vim-lexical'
