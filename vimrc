@@ -190,7 +190,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'airblade/vim-rooter'
 
   " Python rope gives us jump-to-definition in python
-  Plug 'python-mode/python-mode', { 'branch': 'develop', 'for': 'python' }
+  " Disable in favor of the pythong language server
+  " Plug 'python-mode/python-mode', { 'branch': 'develop', 'for': 'python' }
 
   " Get to recently closed files
   Plug 'yegappan/mru'
@@ -1084,11 +1085,13 @@ let g:javascript_plugin_flow = 1
 "
 " languageclient-neovim
 "
+" Automatically start language servers.
+let g:LanguageClient_autoStart = 1
 let g:LanguageClient_serverCommands = {
     \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
     \ 'javascript': ['npx', 'flow', 'lsp', '--from=nvim'],
     \ 'javascript.jsx': ['npx', 'flow', 'lsp', '--from=nvim'],
-    \ 'python': ['/usr/local/bin/pyls'],
+    \ 'python': ['pyls'],
     \ }
 " disable LC linting; use ALE instead
 " https://github.com/autozimu/LanguageClient-neovim/issues/569
