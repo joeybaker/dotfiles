@@ -150,9 +150,10 @@ call plug#begin('~/.vim/plugged')
   " easy moving from one line to multi
   Plug 'AndrewRadev/splitjoin.vim'
 
+  " disabled because it requires ruby support. ick.
   " you should probably just use `gx`, but if you need to open multiple urls,
   " this is handy
-  Plug 'henrik/vim-open-url'
+  " Plug 'henrik/vim-open-url'
 
   " see all the undo history, mapped to U below
   Plug 'mbbill/undotree'
