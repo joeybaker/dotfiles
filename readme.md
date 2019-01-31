@@ -33,7 +33,7 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
     brew install gnu-sed grep --with-default-names
     brew cask install gitify google-chrome firefox iterm2 slate istat-menus cloudup google-chrome-canary karabiner-elements flux sidestep bartender 1password alfred syncthing-bar spillo vlc atext dash safari-technology-preview gitup keybase
     # great quicklook plugins [via](https://github.com/sindresorhus/quick-look-plugins)
-    brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch quicklook-csv betterzipql webp-quicklook qlImageSize webpquicklook suspicious-package qlmarkdown && qlmanage -r
+    brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch quicklook-csv webpquicklook webpquicklook suspicious-package quicklookase qlvideo && qlmanage -r
     # fonts
     # [Source Code Pro](https://github.com/adobe/source-code-pro/downloads)
     # [patched fonts for terminal](https://github.com/Lokaltog/powerline-fonts)
