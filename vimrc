@@ -918,12 +918,12 @@ let g:goyo_height=100
 let g:goyo_linenr = 1
 
 function! s:goyo_enter()
-  echom 'Entering Goyo'
+  silent echom 'Entering Goyo'
   " silent !tmux set status off
   " silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
-  " set noshowmode
-  " set noshowcmd
-  " set scrolloff=999
+  setl noshowmode
+  setl noshowcmd
+  " setl scrolloff=999
 
 
   " enable spell checking. Disable languages that I don't use for perf
@@ -931,30 +931,37 @@ function! s:goyo_enter()
   " an alternative spell command from https://statico.github.io/vim3.html
   " set spell noci nosi noai nolist noshowmode noshowcmd
 
-  set background=light
+  setl linebreak
+
+  " goyo seems to toggle syntax, make sure it's on
+  setl syntax=on
+  " goyo seems to toggle background color; reset
+  call SetBackground()
 endfunction
 
 function! s:goyo_leave()
-  echom 'Leaving Goyo'
+  silent echom 'Leaving Goyo'
   " silent !tmux set status on
   " silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
-  " set showmode
-  " set showcmd
+  setl showmode
+  setl showcmd
   " set scrolloff=5
 
   setl nospell
 
-  set background=dark
+  " goyo seems to toggle syntax, make sure it's on
+  setl syntax=on
+  " goyo seems to toggle background color; reset
+  call SetBackground()
 endfunction
 
 augroup goyo_au
+  autocmd!
+  autocmd FileType markdown,mkd,md setl syntax=markdown
+  autocmd FileType text,txt     setl syntax=text
+  autocmd FileType markdown,mkd,md,text,txt call <SID>goyo_enter()
   autocmd! User GoyoEnter nested call <SID>goyo_enter()
   autocmd! User GoyoLeave nested call <SID>goyo_leave()
-  autocmd!
-  autocmd FileType markdown,mkd,md call s:goyo_enter()
-  autocmd FileType markdown,mkd,md set syntax=markdown
-  autocmd FileType text,txt     call s:goyo_enter()
-  autocmd FileType text,txt     set syntax=text
 augroup END
 
 nnoremap <leader>ww :Goyo<CR>
@@ -1319,6 +1326,19 @@ function! s:Repl()
 endfunction
 vmap <silent> <expr> p <sid>Repl()
 
+" set background color based on $BACKGROUND env var
+function! SetBackground()
+  if exists('$BACKGROUND')
+    if $BACKGROUND ==# 'light'
+      set background=light
+    else
+      set background=dark
+    endif
+  else
+    set background=dark
+  endif
+endfunction
+
 
 
 "
@@ -1331,7 +1351,8 @@ if $TERM ==? 'xterm-256color' || $TERM ==? 'screen-256color'
 endif
 " set color scheme
 " colorscheme molokai
-set background=dark
+call SetBackground()
+
 
 " Use color syntax highlighting.
 syntax on
