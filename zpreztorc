@@ -41,6 +41,7 @@ zstyle ':prezto:load' pmodule \
   'history-substring-search' \
   'autosuggestions' \
   'prompt' \
+  'python' \
   # not using the node module because nvm takes forever to load + `brew
   # --prefix nvm` is super slow. There's lazy loading in zshrc instead.
   # 'node'
@@ -166,3 +167,12 @@ zstyle ':prezto:module:tmux:session' name hostname
 
 # Auto start a session when Zsh is launched in a SSH connection.
 # zstyle ':prezto:module:tmux:auto-start' remote 'yes'
+
+
+#
+# Python
+#
+
+# Auto switch virtual envs if possible
+zstyle ':prezto:module:python:virtualenv' auto-switch 'yes'
+
