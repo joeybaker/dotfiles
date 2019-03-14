@@ -2047,10 +2047,10 @@ create-error-class@^3.0.0, create-error-class@^3.0.1:
   dependencies:
     capture-stack-trace "^1.0.0"
 
-create-react-app@^2.1.5:
-  version "2.1.5"
-  resolved "https://registry.yarnpkg.com/create-react-app/-/create-react-app-2.1.5.tgz#047f1a3b5fe6b82d021f6257e2249804c1146b56"
-  integrity sha512-sTbhSYYT3lX6bAhI3NRt2qLYMy0z3BV+8GW9xfFqpNWKuji4DkJmlg+IfxQTvnA0l9BZTFK3r5GObA2NNAIy/w==
+create-react-app@^2.1.8:
+  version "2.1.8"
+  resolved "https://registry.yarnpkg.com/create-react-app/-/create-react-app-2.1.8.tgz#20863af683e23d091fabdf54b870216b8d1d8f21"
+  integrity sha512-osHOZ3fw4BT4+L3CnhGsr/92CXEczQ/0fl/vd1Tbud4gT1ykt3a+zQlNJpOchDCnZjSqpHOxoWaH0XljFOhJLg==
   dependencies:
     chalk "1.1.3"
     commander "2.18.0"
@@ -4946,13 +4946,14 @@ neo-async@^2.5.0:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.5.1.tgz#acb909e327b1e87ec9ef15f41b8a269512ad41ee"
   integrity sha512-3KL3fvuRkZ7s4IFOMfztb7zJp3QaVWnBeGoJlgB38XnCRPj/0tLzzLG5IB8NYOHbJ8g8UGrgZv44GLDk6CxTxA==
 
-neovim@^4.2.1:
-  version "4.2.1"
-  resolved "https://registry.yarnpkg.com/neovim/-/neovim-4.2.1.tgz#25e99703831fafd9e26190feec15366bebfda8c0"
-  integrity sha512-2Kto3HlBsFFtgyAmV8ecNtBBUrydoXp2EfIHwIvuhOIiVinCuKJaUmp1+1u5eGGu1TDZHUiHwvFv0T05eG8T+w==
+neovim@^4.4.0:
+  version "4.4.0"
+  resolved "https://registry.yarnpkg.com/neovim/-/neovim-4.4.0.tgz#e50b4dae933c9f1548d2a57af27ed227cb4f25a4"
+  integrity sha512-zFsmjUeiK7vJNXsSljaAXt8eUmwKIJ4d7iTn7Mq2PmTEPmtBCuaVEGRpkl5z3AWJKPmOYNzlIu9Lgyq4s4FTew==
   dependencies:
     lodash "^4.17.4"
     msgpack-lite "^0.1.26"
+    semver "^5.6.0"
     traverse "^0.6.6"
     winston "^2.3.1"
 
@@ -6385,7 +6386,7 @@ semver@5.5.1:
   resolved "https://registry.yarnpkg.com/semver/-/semver-5.5.1.tgz#7dfdd8814bdb7cabc7be0fb1d734cfb66c940477"
   integrity sha512-PqpAxfrEhlSUWge8dwIp4tZnQ25DIOthpiaHNIthsjEFQD6EvqUKUDM7L8O2rShkFccYo1VjJR0coWfNkCubRw==
 
-semver@^5.4.1:
+semver@^5.4.1, semver@^5.6.0:
   version "5.6.0"
   resolved "https://registry.yarnpkg.com/semver/-/semver-5.6.0.tgz#7e74256fbaa49c75aa7c7a205cc22799cac80004"
   integrity sha512-RS9R6R35NYgQn++fkDWaOmqGoj4Ek9gGs+DPxNUZKuwE183xjJroKvyo1IzVFeXvUrvmALy6FWD5xrdJT25gMg==
