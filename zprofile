@@ -48,22 +48,21 @@ path=(
   /usr/local/{bin,sbin}
   ## for yarn
   $HOME/.config/yarn/global/node_modules/.bin
-  ## for brew's version of PHP
-  ## export PATH="$(brew --prefix josegonzalez/php/php54)/bin:$PATH"
-  ## use brew's GNU utils instead of the built in ones
-  ## This has to be last so that the gnu utils override all else
-  /usr/local/opt/coreutils/libexec/gnubin
   $path
   # for rbenv
-  ~/.rbenv/shims
+  $HOME/.rbenv/shims
   # for go
   ${GOPATH//://bin:}/bin
   ## python3
   $HOME/Library/Python/3.7/bin
+  ## use brew's GNU utils instead of the built in ones
+  ## This has to be last so that the gnu utils override all else
+  /usr/local/opt/coreutils/libexec/gnubin
 )
 
 # autoenv
-source $(brew --prefix autoenv)/activate.sh
+# FIXME: this is soo slow to load!
+# source $(brew --prefix autoenv)/activate.sh
 
 #
 # Less
