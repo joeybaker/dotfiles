@@ -818,7 +818,7 @@ else
     \ 'auto_complete_delay': 50,
     \ 'auto_refresh_delay': 50,
     \ 'smart_case': v:true,
-    \ 'max_list': 500,
+    \ 'max_list': 100,
     \ })
 
   " language server results are way smarter than looking at other words in
