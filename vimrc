@@ -191,7 +191,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'airblade/vim-rooter'
 
   " Python rope gives us jump-to-definition in python
-  " Disable in favor of the pythong language server
+  " Disable in favor of the python language server
   " Plug 'python-mode/python-mode', { 'branch': 'develop', 'for': 'python' }
 
   " Get to recently closed files
@@ -1045,6 +1045,9 @@ let g:ale_fixers.json = [
 \]
 let g:ale_fixers.markdown = [
 \ 'prettier',
+\]
+let g:ale_fixers.python = [
+\ 'black',
 \]
 let g:ale_ruby_rubocop_options = '--rails'
 let g:ale_fixers.ruby = [
