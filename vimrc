@@ -340,13 +340,13 @@ let mapleader=','
 nnoremap <leader>bn :enew<cr>
 
 " Move to the next buffer
-nnoremap <leader>l :bnext!<CR>
+nnoremap <silent> <leader>l :bnext!<CR>
 
 " Move to the previous buffer
-nnoremap <leader>h :bprevious!<CR>
+nnoremap <silent> <leader>h :bprevious!<CR>
 
 " Close all buffers
-nnoremap <leader>bc :silent! bdelete! <c-a><CR><CR>
+nnoremap <silent> <leader>bc :silent! bdelete! <c-a><CR><CR>
 
 " Close the current buffer and move to the previous one
 " This replicates the idea of closing a tab
@@ -378,7 +378,7 @@ function! BufferDelete()
   endif
 endfunction
 
-nmap <leader>q :call BufferDelete()<CR>
+nnoremap <silent> <leader>q :call BufferDelete()<CR>
 
 function! SaveTempBuffer()
   if &modified && @% ==# ''
