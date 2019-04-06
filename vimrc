@@ -387,7 +387,7 @@ function! SaveTempBuffer()
     " set a file name so that vim won't complain when we try to exit with temp
     " buffers. NOTE: this does mean that the above line fanciness isn't really
     " needed.
-    execute 'file tmp-'.bufnr('%').'.vim'
+    execute 'file tmp-'.bufnr('%').'.txt'
   endif
 endfunction
 
