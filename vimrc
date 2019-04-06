@@ -5,6 +5,7 @@ scriptencoding utf-8
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent execute '!curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
   augroup vimPlug
+    autocmd!
     autocmd VimEnter * PlugInstall | source $MYVIMRC
   augroup END
 endif
@@ -388,6 +389,7 @@ function! SaveTempBuffer()
 endfunction
 
 augroup savetempbuffer
+  autocmd!
   autocmd BufLeave,FocusLost,VimLeavePre * silent! call SaveTempBuffer()
 augroup END
 
@@ -412,6 +414,7 @@ function! LC_maps()
     " autocmd FileType javascript.jsx nmap <silent> <leader>j :FlowJumpToDef<CR>
     " use rubyjump.vim for jump to definition
     augroup goToDefinition
+      autocmd!
       autocmd FileType ruby nmap <silent> <leader>j <Plug>(rubyjump_cursor)
       " use vim-go in go
       autocmd FileType go nmap <silent> <leader>j <Plug>(go-def)
@@ -430,6 +433,7 @@ function! LC_maps()
     " autocmd FileType javascript.jsx nmap <silent> <leader>t :FlowType<CR>
     " get type under cursor
     augroup getType
+      autocmd!
       autocmd FileType go nmap <silent> <leader>t <Plug>(go-info)
     augroup END
   endif
@@ -458,6 +462,7 @@ function! LC_maps()
   endif
 endfunction
 augroup lc_config
+  autocmd!
   autocmd FileType * call LC_maps()
 augroup END
 
@@ -513,6 +518,7 @@ if has('nvim')
   :set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor,a:blinkon0
   " restore cursor on vim exit
   augroup tmuxCursor
+    autocmd!
     autocmd VimLeave * set guicursor=a:block-blinkon0
   augroup END
 else
@@ -561,17 +567,20 @@ inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
 
 " turn on spell check in git commit messages
 augroup git
+  autocmd!
   autocmd Filetype gitcommit setlocal spell textwidth=72
 augroup END
 
 " save on focus lost, ignore buffers that have never been written
 " http://vim.wikia.com/wiki/Auto_save_files_when_focus_is_lost
 augroup autoSave
+  autocmd!
   autocmd FocusLost * silent! wa
 augroup END
 
 
 augroup customSyntax
+  autocmd!
   " setup the custom nginx syntax
   au BufRead,BufNewFile */nginx/*.conf if &ft == '' | setfiletype nginx | endif
   " recognize styl files
@@ -1244,6 +1253,7 @@ let g:rooter_patterns = [ 'Rakefile', 'requirements.txt', 'node_modules/', '.git
 " autocmd InsertLeave * set noautochdir | execute 'cd' fnameescape(project_cwd)
 
 augroup rooter
+  autocmd!
   autocmd InsertEnter * execute 'cd'.expand('%:p:h')
   autocmd InsertLeave,BufAdd,BufEnter * call setbufvar('%', 'rootDir', '') | :Rooter
 augroup END
