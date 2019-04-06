@@ -1206,10 +1206,10 @@ base@^0.11.1:
     mixin-deep "^1.2.0"
     pascalcase "^0.1.1"
 
-bash-language-server@^1.5.5:
-  version "1.5.5"
-  resolved "https://registry.yarnpkg.com/bash-language-server/-/bash-language-server-1.5.5.tgz#4ded91de5e1b14473694c1eef6a5f8d07befa758"
-  integrity sha512-5+LztqB/1LQda9WaxkkxIYYtDLJQDCjyD7goKkhDl+dVL17VzEChaEtSOQHR49kuH5bDHLRYdNGEIWJt8o9s8w==
+bash-language-server@^1.5.6:
+  version "1.5.6"
+  resolved "https://registry.yarnpkg.com/bash-language-server/-/bash-language-server-1.5.6.tgz#c88a5fbc74a937a6b5e30d91c0aa7b65d50c3a7a"
+  integrity sha512-GqW24myNihrUroXdL40AemizC3lBvr2wOiF0GzxYWqsBsJvi6CQor0Y9t10jOGn11evMhncmR2f2LoQdjsNpqw==
   dependencies:
     glob "^7.1.2"
     request "^2.83.0"
@@ -4946,15 +4946,16 @@ neo-async@^2.5.0:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.5.1.tgz#acb909e327b1e87ec9ef15f41b8a269512ad41ee"
   integrity sha512-3KL3fvuRkZ7s4IFOMfztb7zJp3QaVWnBeGoJlgB38XnCRPj/0tLzzLG5IB8NYOHbJ8g8UGrgZv44GLDk6CxTxA==
 
-neovim@^4.4.0:
-  version "4.4.0"
-  resolved "https://registry.yarnpkg.com/neovim/-/neovim-4.4.0.tgz#e50b4dae933c9f1548d2a57af27ed227cb4f25a4"
-  integrity sha512-zFsmjUeiK7vJNXsSljaAXt8eUmwKIJ4d7iTn7Mq2PmTEPmtBCuaVEGRpkl5z3AWJKPmOYNzlIu9Lgyq4s4FTew==
+neovim@^4.5.0:
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/neovim/-/neovim-4.5.0.tgz#b47bc0c37f918d5ad9e753af9d5a30c67d967426"
+  integrity sha512-+Q5EEIYIZG14NYAAQmvHHdYZ8hg0TbcsFo9vDf2rHhwidqdJv7jrDk0vQz+kUrNvhNQO/pqkBrZ08yEWZbD/0A==
   dependencies:
     lodash "^4.17.4"
     msgpack-lite "^0.1.26"
     semver "^5.6.0"
     traverse "^0.6.6"
+    which "^1.3.1"
     winston "^2.3.1"
 
 nice-try@^1.0.4:
@@ -7617,7 +7618,7 @@ which@^1.2.8:
   dependencies:
     isexe "^2.0.0"
 
-which@^1.2.9:
+which@^1.2.9, which@^1.3.1:
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/which/-/which-1.3.1.tgz#a45043d54f5805316da8d62f9f50918d3da70b0a"
   integrity sha512-HxJdYWq1MTIQbJ3nw0cqssHoTNU267KlrDuGZ1WYlxDStUtKUhOaJmh112/TZmHxxUfuJqPXSOm7tDyas0OSIQ==
