@@ -305,15 +305,18 @@ augroup end
 set shiftwidth=2
 set tabstop=2 " 2 spaces per tab
 set softtabstop=2 " the spaces in a tab when hitting the TAB key
-" disable, I think smarttab does this? in vim-sensible
+" I think smarttab does this in vim-sensible? But it doesn't do the right
+" thing when opening a new buffer
 " set expandtab " turn the TAB key into spaces
-" even though we want expand tab normally, make files are special
 augroup spacing
   autocmd!
+  " even though we want expand tab normally, make files are special
   autocmd FileType make setlocal noexpandtab
-  autocmd FileType markdown setlocal shiftwidth=4
-  autocmd FileType markdown setlocal tabstop=4
-  autocmd FileType markdown setlocal softtabstop=4
+  " markdown should use spaces to be as simple as possible (prettier also
+  " needs this)
+  autocmd FileType markdown setlocal expandtab
+  " empty buffers can't rely on smarttab because it will default to a tab char
+  autocmd BufNewFile * setlocal expandtab
 augroup END
 set fileformat=unix     " No crazy CR/LF
 set nojoinspaces        " One space after a "." rather than 2
