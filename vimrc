@@ -929,6 +929,7 @@ let g:SeekBackKey = 'T'
 let g:goyo_height=100
 let g:goyo_linenr = 1
 
+" TODO: better restore of settings when leaving Goyo
 function! s:goyo_enter()
   silent echom 'Entering Goyo'
   " silent !tmux set status off
