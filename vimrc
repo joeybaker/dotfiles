@@ -1124,6 +1124,8 @@ let g:LanguageClient_serverCommands = {
     \ 'javascript': ['npx', 'flow', 'lsp', '--from=nvim'],
     \ 'javascript.jsx': ['npx', 'flow', 'lsp', '--from=nvim'],
     \ 'python': ['pyls'],
+    \ 'sh': ['bash-language-server', 'start'],
+    \ 'zsh': ['bash-language-server', 'start']
     \ }
 " disable LC linting; use ALE instead
 " https://github.com/autozimu/LanguageClient-neovim/issues/569
