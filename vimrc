@@ -1127,9 +1127,10 @@ let g:LanguageClient_serverCommands = {
     \ 'sh': ['bash-language-server', 'start'],
     \ 'zsh': ['bash-language-server', 'start']
     \ }
+" actually, LSP is way better than ALE for flow.
 " disable LC linting; use ALE instead
 " https://github.com/autozimu/LanguageClient-neovim/issues/569
-let g:LanguageClient_diagnosticsEnable=0
+let g:LanguageClient_diagnosticsEnable=1
 
 
 
