@@ -975,6 +975,10 @@ augroup goyo_au
   autocmd FileType markdown,mkd,md,text,txt call <SID>goyo_enter()
   autocmd! User GoyoEnter nested call <SID>goyo_enter()
   autocmd! User GoyoLeave nested call <SID>goyo_leave()
+
+  " Fix for airline re-asserting itself https://github.com/junegunn/goyo.vim/issues/198
+  autocmd! User GoyoEnter nested set eventignore=FocusGained
+  autocmd! User GoyoLeave nested set eventignore=
 augroup END
 
 nnoremap <leader>ww :Goyo<CR>
