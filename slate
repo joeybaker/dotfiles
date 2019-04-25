@@ -12,6 +12,7 @@ bind g:cmd,alt,ctrl grid padding:5 0:12,12 1:12,12 2:5,3 3:5,3
 # screen posiitions
 alias full move screenOriginX;screenOriginY screenSizeX;screenSizeY
 alias center move screenOriginX+screenSizeX*0.166667;screenOriginY+screenSizeY*0.1666667 screenSizeX/3*2;screenSizeY/3*2
+alias centerTall move screenOriginX+screenSizeX/4;screenOriginY screenOriginX+screenSizeX/2;screenSizeY
 alias lefthalf move screenOriginX;screenOriginY screenSizeX/2;screenSizeY
 alias righthalf move screenOriginX+screenSizeX/2;screenOriginY screenSizeX/2;screenSizeY
 alias topleft corner top-left resize:screenSizeX/2;screenSizeY/2
@@ -42,6 +43,7 @@ bind down:alt,ctrl,shift ${middle}
 bind right:alt,ctrl,shift ${right41}
 bind v:cmd,alt,ctrl ${full}
 bind c:cmd,alt,ctrl ${center}
+bind b:cmd,alt,ctrl ${centerTall}
 
 # multiple monitors
 bind left:alt,ctrl throw previous
