@@ -938,14 +938,6 @@ function! s:goyo_enter()
   setl noshowcmd
   " setl scrolloff=999
 
-
-  " enable spell checking. Disable languages that I don't use for perf
-  setl spell spl=en_us fdl=4 noru nonu nornu
-  " an alternative spell command from https://statico.github.io/vim3.html
-  " set spell noci nosi noai nolist noshowmode noshowcmd
-
-  setl linebreak
-
   " goyo seems to toggle syntax, make sure it's on
   setl syntax=on
   " goyo seems to toggle background color; reset
@@ -973,6 +965,13 @@ augroup goyo_au
   autocmd FileType markdown,mkd,md setl syntax=markdown
   autocmd FileType text,txt     setl syntax=text
   autocmd FileType markdown,mkd,md,text,txt call <SID>goyo_enter()
+
+  " enable spell checking. Disable languages that I don't use for perf
+  autocmd Filetype markdown,mkd,md,text,txt setlocal spell spl=en_us fdl=4 noru nonu nornu
+  " an alternative spell command from https://statico.github.io/vim3.html
+  " set spell noci nosi noai nolist noshowmode noshowcmd
+	autocmd Filetype markdown,mkd,md,text,txt setlocal linebreak
+
   autocmd! User GoyoEnter nested call <SID>goyo_enter()
   autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
