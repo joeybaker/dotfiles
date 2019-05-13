@@ -932,6 +932,10 @@ let g:goyo_linenr = 1
 " TODO: better restore of settings when leaving Goyo
 function! s:goyo_enter()
   silent echom 'Entering Goyo'
+
+  " Fix for airline re-asserting itself https://github.com/junegunn/goyo.vim/issues/198
+  set eventignore=FocusGained
+
   " silent !tmux set status off
   " silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
   setl noshowmode
@@ -958,6 +962,10 @@ function! s:goyo_leave()
   setl syntax=on
   " goyo seems to toggle background color; reset
   call SetBackground()
+
+  " Fix for airline re-asserting itself https://github.com/junegunn/goyo.vim/issues/198
+  " this resets to default
+  set eventignore=
 endfunction
 
 augroup goyo_au
@@ -974,10 +982,6 @@ augroup goyo_au
 
   autocmd! User GoyoEnter nested call <SID>goyo_enter()
   autocmd! User GoyoLeave nested call <SID>goyo_leave()
-
-  " Fix for airline re-asserting itself https://github.com/junegunn/goyo.vim/issues/198
-  autocmd! User GoyoEnter nested set eventignore=FocusGained
-  autocmd! User GoyoLeave nested set eventignore=
 augroup END
 
 nnoremap <leader>ww :Goyo<CR>
