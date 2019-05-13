@@ -2045,10 +2045,10 @@ create-error-class@^3.0.0:
   dependencies:
     capture-stack-trace "^1.0.0"
 
-create-react-app@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/create-react-app/-/create-react-app-3.0.0.tgz#9c5188639b816a361fff13611ad9a429d79d8188"
-  integrity sha512-0Q54JOwb88ccGTIG6C9KAwY9sO7ZEKVsh3g1BcHr/NvdQjZu8j6jHqQQlgiGZeevjrOhPlPFdUnd2OaNdVGezA==
+create-react-app@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/create-react-app/-/create-react-app-3.0.1.tgz#a7a29de5ca5cb5fc4cca3e2f558fdfa838d37fc9"
+  integrity sha512-uOLGMyegGQbm7/kWbHUzsqM16MiehRItBq3WXamzYsKLXdXXAHxEEX57WqcFwd/XybeD/1/KSYkroJdEyk7swA==
   dependencies:
     chalk "2.4.2"
     commander "2.19.0"
