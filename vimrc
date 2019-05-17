@@ -844,7 +844,7 @@ else
       \ 'default' : '',
       \ 'vimshell' : $HOME.'/.vimshell_hist',
       \ 'scheme' : $HOME.'/.gosh_completions'
-          \ }
+      \ }
 endif
 
 " Recommended key-mappings.
@@ -1334,6 +1334,12 @@ let g:MRU_File = $HOME.'/.vim/mru'
 
 nnoremap <leader><tab> :MRU<cr>
 
+
+"
+" vim-fugitive
+"
+" easy access to the most common fugitive UI. g for git
+nnoremap <leader>g :Gstatus<cr>
 
 
 

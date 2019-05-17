@@ -133,6 +133,8 @@ alias pgstop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
 alias couchstop='launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.couchdb.plist'
 alias couchstart='launchctl load ~/Library/LaunchAgents/homebrew.mxcl.couchdb.plist'
 alias guard='bundle exec guard'
+# get out of the habbit of gitup in favor of vim-fugitive
+alias gitup='echo "\e[0;31muse vim fugitive!\e[m " 1>&2'
 
 function upgrade_all_the_things () {
   vim +PlugUpdate
