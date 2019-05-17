@@ -20,8 +20,8 @@ function config_osx () {
 
   # Set computer name (as done via System Preferences → Sharing)
   scutil --set ComputerName $computer_name
-  scutil --set HostName $computer_name
-  scutil --set LocalHostName $computer_name
+  scutil --set HostName $computer_name.local
+  scutil --set LocalHostName $computer_name.local
 
   # Menu bar: disable transparency
   defaults write NSGlobalDomain AppleEnableMenuBarTransparency -bool false
