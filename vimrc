@@ -314,7 +314,7 @@ augroup spacing
   autocmd FileType make setlocal noexpandtab
   " markdown should use spaces to be as simple as possible (prettier also
   " needs this)
-  autocmd FileType markdown setlocal expandtab
+  autocmd FileType md,markdown setlocal expandtab
   " empty buffers can't rely on smarttab because it will default to a tab char
   autocmd BufNewFile * setlocal expandtab
 augroup END
