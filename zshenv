@@ -31,6 +31,8 @@ export HISTCONTROL=ignoreboth
 # export PS1="\[\033[G\]$PS1"
 # via https://github.com/golang/go/wiki/GOPATH
 export GOPATH="$HOME/server/go"
+# for virtualenvwrapper
+export PROJECT_HOME="$HOME/server"
 
 # set the rack env to dev for ruby (rails)
 export RACK_ENV='development'
@@ -40,7 +42,7 @@ export NODE_ENV='development'
 # set the default user
 export DEFAULT_USER=joeybaker
 
-# This doesn't appear to work on macOS, just assump 256 color
+# This doesn't appear to work on macOS, just assume 256 color
 # 256 colors
 # if [ -e /usr/share/terminfo/x/xterm-256color ]; then
 #   export TERM='xterm-256color'

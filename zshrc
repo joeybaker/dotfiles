@@ -296,6 +296,3 @@ if [ -e /usr/local/bin/fzf/shell/completion.zsh ]; then
   source /usr/local/bin/fzf/shell/completion.zsh
 fi
 
-# for virtualenvwrapper
-export PROJECT_HOME="$HOME/server"
-
