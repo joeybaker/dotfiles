@@ -1269,8 +1269,8 @@ let g:rooter_patterns = [ 'Rakefile', 'requirements.txt', 'node_modules/', '.git
 
 augroup rooter
   autocmd!
-  autocmd InsertEnter * execute 'cd'.expand('%:p:h')
-  autocmd InsertLeave,BufAdd,BufEnter * call setbufvar('%', 'rootDir', '') | :Rooter
+  autocmd InsertEnter * nested execute 'cd'.expand('%:p:h')
+  autocmd InsertLeave,BufAdd,BufEnter * nested call setbufvar('%', 'rootDir', '') | :Rooter
 augroup END
 
 
