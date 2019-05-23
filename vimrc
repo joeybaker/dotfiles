@@ -375,7 +375,9 @@ function! BufferDelete()
         silent! bdelete!
         " in vim, we need to go to the previous buffer. This doesn't appear to
         " be necessary in nvim
-        " silent! bprevious!
+        if !has('nvim')
+          silent! bprevious!
+        endif
         echomsg 'Buffer deleted.'
     endif
   endif
