@@ -358,7 +358,10 @@ function! BufferDelete()
   else
     " if we're in a split, just close the split
     " https://stackoverflow.com/questions/4198503/number-of-windows-in-vim#4198963
-    if winnr() > 1
+    " But, fugitive :Gstatus is special. We want to actually close the buffer
+    " so we don't leave it around
+    if winnr() > 1 && &filetype !=? 'fugitive'
+      echomsg 'closing' . &filetype
       close
       return
     endif
