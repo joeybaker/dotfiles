@@ -18,10 +18,10 @@
     "localtunnel": "^1.9.1",
     "markdown-to-slides-server": "^1.0.0",
     "neovim": "^4.5.0",
-    "nodemon": "^1.19.0",
+    "nodemon": "^1.19.1",
     "prettier_d": "^5.7.4",
-    "serve": "^11.0.0",
+    "serve": "^11.0.1",
     "supervisor": "^0.12.0",
-    "trash-cli": "^2.0.0"
+    "trash-cli": "^3.0.0"
   }
 }
