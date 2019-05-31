@@ -256,6 +256,9 @@ set endofline
 " save when switching buffers
 " http://vim.wikia.com/wiki/Auto_save_files_when_focus_is_lost
 set autowrite
+" since we're effectively auto-saving, swapfiles are kinda pointless. Just
+" turn them off
+set noswapfile
 
 " remove delay when leaving insert mode by airline
 " https://github.com/vim-airline/vim-airline/wiki/FAQ#there-is-a-pause-when-leaving-insert-mode
