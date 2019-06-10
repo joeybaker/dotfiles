@@ -167,7 +167,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'vim-ruby/vim-ruby'
 
   " for a distraction free wirting experience
-  Plug 'junegunn/goyo.vim', {'on': 'Goyo'}
+  Plug 'junegunn/goyo.vim', {'for': ['markdown', 'md', 'txt', 'text']}
 
   " easy motion is kinda nice
   Plug 'easymotion/vim-easymotion'
