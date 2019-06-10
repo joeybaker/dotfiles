@@ -15,7 +15,7 @@
     "jscodeshift": "^0.6.4",
     "json": "^9.0.6",
     "jsonlint": "^1.6.3",
-    "localtunnel": "^1.9.1",
+    "localtunnel": "^1.9.2",
     "markdown-to-slides-server": "^1.0.0",
     "neovim": "^4.5.0",
     "nodemon": "^1.19.1",
