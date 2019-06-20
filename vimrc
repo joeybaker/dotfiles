@@ -173,7 +173,9 @@ call plug#begin('~/.vim/plugged')
   Plug 'easymotion/vim-easymotion'
 
   " automatic indenting is good
-  Plug 'tpope/vim-sleuth'
+  " But this seems to mess up sometimes with Goyo & markdown files. It unsets
+  " expandtab and sets tabstop=8.
+  " Plug 'tpope/vim-sleuth'
 
   " automatic ending keyword insertation for ruby, vimscript, C, and a few
   " others
