@@ -468,10 +468,18 @@ function! LC_maps()
     " Rename - ru => rename UPPERCASE
     noremap <leader>ru :call LanguageClient#textDocument_rename(
           \ {'newName': Abolish.uppercase(expand('<cword>'))})<CR>
+
     " `gq` will use language server if it can
     " don't use this, it doesn't allow comments to auto-break which is the
     " thing I do most.
     " set formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
+
+    " instead of using `*` and `#` to jump to next word under cursor, use LC
+    " to actually move between references.
+    " eh… this is pretty jank. For instance, in a class, it only finds
+    " references for `thing` of `this.props.thing` inside a method and not the
+    " whole class.
+    noremap <leader>rn :call LanguageClient#textDocument_references()<CR>
   endif
 endfunction
 augroup lc_config
@@ -1350,6 +1358,9 @@ nnoremap <leader><tab> :MRU<cr>
 "
 " easy access to the most common fugitive UI. g for git
 nnoremap <leader>g :Gstatus<cr>
+
+
+
 
 
 
