@@ -1041,6 +1041,7 @@ let g:gitgutter_map_keys = 0
 nnoremap ]h :GitGutterNextHunk<cr>
 nnoremap [h :GitGutterPrevHunk<cr>
 nnoremap ghu :GitGutterUndoHunk<cr>
+nnoremap ghs :GitGutterStageHunk<cr>
 
 
 
