@@ -361,12 +361,14 @@ function! BufferDelete()
     echomsg 'No write since last change. Not closing buffer.'
     echohl NONE
   else
+    let s:closing_filetype = &filetype
+
     " if we're in a split, just close the split
     " https://stackoverflow.com/questions/4198503/number-of-windows-in-vim#4198963
     " But, fugitive :Gstatus is special. We want to actually close the buffer
     " so we don't leave it around
-    if winnr() > 1 && &filetype !=? 'fugitive'
-      echomsg 'closing' . &filetype
+    if winnr() > 1 && s:closing_filetype !=? 'fugitive'
+      echomsg 'closing' . s:closing_filetype
       close
       return
     endif
@@ -383,7 +385,15 @@ function! BufferDelete()
         if !has('nvim')
           silent! bprevious!
         endif
+
+      " for some reason git gutter doesn't refresh when closing fugitive;
+      " force it.
+      if s:closing_filetype ==? 'fugitive' && exists('#gitgutter')
+        execute 'GitGutter'
+      else
+        " we don't need to announce this when closing fugitive
         echomsg 'Buffer deleted.'
+      endif
     endif
   endif
 endfunction
