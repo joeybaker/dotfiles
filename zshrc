@@ -60,7 +60,7 @@ export NVM_DIR="$HOME/.nvm"
 # [ -s "$NVM_DIR/nvm.sh" ] && group_lazy_load $HOME/.nvm/nvm.sh nvm node npm nodemon  # This loads nvm
 # Not using brew --prefix because it's really slow, even if it is safer
 # [ -s "$(brew --prefix nvm)/nvm.sh" ] && group_lazy_load '$(brew --prefix nvm)/nvm.sh' nvm node npm nodemon  # This loads nvm
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && group_lazy_load '/usr/local/opt/nvm/nvm.sh' nvm node npm  # This loads nvm
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && [ -d "$NVM_DIR" ] && group_lazy_load '/usr/local/opt/nvm/nvm.sh' nvm node npm  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # load rbenv
