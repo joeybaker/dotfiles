@@ -68,20 +68,20 @@ call plug#begin('~/.vim/plugged')
   Plug 'jakar/vim-json', { 'for': 'json' }
   Plug 'tpope/vim-markdown', { 'for': 'markdown' }
   Plug 'toyamarinyon/vim-swift', { 'for': 'swift' }
-  Plug 'mmalecki/vim-node.js', { 'for': 'javascript' }
-  Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
-  Plug 'maxmellon/vim-jsx-pretty', { 'for': 'javascript' } "requires pangloss/vim-javascript or othree/yajs.vim
+  Plug 'mmalecki/vim-node.js', { 'for': [ 'javascript', 'typescript' ] }
+  Plug 'pangloss/vim-javascript', { 'for': [ 'javascript', 'typescript' ] }
+  Plug 'maxmellon/vim-jsx-pretty', { 'for': [ 'javascript', 'typescript' ] } "requires pangloss/vim-javascript or othree/yajs.vim
   Plug 'avakhov/vim-yaml', { 'for': 'yaml' }
   Plug 'tpope/vim-git'
   Plug 'tmux-plugins/vim-tmux'
-  Plug 'jparise/vim-graphql', { 'for': [ 'javascript', 'graphql' ] }
+  Plug 'jparise/vim-graphql', { 'for': [ 'javascript', 'graphql', 'typescript' ] }
   " NOTE: https://github.com/fleischie/vim-styled-components/issues/23 should
   " have fixed things, but something is still conflicting with vim-javascript
   " which causes all syntax highlighting to be randomly disabled
   " Plug 'fleischie/vim-styled-components', { 'for': 'javascript', 'branch': 'main' }
   Plug 'tpope/vim-rails', { 'for': 'ruby' }
   Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries', 'for': 'go' }
-  Plug 'hail2u/vim-css3-syntax', { 'for': [ 'javascript', 'css' ] } " reccomended by vim-styled-components
+  Plug 'hail2u/vim-css3-syntax', { 'for': [ 'javascript', 'css', 'typescript' ] } " reccomended by vim-styled-components
   Plug 'vim-scripts/nginx.vim', { 'for': 'nginx' }
   Plug 'udalov/kotlin-vim', { 'for': 'kotlin' }
 
@@ -131,7 +131,7 @@ call plug#begin('~/.vim/plugged')
   " Plug 'jiangmiao/auto-pairs'
 
   " auto nice `gf` smarts for require calls
-  Plug 'moll/vim-node', { 'for': 'javascript' }
+  Plug 'moll/vim-node', { 'for': [ 'javascript', 'typescript' ] }
 
   " When using :Gblame from vim-fugitive, shows the commit message
   Plug 'tommcdo/vim-fugitive-blame-ext'
