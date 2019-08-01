@@ -209,6 +209,9 @@ call plug#begin('~/.vim/plugged')
     \ 'do': 'bash install.sh',
     \ }
 
+  " Show marks in the sign bar
+  Plug 'kshenoy/vim-signature'
+
 " Initialize plugin system
 call plug#end()
 
