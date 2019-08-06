@@ -866,8 +866,12 @@ else
 
   " language server results are way smarter than looking at other words in
   " buffers. Perfer them.
-  call deoplete#custom#source('LC', 'rank', 9999)
-  call deoplete#custom#source('LanguageClient-neovim', 'rank', 9999)
+  call deoplete#custom#source('ale', 'rank', 9999)
+  " call deoplete#custom#source('ale', 'matchers', ['matcher_head'])
+  call deoplete#custom#source('LC', 'rank', 9998)
+  " call deoplete#custom#source('LC', 'matchers', ['matcher_head'])
+  call deoplete#custom#source('LanguageClient-neovim', 'rank', 9998)
+  " call deoplete#custom#source('LanguageClient-neovim', 'matchers', ['matcher_head'])
 
 
   " Define dictionary.
@@ -1071,7 +1075,7 @@ let g:ale_lint_on_insert_leave = 0
 " turn on language server autocompletion (for flow)
 " disabled: ale causes some race condition with deoplete that causes wrong
 " suggestions after a flash of correct suggestions. LanguageClient is better
-let g:ale_completion_enabled = 0
+let g:ale_completion_enabled = 1
 
 " use eslint_d instead of the local eslint for speed!
 let g:ale_javascript_eslint_executable = 'eslint_d'
