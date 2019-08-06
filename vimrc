@@ -1120,11 +1120,19 @@ let g:ale_linters.json = [
 let g:ale_linters.javascript = [
 \ 'eslint',
 \ 'flow',
+\ 'flow-language-server',
 \]
 " FIXME: use flow instead of flow-language-server because flow 0.83.0 has
 " issues with ALE https://github.com/w0rp/ale/issues/2000
 " Disable flow from ALE; use language server instead
+" per https://github.com/w0rp/ale/issues/2560 use both flow & flow lanugage
+" server for autocomplete, but disable the language server because the
+" diagnostics are screwy
+let g:ale_linters_ignore = {}
+let g:ale_linters_ignore.javascript = ['flow-language-server']
 
+" the other linter installed works better
+" let g:ale_linters.sh = [ 'language_server' ]
 
 
 nnoremap [; :ALEPreviousWrap<cr>
