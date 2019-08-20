@@ -135,6 +135,7 @@ alias couchstart='launchctl load ~/Library/LaunchAgents/homebrew.mxcl.couchdb.pl
 alias guard='bundle exec guard'
 # get out of the habbit of gitup in favor of vim-fugitive
 alias gitup='echo "\e[0;31muse vim fugitive!\e[m " 1>&2'
+alias flow-watch="watchman-make --make='clear && npm run flow' --settle=1 -p '**/*.js' '!node_modules/**' -t status"
 
 function upgrade_all_the_things () {
   vim +PlugUpdate
