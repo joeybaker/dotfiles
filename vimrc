@@ -1383,7 +1383,7 @@ nnoremap <leader><tab> :MRU<cr>
 " vim-fugitive
 "
 " easy access to the most common fugitive UI. g for git
-nnoremap <leader>g :Gstatus<cr>
+nnoremap <leader>g :Git<cr>
 
 
 
