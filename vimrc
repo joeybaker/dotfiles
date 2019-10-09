@@ -760,8 +760,9 @@ let g:fzf_history_dir = '~/.vim/fzf'
 " hide the status line while using fzf, it's just unecessary
 augroup FZF
   autocmd! FileType fzf
-  autocmd  FileType fzf set laststatus=0 noshowmode noruler
-    \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+  autocmd FileType fzf let b:current_laststatus=&laststatus
+  autocmd FileType fzf setlocal laststatus=0 noshowmode noruler
+    \| autocmd BufLeave <buffer> execute "setlocal laststatus=".b:current_laststatus." showmode ruler"
 augroup END
 
 if executable('rg')
