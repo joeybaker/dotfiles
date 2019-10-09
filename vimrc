@@ -212,6 +212,12 @@ call plug#begin('~/.vim/plugged')
   " Show marks in the sign bar
   Plug 'kshenoy/vim-signature'
 
+  " color scheme for writing
+  Plug 'reedes/vim-colors-pencil', {'for': ['markdown', 'md', 'txt', 'text']}
+
+  " easy colorscheme changes
+  Plug 'reedes/vim-thematic'
+
 " Initialize plugin system
 call plug#end()
 
@@ -1389,6 +1395,43 @@ nnoremap <leader>g :Git<cr>
 
 
 
+"
+" vim-colors-pencil
+"
+let g:pencil_terminal_italics = 1
+let g:pencil_higher_contrast_ui = 1   " 0=low (def), 1=high
+
+
+
+"
+" thematic
+"
+let g:thematic#themes = {
+\ 'standard'  : {
+\                 'colorscheme': 'default',
+\                 'background': 'dark',
+\                 'airline-theme': 'base16_spacemacs',
+\                },
+\ 'pencil'    : {'colorscheme': 'pencil',
+\                 'background': 'light',
+\                 'airline-theme': 'pencil',
+\                 'laststatus': 0,
+\                 'ruler': 1,
+\                 'font-size': 20,
+\                 'linespace': 8,
+\                 'columns': 80,
+\                },
+\ }
+
+augroup writingMode
+  autocmd!
+  " disable cursorline in text filetypes because of our theme
+  autocmd FileType markdown,md,text,txt setlocal nocursorline
+  " Fix for airline re-asserting itself https://github.com/junegunn/goyo.vim/issues/198
+  autocmd FileType markdown,md,text,txt setlocal eventignore=FocusGained
+  " disable airline
+  autocmd FileType markdown,md,text,txt setlocal laststatus=1
+augroup end
 
 
 
@@ -1408,16 +1451,21 @@ function! s:Repl()
 endfunction
 vmap <silent> <expr> p <sid>Repl()
 
-" set background color based on $BACKGROUND env var
+" set background color based on $BACKGROUND env var or in GUI
 function! SetBackground()
+  if has('gui_running')
+    let g:thematic#theme_name = 'pencil'
+    return
+  endif
+
   if exists('$BACKGROUND')
     if $BACKGROUND ==# 'light'
-      set background=light
+      let g:thematic#theme_name = 'pencil'
     else
-      set background=dark
+      let g:thematic#theme_name = 'standard'
     endif
   else
-    set background=dark
+    let g:thematic#theme_name = 'standard'
   endif
 endfunction
 
