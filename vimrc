@@ -647,7 +647,8 @@ let g:airline_powerline_fonts = 1
 " Use the highlight cache to speed up ruby https://github.com/vim-airline/vim-airline/issues/1026#issuecomment-322134816
 let g:airline_highlighting_cache=1
 
-let g:airline#extensions#tabline#enabled = 1
+" using fzf to find/switch buffers seems better
+let g:airline#extensions#tabline#enabled = 0
 let g:airline#extensions#tabline#left_sep = ''
 let g:airline#extensions#tabline#left_alt_sep = ''
 let g:airline#extensions#tabline#right_sep = ''
