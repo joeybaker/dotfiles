@@ -18,7 +18,7 @@
     "localtunnel": "^2.0.0",
     "markdown-to-slides-server": "^1.0.0",
     "neovim": "^4.5.0",
-    "nodemon": "^1.19.3",
+    "nodemon": "^1.19.4",
     "prettier_d": "^5.7.4",
     "serve": "^11.2.0",
     "supervisor": "^0.12.0",
