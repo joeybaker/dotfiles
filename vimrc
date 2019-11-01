@@ -13,210 +13,213 @@ endif
 " Specify a directory for plugins (for Neovim: ~/.local/share/nvim/plugged)
 call plug#begin('~/.vim/plugged')
 
-  " Think of sensible.vim as one step above 'nocompatible' mode: a universal
-  " set of defaults that (hopefully) everyone can agree on.
-  Plug 'tpope/vim-sensible'
+" Think of sensible.vim as one step above 'nocompatible' mode: a universal
+" set of defaults that (hopefully) everyone can agree on.
+Plug 'tpope/vim-sensible'
 
-  " EditorConfig
-  Plug 'editorconfig/editorconfig-vim'
+" EditorConfig
+Plug 'editorconfig/editorconfig-vim'
 
-  " status bar
-  Plug 'vim-airline/vim-airline'
-  Plug 'vim-airline/vim-airline-themes'
-  " use the same status bar in tmux
-  Plug 'edkolev/tmuxline.vim'
+" status bar
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+" use the same status bar in tmux
+Plug 'edkolev/tmuxline.vim'
 
-  " yell at you if you don't commit
-  Plug 'esneider/YUNOcommit.vim'
+" yell at you if you don't commit
+Plug 'esneider/YUNOcommit.vim'
 
-  " better tmux and vim integration
-  Plug 'wincent/terminus'
+" better tmux and vim integration
+Plug 'wincent/terminus'
 
-  " remember cursor position and such when opening a file
-  Plug 'farmergreg/vim-lastplace'
+" remember cursor position and such when opening a file
+Plug 'farmergreg/vim-lastplace'
 
-  " molokai color scheme
-  Plug 'tomasr/molokai'
+" molokai color scheme
+Plug 'tomasr/molokai'
 
-  " This seems to be a better version of oceanic next
-  Plug 'mhartington/oceanic-next'
+" This seems to be a better version of oceanic next
+Plug 'mhartington/oceanic-next'
 
-  " Keybindings for commenting lines
-  Plug 'scrooloose/nerdcommenter'
+" Keybindings for commenting lines
+Plug 'scrooloose/nerdcommenter'
 
-  " autocompletion
-  if has('nvim')
-    " neocomplete isn't nvim compatible, use deoplete instead
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-    " go autocompletion
-    Plug 'zchee/deoplete-go', { 'do': 'make'}
-  else
-    " neocomplete for vim, it's not as good as deoplete but vim is old
-    Plug 'Shougo/neocomplete.vim'
-  endif
-  " For function argument completion
-  Plug 'Shougo/neosnippet'
-  Plug 'Shougo/neosnippet-snippets'
-  " More autocompletion sources
-  Plug 'wellle/tmux-complete.vim'
-  Plug 'fszymanski/deoplete-emoji', { 'for': [ 'gitcommit', 'text', 'txt', 'markdown' ] }
+" autocompletion
+if has('nvim')
+  " neocomplete isn't nvim compatible, use deoplete instead
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  " go autocompletion
+  Plug 'zchee/deoplete-go', { 'do': 'make'}
+else
+  " neocomplete for vim, it's not as good as deoplete but vim is old
+  Plug 'Shougo/neocomplete.vim'
+endif
+" For function argument completion
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
+" More autocompletion sources
+Plug 'wellle/tmux-complete.vim'
+Plug 'fszymanski/deoplete-emoji', { 'for': [ 'gitcommit', 'text', 'txt', 'markdown' ] }
 
-  " seek with two chars instead on one on a single line
-  Plug 'goldfeld/vim-seek'
+" seek with two chars instead on one on a single line
+Plug 'goldfeld/vim-seek'
 
-  " Syntaxes
-  Plug 'jakar/vim-json', { 'for': 'json' }
-  Plug 'tpope/vim-markdown', { 'for': 'markdown' }
-  Plug 'toyamarinyon/vim-swift', { 'for': 'swift' }
-  Plug 'mmalecki/vim-node.js', { 'for': [ 'javascript', 'typescript' ] }
-  Plug 'pangloss/vim-javascript', { 'for': [ 'javascript', 'typescript' ] }
-  Plug 'maxmellon/vim-jsx-pretty', { 'for': [ 'javascript', 'typescript' ] } "requires pangloss/vim-javascript or othree/yajs.vim
-  Plug 'avakhov/vim-yaml', { 'for': 'yaml' }
-  Plug 'tpope/vim-git'
-  Plug 'tmux-plugins/vim-tmux'
-  Plug 'jparise/vim-graphql', { 'for': [ 'javascript', 'graphql', 'typescript' ] }
-  " NOTE: https://github.com/fleischie/vim-styled-components/issues/23 should
-  " have fixed things, but something is still conflicting with vim-javascript
-  " which causes all syntax highlighting to be randomly disabled
-  " Plug 'fleischie/vim-styled-components', { 'for': 'javascript', 'branch': 'main' }
-  Plug 'tpope/vim-rails', { 'for': 'ruby' }
-  Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries', 'for': 'go' }
-  Plug 'hail2u/vim-css3-syntax', { 'for': [ 'javascript', 'css', 'typescript' ] } " reccomended by vim-styled-components
-  Plug 'vim-scripts/nginx.vim', { 'for': 'nginx' }
-  Plug 'udalov/kotlin-vim', { 'for': 'kotlin' }
+" Syntaxes
+Plug 'jakar/vim-json', { 'for': 'json' }
+Plug 'tpope/vim-markdown', { 'for': 'markdown' }
+Plug 'toyamarinyon/vim-swift', { 'for': 'swift' }
+Plug 'mmalecki/vim-node.js', { 'for': [ 'javascript', 'typescript' ] }
+Plug 'pangloss/vim-javascript', { 'for': [ 'javascript', 'typescript' ] }
+Plug 'maxmellon/vim-jsx-pretty', { 'for': [ 'javascript', 'typescript' ] } "requires pangloss/vim-javascript or othree/yajs.vim
+Plug 'avakhov/vim-yaml', { 'for': 'yaml' }
+Plug 'tpope/vim-git'
+Plug 'tmux-plugins/vim-tmux'
+Plug 'jparise/vim-graphql', { 'for': [ 'javascript', 'graphql', 'typescript' ] }
+" NOTE: https://github.com/fleischie/vim-styled-components/issues/23 should
+" have fixed things, but something is still conflicting with vim-javascript
+" which causes all syntax highlighting to be randomly disabled
+" Plug 'fleischie/vim-styled-components', { 'for': 'javascript', 'branch': 'main' }
+Plug 'tpope/vim-rails', { 'for': 'ruby' }
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries', 'for': 'go' }
+Plug 'hail2u/vim-css3-syntax', { 'for': [ 'javascript', 'css', 'typescript' ] } " reccomended by vim-styled-components
+Plug 'vim-scripts/nginx.vim', { 'for': 'nginx' }
+Plug 'udalov/kotlin-vim', { 'for': 'kotlin' }
 
-  " Spellcheck for certain file types
-  Plug 'reedes/vim-lexical'
+" Spellcheck for certain file types
+Plug 'reedes/vim-lexical'
 
-  " Multiple Cursors
-  " disabled: it does not play with with InsertLeave autocommands
-  " disabled: it doesn't work with autocomplete
-  " https://medium.com/@schtoeffel/you-don-t-need-more-than-one-cursor-in-vim-2c44117d51db
-  " Plug 'terryma/vim-multiple-cursors'
+" Multiple Cursors
+" disabled: it does not play with with InsertLeave autocommands
+" disabled: it doesn't work with autocomplete
+" https://medium.com/@schtoeffel/you-don-t-need-more-than-one-cursor-in-vim-2c44117d51db
+" Plug 'terryma/vim-multiple-cursors'
 
-  " Better in-file searching
-  Plug 'wincent/loupe'
+" Better in-file searching
+Plug 'wincent/loupe'
 
-  " show git diff in the gutter
-  Plug 'airblade/vim-gitgutter'
+" show git diff in the gutter
+Plug 'airblade/vim-gitgutter'
 
-  " Indent Guides is a plugin for visually displaying indent levels in Vim.
-  Plug 'nathanaelkane/vim-indent-guides'
+" Indent Guides is a plugin for visually displaying indent levels in Vim.
+Plug 'nathanaelkane/vim-indent-guides'
 
-  " async linting, b/c it's 2017
-  Plug 'w0rp/ale'
+" async linting, b/c it's 2017
+Plug 'w0rp/ale'
 
-  " expand regions for easier selections
-  Plug 'terryma/vim-expand-region'
+" expand regions for easier selections
+Plug 'terryma/vim-expand-region'
 
-  " surround allows using `s` to direct quotes etc
-  Plug 'tpope/vim-surround'
-  " makes surround commands repeatable with .
-  Plug 'tpope/vim-repeat'
+" surround allows using `s` to direct quotes etc
+Plug 'tpope/vim-surround'
+" makes surround commands repeatable with .
+Plug 'tpope/vim-repeat'
 
-  " search and replace across project
-  Plug 'skwp/greplace.vim'
+" search and replace across project
+Plug 'skwp/greplace.vim'
 
-  " being able to `:Gblame` is nice
-  Plug 'tpope/vim-fugitive'
+" being able to `:Gblame` is nice
+Plug 'tpope/vim-fugitive'
 
-  " being able to `:Gbrowse` to github is nice
-  Plug 'tpope/vim-rhubarb'
+" being able to `:Gbrowse` to github is nice
+Plug 'tpope/vim-rhubarb'
 
-  " file management commands like :Move
-  Plug 'tpope/vim-eunuch'
+" file management commands like :Move
+Plug 'tpope/vim-eunuch'
 
-  " auto complete brackets, parens, etc
-  " disabled, it's too buggy to be worth it.
-  " Plug 'jiangmiao/auto-pairs'
+" auto complete brackets, parens, etc
+" disabled, it's too buggy to be worth it.
+" Plug 'jiangmiao/auto-pairs'
 
-  " auto nice `gf` smarts for require calls
-  Plug 'moll/vim-node', { 'for': [ 'javascript', 'typescript' ] }
+" auto nice `gf` smarts for require calls
+Plug 'moll/vim-node', { 'for': [ 'javascript', 'typescript' ] }
 
-  " When using :Gblame from vim-fugitive, shows the commit message
-  Plug 'tommcdo/vim-fugitive-blame-ext'
+" When using :Gblame from vim-fugitive, shows the commit message
+Plug 'tommcdo/vim-fugitive-blame-ext'
 
-  " Navigate between both vim and tmux panes with just ctrl-<direction key>
-  Plug 'christoomey/vim-tmux-navigator'
+" Navigate between both vim and tmux panes with just ctrl-<direction key>
+Plug 'christoomey/vim-tmux-navigator'
 
-  " Enable jump-to-definition in ruby
-  Plug 'xmisao/rubyjump.vim', { 'for': 'ruby' }
+" Enable jump-to-definition in ruby
+Plug 'xmisao/rubyjump.vim', { 'for': 'ruby' }
 
-  " Vim sessions. This is paired with tmux for auto-restore of vim
-  Plug 'tpope/vim-obsession'
+" Vim sessions. This is paired with tmux for auto-restore of vim
+Plug 'tpope/vim-obsession'
 
-  " :Reveal to show file in Finder
-  Plug 'henrik/vim-reveal-in-finder'
+" :Reveal to show file in Finder
+Plug 'henrik/vim-reveal-in-finder'
 
-  " easy moving from one line to multi
-  Plug 'AndrewRadev/splitjoin.vim'
+" easy moving from one line to multi
+Plug 'AndrewRadev/splitjoin.vim'
 
-  " disabled because it requires ruby support. ick.
-  " you should probably just use `gx`, but if you need to open multiple urls,
-  " this is handy
-  " Plug 'henrik/vim-open-url'
+" disabled because it requires ruby support. ick.
+" you should probably just use `gx`, but if you need to open multiple urls,
+" this is handy
+" Plug 'henrik/vim-open-url'
 
-  " see all the undo history, mapped to U below
-  Plug 'mbbill/undotree'
+" see all the undo history, mapped to U below
+Plug 'mbbill/undotree'
 
-  " fzf for fuzzy finding files. It's like ctrl-p but newer
-  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-  Plug 'junegunn/fzf.vim'
+" fzf for fuzzy finding files. It's like ctrl-p but newer
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
-  " better handling of ruby which doesn't use curlies
-  Plug 'vim-ruby/vim-ruby'
+" better handling of ruby which doesn't use curlies
+Plug 'vim-ruby/vim-ruby'
 
-  " for a distraction free wirting experience
-  Plug 'junegunn/goyo.vim', {'for': ['markdown', 'md', 'txt', 'text']}
+" for a distraction free wirting experience
+Plug 'junegunn/goyo.vim', {'for': ['markdown', 'md', 'txt', 'text']}
 
-  " easy motion is kinda nice
-  Plug 'easymotion/vim-easymotion'
+" easy motion is kinda nice
+Plug 'easymotion/vim-easymotion'
 
-  " automatic indenting is good
-  " But this seems to mess up sometimes with Goyo & markdown files. It unsets
-  " expandtab and sets tabstop=8.
-  " Plug 'tpope/vim-sleuth'
+" automatic indenting is good
+" But this seems to mess up sometimes with Goyo & markdown files. It unsets
+" expandtab and sets tabstop=8.
+" Plug 'tpope/vim-sleuth'
 
-  " automatic ending keyword insertation for ruby, vimscript, C, and a few
-  " others
-  Plug 'tpope/vim-endwise'
+" automatic ending keyword insertation for ruby, vimscript, C, and a few
+" others
+Plug 'tpope/vim-endwise'
 
-  " auto close xml/html style tags on </
-  Plug 'joeybaker/closetag.vim'
+" auto close xml/html style tags on </
+Plug 'joeybaker/closetag.vim'
 
-  " easy case conversion
-  Plug 'tpope/vim-abolish'
+" easy case conversion
+Plug 'tpope/vim-abolish'
 
-  " Use vim to query databases. Plays well with vim-rails
-  Plug 'tpope/vim-db'
+" Use vim to query databases. Plays well with vim-rails
+Plug 'tpope/vim-db'
 
-  " can set the current directory to the project directory
-  Plug 'airblade/vim-rooter'
+" can set the current directory to the project directory
+Plug 'airblade/vim-rooter'
 
-  " Python rope gives us jump-to-definition in python
-  " Disable in favor of the python language server
-  " Plug 'python-mode/python-mode', { 'branch': 'develop', 'for': 'python' }
+" Python rope gives us jump-to-definition in python
+" Disable in favor of the python language server
+" Plug 'python-mode/python-mode', { 'branch': 'develop', 'for': 'python' }
 
-  " Get to recently closed files
-  Plug 'yegappan/mru'
+" Get to recently closed files
+Plug 'yegappan/mru'
 
-  " better netrw for better file browsing
-  Plug 'tpope/vim-vinegar'
+" better netrw for better file browsing
+Plug 'tpope/vim-vinegar'
 
-  " autocompletion via language server
-  Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
+" autocompletion via language server
+Plug 'autozimu/LanguageClient-neovim', {
+      \ 'branch': 'next',
+      \ 'do': 'bash install.sh',
+      \ }
 
-  " Show marks in the sign bar
-  Plug 'kshenoy/vim-signature'
+" Show marks in the sign bar
+Plug 'kshenoy/vim-signature'
 
-  " color scheme for writing
-  Plug 'reedes/vim-colors-pencil', {'for': ['markdown', 'md', 'txt', 'text']}
+" color scheme for writing
+Plug 'reedes/vim-colors-pencil', {'for': ['markdown', 'md', 'txt', 'text']}
 
-  " easy colorscheme changes
-  Plug 'reedes/vim-thematic'
+" easy colorscheme changes
+Plug 'reedes/vim-thematic'
+
+" colorize color Hex codes
+Plug 'norcalli/nvim-colorizer.lua'
 
 " Initialize plugin system
 call plug#end()
@@ -385,15 +388,15 @@ function! BufferDelete()
     let s:total_nr_buffers = len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))
 
     if s:total_nr_buffers == 1
-        silent! bdelete!
-        echomsg 'Buffer deleted. Created new buffer.'
+      silent! bdelete!
+      echomsg 'Buffer deleted. Created new buffer.'
     else
-        silent! bdelete!
-        " in vim, we need to go to the previous buffer. This doesn't appear to
-        " be necessary in nvim
-        if !has('nvim')
-          silent! bprevious!
-        endif
+      silent! bdelete!
+      " in vim, we need to go to the previous buffer. This doesn't appear to
+      " be necessary in nvim
+      if !has('nvim')
+        silent! bprevious!
+      endif
 
       " for some reason git gutter doesn't refresh when closing fugitive;
       " force it.
@@ -749,19 +752,19 @@ nnoremap <silent> <leader>wa :FzfRg <C-R><C-W><CR>
 
 " Customize fzf colors to match your color scheme
 let g:fzf_colors =
-\ { 'fg':      ['fg', 'Normal'],
-  \ 'bg':      ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Comment'],
-  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-  \ 'hl+':     ['fg', 'Statement'],
-  \ 'info':    ['fg', 'PreProc'],
-  \ 'border':  ['fg', 'Ignore'],
-  \ 'prompt':  ['fg', 'Conditional'],
-  \ 'pointer': ['fg', 'Exception'],
-  \ 'marker':  ['fg', 'Keyword'],
-  \ 'spinner': ['fg', 'Label'],
-  \ 'header':  ['fg', 'Comment'] }
+      \ { 'fg':      ['fg', 'Normal'],
+      \ 'bg':      ['bg', 'Normal'],
+      \ 'hl':      ['fg', 'Comment'],
+      \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+      \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+      \ 'hl+':     ['fg', 'Statement'],
+      \ 'info':    ['fg', 'PreProc'],
+      \ 'border':  ['fg', 'Ignore'],
+      \ 'prompt':  ['fg', 'Conditional'],
+      \ 'pointer': ['fg', 'Exception'],
+      \ 'marker':  ['fg', 'Keyword'],
+      \ 'spinner': ['fg', 'Label'],
+      \ 'header':  ['fg', 'Comment'] }
 let g:fzf_history_dir = '~/.vim/fzf'
 
 " hide the status line while using fzf, it's just unecessary
@@ -769,7 +772,7 @@ augroup FZF
   autocmd! FileType fzf
   autocmd FileType fzf let b:current_laststatus=&laststatus
   autocmd FileType fzf setlocal laststatus=0 noshowmode noruler
-    \| autocmd BufLeave <buffer> execute "setlocal laststatus=".b:current_laststatus." showmode ruler"
+        \| autocmd BufLeave <buffer> execute "setlocal laststatus=".b:current_laststatus." showmode ruler"
 augroup END
 
 if executable('rg')
@@ -831,14 +834,14 @@ if !has('nvim')
 
   " Define dictionary.
   let g:neocomplete#sources#dictionary#dictionaries = {
-      \ 'default' : '',
-      \ 'vimshell' : $HOME.'/.vimshell_hist',
-      \ 'scheme' : $HOME.'/.gosh_completions'
-          \ }
+        \ 'default' : '',
+        \ 'vimshell' : $HOME.'/.vimshell_hist',
+        \ 'scheme' : $HOME.'/.gosh_completions'
+        \ }
 
   " Define keyword.
   if !exists('g:neocomplete#keyword_patterns')
-      let g:neocomplete#keyword_patterns = {}
+    let g:neocomplete#keyword_patterns = {}
   endif
   let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
@@ -866,11 +869,11 @@ else
   augroup END
 
   call deoplete#custom#option({
-    \ 'auto_complete_delay': 50,
-    \ 'auto_refresh_delay': 50,
-    \ 'smart_case': v:true,
-    \ 'max_list': 100,
-    \ })
+        \ 'auto_complete_delay': 50,
+        \ 'auto_refresh_delay': 50,
+        \ 'smart_case': v:true,
+        \ 'max_list': 100,
+        \ })
 
   " language server results are way smarter than looking at other words in
   " buffers. Perfer them.
@@ -884,10 +887,10 @@ else
 
   " Define dictionary.
   let g:deoplete#sources#dictionary#dictionaries = {
-      \ 'default' : '',
-      \ 'vimshell' : $HOME.'/.vimshell_hist',
-      \ 'scheme' : $HOME.'/.gosh_completions'
-      \ }
+        \ 'default' : '',
+        \ 'vimshell' : $HOME.'/.vimshell_hist',
+        \ 'scheme' : $HOME.'/.gosh_completions'
+        \ }
 endif
 
 " Recommended key-mappings.
@@ -1021,7 +1024,7 @@ augroup goyo_au
   autocmd Filetype markdown,mkd,md,text,txt setlocal spell spl=en_us fdl=4 noru nonu nornu
   " an alternative spell command from https://statico.github.io/vim3.html
   " set spell noci nosi noai nolist noshowmode noshowcmd
-	autocmd Filetype markdown,mkd,md,text,txt setlocal linebreak
+  autocmd Filetype markdown,mkd,md,text,txt setlocal linebreak
 
   autocmd! User GoyoEnter nested call <SID>goyo_enter()
   autocmd! User GoyoLeave nested call <SID>goyo_leave()
@@ -1097,26 +1100,26 @@ let g:ale_markdown_prettier_use_global = 1
 " setup ale autofixing
 let g:ale_fixers = {}
 let g:ale_fixers.javascript = [
-\ 'eslint',
-\ 'prettier',
-\ 'standard',
-\]
+      \ 'eslint',
+      \ 'prettier',
+      \ 'standard',
+      \]
 let g:ale_fixers.css = [
-\ 'prettier',
-\]
+      \ 'prettier',
+      \]
 let g:ale_fixers.json = [
-\ 'prettier',
-\]
+      \ 'prettier',
+      \]
 let g:ale_fixers.markdown = [
-\ 'prettier',
-\]
+      \ 'prettier',
+      \]
 let g:ale_fixers.python = [
-\ 'black',
-\]
+      \ 'black',
+      \]
 let g:ale_ruby_rubocop_options = '--rails'
 let g:ale_fixers.ruby = [
-\ 'rubocop',
-\]
+      \ 'rubocop',
+      \]
 let g:ale_fix_on_save = 1
 let g:ale_linters = {}
 let g:ale_linters.json = [
@@ -1126,10 +1129,10 @@ let g:ale_linters.json = [
 " TODO: use local flow?
 " https://github.com/angrypie/myneovim/blob/9e1ff0c6c2b75df4a29e4538e16cc33d75918c58/settings/set/main.vim#L110
 let g:ale_linters.javascript = [
-\ 'eslint',
-\ 'flow',
-\ 'flow-language-server',
-\]
+      \ 'eslint',
+      \ 'flow',
+      \ 'flow-language-server',
+      \]
 " FIXME: use flow instead of flow-language-server because flow 0.83.0 has
 " issues with ALE https://github.com/w0rp/ale/issues/2000
 " Disable flow from ALE; use language server instead
@@ -1176,13 +1179,13 @@ let g:javascript_plugin_flow = 1
 " Automatically start language servers.
 let g:LanguageClient_autoStart = 1
 let g:LanguageClient_serverCommands = {
-    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
-    \ 'javascript': ['npx', 'flow', 'lsp', '--from=nvim'],
-    \ 'javascript.jsx': ['npx', 'flow', 'lsp', '--from=nvim'],
-    \ 'python': ['pyls'],
-    \ 'sh': ['bash-language-server', 'start'],
-    \ 'zsh': ['bash-language-server', 'start']
-    \ }
+      \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+      \ 'javascript': ['npx', 'flow', 'lsp', '--from=nvim'],
+      \ 'javascript.jsx': ['npx', 'flow', 'lsp', '--from=nvim'],
+      \ 'python': ['pyls'],
+      \ 'sh': ['bash-language-server', 'start'],
+      \ 'zsh': ['bash-language-server', 'start']
+      \ }
 " actually, LSP is way better than ALE for flow.
 " disable LC linting; use ALE instead
 " https://github.com/autozimu/LanguageClient-neovim/issues/569
