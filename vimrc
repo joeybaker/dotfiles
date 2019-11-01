@@ -1411,21 +1411,21 @@ let g:pencil_higher_contrast_ui = 1   " 0=low (def), 1=high
 " thematic
 "
 let g:thematic#themes = {
-\ 'standard'  : {
-\                 'colorscheme': 'default',
-\                 'background': 'dark',
-\                 'airline-theme': 'base16_spacemacs',
-\                },
-\ 'pencil'    : {'colorscheme': 'pencil',
-\                 'background': 'light',
-\                 'airline-theme': 'pencil',
-\                 'laststatus': 0,
-\                 'ruler': 1,
-\                 'font-size': 20,
-\                 'linespace': 8,
-\                 'columns': 80,
-\                },
-\ }
+      \ 'standard'  : {
+      \                 'colorscheme': 'molokai',
+      \                 'background': 'dark',
+      \                 'airline-theme': 'molokai',
+      \                },
+      \ 'pencil'    : {'colorscheme': 'pencil',
+      \                 'background': 'light',
+      \                 'airline-theme': 'pencil',
+      \                 'laststatus': 0,
+      \                 'ruler': 1,
+      \                 'font-size': 20,
+      \                 'linespace': 8,
+      \                 'columns': 80,
+      \                },
+      \ }
 
 augroup writingMode
   autocmd!
@@ -1436,6 +1436,17 @@ augroup writingMode
   " disable airline
   autocmd FileType markdown,md,text,txt setlocal laststatus=1
 augroup end
+
+
+
+"
+" colorizer
+"
+if &termguicolors
+  lua require'colorizer'.setup()
+endif
+
+
 
 
 
@@ -1479,12 +1490,19 @@ endfunction
 " # COLORS
 "
 
-" set to 256 colors
 if $TERM ==? 'xterm-256color' || $TERM ==? 'screen-256color'
-  set t_Co=256
+  if has('termguicolors')
+    " set 24-bit color
+    set termguicolors
+    lua require'colorizer'.setup()
+  else
+    " set to 256 colors
+    set t_Co=256
+  endif
 endif
+
+
 " set color scheme
-" colorscheme molokai
 call SetBackground()
 
 
