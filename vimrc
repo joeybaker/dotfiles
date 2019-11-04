@@ -1415,9 +1415,9 @@ let g:thematic#themes = {
       \ 'standard'  : {
       \                 'colorscheme': 'molokai',
       \                 'background': 'dark',
-      \                 'airline-theme': 'molokai',
+      \                 'airline-theme': 'base16_spacemacs',
       \                },
-      \ 'write'    : {'colorscheme': 'pencil',
+      \ 'write'     : {'colorscheme': 'pencil',
       \                 'background': 'light',
       \                 'airline-theme': 'pencil',
       \                 'laststatus': 0,
