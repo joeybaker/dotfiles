@@ -1404,6 +1404,7 @@ nnoremap <leader>g :Git<cr>
 "
 let g:pencil_terminal_italics = 1
 let g:pencil_higher_contrast_ui = 1   " 0=low (def), 1=high
+let g:pencil_spell_undercurl = 1      " 0=underline, 1=undercurl (def)
 
 
 
@@ -1416,7 +1417,7 @@ let g:thematic#themes = {
       \                 'background': 'dark',
       \                 'airline-theme': 'molokai',
       \                },
-      \ 'pencil'    : {'colorscheme': 'pencil',
+      \ 'write'    : {'colorscheme': 'pencil',
       \                 'background': 'light',
       \                 'airline-theme': 'pencil',
       \                 'laststatus': 0,
@@ -1431,20 +1432,14 @@ augroup writingMode
   autocmd!
   " disable cursorline in text filetypes because of our theme
   autocmd FileType markdown,md,text,txt setlocal nocursorline
+  " we don't need 24-bit color here, it actually makes the contrast worse
+  autocmd FileType markdown,md,text,txt setlocal notermguicolors
   " Fix for airline re-asserting itself https://github.com/junegunn/goyo.vim/issues/198
   autocmd FileType markdown,md,text,txt setlocal eventignore=FocusGained
   " disable airline
   autocmd FileType markdown,md,text,txt setlocal laststatus=1
 augroup end
 
-
-
-"
-" colorizer
-"
-if &termguicolors
-  lua require'colorizer'.setup()
-endif
 
 
 
@@ -1469,13 +1464,13 @@ vmap <silent> <expr> p <sid>Repl()
 " set background color based on $BACKGROUND env var or in GUI
 function! SetBackground()
   if has('gui_running')
-    let g:thematic#theme_name = 'pencil'
+    let g:thematic#theme_name = 'write'
     return
   endif
 
   if exists('$BACKGROUND')
     if $BACKGROUND ==# 'light'
-      let g:thematic#theme_name = 'pencil'
+      let g:thematic#theme_name = 'write'
     else
       let g:thematic#theme_name = 'standard'
     endif
