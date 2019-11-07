@@ -84,6 +84,7 @@ Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries', 'for': 'go' }
 Plug 'hail2u/vim-css3-syntax', { 'for': [ 'javascript', 'css', 'typescript' ] } " reccomended by vim-styled-components
 Plug 'vim-scripts/nginx.vim', { 'for': 'nginx' }
 Plug 'udalov/kotlin-vim', { 'for': 'kotlin' }
+Plug 'darfink/vim-plist'
 
 " Spellcheck for certain file types
 Plug 'reedes/vim-lexical'
