@@ -299,6 +299,7 @@ set completeopt-=preview
 " make `gf` work a little better in JavaScript files
 " https://gist.github.com/latentflip/57bf8f9edde531ee979e
 set suffixesadd+=.js
+set suffixesadd+=.tsx
 set path+=$PWD/node_modules
 
 " fix for netrw windows not being closable
@@ -1099,6 +1100,8 @@ let g:ale_javascript_eslint_use_global = 1
 let g:ale_markdown_prettier_executable = 'prettier_d'
 let g:ale_markdown_prettier_use_local_config = 1
 let g:ale_markdown_prettier_use_global = 1
+" enable auto-import in TS
+let g:ale_completion_tsserver_autoimport = 1
 
 " for typescript, get completions from imported files
 let g:ale_completion_tsserver_autoimport = 1
@@ -1177,7 +1180,7 @@ nnoremap ]; :ALENextWrap<cr>
 
 " javascript syntax highlighting
 " enable flow support
-let g:javascript_plugin_flow = 1
+" let g:javascript_plugin_flow = 1
 
 
 
