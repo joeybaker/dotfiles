@@ -68,9 +68,11 @@ Plug 'goldfeld/vim-seek'
 Plug 'jakar/vim-json', { 'for': 'json' }
 Plug 'tpope/vim-markdown', { 'for': 'markdown' }
 Plug 'toyamarinyon/vim-swift', { 'for': 'swift' }
-Plug 'mmalecki/vim-node.js', { 'for': [ 'javascript', 'typescript' ] }
-Plug 'pangloss/vim-javascript', { 'for': [ 'javascript', 'typescript' ] }
-Plug 'maxmellon/vim-jsx-pretty', { 'for': [ 'javascript', 'typescript' ] } "requires pangloss/vim-javascript or othree/yajs.vim
+Plug 'mmalecki/vim-node.js', { 'for': [ 'javascript' ] }
+Plug 'pangloss/vim-javascript', { 'for': [ 'javascript' ] }
+Plug 'maxmellon/vim-jsx-pretty', { 'for': [ 'javascript' ] } "requires pangloss/vim-javascript or othree/yajs.vim
+Plug 'leafgarland/typescript-vim', { 'for': [ 'typescript', 'reacttypescript' ] }
+Plug 'ianks/vim-tsx', { 'for': [ 'typescript', 'reacttypescript' ] }
 Plug 'avakhov/vim-yaml', { 'for': 'yaml' }
 Plug 'tpope/vim-git'
 Plug 'tmux-plugins/vim-tmux'
@@ -81,7 +83,7 @@ Plug 'jparise/vim-graphql', { 'for': [ 'javascript', 'graphql', 'typescript' ] }
 " Plug 'fleischie/vim-styled-components', { 'for': 'javascript', 'branch': 'main' }
 Plug 'tpope/vim-rails', { 'for': 'ruby' }
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries', 'for': 'go' }
-Plug 'hail2u/vim-css3-syntax', { 'for': [ 'javascript', 'css', 'typescript' ] } " reccomended by vim-styled-components
+Plug 'hail2u/vim-css3-syntax', { 'for': [ 'javascript', 'css', 'typescriptreact' ] } " reccomended by vim-styled-components
 Plug 'vim-scripts/nginx.vim', { 'for': 'nginx' }
 Plug 'udalov/kotlin-vim', { 'for': 'kotlin' }
 Plug 'darfink/vim-plist'
@@ -463,7 +465,7 @@ function! LC_maps()
   if has_key(g:LanguageClient_serverCommands, &filetype)
     nmap <silent> <leader>t   :call LanguageClient#textDocument_hover()<CR>
   else
-    " nmap <silent> <leader>t :ALEHover<CR>
+    nmap <silent> <leader>t :ALEHover<CR>
     " ALEHover is really slow ← trying again
     " autocmd FileType javascript nmap <silent> <leader>t :FlowType<CR>
     " autocmd FileType javascript.jsx nmap <silent> <leader>t :FlowType<CR>
@@ -1098,9 +1100,17 @@ let g:ale_markdown_prettier_executable = 'prettier_d'
 let g:ale_markdown_prettier_use_local_config = 1
 let g:ale_markdown_prettier_use_global = 1
 
+" for typescript, get completions from imported files
+let g:ale_completion_tsserver_autoimport = 1
+
 " setup ale autofixing
 let g:ale_fixers = {}
 let g:ale_fixers.javascript = [
+      \ 'eslint',
+      \ 'prettier',
+      \ 'standard',
+      \]
+let g:ale_fixers.typescript = [
       \ 'eslint',
       \ 'prettier',
       \ 'standard',
@@ -1134,6 +1144,10 @@ let g:ale_linters.javascript = [
       \ 'flow',
       \ 'flow-language-server',
       \]
+let g:ale_linters.typescript = [
+\   'tsserver',
+\   'tslint',
+\]
 " FIXME: use flow instead of flow-language-server because flow 0.83.0 has
 " issues with ALE https://github.com/w0rp/ale/issues/2000
 " Disable flow from ALE; use language server instead
@@ -1406,6 +1420,15 @@ nnoremap <leader>g :Git<cr>
 let g:pencil_terminal_italics = 1
 let g:pencil_higher_contrast_ui = 1   " 0=low (def), 1=high
 let g:pencil_spell_undercurl = 1      " 0=underline, 1=undercurl (def)
+
+
+
+
+"
+" typescript syntax
+"
+let g:typescript_indent_disable = 1
+
 
 
 
