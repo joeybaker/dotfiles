@@ -71,8 +71,7 @@ Plug 'toyamarinyon/vim-swift', { 'for': 'swift' }
 Plug 'mmalecki/vim-node.js', { 'for': [ 'javascript' ] }
 Plug 'pangloss/vim-javascript', { 'for': [ 'javascript' ] }
 Plug 'maxmellon/vim-jsx-pretty', { 'for': [ 'javascript' ] } "requires pangloss/vim-javascript or othree/yajs.vim
-Plug 'leafgarland/typescript-vim', { 'for': [ 'typescript', 'reacttypescript' ] }
-Plug 'ianks/vim-tsx', { 'for': [ 'typescript', 'reacttypescript' ] }
+Plug 'HerringtonDarkholme/yats.vim', { 'for': [ 'typescript', 'reacttypescript' ] }
 Plug 'avakhov/vim-yaml', { 'for': 'yaml' }
 Plug 'tpope/vim-git'
 Plug 'tmux-plugins/vim-tmux'
