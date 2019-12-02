@@ -884,7 +884,7 @@ else
   " call deoplete#custom#source('ale', 'matchers', ['matcher_head'])
   call deoplete#custom#source('LC', 'rank', 9998)
   " call deoplete#custom#source('LC', 'matchers', ['matcher_head'])
-  call deoplete#custom#source('LanguageClient-neovim', 'rank', 9998)
+  call deoplete#custom#source('LanguageClient-neovim', 'rank', 9997)
   " call deoplete#custom#source('LanguageClient-neovim', 'matchers', ['matcher_head'])
 
 
@@ -1117,6 +1117,11 @@ let g:ale_fixers.typescript = [
       \ 'prettier',
       \ 'standard',
       \]
+let g:ale_fixers.typescriptreact = [
+      \ 'eslint',
+      \ 'prettier',
+      \ 'standard',
+      \]
 let g:ale_fixers.css = [
       \ 'prettier',
       \]
@@ -1148,6 +1153,12 @@ let g:ale_linters.javascript = [
       \]
 let g:ale_linters.typescript = [
 \   'tsserver',
+\   'eslint',
+\   'tslint',
+\]
+let g:ale_linters.typescriptreact = [
+\   'tsserver',
+\   'eslint',
 \   'tslint',
 \]
 " FIXME: use flow instead of flow-language-server because flow 0.83.0 has
