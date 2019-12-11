@@ -35,11 +35,15 @@ Plug 'wincent/terminus'
 " remember cursor position and such when opening a file
 Plug 'farmergreg/vim-lastplace'
 
+" colorschemes
 " molokai color scheme
 Plug 'tomasr/molokai'
-
 " This seems to be a better version of oceanic next
 Plug 'mhartington/oceanic-next'
+Plug 'sonph/onehalf', {'rtp': 'vim/'}
+Plug 'drewtempelmeyer/palenight.vim'
+Plug 'ayu-theme/ayu-vim'
+
 
 " Keybindings for commenting lines
 Plug 'scrooloose/nerdcommenter'
@@ -1190,7 +1194,7 @@ nnoremap ]; :ALENextWrap<cr>
 
 " javascript syntax highlighting
 " enable flow support
-" let g:javascript_plugin_flow = 1
+let g:javascript_plugin_flow = 1
 
 
 
@@ -1443,6 +1447,26 @@ let g:pencil_spell_undercurl = 1      " 0=underline, 1=undercurl (def)
 let g:typescript_indent_disable = 1
 
 
+"
+" oceanic-next
+"
+
+let g:oceanic_next_terminal_bold = 1
+let g:oceanic_next_terminal_italic = 1
+
+
+"
+" palenight
+"
+let g:palenight_terminal_italics=1
+
+
+"
+" ayu
+"
+" let ayucolor="light"  " for light version of theme
+let ayucolor='mirage' " for mirage version of theme
+" let ayucolor='dark'   " for dark version of theme
 
 
 "
@@ -1450,7 +1474,7 @@ let g:typescript_indent_disable = 1
 "
 let g:thematic#themes = {
       \ 'standard'  : {
-      \                 'colorscheme': 'molokai',
+      \                 'colorscheme': 'ayu',
       \                 'background': 'dark',
       \                 'airline-theme': 'base16_spacemacs',
       \                },
