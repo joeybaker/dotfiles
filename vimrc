@@ -876,8 +876,8 @@ else
   augroup END
 
   call deoplete#custom#option({
-        \ 'auto_complete_delay': 50,
-        \ 'auto_refresh_delay': 200,
+        \ 'auto_complete_delay': 20,
+        \ 'auto_refresh_delay': 100,
         \ 'smart_case': v:true,
         \ 'max_list': 20,
         \ })
