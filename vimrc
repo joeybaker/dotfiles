@@ -553,6 +553,11 @@ nnoremap <silent> <leader>- :exe "resize -10"<CR>
 nnoremap <silent> <leader>+ <C-W>_
 nnoremap <silent> <leader>_ <C-W>|
 
+" preview in marked for markdown
+augroup preview_markdown
+  autocmd!
+  autocmd FileType markdown nmap <silent> <leader>o :!open "%:p" -a Marked\ 2<CR><CR>
+augroup END
 
 
 
