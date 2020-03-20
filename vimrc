@@ -241,7 +241,7 @@ call plug#end()
 "
 set number " Turn on Line numbers
 set relativenumber " The current line will have the absolute number, but all other lines will be relative
-set cursorline " highlight the current line
+setlocal cursorline " highlight the current line; use local so we can disable easily in markdown/text files
 set lazyredraw " redraw only when we need to, should speed up macros and such
 set showmatch " Show parentheses matching
 set updatetime=250 " as recommended by gitgutter https://github.com/airblade/vim-gitgutter#getting-started
