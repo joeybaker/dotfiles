@@ -1361,6 +1361,7 @@ let g:rooter_patterns = [ 'Rakefile', 'requirements.txt', 'node_modules/', '.git
 " autocmd InsertLeave * set noautochdir | execute 'cd' fnameescape(project_cwd)
 
 augroup rooter
+  " TODO: maybe g:LanguageClient_echoProjectRoot is a good idea?
   autocmd!
   autocmd InsertEnter * nested execute 'cd'.expand('%:p:h')
   autocmd InsertLeave,BufAdd,BufEnter * nested call setbufvar('%', 'rootDir', '') | :Rooter
