@@ -1556,7 +1556,8 @@ if $TERM ==? 'xterm-256color' || $TERM ==? 'screen-256color'
   if has('termguicolors')
     " set 24-bit color
     set termguicolors
-    lua require'colorizer'.setup()
+    " Attach to certain Filetypes
+    lua require 'colorizer'.setup({ 'css'; 'html'; })
   else
     " set to 256 colors
     set t_Co=256
