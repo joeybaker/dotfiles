@@ -225,7 +225,7 @@ Plug 'reedes/vim-colors-pencil', {'for': ['markdown', 'md', 'txt', 'text']}
 Plug 'reedes/vim-thematic'
 
 " colorize color Hex codes
-Plug 'norcalli/nvim-colorizer.lua'
+Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 
 " Initialize plugin system
 call plug#end()
@@ -1476,6 +1476,18 @@ let ayucolor='mirage' " for mirage version of theme
 " let ayucolor='dark'   " for dark version of theme
 
 
+
+
+
+"
+" hexokinase
+"
+" to keep default behaviour don't define this variable
+" let g:Hexokinase_ftEnabled = ['css', 'html', 'javascript']
+
+
+
+
 "
 " thematic
 "
@@ -1557,11 +1569,12 @@ if $TERM ==? 'xterm-256color' || $TERM ==? 'screen-256color'
   if has('termguicolors')
     " set 24-bit color
     set termguicolors
-    " Attach to certain Filetypes
-    lua require 'colorizer'.setup({ 'css'; 'html'; })
+    execute 'HexokinaseTurnOn'
   else
     " set to 256 colors
     set t_Co=256
+    " in 256 colors, we can't show the colors inline
+    execute 'HexokinaseTurnOff'
   endif
 endif
 
