@@ -1483,7 +1483,7 @@ let ayucolor='mirage' " for mirage version of theme
 " hexokinase
 "
 " to keep default behaviour don't define this variable
-" let g:Hexokinase_ftEnabled = ['css', 'html', 'javascript']
+let g:Hexokinase_ftEnabled = ['css', 'html', 'javascript', 'reacttypescript']
 
 
 
@@ -1569,7 +1569,6 @@ if $TERM ==? 'xterm-256color' || $TERM ==? 'screen-256color'
   if has('termguicolors')
     " set 24-bit color
     set termguicolors
-    execute 'HexokinaseTurnOn'
   else
     " set to 256 colors
     set t_Co=256
