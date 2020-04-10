@@ -1107,8 +1107,8 @@ let g:ale_javascript_eslint_use_global = 1
 " we have prettier_d installed globally, for speed
 " disabled; ALE seems to just stall when talking to prettier_d
 " let g:ale_javascript_prettier_executable = '/usr/local/bin/prettier_d'
+" let g:ale_javascript_prettier_use_global = 1
 let g:ale_javascript_prettier_use_local_config = 1
-let g:ale_javascript_prettier_use_global = 1
 " enable auto-import in TS
 let g:ale_completion_tsserver_autoimport = 1
 
