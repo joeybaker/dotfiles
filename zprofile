@@ -60,6 +60,8 @@ path=(
   ## use brew's GNU utils instead of the built in ones
   ## This has to be last so that the gnu utils override all else
   /usr/local/opt/coreutils/libexec/gnubin
+  # use brew openssl
+  /usr/local/opt/openssl/bin
 )
 
 # autoenv
