@@ -228,6 +228,9 @@ Plug 'reedes/vim-thematic'
 " colorize color Hex codes
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 
+" show git commit with keycommand <leader>gm
+Plug 'rhysd/git-messenger.vim'
+
 " Initialize plugin system
 call plug#end()
 
