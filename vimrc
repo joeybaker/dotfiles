@@ -55,8 +55,9 @@ if has('nvim')
   " go autocompletion
   Plug 'zchee/deoplete-go', { 'do': 'make'}
 else
-  " neocomplete for vim, it's not as good as deoplete but vim is old
-  Plug 'Shougo/neocomplete.vim'
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
 endif
 " For function argument completion
 Plug 'Shougo/neosnippet'
