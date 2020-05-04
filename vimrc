@@ -971,9 +971,9 @@ let g:neosnippet#enable_completed_snippet = 1
 " set the snippets dir
 let g:neosnippet#snippets_directory = '~/.vim/snippets'
 " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-imap <C-l>     <Plug>(neosnippet_expand_or_jump)
-smap <C-l>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-l>     <Plug>(neosnippet_expand_target)
+imap <C-i>     <Plug>(neosnippet_expand_or_jump)
+smap <C-i>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-i>     <Plug>(neosnippet_expand_target)
 
 
 
