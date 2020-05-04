@@ -19,10 +19,11 @@
     "markdown-to-slides-server": "^1.0.0",
     "neovim": "^4.8.0",
     "nodemon": "^2.0.2",
-    "prettier": "^1.19.1",
+    "prettier": "^2.0.5",
     "prettier_d": "https://github.com/josephfrazier/prettier_d#faf45d2ac9acc9b919d13ea058f8b28d4d947baa",
     "serve": "^11.2.0",
     "supervisor": "^0.12.0",
-    "trash-cli": "^3.0.0"
+    "trash-cli": "^3.0.0",
+    "vim-language-server": "^1.5.5"
   }
 }
