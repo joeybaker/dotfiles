@@ -50,7 +50,6 @@ Plug 'scrooloose/nerdcommenter'
 
 " autocompletion
 if has('nvim')
-  " neocomplete isn't nvim compatible, use deoplete instead
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   " go autocompletion
   Plug 'zchee/deoplete-go', { 'do': 'make'}
@@ -840,74 +839,36 @@ let g:NERDTrimTrailingWhitespace = 1
 "
 
 " Enable deoplete when InsertEnter.
-if !has('nvim')
-  " Use neocomplete.
-  let g:neocomplete#enable_at_startup = 1
-  " Use smartcase.
-  let g:neocomplete#enable_smart_case = 1
-  " Set minimum syntax keyword length.
-  let g:neocomplete#sources#syntax#min_keyword_length = 2
+" turn it on, but do it async
+let g:deoplete#enable_at_startup = 1
+" augroup deoplete_config
+"   autocmd!
+"   autocmd InsertEnter * call deoplete#enable()
+" augroup END
 
-  " Define dictionary.
-  let g:neocomplete#sources#dictionary#dictionaries = {
-        \ 'default' : '',
-        \ 'vimshell' : $HOME.'/.vimshell_hist',
-        \ 'scheme' : $HOME.'/.gosh_completions'
-        \ }
+call deoplete#custom#option({
+      \ 'auto_complete_delay': 20,
+      \ 'auto_refresh_delay': 100,
+      \ 'smart_case': v:true,
+      \ 'max_list': 20,
+      \ })
 
-  " Define keyword.
-  if !exists('g:neocomplete#keyword_patterns')
-    let g:neocomplete#keyword_patterns = {}
-  endif
-  let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-
-  " Plugin key-mappings.
-  inoremap <expr><C-g>     neocomplete#undo_completion()
-  inoremap <expr><C-y>     neocomplete#complete_common_string()
-
-  " Enable heavy omni completion.
-  if !exists('g:neocomplete#sources#omni#input_patterns')
-    let g:neocomplete#sources#omni#input_patterns = {}
-  endif
-  "let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-  "let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-  "let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-
-  " Perl autocopmplete. For perlomni.vim setting.
-  " https://github.com/c9s/perlomni.vim
-  let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
-else
-  " turn it on, but do it async
-  let g:deoplete#enable_at_startup = 0
-  augroup deoplete_config
-    autocmd!
-    autocmd InsertEnter * call deoplete#enable()
-  augroup END
-
-  call deoplete#custom#option({
-        \ 'auto_complete_delay': 20,
-        \ 'auto_refresh_delay': 100,
-        \ 'smart_case': v:true,
-        \ 'max_list': 20,
-        \ })
-
-  " language server results are way smarter than looking at other words in
-  " buffers. Perfer them.
-  call deoplete#custom#source('ale', 'rank', 9999)
-  " call deoplete#custom#source('ale', 'matchers', ['matcher_head'])
-  call deoplete#custom#source('LC', 'rank', 9998)
-  " call deoplete#custom#source('LC', 'matchers', ['matcher_head'])
-  call deoplete#custom#source('LanguageClient-neovim', 'rank', 9997)
-  " call deoplete#custom#source('LanguageClient-neovim', 'matchers', ['matcher_head'])
+" language server results are way smarter than looking at other words in
+" buffers. Perfer them.
+call deoplete#custom#source('ale', 'rank', 9999)
+" call deoplete#custom#source('ale', 'matchers', ['matcher_head'])
+call deoplete#custom#source('LC', 'rank', 9998)
+" call deoplete#custom#source('LC', 'matchers', ['matcher_head'])
+call deoplete#custom#source('LanguageClient-neovim', 'rank', 9997)
+" call deoplete#custom#source('LanguageClient-neovim', 'matchers', ['matcher_head'])
 
 
-  " Define dictionary.
-  let g:deoplete#sources#dictionary#dictionaries = {
-        \ 'default' : '',
-        \ 'vimshell' : $HOME.'/.vimshell_hist',
-        \ 'scheme' : $HOME.'/.gosh_completions'
-        \ }
-endif
+" Define dictionary.
+let g:deoplete#sources#dictionary#dictionaries = {
+      \ 'default' : '',
+      \ 'vimshell' : $HOME.'/.vimshell_hist',
+      \ 'scheme' : $HOME.'/.gosh_completions'
+      \ }
 
 " Recommended key-mappings.
 " <CR>: close popup and save indent.
@@ -919,35 +880,6 @@ function! s:my_cr_function()
 endfunction
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" <C-h>, <BS>: close popup and delete backword char. (for multiple-cursors)
-if has('nvim')
-  function! g:Multiple_cursors_before()
-    let g:deoplete#disable_auto_complete = 1
-    let b:deoplete_disable_auto_complete = 1
-  endfunction
-  function! g:Multiple_cursors_after()
-    let g:deoplete#disable_auto_complete = 0
-    let b:deoplete_disable_auto_complete = 0
-  endfunction
-  " inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
-  " inoremap <expr><BS> deoplete#smart_close_popup()."\<C-h>"
-else
-  " Called once right before you start selecting multiple cursors
-  function! Multiple_cursors_before()
-    if exists(':NeoCompleteLock')==2
-      exe 'NeoCompleteLock'
-    endif
-  endfunction
-
-  " Called once only when the multiple selection is canceled (default <Esc>)
-  function! Multiple_cursors_after()
-    if exists(':NeoCompleteUnlock')==2
-      exe 'NeoCompleteUnlock'
-    endif
-  endfunction
-  " inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-  " inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-endif
 " Close popup by <Space>.
 "inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
 
@@ -970,10 +902,26 @@ augroup END
 let g:neosnippet#enable_completed_snippet = 1
 " set the snippets dir
 let g:neosnippet#snippets_directory = '~/.vim/snippets'
-" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-imap <C-i>     <Plug>(neosnippet_expand_or_jump)
-smap <C-i>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-i>     <Plug>(neosnippet_expand_target)
+" imap <C-;>     <Plug>(neosnippet_expand_or_jump)
+" smap <C-;>     <Plug>(neosnippet_expand_or_jump)
+" xmap <C-;>     <Plug>(neosnippet_expand_or_jump)
+" nmap <C-;>     <Plug>(neosnippet_expand_or_jump)
+
+" SuperTab like snippets' behavior.
+" Note: Be careful to map <TAB> because <TAB> is equivalent to <C-i> in
+" Vim and <C-i> is a very important key especially in Normal Mode.
+"imap <expr><TAB>
+" \ pumvisible() ? "\<C-n>" :
+" \ neosnippet#expandable_or_jumpable() ?
+" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+"smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+" \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+" For conceal markers.
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
+
 
 
 
