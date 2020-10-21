@@ -1291,7 +1291,7 @@ let g:rooter_use_lcd = 1
 " the project root but files like the Rakefile or requirements.txt will not.
 " If that's not a valid assumption… things will be difficult.
 " NOTE: order matters. Lower indexies are take priority.
-let g:rooter_patterns = [ 'Rakefile', 'requirements.txt', 'node_modules/', '.git', '.git/', '_darcs/', '.hg/', '.bzr/', '.svn/' ]
+let g:rooter_patterns = [ 'Rakefile', 'requirements.txt', 'node_modules/', '.git', '.git/', '_darcs/', '.hg/', '.bzr/', '.svn/', 'Session.vim' ]
 " set the current directory to the buffer's directory. This makes it easy to
 " create new files relative to the current file
 " don't use autochdir or it's older version because it messes with project
