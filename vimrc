@@ -121,7 +121,6 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 
 " search and replace across project
-" Plug 'skwp/greplace.vim'
 Plug 'wincent/ferret'
 
 " being able to `:Gblame` is nice
