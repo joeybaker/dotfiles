@@ -121,7 +121,8 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 
 " search and replace across project
-Plug 'skwp/greplace.vim'
+" Plug 'skwp/greplace.vim'
+Plug 'wincent/ferret'
 
 " being able to `:Gblame` is nice
 Plug 'tpope/vim-fugitive'
@@ -1184,19 +1185,21 @@ let g:LanguageClient_diagnosticsEnable=1
 
 
 "
-" Greplace
+" Ferret
 "
 
-function! GlobalSearchReplace()
-  call inputsave()
-  let replacement = input('Search: ')
-  call inputrestore()
-  execute 'grep '.replacement
-  execute 'Gqfopen'
-endfunction
-" enter once to call the function, again to accept the results of grep and go
-" to the fix window
-nnoremap <Leader>A :call GlobalSearchReplace()<cr><cr>
+" disable default mappings; we have our own
+let g:FerretMap=0
+" allow us to delete files from the quicklist
+let g:FerretAcksCommand='cfdo'
+
+" trigger a search; resultss will show it quick list
+nmap <leader>A <Plug>(FerretAck)
+" or, trigger a search from the word under the cursor
+nmap <leader>W <Plug>(FerretAckWord)
+" cleanup the quickfix list if necessary by removing instances you don't want,
+" then trigger a command to run the replacement
+nmap <leader>S <Plug>(FerretAcks)
 
 
 
