@@ -43,27 +43,28 @@ Plug 'mhartington/oceanic-next'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'drewtempelmeyer/palenight.vim'
 Plug 'ayu-theme/ayu-vim'
+Plug 'dracula/vim'
 
 
 " Keybindings for commenting lines
 Plug 'scrooloose/nerdcommenter'
 
 " autocompletion
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  " go autocompletion
-  Plug 'zchee/deoplete-go', { 'do': 'make'}
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
+" if has('nvim')
+"   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"   " go autocompletion
+"   Plug 'zchee/deoplete-go', { 'do': 'make'}
+" else
+"   Plug 'Shougo/deoplete.nvim'
+"   Plug 'roxma/nvim-yarp'
+"   Plug 'roxma/vim-hug-neovim-rpc'
+" endif
 " For function argument completion
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
 " More autocompletion sources
-Plug 'wellle/tmux-complete.vim'
-Plug 'fszymanski/deoplete-emoji', { 'for': [ 'gitcommit', 'text', 'txt', 'markdown' ] }
+" Plug 'wellle/tmux-complete.vim'
+" Plug 'fszymanski/deoplete-emoji', { 'for': [ 'gitcommit', 'text', 'txt', 'markdown' ] }
 
 " seek with two chars instead on one on a single line
 Plug 'goldfeld/vim-seek'
