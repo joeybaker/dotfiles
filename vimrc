@@ -111,7 +111,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'nathanaelkane/vim-indent-guides'
 
 " async linting, b/c it's 2017
-Plug 'w0rp/ale'
+" Plug 'w0rp/ale'
 
 " expand regions for easier selections
 Plug 'terryma/vim-expand-region'
@@ -211,10 +211,10 @@ Plug 'yegappan/mru'
 Plug 'tpope/vim-vinegar'
 
 " autocompletion via language server
-Plug 'autozimu/LanguageClient-neovim', {
-      \ 'branch': 'next',
-      \ 'do': 'bash install.sh',
-      \ }
+" Plug 'autozimu/LanguageClient-neovim', {
+"       \ 'branch': 'next',
+"       \ 'do': 'bash install.sh',
+"       \ }
 
 " Show marks in the sign bar
 Plug 'kshenoy/vim-signature'
@@ -230,6 +230,9 @@ Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 
 " show git commit with keycommand <leader>gm
 Plug 'rhysd/git-messenger.vim'
+
+" coc might be better than ale or language server?
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Initialize plugin system
 call plug#end()
@@ -267,6 +270,9 @@ set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 " Write temporary backup files in case we crash
 set writebackup
 
+" more space for messages
+set cmdheight=2
+
 " More natural split opening
 " https://robots.thoughtbot.com/vim-splits-move-faster-and-more-naturally#more-natural-split-opening
 set splitbelow
@@ -288,6 +294,8 @@ set noswapfile
 " https://github.com/vim-airline/vim-airline/wiki/FAQ#there-is-a-pause-when-leaving-insert-mode
 set ttimeoutlen=10
 
+" Don't pass messages to |ins-completion-menu|. For vim-coc
+set shortmess+=c
 
 " persist undo past leaving a buffer
 " https://stackoverflow.com/questions/5969807/how-can-i-retain-vim-undo-history-but-disallow-hiding-modified-buffers
@@ -306,6 +314,7 @@ set completeopt-=preview
 " make `gf` work a little better in JavaScript files
 " https://gist.github.com/latentflip/57bf8f9edde531ee979e
 set suffixesadd+=.js
+set suffixesadd+=.ts
 set suffixesadd+=.tsx
 set path+=$PWD/node_modules
 
@@ -473,7 +482,7 @@ function! LC_maps()
   if has_key(g:LanguageClient_serverCommands, &filetype)
     nmap <silent> <leader>t   :call LanguageClient#textDocument_hover()<CR>
   else
-    nmap <silent> <leader>t :ALEHover<CR>
+    " nmap <silent> <leader>t :ALEHover<CR>
     " ALEHover is really slow ← trying again
     " autocmd FileType javascript nmap <silent> <leader>t :FlowType<CR>
     " autocmd FileType javascript.jsx nmap <silent> <leader>t :FlowType<CR>
@@ -488,7 +497,7 @@ function! LC_maps()
     " language server renaming. This seems risky, but let's try it.
     " https://github.com/autozimu/LanguageClient-neovim/blob/9a8eb0a1ea20263ba1b6819c026c1b728bc25463/doc/LanguageClient.txt#L403-L416
     " Rename - rn => rename
-    noremap <silent> <leader>rr :call LanguageClient#textDocument_rename()<CR>
+    " noremap <silent> <leader>rr :call LanguageClient#textDocument_rename()<CR>
 
     " Rename - rc => rename camelCase
     noremap <leader>rc :call LanguageClient#textDocument_rename(
@@ -513,11 +522,13 @@ function! LC_maps()
     " references for `thing` of `this.props.thing` inside a method and not the
     " whole class.
     noremap <leader>rn :call LanguageClient#textDocument_references()<CR>
+  else
+    noremap <silent> <leader>rr :ALERename<CR>
   endif
 endfunction
 augroup lc_config
   autocmd!
-  autocmd FileType * call LC_maps()
+  " autocmd FileType * call LC_maps()
 augroup END
 
 
@@ -847,21 +858,21 @@ let g:deoplete#enable_at_startup = 1
 "   autocmd InsertEnter * call deoplete#enable()
 " augroup END
 
-call deoplete#custom#option({
-      \ 'auto_complete_delay': 20,
-      \ 'auto_refresh_delay': 100,
-      \ 'smart_case': v:true,
-      \ 'max_list': 20,
-      \ })
-
-" language server results are way smarter than looking at other words in
-" buffers. Perfer them.
-call deoplete#custom#source('ale', 'rank', 9999)
-" call deoplete#custom#source('ale', 'matchers', ['matcher_head'])
-call deoplete#custom#source('LC', 'rank', 9998)
-" call deoplete#custom#source('LC', 'matchers', ['matcher_head'])
-call deoplete#custom#source('LanguageClient-neovim', 'rank', 9997)
-" call deoplete#custom#source('LanguageClient-neovim', 'matchers', ['matcher_head'])
+" call deoplete#custom#option({
+"       \ 'auto_complete_delay': 20,
+"       \ 'auto_refresh_delay': 100,
+"       \ 'smart_case': v:true,
+"       \ 'max_list': 20,
+"       \ })
+"
+" " language server results are way smarter than looking at other words in
+" " buffers. Perfer them.
+" call deoplete#custom#source('ale', 'rank', 9999)
+" " call deoplete#custom#source('ale', 'matchers', ['matcher_head'])
+" call deoplete#custom#source('LC', 'rank', 9998)
+" " call deoplete#custom#source('LC', 'matchers', ['matcher_head'])
+" call deoplete#custom#source('LanguageClient-neovim', 'rank', 9997)
+" " call deoplete#custom#source('LanguageClient-neovim', 'matchers', ['matcher_head'])
 
 
 " Define dictionary.
@@ -871,16 +882,17 @@ let g:deoplete#sources#dictionary#dictionaries = {
       \ 'scheme' : $HOME.'/.gosh_completions'
       \ }
 
+" disabled for vim-coc
 " Recommended key-mappings.
 " <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-  return (pumvisible() ? "\<C-y>" : '' ) . "\<CR>"
-  " For no inserting <CR> key.
-  "return pumvisible() ? "\<C-y>" : "\<CR>"
-endfunction
-" <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+" function! s:my_cr_function()
+"   return (pumvisible() ? "\<C-y>" : '' ) . "\<CR>"
+"   " For no inserting <CR> key.
+"   "return pumvisible() ? "\<C-y>" : "\<CR>"
+" endfunction
+" " <TAB>: completion.
+" inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " Close popup by <Space>.
 "inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
 
@@ -900,13 +912,14 @@ augroup END
 
 
 " neosnippet
+" TODO: use coc for this instead
 let g:neosnippet#enable_completed_snippet = 1
 " set the snippets dir
 let g:neosnippet#snippets_directory = '~/.vim/snippets'
-" imap <C-;>     <Plug>(neosnippet_expand_or_jump)
-" smap <C-;>     <Plug>(neosnippet_expand_or_jump)
-" xmap <C-;>     <Plug>(neosnippet_expand_or_jump)
-" nmap <C-;>     <Plug>(neosnippet_expand_or_jump)
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+nmap <C-k>     <Plug>(neosnippet_expand_or_jump)
 
 " SuperTab like snippets' behavior.
 " Note: Be careful to map <TAB> because <TAB> is equivalent to <C-i> in
@@ -1112,12 +1125,10 @@ let g:ale_linters.javascript = [
 let g:ale_linters.typescript = [
 \   'tsserver',
 \   'eslint',
-\   'tslint',
 \]
 let g:ale_linters.typescriptreact = [
 \   'tsserver',
 \   'eslint',
-\   'tslint',
 \]
 " FIXME: use flow instead of flow-language-server because flow 0.83.0 has
 " issues with ALE https://github.com/w0rp/ale/issues/2000
@@ -1131,15 +1142,64 @@ let g:ale_linters_ignore.javascript = ['flow-language-server']
 " the other linter installed works better
 " let g:ale_linters.sh = [ 'language_server' ]
 
-
-nnoremap [; :ALEPreviousWrap<cr>
-nnoremap ]; :ALENextWrap<cr>
-
-
-
+" navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> [; <Plug>(coc-diagnostic-prev)
+nmap <silent> ]; <Plug>(coc-diagnostic-next)
 
 
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" rename
+nmap <silent> <leader>rr <Plug>(coc-rename)
+
+" Use <C-j> for both expand and jump (make expand higher priority.)
+" imap <silent> <C-j> <Plug>(coc-snippets-expand-jump)
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
+" position. Coc only does snippet and additional edit on confirm.
+" <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
+" if exists('*complete_info')
+"   inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+" else
+"   inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" endif
+" use <tab> for trigger completion and navigate to the next complete item
+" function! s:check_back_space() abort
+"   let col = col('.') - 1
+"   return !col || getline('.')[col - 1]  =~ '\s'
+" endfunction
+
+" Use <Tab> and <S-Tab> to navigate the completion list:
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <TAB>
+  \ pumvisible() ? "\<C-n>" :
+  \ <SID>check_back_space() ? "\<TAB>" :
+  \ coc#refresh()
+
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" trigger completion for snippets:
+inoremap <silent><expr> <c-l> coc#refresh()
 
 
 
@@ -1285,7 +1345,7 @@ let g:rooter_silent_chdir = 1
 " resolve symbolic links
 let g:rooter_resolve_links = 1
 " only change for the current window
-let g:rooter_use_lcd = 1
+let g:rooter_cd_cmd="lcd"
 " look at node_modules in addition to the defaults of .git and Rakefile, so
 " that we can detect monorepos. This assumes that node_modules will live in
 " the project root but files like the Rakefile or requirements.txt will not.
@@ -1527,38 +1587,9 @@ if $TERM ==? 'xterm-256color' || $TERM ==? 'screen-256color'
   endif
 endif
 
-
-" set color scheme
-call SetBackground()
-
-
 " Use color syntax highlighting.
 syntax on
 
-" Color specifications. Change them as you would like.
-"
-"hi Comment      term=none       ctermfg=gray    guifg=Gray
-"hi Constant     term=underline  ctermfg=cyan    guifg=Cyan
-"hi Identifier   term=underline  ctermfg=green   guifg=White
-"hi Statement    term=bold       ctermfg=white   guifg=White
-"hi PreProc      term=underline  ctermfg=magenta guifg=Magenta
-"hi Type         term=underline  ctermfg=white   guifg=White
-"hi Special      term=bold       ctermfg=blue    guifg=Blue
-" hi Nontext      term=bold       ctermfg=red     guifg=Red
-" hi Normal       guifg=Yellow    guibg=#00007F
-" hi Normal       ctermfg=darkgreen
-
-" hi Comment      cterm=none      gui=none
-" hi Constant     cterm=bold      gui=none
-" hi Identifier   cterm=none      gui=none
-" hi Statement    cterm=bold      gui=none
-" hi PreProc      cterm=bold      gui=none
-" hi Type         cterm=bold      gui=none
-" hi Special      cterm=bold      gui=none
-" hi NonText      cterm=bold      gui=none
-
-" Special highlighting for XML
-" hi xmlTag ctermfg=blue cterm=bold guifg=white
-" hi xmlTagName ctermfg=blue cterm=bold guifg=white
-" hi xmlEndTag ctermfg=blue cterm=bold guifg=white
+" set color scheme
+call SetBackground()
 
