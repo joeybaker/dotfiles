@@ -48,6 +48,11 @@ path=(
   /usr/local/{bin,sbin}
   ## for yarn
   $HOME/.config/yarn/global/node_modules/.bin
+  ## use brew's GNU utils instead of the built in ones
+  ## This has to be last so that the gnu utils override all else
+  /usr/local/opt/coreutils/libexec/gnubin
+  # use brew openssl
+  /usr/local/opt/openssl/bin
   $path
   # for rbenv
   $HOME/.rbenv/shims
@@ -57,11 +62,6 @@ path=(
   $HOME/Library/Python/3.7/bin
   # for rust
   $HOME/.cargo/bin
-  ## use brew's GNU utils instead of the built in ones
-  ## This has to be last so that the gnu utils override all else
-  /usr/local/opt/coreutils/libexec/gnubin
-  # use brew openssl
-  /usr/local/opt/openssl/bin
 )
 
 # autoenv

@@ -100,6 +100,8 @@ alias sshj='ssh joeybaker@byjoeybaker.com'
 # for `brew install thefuck`
 eval "$(thefuck --alias)"
 
+# /usr/local/opt/coreutils/libexec/gnubin/ls
+# ls --group-directories-first --color=auto
 alias l='/bin/ls -AG'
 # sleep 0.1 b/c the cleaning script locks git, and we need to wait for that to clear
 function mkcd() { mkdir -p "$@" && cd "$_"; }
