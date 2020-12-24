@@ -157,7 +157,7 @@ Plug 'AndrewRadev/splitjoin.vim'
 Plug 'mbbill/undotree'
 
 " fzf for fuzzy finding files. It's like ctrl-p but newer
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
 " better handling of ruby which doesn't use curlies
@@ -756,6 +756,9 @@ let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
 " fzf
 " https://medium.com/@crashybang/supercharge-vim-with-fzf-and-ripgrep-d4661fc853d2
 let g:fzf_command_prefix = 'Fzf'
+
+" https://github.com/junegunn/fzf/blob/master/README-VIM.md
+let g:fzf_layout = { 'down': '40%' }
 
 " map this just like ctrl-p
 nnoremap <silent> <leader>p :FzfFiles<CR>
