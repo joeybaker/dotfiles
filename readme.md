@@ -27,11 +27,11 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
 
     # lua is for the neocomplete plugin vim plugin
     brew install vim --override-system-vi --with-python3 --with-lua
-    brew install reattach-to-user-namespace z the_silver_searcher ccat node tmux sshrc git zsh ack findutils bash shellcheck httpie jo mas autoenv coreutils cmake gpg rbenv yarn thefuck nvm neovim/neovim/neovim python3 python2 vale fd ripgrep fzf pgcli progress pinentry-mac prettyping tldr
+    brew install reattach-to-user-namespace z the_silver_searcher ccat node tmux sshrc git zsh ack findutils bash shellcheck httpie jo mas autoenv coreutils cmake gpg rbenv yarn thefuck nvm neovim/neovim/neovim python3 python2 vale fd ripgrep fzf pgcli progress pinentry-mac prettyping tldr bat
     brew install hub --devel # 2.3.0 has been blocked for a year. We want it for PR templates
     # b/c newer is better, and for diff-so-fancy
     brew install gnu-sed grep --with-default-names
-    brew cask install gitify google-chrome firefox iterm2 slate istat-menus cloudup google-chrome-canary karabiner-elements flux sidestep bartender 1password alfred syncthing-bar spillo vlc atext dash safari-technology-preview gitup keybase pock
+    brew cask install gitify google-chrome firefox iterm2 slate istat-menus cloudup google-chrome-canary karabiner-elements flux sidestep bartender 1password alfred syncthing spillo vlc atext dash safari-technology-preview gitup keybase pock
     # great quicklook plugins [via](https://github.com/sindresorhus/quick-look-plugins)
     brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch quicklook-csv webpquicklook webpquicklook suspicious-package quicklookase qlvideo && qlmanage -r
     # fonts
