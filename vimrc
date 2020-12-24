@@ -49,22 +49,12 @@ Plug 'dracula/vim'
 " Keybindings for commenting lines
 Plug 'scrooloose/nerdcommenter'
 
-" autocompletion
-" if has('nvim')
-"   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-"   " go autocompletion
-"   Plug 'zchee/deoplete-go', { 'do': 'make'}
-" else
-"   Plug 'Shougo/deoplete.nvim'
-"   Plug 'roxma/nvim-yarp'
-"   Plug 'roxma/vim-hug-neovim-rpc'
-" endif
-" For function argument completion
+" snippets
+" used by coc-snippets
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
 " More autocompletion sources
-" Plug 'wellle/tmux-complete.vim'
-" Plug 'fszymanski/deoplete-emoji', { 'for': [ 'gitcommit', 'text', 'txt', 'markdown' ] }
+Plug 'wellle/tmux-complete.vim'
 
 " seek with two chars instead on one on a single line
 Plug 'goldfeld/vim-seek'
@@ -846,56 +836,6 @@ let g:NERDTrimTrailingWhitespace = 1
 
 
 
-"
-" Neocomplete/Deoplete
-"
-
-" Enable deoplete when InsertEnter.
-" turn it on, but do it async
-let g:deoplete#enable_at_startup = 1
-" augroup deoplete_config
-"   autocmd!
-"   autocmd InsertEnter * call deoplete#enable()
-" augroup END
-
-" call deoplete#custom#option({
-"       \ 'auto_complete_delay': 20,
-"       \ 'auto_refresh_delay': 100,
-"       \ 'smart_case': v:true,
-"       \ 'max_list': 20,
-"       \ })
-"
-" " language server results are way smarter than looking at other words in
-" " buffers. Perfer them.
-" call deoplete#custom#source('ale', 'rank', 9999)
-" " call deoplete#custom#source('ale', 'matchers', ['matcher_head'])
-" call deoplete#custom#source('LC', 'rank', 9998)
-" " call deoplete#custom#source('LC', 'matchers', ['matcher_head'])
-" call deoplete#custom#source('LanguageClient-neovim', 'rank', 9997)
-" " call deoplete#custom#source('LanguageClient-neovim', 'matchers', ['matcher_head'])
-
-
-" Define dictionary.
-let g:deoplete#sources#dictionary#dictionaries = {
-      \ 'default' : '',
-      \ 'vimshell' : $HOME.'/.vimshell_hist',
-      \ 'scheme' : $HOME.'/.gosh_completions'
-      \ }
-
-" disabled for vim-coc
-" Recommended key-mappings.
-" <CR>: close popup and save indent.
-" inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-" function! s:my_cr_function()
-"   return (pumvisible() ? "\<C-y>" : '' ) . "\<CR>"
-"   " For no inserting <CR> key.
-"   "return pumvisible() ? "\<C-y>" : "\<CR>"
-" endfunction
-" " <TAB>: completion.
-" inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" Close popup by <Space>.
-"inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
-
 
 " Enable omni completion.
 augroup omnicomplete
@@ -909,27 +849,6 @@ augroup omnicomplete
 augroup END
 
 
-
-
-" neosnippet
-" TODO: use coc for this instead
-let g:neosnippet#enable_completed_snippet = 1
-" set the snippets dir
-let g:neosnippet#snippets_directory = '~/.vim/snippets'
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
-nmap <C-k>     <Plug>(neosnippet_expand_or_jump)
-
-" SuperTab like snippets' behavior.
-" Note: Be careful to map <TAB> because <TAB> is equivalent to <C-i> in
-" Vim and <C-i> is a very important key especially in Normal Mode.
-"imap <expr><TAB>
-" \ pumvisible() ? "\<C-n>" :
-" \ neosnippet#expandable_or_jumpable() ?
-" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-"smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-" \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
 
 
@@ -1038,109 +957,7 @@ nnoremap ghs :GitGutterStageHunk<cr>
 
 
 
-"
-" ale linting
-"
-let g:ale_sign_error = '▻'
-let g:ale_sign_warning = '•'
-
-" ale can really slow things down in big files, so make it check less
-" frequently
-" can be "insert", "normal", or "always"
-" don't actually do that unless you have to, always is a better experience
-" let g:ale_lint_on_text_changed = 'always'
-" always is too slow in even moderately sized projects. It makes typing
-" painful
-let g:ale_lint_on_text_changed = 'normal'
-let g:ale_lint_on_enter = 1
-let g:ale_lint_delay = 100
-let g:ale_lint_on_insert_leave = 0
-
-" turn on language server autocompletion (for flow)
-" disabled: ale causes some race condition with deoplete that causes wrong
-" suggestions after a flash of correct suggestions. LanguageClient is better
-let g:ale_completion_enabled = 1
-
-" use eslint_d instead of the local eslint for speed!
-let g:ale_javascript_eslint_executable = 'eslint_d'
-" so that we prefer eslint_d over the local version :\
-let g:ale_javascript_eslint_use_global = 1
-" we have prettier_d installed globally, for speed
-" disabled; ALE seems to just stall when talking to prettier_d
-" let g:ale_javascript_prettier_executable = '/usr/local/bin/prettier_d'
-" let g:ale_javascript_prettier_use_global = 1
-let g:ale_javascript_prettier_use_local_config = 1
-" enable auto-import in TS
-let g:ale_completion_tsserver_autoimport = 1
-
-" for typescript, get completions from imported files
-let g:ale_completion_tsserver_autoimport = 1
-
-" setup ale autofixing
-let g:ale_fixers = {}
-let g:ale_fixers.javascript = [
-      \ 'eslint',
-      \ 'prettier',
-      \ 'standard',
-      \]
-let g:ale_fixers.typescript = [
-      \ 'eslint',
-      \ 'prettier',
-      \ 'standard',
-      \]
-let g:ale_fixers.typescriptreact = [
-      \ 'eslint',
-      \ 'prettier',
-      \ 'standard',
-      \]
-let g:ale_fixers.css = [
-      \ 'prettier',
-      \]
-let g:ale_fixers.json = [
-      \ 'prettier',
-      \]
-let g:ale_fixers.markdown = [
-      \ 'prettier',
-      \]
-let g:ale_fixers.python = [
-      \ 'black',
-      \]
-let g:ale_ruby_rubocop_options = '--rails'
-let g:ale_fixers.ruby = [
-      \ 'rubocop',
-      \]
-let g:ale_fix_on_save = 1
-let g:ale_linters = {}
-let g:ale_linters.json = [
-      \ 'jsonlint',
-      \ ]
-" prefer flow language server over the default flow. It's faster.
-" TODO: use local flow?
-" https://github.com/angrypie/myneovim/blob/9e1ff0c6c2b75df4a29e4538e16cc33d75918c58/settings/set/main.vim#L110
-let g:ale_linters.javascript = [
-      \ 'eslint',
-      \ 'flow',
-      \ 'flow-language-server',
-      \]
-let g:ale_linters.typescript = [
-\   'tsserver',
-\   'eslint',
-\]
-let g:ale_linters.typescriptreact = [
-\   'tsserver',
-\   'eslint',
-\]
-" FIXME: use flow instead of flow-language-server because flow 0.83.0 has
-" issues with ALE https://github.com/w0rp/ale/issues/2000
-" Disable flow from ALE; use language server instead
-" per https://github.com/w0rp/ale/issues/2560 use both flow & flow lanugage
-" server for autocomplete, but disable the language server because the
-" diagnostics are screwy
-let g:ale_linters_ignore = {}
-let g:ale_linters_ignore.javascript = ['flow-language-server']
-
-" the other linter installed works better
-" let g:ale_linters.sh = [ 'language_server' ]
+" coc
 
 " navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
@@ -1186,6 +1003,7 @@ nmap <silent> <leader>rr <Plug>(coc-rename)
 " endfunction
 
 " Use <Tab> and <S-Tab> to navigate the completion list:
+" https://github.com/neoclide/coc-snippets#examples
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~ '\s'
@@ -1199,7 +1017,11 @@ inoremap <silent><expr> <TAB>
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " trigger completion for snippets:
-inoremap <silent><expr> <c-l> coc#refresh()
+" inoremap <silent><expr> <c-l> coc#refresh()
+" inoremap <silent><C-l> <Plug>(coc-snippets-expand-jump)
+inoremap <silent><expr> <C-l> coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" : coc#refresh()
+
+
 
 
 
