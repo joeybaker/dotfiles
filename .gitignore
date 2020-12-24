@@ -2,6 +2,7 @@
 *.swp
 karabiner.d/log
 config/yarn/global/node_modules
+*node_modules*
 config/hub
 config/configstore/update-notifier-*
 config/configstore/*-usage.json
@@ -13,6 +14,9 @@ config/.env
 config/pgcli/log
 config/pgcli/history
 config/oni
+config/coc/list-*
+config/coc/memos.json
+config/coc/*-mru
 vim/undo
 vim/fzf
 vim/plugged
