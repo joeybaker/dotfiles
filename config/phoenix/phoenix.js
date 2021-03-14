@@ -26,7 +26,7 @@ function frameRatio(a, b){
 
 // Globals
 const HIDDEN_DOCK_MARGIN = 3;
-const INCREMENT = 0.05;
+const INCREMENT_PERCENT = 0.05;
 const SUPER = ['ctrl', 'cmd', 'alt'];
 const SHIFT_SUPER = ['ctrl', 'cmd', 'alt', 'shift'];
 
@@ -174,12 +174,18 @@ class ChainWindow {
     if (direction === LEFT || direction === RIGHT) {
       this.halve();
     }
+    if (direction === CENTRE) {
+      this.frame.width /= 3;
+    }
     switch (direction) {
       case LEFT:
         this.to(NW);
         break;
       case RIGHT:
         this.to(NE);
+        break;
+      case CENTRE:
+        this.to(CENTRE);
         break;
       default:
         this.to(NW);
@@ -287,33 +293,40 @@ Key.on('right', SUPER, () => {
   }
 });
 
+Key.on('b', SUPER, () => {
+  const window = Window.focused();
+  if (window) {
+    window.fill(CENTRE);
+  }
+});
+
 // [> Size Bindings <]
 
 Key.on('h', SUPER, () => {
   const window = Window.focused();
   if (window) {
-    window.resize({ width: -INCREMENT });
+    window.resize({ width: -INCREMENT_PERCENT });
   }
 });
 
 Key.on('j', SUPER, () => {
   const window = Window.focused();
   if (window) {
-    window.resize({ height: INCREMENT });
+    window.resize({ height: INCREMENT_PERCENT });
   }
 });
 
 Key.on('k', SUPER, () => {
   const window = Window.focused();
   if (window) {
-    window.resize({ height: -INCREMENT });
+    window.resize({ height: -INCREMENT_PERCENT });
   }
 });
 
 Key.on('l', SUPER, () => {
   const window = Window.focused();
   if (window) {
-    window.resize({ width: INCREMENT });
+    window.resize({ width: INCREMENT_PERCENT });
   }
 });
 
