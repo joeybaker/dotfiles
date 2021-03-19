@@ -126,16 +126,36 @@ class ChainWindow {
     return this;
   }
 
+  move({width, height}) {
+    const { parent, margin, frame } = this;
+    const difference = this.difference();
+
+    if (width != null) {
+      const widthFactor = parent.width * width
+      const delta = Math.min(widthFactor, difference.x + difference.width - margin);
+      frame.x += delta
+      if (frame.x < margin) frame.x = margin
+      else if (frame.x > parent.width - margin) frame.x = parent.width - margin
+    } else if (height != null) {
+      const heightFactor = parent.height * height
+      const delta = Math.min(
+        heightFactor,
+        difference.height - frame.y + margin + HIDDEN_DOCK_MARGIN,
+      );
+      frame.y += delta
+    }
+    return this;
+  }
+
   // Resize SE-corner by factor
   resize(factor) {
     const { parent, margin, frame } = this;
     const difference = this.difference();
-    let delta;
     if (factor.width) {
       const widthFactor = parent.width * factor.width
-      delta = Math.min(widthFactor, difference.x + difference.width - margin);
+      const delta = Math.min(widthFactor, difference.x + difference.width - margin);
       if (delta === 0 && (frame.width + margin * 2) < parent.width) {
-        frame.x -= widthFactor
+        this.move({width: -factor.width})
         frame.width += widthFactor
       }
       else {
@@ -143,12 +163,12 @@ class ChainWindow {
       }
     } else if (factor.height) {
       const heightFactor = parent.height * factor.height
-      delta = Math.min(
+      const delta = Math.min(
         heightFactor,
         difference.height - frame.y + margin + HIDDEN_DOCK_MARGIN,
       );
       if (delta === 0 && (frame.height + margin * 2) < parent.height) {
-        frame.y -= heightFactor
+        this.move({height: -factor.height})
         frame.height += heightFactor
       }
       else {
@@ -238,6 +258,11 @@ Window.prototype.fill = function (direction, screen) {
 // Resize by factor
 Window.prototype.resize = function (factor) {
   this.chain().resize(factor).set();
+};
+
+// Move by factor
+Window.prototype.move = function (factor) {
+  this.chain().move(factor).set();
 };
 
 /* Position Bindings */
@@ -341,6 +366,37 @@ Key.on('l', SUPER, () => {
   const window = Window.focused();
   if (window) {
     window.resize({ width: INCREMENT_PERCENT });
+  }
+});
+
+// [> Move Bindings <]
+
+Key.on('h', SHIFT_SUPER, () => {
+  const window = Window.focused();
+  Phoenix.log('hi')
+  if (window) {
+    window.move({ width: -INCREMENT_PERCENT });
+  }
+});
+
+Key.on('j', SHIFT_SUPER, () => {
+  const window = Window.focused();
+  if (window) {
+    window.move({ height: INCREMENT_PERCENT });
+  }
+});
+
+Key.on('k', SHIFT_SUPER, () => {
+  const window = Window.focused();
+  if (window) {
+    window.move({ height: -INCREMENT_PERCENT });
+  }
+});
+
+Key.on('l', SHIFT_SUPER, () => {
+  const window = Window.focused();
+  if (window) {
+    window.move({ width: INCREMENT_PERCENT });
   }
 });
 
