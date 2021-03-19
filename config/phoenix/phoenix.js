@@ -132,14 +132,28 @@ class ChainWindow {
     const difference = this.difference();
     let delta;
     if (factor.width) {
-      delta = Math.min(parent.width * factor.width, difference.x + difference.width - margin);
-      this.frame.width += delta;
+      const widthFactor = parent.width * factor.width
+      delta = Math.min(widthFactor, difference.x + difference.width - margin);
+      if (delta === 0 && (frame.width + margin * 2) < parent.width) {
+        frame.x -= widthFactor
+        frame.width += widthFactor
+      }
+      else {
+        frame.width += delta;
+      }
     } else if (factor.height) {
+      const heightFactor = parent.height * factor.height
       delta = Math.min(
-        parent.height * factor.height,
+        heightFactor,
         difference.height - frame.y + margin + HIDDEN_DOCK_MARGIN,
       );
-      this.frame.height += delta;
+      if (delta === 0 && (frame.height + margin * 2) < parent.height) {
+        frame.y -= heightFactor
+        frame.height += heightFactor
+      }
+      else {
+        frame.height += delta;
+      }
     }
     return this;
   }
@@ -469,16 +483,17 @@ Key.on('v', SUPER, () => {
 //    }
 // })
 
-Key.on('/', SUPER, function(){
-
-  const window =
-    Window.focused();
-
-  window.setSize({
-    height: window.size().height / 2,
-    width: window.size().width
-  })
-})
+// FIXME: conflicts with clipboard
+// Key.on('/', SUPER, function(){
+//
+//   const window =
+//     Window.focused();
+//
+//   window.setSize({
+//     height: window.size().height / 2,
+//     width: window.size().width
+//   })
+// })
 
 
 /**
