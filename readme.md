@@ -21,20 +21,18 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
     brew tap homebrew/cask-fonts
 
     # lua is for the neocomplete plugin vim plugin
-    brew install reattach-to-user-namespace z ccat node tmux git zsh ack findutils bash shellcheck httpie jo mas autoenv coreutils cmake gpg rbenv yarn thefuck neovim python3 vale fd ripgrep fzf pgcli progress prettyping tldr bat hub gnu-sed grep
-    brew cask install gitify google-chrome firefox iterm2 phoenix istat-menus cloudup google-chrome-canary karabiner-elements flux sidestep bartender 1password alfred syncthing pins vlc atext dash safari-technology-preview pock
-    # great quicklook plugins [via](https://github.com/sindresorhus/quick-look-plugins)
-    brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch quicklook-csv webpquicklook webpquicklook suspicious-package quicklookase qlvideo && qlmanage -r
+    brew install reattach-to-user-namespace z ccat node tmux git zsh ack findutils bash shellcheck httpie jo mas autoenv coreutils cmake gpg rbenv yarn thefuck neovim python3 vale fd ripgrep fzf pgcli progress prettyping tldr bat hub gnu-sed grep svn
+    brew install --cask gitify google-chrome firefox iterm2 phoenix istat-menus cloudup google-chrome-canary karabiner-elements flux sidestep bartender 1password alfred syncthing atext dash safari-technology-preview
     # fonts
     # [Source Code Pro](https://github.com/adobe/source-code-pro/downloads)
     # [patched fonts for terminal](https://github.com/Lokaltog/powerline-fonts)
     # [Inconsolata-g](http://leonardo-m.livejournal.com/77079.html)
-    brew cask install font-inconsolata font-inconsolata-dz-for-powerline font-sourcecodepro-nerd-font-mono
+    brew install --cask font-source-code-pro font-source-code-pro-for-powerline
     brew cleanup
     # viml linter
     pip3 install vim-vint --user
     # install for neovim
-    	# NOTE: installing RVM later might mean this will need to be re-installed
+    # NOTE: installing RVM later might mean this will need to be re-installed
     gem install neovim
     # install for deoplete in neovim
     pip3 install neovim
