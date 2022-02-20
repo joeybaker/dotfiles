@@ -4,10 +4,9 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
 
 - sys prefs
   - enable tap to click
-  - enable triple hold to move
+  - enable triple hold to move <https://support.apple.com/en-us/HT204609>
   - enable four finger swipe down for expose
   - disable launch pad gesture
-  - enable filevault
 - turn on filevault
 - app store for OS updates [restart]
 - install [brew](http://brew.sh)
@@ -23,7 +22,7 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
 
     # lua is for the neocomplete plugin vim plugin
     brew install reattach-to-user-namespace z ccat node tmux git zsh ack findutils bash shellcheck httpie jo mas autoenv coreutils cmake gpg rbenv yarn thefuck neovim python3 vale fd ripgrep fzf pgcli progress prettyping tldr bat
-    brew install hub --devel # 2.3.0 has been blocked for a year. We want it for PR templates
+    brew install hub
     # b/c newer is better, and for diff-so-fancy
     brew install gnu-sed grep --with-default-names
     brew cask install gitify google-chrome firefox iterm2 phoenix istat-menus cloudup google-chrome-canary karabiner-elements flux sidestep bartender 1password alfred syncthing spillo vlc atext dash safari-technology-preview gitup keybase pock
