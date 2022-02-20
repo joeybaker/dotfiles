@@ -21,11 +21,8 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
     brew tap homebrew/cask-fonts
 
     # lua is for the neocomplete plugin vim plugin
-    brew install reattach-to-user-namespace z ccat node tmux git zsh ack findutils bash shellcheck httpie jo mas autoenv coreutils cmake gpg rbenv yarn thefuck neovim python3 vale fd ripgrep fzf pgcli progress prettyping tldr bat
-    brew install hub
-    # b/c newer is better, and for diff-so-fancy
-    brew install gnu-sed grep --with-default-names
-    brew cask install gitify google-chrome firefox iterm2 phoenix istat-menus cloudup google-chrome-canary karabiner-elements flux sidestep bartender 1password alfred syncthing spillo vlc atext dash safari-technology-preview gitup keybase pock
+    brew install reattach-to-user-namespace z ccat node tmux git zsh ack findutils bash shellcheck httpie jo mas autoenv coreutils cmake gpg rbenv yarn thefuck neovim python3 vale fd ripgrep fzf pgcli progress prettyping tldr bat hub gnu-sed grep
+    brew cask install gitify google-chrome firefox iterm2 phoenix istat-menus cloudup google-chrome-canary karabiner-elements flux sidestep bartender 1password alfred syncthing pins vlc atext dash safari-technology-preview pock
     # great quicklook plugins [via](https://github.com/sindresorhus/quick-look-plugins)
     brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch quicklook-csv webpquicklook webpquicklook suspicious-package quicklookase qlvideo && qlmanage -r
     # fonts
