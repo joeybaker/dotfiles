@@ -86,11 +86,11 @@ bindkey "^I" expand-or-complete-with-dots
 # aliases
 # prefer the brew vim to the system vim
 # Actually, replace vim with nvim
-if [ -x /usr/local/bin/nvim ]; then
-  alias vi='session_file=Session$(echo ${TMUX_PANE-} | sed "s/\%//").vim; [ -f $session_file ] && /usr/local/bin/nvim -S "$session_file" || /usr/local/bin/nvim'
+if type nvim > /dev/null; then
+  alias vi='session_file=Session$(echo ${TMUX_PANE-} | sed "s/\%//").vim; [ -f $session_file ] && nvim -S "$session_file" || nvim'
   alias vim=vi
-elif [ -x /usr/local/bin/vim ]; then
-  alias vi='session_file=Session$(echo ${TMUX_PANE-} | sed "s/\%//").vim; [ -f $session_file ] && /usr/local/bin/vim -S "$session_file" || /usr/local/bin/vim'
+elif type vim > /dev/null; then
+  alias vi='session_file=Session$(echo ${TMUX_PANE-} | sed "s/\%//").vim; [ -f $session_file ] && vim -S "$session_file" || vim'
   alias vim=vi
 fi
 
