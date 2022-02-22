@@ -22,7 +22,7 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
 
     # lua is for the neocomplete plugin vim plugin
     brew install reattach-to-user-namespace z ccat node tmux git zsh ack findutils bash shellcheck httpie jo mas autoenv coreutils cmake gpg rbenv yarn thefuck neovim python3 vale fd ripgrep fzf pgcli progress prettyping tldr bat hub gnu-sed grep svn golang
-    brew install --cask gitify google-chrome firefox iterm2 phoenix istat-menus cloudup google-chrome-canary karabiner-elements flux sidestep bartender 1password alfred syncthing atext dash safari-technology-preview
+    brew install --cask gitify google-chrome firefox iterm2 phoenix istat-menus cloudup google-chrome-canary karabiner-elements flux sidestep bartender 1password alfred syncthing atext dash safari-technology-preview SensibleSideButtons
     # fonts
     # [Source Code Pro](https://github.com/adobe/source-code-pro/downloads)
     # [patched fonts for terminal](https://github.com/Lokaltog/powerline-fonts)
