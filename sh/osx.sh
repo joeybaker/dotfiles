@@ -21,7 +21,7 @@ function config_osx () {
   # Set computer name (as done via System Preferences → Sharing)
   scutil --set ComputerName $computer_name
   scutil --set HostName $computer_name.local
-  scutil --set LocalHostName $computer_name.local
+  # scutil --set LocalHostName $computer_name.local
 
   # Menu bar: disable transparency
   defaults write NSGlobalDomain AppleEnableMenuBarTransparency -bool false
@@ -94,7 +94,7 @@ function config_osx () {
   # defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
 
   # Increase sound quality for Bluetooth headphones/headsets
-  defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
+  # defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
 
   # Enable full keyboard access for all controls
   # (e.g. enable Tab in modal dialogs)
@@ -109,8 +109,8 @@ function config_osx () {
   # Set language and text formats
   # Note: if you’re in the US, replace `EUR` with `USD`, `Centimeters` with
   # `Inches`, and `true` with `false`.
-  defaults write NSGlobalDomain AppleLanguages -array "en"
-  defaults write NSGlobalDomain AppleLocale -string "en_US@currency=USD"
+  # defaults write NSGlobalDomain AppleLanguages -array "en"
+  # defaults write NSGlobalDomain AppleLocale -string "en_US@currency=USD"
   # defaults write NSGlobalDomain AppleMeasurementUnits -string "Centimeters"
   # defaults write NSGlobalDomain AppleMetricUnits -bool true
 
@@ -220,9 +220,9 @@ function config_osx () {
   chflags nohidden ~/Library
 
   # Remove Dropbox’s green checkmark icons in Finder
-  file=/Applications/Dropbox.app/Contents/Resources/check.icns
-  [ -e "$file" ] && mv -f "$file" "$file.bak"
-  unset file
+  # file=/Applications/Dropbox.app/Contents/Resources/check.icns
+  # [ -e "$file" ] && mv -f "$file" "$file.bak"
+  # unset file
 
   # [Allow selection of text in quick look](http://coderwall.com/p/94rlia)
   defaults write com.apple.finder QLEnableTextSelection -bool true
@@ -241,7 +241,7 @@ function config_osx () {
   defaults write com.apple.dock enable-spring-load-actions-on-all-items -bool true
 
   # Show indicator lights for open applications in the Dock
-  defaults write com.apple.dock show-process-indicators -bool true
+  # defaults write com.apple.dock show-process-indicators -bool true
 
   # Don’t animate opening applications from the Dock
   # defaults write com.apple.dock launchanim -bool false
@@ -274,7 +274,7 @@ function config_osx () {
   # defaults write com.apple.dock itunes-notifications -bool true
 
   # Reset Launchpad
-  find ~/Library/Application\ Support/Dock -name "*.db" -maxdepth 1 -delete
+  # find ~/Library/Application\ Support/Dock -name "*.db" -maxdepth 1 -delete
 
   # Add a spacer to the left side of the Dock (where the applications are)
   #defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}'
@@ -333,7 +333,7 @@ function config_osx () {
   # defaults write com.apple.dashboard devmode -bool true
 
   # Enable the debug menu in iCal
-  defaults write com.apple.iCal IncludeDebugMenu -bool true
+  # defaults write com.apple.iCal IncludeDebugMenu -bool true
 
   # Make the iTunes arrow links go to your library instead of the iTunes Store
   # defaults write com.apple.iTunes invertStoreLinks -bool true
@@ -342,23 +342,23 @@ function config_osx () {
   # defaults write com.apple.iTunes show-store-arrow-links -bool false
 
   # Disable the Ping sidebar in iTunes
-  defaults write com.apple.iTunes disablePingSidebar -bool true
+  # defaults write com.apple.iTunes disablePingSidebar -bool true
 
   # Disable all the other Ping stuff in iTunes
-  defaults write com.apple.iTunes disablePing -bool true
+  # defaults write com.apple.iTunes disablePing -bool true
 
   # Make ⌘ + F focus the search input in iTunes
-  defaults write com.apple.iTunes NSUserKeyEquivalents -dict-add "Target Search Field" "@F"
+  # defaults write com.apple.iTunes NSUserKeyEquivalents -dict-add "Target Search Field" "@F"
 
   # Disable send and reply animations in Mail.app
   # defaults write com.apple.Mail DisableReplyAnimations -bool true
   # defaults write com.apple.Mail DisableSendAnimations -bool true
 
   # Copy email addresses as `foo@example.com` instead of `Foo Bar <foo@example.com>` in Mail.app
-  defaults write com.apple.mail AddressesIncludeNameOnPasteboard -bool false
+  # defaults write com.apple.mail AddressesIncludeNameOnPasteboard -bool false
 
   # Enable the debug menu in Disk Utility
-  defaults write com.apple.DiskUtility DUDebugMenuEnabled -bool true
+  # defaults write com.apple.DiskUtility DUDebugMenuEnabled -bool true
 
   ###############################################################################
   # Terminal                                                                    #
@@ -369,9 +369,9 @@ function config_osx () {
 
   # Use a modified version of the Pro theme by default in Terminal.app
   # open "$HOME/init/Mathias.terminal"
-  sleep 1 # Wait a bit to make sure the theme is loaded
-  defaults write com.apple.Terminal "Default Window Settings" -string "Mathias"
-  defaults write com.apple.Terminal "Startup Window Settings" -string "Mathias"
+  # sleep 1 # Wait a bit to make sure the theme is loaded
+  # defaults write com.apple.Terminal "Default Window Settings" -string "Mathias"
+  # defaults write com.apple.Terminal "Startup Window Settings" -string "Mathias"
 
   # Enable “focus follows mouse” for Terminal.app and all X11 apps
   # This means you can hover over a window and start typing in it without clicking first
@@ -386,7 +386,7 @@ function config_osx () {
   defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 
   # Disable local Time Machine backups
-  hash tmutil &> /dev/null && sudo tmutil disablelocal
+  # hash tmutil &> /dev/null && sudo tmutil disablelocal
 
   ###############################################################################
   # Twitter.app                                                                 #
@@ -396,28 +396,28 @@ function config_osx () {
   # defaults write com.twitter.twitter-mac AutomaticQuoteSubstitutionEnabled -bool false
 
   # Show the app window when clicking the menu icon
-  defaults write com.twitter.twitter-mac MenuItemBehavior -int 1
+  # defaults write com.twitter.twitter-mac MenuItemBehavior -int 1
 
   # Enable the hidden ‘Develop’ menu
-  defaults write com.twitter.twitter-mac ShowDevelopMenu -bool true
+  # defaults write com.twitter.twitter-mac ShowDevelopMenu -bool true
 
   # Open links in the background
   # defaults write com.twitter.twitter-mac openLinksInBackground -bool true
 
   # Allow closing the ‘new tweet’ window by pressing `Esc`
-  defaults write com.twitter.twitter-mac ESCClosesComposeWindow -bool true
+  # defaults write com.twitter.twitter-mac ESCClosesComposeWindow -bool true
 
   # Show full names rather than Twitter handles
-  defaults write com.twitter.twitter-mac ShowFullNames -bool true
+  # defaults write com.twitter.twitter-mac ShowFullNames -bool true
 
   # Hide the app in the background if it’s not the front-most window
-  defaults write com.twitter.twitter-mac HideInBackground -bool true
+  # defaults write com.twitter.twitter-mac HideInBackground -bool true
 
   ###############################################################################
   # Kill affected applications                                                  #
   ###############################################################################
 
-  for app in Finder Dock Mail Safari iTunes Contacts Calendar SystemUIServer Twitter; do
+  for app in Finder Dock Mail Safari Contacts Calendar SystemUIServer; do
     killall "$app" > /dev/null 2>&1
   done
   echo "Done. Note that some of these changes require a logout/restart to take effect."
