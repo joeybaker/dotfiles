@@ -1,8 +1,9 @@
 .DS_Store
 *.swp
+gitconfig.local
 karabiner.d/log
-config/yarn/global/node_modules
 *node_modules*
+config/yarn/global/node_modules
 config/hub
 config/configstore/update-notifier-*
 config/configstore/*-usage.json
@@ -17,6 +18,11 @@ config/oni
 config/coc/list-*
 config/coc/memos.json
 config/coc/*-mru
+config/thefuck
+config/iterm2
+config/coc/extensions/db.json
+config/coc/suggest.txt
+config/karabiner/automatic_backups
 vim/undo
 vim/fzf
 vim/plugged
