@@ -21,7 +21,7 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
     brew tap homebrew/cask-fonts
 
     # lua is for the neocomplete plugin vim plugin
-    brew install reattach-to-user-namespace z ccat node tmux git zsh ack findutils bash shellcheck httpie jo mas autoenv coreutils cmake gpg rbenv yarn thefuck neovim python3 vale fd ripgrep fzf pgcli progress prettyping tldr bat hub gnu-sed grep svn
+    brew install reattach-to-user-namespace z ccat node tmux git zsh ack findutils bash shellcheck httpie jo mas autoenv coreutils cmake gpg rbenv yarn thefuck neovim python3 vale fd ripgrep fzf pgcli progress prettyping tldr bat hub gnu-sed grep svn golang
     brew install --cask gitify google-chrome firefox iterm2 phoenix istat-menus cloudup google-chrome-canary karabiner-elements flux sidestep bartender 1password alfred syncthing atext dash safari-technology-preview
     # fonts
     # [Source Code Pro](https://github.com/adobe/source-code-pro/downloads)
@@ -66,26 +66,16 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
 - setup 1password
 - setup syncthing
 - dotfile link
+  - `cd ~ && git clone git@github.com:joeybaker/dotfiles.git && cd dotfiles`
   - NOTE: with symlinks and such, the zsh dotfiles might need to be moved to another location inside the `.zprezto` folder
-  - `sh ~/Sync/dotfiles/link.sh "my-computer-name"`
+  - `sh ~/dotfiles/link.sh "my-computer-name"`
 - Install vim plugins
   ```
-  curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  mkdir ~/.vim-tmp
+  nvim +PlugInstall
+  cd ~/.config/coc/extensions && yarn install --frozen-lockfile
   ```
-- configure git
-
-  ```sh
-  git config --global user.name "Joey Baker"
-  git config --global user.email "joey@byjoeybaker.com"
-  # use diff-so-fancy
-  git config --global core.pager "diff-highlight | diff-so-fancy | less --tabs=1,5 -R"
-  git config --global color.diff-highlight.oldNormal "red bold"
-  git config --global color.diff-highlight.oldHighlight "red bold 52"
-  git config --global color.diff-highlight.newNormal "green bold"
-  git config --global color.diff-highlight.newHighlight "green bold 22"
-  ```
-
+- configure git: edit `~/dotfiles/gitconfig.local` with overrides. You can use `~/dotfiles/gitconfig` as a reference.
 - Install tmux plugin manager `git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`
   - start tmux with `tmux`
   - then: `<prefix> <shift-I>`
@@ -93,12 +83,6 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
 - install [nodejs](http://nodejs.org) & relevant global packages
 
   ```bash
-  nvm install stable
-  nvm alias default node
-  npm whoami # creates the necessary dirs
-  # no sudo for global installs!
-  sudo chown -R $(whoami) ~/.npm; sudo chown -R $(whoami) /usr/local/lib/node_modules
-  brew install yarn --without-node
   yarn global add supervisor nodemon ghwd ghcopy json trash-cli irish-pub localhapi diff-so-fancy concurrently alfred-npms alfred-github bash-language-server
   npm config set init.author.name 'Joey Baker'
   npm config set init.author.email 'joey@byjoeybaker.com'
@@ -109,7 +93,7 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
   npm config set save true
   npm config set version true
   # sets the npm cache on an external volume so that we don't trash the builtin ssd
-  npm config set cache /Volumes/jbdb/npm
+  # npm config set cache /Volumes/jbdb/npm
   # authorize ghcopy, will prompt
   ghcopy-authorize
   ```
@@ -137,9 +121,6 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
     }
     ```
 
-- [sublime text](http://www.sublimetext.com/3)
-  - [sublime packages](https://github.com/joeybaker/my_sublime_packages/tree/st3)
-  - For better vintage mode in sublimetext `defaults write com.sublimetext.2 ApplePressAndHoldEnabled -bool false && defaults write com.sublimetext.3 ApplePressAndHoldEnabled -bool false`
 - [iterm2](http://www.iterm2.com/#/section/home)
   - link to preferences on Sync
   - ensure sourcecode pro powerline font is selected
@@ -151,9 +132,7 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
 - app store
 
   ```sh
-  mas install 432764806 #the hit list
   mas install 1107421413 #1blocker
-  mas install 1121192229 #Better
   mas install 1384080005 #tweetbot
   mas install 425424353 #The Unarchiver
   mas install 435410196 #stay
@@ -196,7 +175,7 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
   - start at login
   - move select apps inside
 - [github notifier](https://github.com/manosim/gitify)
-- cloudup: start and login
+- cloudup: start and loginHHHHHHHLLLHHL
 - syncthing: start and login
 - airmail: start and add accounts
 - phoenix: start
@@ -218,17 +197,17 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
 - [install github ssh keys](https://help.github.com/articles/generating-ssh-keys)
 
   - Set a secure SSH key: https://blog.g3rt.nl/upgrade-your-ssh-keys.html
-  - Set a gpg key for github: https://github.com/pstadler/keybase-gpg-github If you don't use keybase: https://blog.erincall.com/p/signing-your-git-commits-with-gpg
+  - Set a gpg key for github: https://docs.gitlab.com/ee/user/project/repository/gpg_signed_commits/
 
         ```sh
         mkdir -p ~/.gnupg
-        echo 'pinentry-program /usr/local/bin/pinentry-mac' > ~/.gnupg/gpg-agent.conf
-        echo 'no-tty' >> ~/.gnupg/gpg-agent.conf'
+	chown -R $(whoami) ~/.gnupg/
+        echo "pinentry-program $(which pinentry-mac)" > ~/.gnupg/gpg-agent.conf
+	chmod 600 ~/.gnupg/*
+	chmod 700 ~/.gnupg
         ```
 
   - After setting gpg in git, set for npm: `npm config set sign-git-tag true`
-
-- [secure sudo](http://blog.rongarret.info/2015/08/psa-beware-of-sudo-on-os-x.html) ← no longer necessary on sierra
 - don't forget to install Adobe things if necessary
 - Dash license from 1Password
 - increase the system file descriptor limits for dev https://facebook.github.io/watchman/docs/install.html#max-os-file-descriptor-limits
