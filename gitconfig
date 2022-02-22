@@ -71,3 +71,5 @@
 	insteadOf = \"https://github.com/\"
 [hub]
 	protocol = ssh
+[commit]
+	gpgsign = true
