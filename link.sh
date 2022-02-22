@@ -37,8 +37,14 @@ function link () {
     fi
 
     # create link
-    echo -n "Link "
-    ln -v -s "$F/$P" "$HOME/.$P"
+    if [ "$P" = "gitconfig.local" ]; then
+      echo -n "Copy $P"
+      cp "$F/$P" "$HOME/.$P"
+    else
+      echo -n "Link "
+      ln -v -s "$F/$P" "$HOME/.$P"
+    fi
+
 
     # Hook up some dotfiles for git
     # via http://codeinthehole.com/writing/a-useful-template-for-commit-messages/
