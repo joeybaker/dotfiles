@@ -199,15 +199,17 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
   - Set a secure SSH key: https://blog.g3rt.nl/upgrade-your-ssh-keys.html
   - Set a gpg key for github: https://docs.gitlab.com/ee/user/project/repository/gpg_signed_commits/
 
-        ```sh
-        mkdir -p ~/.gnupg
-	chown -R $(whoami) ~/.gnupg/
-        echo "pinentry-program $(which pinentry-mac)" > ~/.gnupg/gpg-agent.conf
-	chmod 600 ~/.gnupg/*
-	chmod 700 ~/.gnupg
-        ```
+          ```sh
+          mkdir -p ~/.gnupg
+
+    chown -R $(whoami) ~/.gnupg/
+    echo "pinentry-program $(which pinentry-mac)" > ~/.gnupg/gpg-agent.conf
+    chmod 600 ~/.gnupg/\*
+    chmod 700 ~/.gnupg
+    ```
 
   - After setting gpg in git, set for npm: `npm config set sign-git-tag true`
+
 - don't forget to install Adobe things if necessary
 - Dash license from 1Password
 - increase the system file descriptor limits for dev https://facebook.github.io/watchman/docs/install.html#max-os-file-descriptor-limits
