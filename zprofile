@@ -67,6 +67,7 @@ path=(
 # autoenv
 # FIXME: this is soo slow to load!
 # source $(brew --prefix autoenv)/activate.sh
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
 #
 # Less
