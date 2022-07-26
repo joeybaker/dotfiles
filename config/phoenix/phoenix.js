@@ -54,6 +54,8 @@ class ChainWindow {
   }
 
   // Difference frame
+  // y = distance from the top of the screen
+  // height = delta between screen height and max height
   difference() {
     const { parent, frame } = this;
     return {
@@ -126,6 +128,14 @@ class ChainWindow {
     return this;
   }
 
+  /*
+   * move the window by a factor
+   * unless moving would exceed the window bounds at the bottom
+   * -> noop
+   * unless moving would exceed the window bounds at the top
+   * -> noop
+  */
+
   move({width, height}) {
     const { parent, margin, frame } = this;
     const difference = this.difference();
@@ -138,44 +148,144 @@ class ChainWindow {
       else if (frame.x > parent.width - margin) frame.x = parent.width - margin
     } else if (height != null) {
       const heightFactor = parent.height * height
+      const maxHeight = parent.height - (margin * 2)
       const delta = Math.min(
         heightFactor,
-        difference.height - frame.y + margin + HIDDEN_DOCK_MARGIN,
+        difference.height - frame.y + (margin * 2) + HIDDEN_DOCK_MARGIN,
       );
-      frame.y += delta
+      if ((frame.y + delta) < 0) {
+        frame.y = margin
+      }
+      else if ((frame.y + delta) < maxHeight) {
+        frame.y += delta
+      }
+      else {
+        frame.y = maxHeight
+      }
     }
     return this;
   }
 
   // Resize SE-corner by factor
   resize(factor) {
-    const { parent, margin, frame } = this;
-    const difference = this.difference();
+    const { parent, margin, frame, window } = this;
+    const screen = window.screen().frame()
+
     if (factor.width) {
+      const maxWidth = screen.width - (margin * 2)
       const widthFactor = parent.width * factor.width
+
+      // if we're past the left edge
+      if (frame.x < parent.x + margin) {
+        // if window width is greater than the screen
+        if (frame.width > maxWidth) {
+          frame.width = maxWidth
+        }
+        // move the window on to the screen
+        frame.x = margin
+      }
+
+      const offscreenWidth = frame.width - (screen.width - (frame.x + margin))
+      // if we're past the right edge
+      if (offscreenWidth > 0) {
+        // if the window is larger than the screen
+        if (frame.width > maxWidth) {
+          frame.width = maxWidth
+        }
+        // if we can move the window and keep our margin
+        else if ((frame.x - offscreenWidth) > margin) {
+          frame.x -= offscreenWidth
+        }
+        // window width would move past our margin
+        else {
+          frame.x = margin
+        }
+      }
+
+      const difference = this.difference();
       const delta = Math.min(widthFactor, difference.x + difference.width - margin);
+
+      // if we're at the edge of the screen
       if (delta === 0 && (frame.width + margin * 2) < parent.width) {
         this.move({width: -factor.width})
         frame.width += widthFactor
       }
+      // normal case
       else {
         frame.width += delta;
       }
-    } else if (factor.height) {
+    }
+
+    /*
+     * increase the height of the window
+     * unless the window is already at maxHeight
+     * -> noop
+     * unless the increase would cause the window to be greater than max height
+     * -> set to maxHeight
+     * unless the increase would push the window out of screen bounds
+     * -> move the window up by the increase and then increase
+    */
+    else if (factor.height) {
+      const screenHeight = screen.height
+      const maxHeight = parent.height - (margin * 2)
+      const maxBottomY = screenHeight - margin
+
       const heightFactor = parent.height * factor.height
-      const delta = Math.min(
-        heightFactor,
-        difference.height - frame.y + margin + HIDDEN_DOCK_MARGIN,
-      );
-      if (delta === 0 && (frame.height + margin * 2) < parent.height) {
-        this.move({height: -factor.height})
+
+      // if we're past the top
+      if (frame.y < parent.y + margin) {
+        frame.y = parent.y + margin
+      }
+
+      // if we're past the bottom
+      if ((parent.y + margin + frame.y + frame.height + margin) > screenHeight) {
+        const topY = parent.y + margin + frame.y
+        const offscreenHeight = frame.height - (screenHeight - (topY + margin))
+        // if we can move the window up and keep the height
+        if (frame.height >= (screenHeight - parent.y - margin * 2)) {
+          frame.y = parent.y + margin
+          frame.height = maxHeight
+        }
+        // if the height will still be less than the screen
+        else {
+          frame.y -= offscreenHeight
+        }
+      }
+
+      const bottomY = frame.y + frame.height
+
+      // if growth would extend past the bottom of the screen
+      if ((bottomY + heightFactor) > maxBottomY) {
+        const growthDelta = maxBottomY - bottomY
+        // if we're not at the bottom yet, and can grow
+        if (growthDelta > 0) {
+          const moveDelta = heightFactor - growthDelta
+          // grow
+          frame.height += growthDelta
+          // move up the rest
+          // frame.y -= moveDelta - parent.y
+        }
+        // if we're at the bottom and can grow
+        else if (frame.y > margin){
+          const growth = frame.y - heightFactor
+          // if growing would go past the top
+          if (growth < (margin + parent.y)) {
+            frame.y = parent.y + margin
+            frame.height = maxHeight
+          }
+          // normal growth & move
+          else {
+            frame.y -= heightFactor
+            frame.height += heightFactor
+          }
+        }
+      }
+      // easy case
+      else {
         frame.height += heightFactor
       }
-      else {
-        frame.height += delta;
-      }
     }
-    return this;
+    return this
   }
 
   // Maximise to fill whole screen
@@ -600,6 +710,371 @@ Key.on('v', SUPER, () => {
 // })
 //
 
+/**
+ * Window functions
+ */
+
+function heartbeatWindow(window) {
+  activeWindowsTimes[window.app().pid] = new Date().getTime() / 1000
+}
+
+function maximizeCurrentWindow() {
+  var window = getCurrentWindow()
+  if (!window) return
+
+  window.maximize()
+  heartbeatWindow(window)
+}
+
+function getResizeFrame(frame, ratio) {
+  return {
+    x: Math.round(frame.x + (frame.width / 2) * (1 - ratio)),
+    y: Math.round(frame.y + (frame.height / 2) * (1 - ratio)),
+    width: Math.round(frame.width * ratio),
+    height: Math.round(frame.height * ratio),
+  }
+}
+
+function getSmallerFrame(frame) {
+  return getResizeFrame(frame, 0.9)
+}
+
+function getLargerFrame(frame) {
+  return getResizeFrame(frame, 1.1)
+}
+
+function adapterScreenFrame(windowFrame, screenFrame) {
+  return {
+    x: Math.max(screenFrame.x, windowFrame.x),
+    y: Math.max(screenFrame.y, windowFrame.y),
+    width: Math.min(screenFrame.width, windowFrame.width),
+    height: Math.min(screenFrame.height, windowFrame.height),
+  }
+}
+
+function fitScreenHeight() {
+  var window = getCurrentWindow()
+  if (!window) return
+
+  window.setFrame({
+    x: window.frame().x,
+    y: window.screen().flippedVisibleFrame().y,
+    width: window.frame().width,
+    height: window.screen().flippedVisibleFrame().height,
+  })
+  heartbeatWindow(window)
+}
+
+function fitScreenWidth() {
+  var window = getCurrentWindow()
+  if (!window) return
+
+  window.setFrame({
+    x: window.screen().flippedVisibleFrame().x,
+    y: window.frame().y,
+    width: window.screen().flippedVisibleFrame().width,
+    height: window.frame().height,
+  })
+  heartbeatWindow(window)
+}
+
+function smallerCurrentWindow() {
+  var window = getCurrentWindow()
+  var screenFrame = window.screen().flippedVisibleFrame()
+  if (!window) return
+
+  var originFrame = window.frame()
+  var frame = getSmallerFrame(originFrame)
+  window.setFrame(adapterScreenFrame(frame, screenFrame))
+}
+
+function largerCurrentWindow() {
+  var window = getCurrentWindow()
+  var screenFrame = window.screen().flippedVisibleFrame()
+  if (!window) return
+
+  var originFrame = window.frame()
+  var frame = getLargerFrame(originFrame)
+  window.setFrame(adapterScreenFrame(frame, screenFrame))
+}
+
+function centerCurrentWindow() {
+  var window = getCurrentWindow()
+  if (!window) return
+
+  setWindowCentral(window)
+}
+
+function setWindowCentral(window) {
+  window.setTopLeft({
+    x:
+      (window.screen().flippedVisibleFrame().width - window.size().width) / 2 +
+      window.screen().flippedVisibleFrame().x,
+    y:
+      (window.screen().flippedVisibleFrame().height - window.size().height) /
+        2 +
+      window.screen().flippedVisibleFrame().y,
+  })
+  heartbeatWindow(window)
+}
+
+function moveCurrentWindow(x, y) {
+  var window = getCurrentWindow()
+  if (!window) return
+
+  window.setFrame({
+    x: window.frame().x + x,
+    y: window.frame().y + y,
+    width: window.frame().width,
+    height: window.frame().height,
+  })
+  heartbeatWindow(window)
+}
+
+function getAnotherWindowOfCurrentScreen(window, offset) {
+  var windows = window.others({ visible: true, screen: window.screen() })
+  windows.push(window)
+  // var screen = window.screen()
+  windows = _.chain(windows)
+    .sortBy(function (window) {
+      return window.app().pid + '-' + window.hash()
+    })
+    .value()
+
+  var index =
+    (_.indexOf(windows, window) + offset + windows.length) % windows.length
+  return windows[index]
+}
+
+function getPreviousWindowOfCurrentScreen() {
+  var window = getCurrentWindow()
+  if (!window) {
+    if (Window.recent().length === 0) return
+    Window.recent()[0].focus()
+    return
+  }
+  saveMousePositionForWindow(window)
+  var targetWindow = getAnotherWindowOfCurrentScreen(window, -1)
+  if (!targetWindow) {
+    return
+  }
+  targetWindow.focus()
+  restoreMousePositionForWindow(targetWindow)
+}
+
+function getNextWindowsOfCurrentScreen() {
+  var window = getCurrentWindow()
+  if (!window) {
+    if (Window.recent().length === 0) return
+    Window.recent()[0].focus()
+    return
+  }
+  saveMousePositionForWindow(window)
+  var targetWindow = getAnotherWindowOfCurrentScreen(window, 1)
+  if (!targetWindow) {
+    return
+  }
+  targetWindow.focus()
+  restoreMousePositionForWindow(targetWindow)
+}
+
+function layoutWindow(xRatio, yRatio, widthRatio, heightRatio) {
+  var window = getCurrentWindow()
+  if (!window) return
+
+  var screenFrame = window.screen().flippedVisibleFrame()
+  var screenWidth = screenFrame.width
+  var screenHeight = screenFrame.height
+
+  window.setFrame({
+    x: screenFrame.x + screenWidth * xRatio,
+    y: screenFrame.y + screenHeight * yRatio,
+    width: screenWidth * widthRatio,
+    height: screenHeight * heightRatio,
+  })
+}
+
+
+/**
+ * Screen functions
+ */
+
+function moveToScreen(window, screen, vertical = false) {
+  if (!window) return
+  if (!screen) return
+
+  var frame = window.frame()
+  var oldScreenRect = window.screen().flippedVisibleFrame()
+  var testNewScreenRect = screen.flippedVisibleFrame()
+
+  const sizes = Screen.all().map(s => s.flippedVisibleFrame())
+
+  const newScreenRect = screen.flippedVisibleFrame()
+
+  var xRatio = newScreenRect.width / oldScreenRect.width
+  var yRatio = newScreenRect.height / oldScreenRect.height
+
+  var mid_pos_x = frame.x + Math.floor(0.5 * frame.width)
+  var mid_pos_y = frame.y + Math.floor(0.5 * frame.height)
+
+  var xFrame =
+    (mid_pos_x - oldScreenRect.x) * xRatio + newScreenRect.x - 0.5 * frame.width
+  var yFrame =
+    (mid_pos_y - oldScreenRect.y) * yRatio +
+    newScreenRect.y -
+    0.5 * frame.height
+
+  window.setFrame({
+    x: xFrame,
+    y: yFrame,
+    width: frame.width,
+    height: frame.height,
+  })
+
+  if (
+    oldScreenRect.width === frame.width &&
+    oldScreenRect.height === frame.height
+  ) {
+    maximizeCurrentWindow()
+    return
+  }
+
+  if (
+    oldScreenRect.width > newScreenRect.width &&
+    oldScreenRect.width === frame.width
+  ) {
+    fitScreenWidth()
+    return
+  }
+  if (
+    oldScreenRect.height > newScreenRect.height &&
+    oldScreenRect.height === frame.height
+  ) {
+    fitScreenHeight()
+    return
+  }
+
+  if (
+    newScreenRect.width > oldScreenRect.width &&
+    oldScreenRect.width === frame.width
+  ) {
+    fitScreenWidth()
+    return
+  }
+  if (
+    newScreenRect.height > oldScreenRect.height &&
+    oldScreenRect.height === frame.height
+  ) {
+    fitScreenHeight()
+    return
+  }
+}
+
+function getCurrentWindow() {
+  var window = Window.focused()
+  if (!window) {
+    window = App.focused().mainWindow()
+  }
+  if (!window) return
+  return window
+}
+
+function focusAnotherScreen(window, targetScreen) {
+  if (!window) return
+  if (window.screen() === targetScreen) return
+
+  saveMousePositionForWindow(window)
+  var targetScreenWindows = sortByMostRecent(targetScreen.windows())
+  if (targetScreenWindows.length === 0) {
+    return
+  }
+  var targetWindow = targetScreenWindows[0]
+  targetWindow.focus() // bug, two window in two space, focus will focus in same space first
+  restoreMousePositionForWindow(targetWindow)
+}
+
+function focusOnNextScreen() {
+  var window = getCurrentWindow()
+  if (!window) return
+
+  var currentScreen = window.screen()
+  if (!currentScreen) return
+  var targetScreen = currentScreen.next()
+
+  focusAnotherScreen(window, targetScreen)
+}
+
+function focusOnPreviousScreen() {
+  var window = getCurrentWindow()
+  if (!window) return
+
+  var currentScreen = window.screen()
+  if (!currentScreen) return
+  var targetScreen = currentScreen.previous()
+
+  focusAnotherScreen(window, targetScreen)
+}
+
+function moveToNextScreen() {
+  var window = getCurrentWindow()
+  if (!window) return
+
+  if (window.screen() === window.screen().next()) {
+    if (Space.active() !== Space.active().next()) {
+      moveToSpace(window, Space.active(), Space.active().next())
+    }
+    return
+  }
+
+  moveToScreen(window, window.screen().next(), false)
+  restoreMousePositionForWindow(window)
+  window.focus()
+}
+
+function moveToPreviousScreen() {
+  var window = getCurrentWindow()
+  if (!window) return
+
+  if (window.screen() === window.screen().previous()) {
+    if (Space.active() !== Space.active().previous()) {
+      moveToSpace(window, Space.active(), Space.active().previous())
+    }
+    return
+  }
+
+  moveToScreen(window, window.screen().previous(), false)
+  restoreMousePositionForWindow(window)
+  window.focus()
+}
+
+function moveToAllNextScreens() {
+  var window = getCurrentWindow()
+  if (!window) return
+
+  if (window.screen() === window.screen().next()) return
+  moveToScreen(window, window.screen().next(), true)
+  restoreMousePositionForWindow(window)
+  window.focus()
+}
+
+function moveToAllPreviousScreens() {
+  var window = getCurrentWindow()
+  if (!window) return
+
+  if (window.screen() === window.screen().next()) return
+  moveToScreen(window, window.screen().next(), true)
+  restoreMousePositionForWindow(window)
+  window.focus()
+}
+
+// Move current window to next screen
+Key.on('[', SUPER, function () {
+  moveToNextScreen()
+})
+// Move current window to previous screen
+Key.on(']', SUPER, function () {
+  moveToPreviousScreen()
+})
 
 // Hints
 // via https://github.com/purag/.files/blob/master/meat/osx/.phoenix.js
