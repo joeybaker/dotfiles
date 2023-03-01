@@ -31,10 +31,10 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
     pip3 install vim-vint --user
     # install for neovim
     # NOTE: installing RVM later might mean this will need to be re-installed
-    gem install neovim
+    sudo gem install neovim
     # install for deoplete in neovim
     pip3 install neovim
-    pip2 install neovim
+    # pip2 install neovim
     pip install diff-highlight
     pip install 'python-language-server[all]'
     ```
