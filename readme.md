@@ -48,8 +48,6 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
 - follow install instructions for [zprezto](https://github.com/sorin-ionescu/prezto).
 
   ```bash
-  # Launch Zsh
-  zsh
   # Clone the repository
   git clone --recursive https://github.com/joeybaker/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
   # Create a new Zsh configuration by copying the Zsh configuration files provided
