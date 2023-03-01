@@ -15,14 +15,12 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
 
     ```sh
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-    mkdir ~/.homebrew_temp
-    brew tap homebrew/cask
-    brew tap homebrew/cask-versions
+    mkdir ~/.homebrew_temp/
     brew tap homebrew/cask-fonts
 
     # lua is for the neocomplete plugin vim plugin
-    brew install reattach-to-user-namespace z ccat node tmux git zsh ack findutils bash shellcheck httpie jo mas autoenv coreutils cmake gpg rbenv yarn thefuck neovim python3 vale fd ripgrep fzf pgcli progress prettyping tldr bat hub gnu-sed grep svn golang
-    brew install --cask gitify google-chrome firefox iterm2 phoenix istat-menus cloudup google-chrome-canary karabiner-elements flux sidestep bartender 1password alfred syncthing atext dash safari-technology-preview SensibleSideButtons
+    brew install reattach-to-user-namespace z ccat node tmux git zsh ack findutils bash shellcheck httpie jo mas autoenv coreutils cmake gpg rbenv yarn thefuck neovim python3 vale fd ripgrep fzf pgcli progress prettyping tldr bat hub gnu-sed grep
+    brew install --cask gitify google-chrome firefox iterm2 phoenix istat-menus cloudup karabiner-elements flux sidestep bartender 1password alfred syncthing atext dash SensibleSideButtons
     # fonts
     # [Source Code Pro](https://github.com/adobe/source-code-pro/downloads)
     # [patched fonts for terminal](https://github.com/Lokaltog/powerline-fonts)
