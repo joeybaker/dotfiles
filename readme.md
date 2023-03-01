@@ -55,8 +55,6 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
   for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
     ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
   done
-  # set ZSH as default
-  chsh -s /bin/zsh
   ```
 
 - setup 1password
