@@ -67,11 +67,11 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
           ```sh
           mkdir -p ~/.gnupg
 
-    chown -R $(whoami) ~/.gnupg/
-    echo "pinentry-program $(which pinentry-mac)" > ~/.gnupg/gpg-agent.conf
-    chmod 600 ~/.gnupg/\*
-    chmod 700 ~/.gnupg
-    ```
+          chown -R $(whoami) ~/.gnupg/
+          echo "pinentry-program $(which pinentry-mac)" > ~/.gnupg/gpg-agent.conf
+          chmod 600 ~/.gnupg/\*
+          chmod 700 ~/.gnupg
+          ```
 
   - After setting gpg in git, set for npm: `npm config set sign-git-tag true`
 - dotfile link
