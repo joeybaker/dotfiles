@@ -77,13 +77,14 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
           ```
 
 - dotfile link
+
           ```sh
-	  cd ~ && git clone git@github.com:joeybaker/dotfiles.git && cd dotfiles`
+          cd ~ && git clone git@github.com:joeybaker/dotfiles.git && cd dotfiles`
           # NOTE: with symlinks and such, the zsh dotfiles might need to be moved to another location inside the `.zprezto` folder
           sh ~/dotfiles/link.sh "my-computer-name"`
   	  gpg --list-secret-keys --keyid-format LONG <<email>>
-	  git config --file .gitconfig.local user.signingkey <<id>>
-	  npm config set sign-git-tag true
+          git config --file .gitconfig.local user.signingkey <<id>>
+          npm config set sign-git-tag true
 	  ```
 - Install vim plugins
   ```
