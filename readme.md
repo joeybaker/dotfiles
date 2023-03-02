@@ -73,7 +73,7 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
           chmod 700 ~/.gnupg
           gpgconf --kill gpg-agent
           gpg --full-gen-key
-	  # Add gpg and ssh key to github
+          # Add gpg and ssh key to github
           ```
 
 - dotfile link
