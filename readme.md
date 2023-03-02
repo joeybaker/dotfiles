@@ -71,8 +71,8 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
           echo "pinentry-program $(which pinentry)" > ~/.gnupg/gpg-agent.conf
           chmod 600 ~/.gnupg/\*
           chmod 700 ~/.gnupg
-	  gpgconf --kill gpg-agent
-	  gpg --full-gen-key
+          gpgconf --kill gpg-agent
+          gpg --full-gen-key
           ```
 
   - After setting gpg in git, set for npm: `npm config set sign-git-tag true`
