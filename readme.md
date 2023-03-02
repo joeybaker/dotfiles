@@ -59,6 +59,21 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
 
 - setup 1password
 - setup syncthing
+- [install github ssh keys](https://help.github.com/articles/generating-ssh-keys)
+
+  - Set a secure SSH key: https://blog.g3rt.nl/upgrade-your-ssh-keys.html
+  - Set a gpg key for github: https://docs.gitlab.com/ee/user/project/repository/gpg_signed_commits/
+
+          ```sh
+          mkdir -p ~/.gnupg
+
+    chown -R $(whoami) ~/.gnupg/
+    echo "pinentry-program $(which pinentry-mac)" > ~/.gnupg/gpg-agent.conf
+    chmod 600 ~/.gnupg/\*
+    chmod 700 ~/.gnupg
+    ```
+
+  - After setting gpg in git, set for npm: `npm config set sign-git-tag true`
 - dotfile link
   - `cd ~ && git clone git@github.com:joeybaker/dotfiles.git && cd dotfiles`
   - NOTE: with symlinks and such, the zsh dotfiles might need to be moved to another location inside the `.zprezto` folder
@@ -188,23 +203,6 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
       - enable anything else that looks good
   - set default search to duckduckgo.com
 - setup time machine
-- [install github ssh keys](https://help.github.com/articles/generating-ssh-keys)
-
-  - Set a secure SSH key: https://blog.g3rt.nl/upgrade-your-ssh-keys.html
-  - Set a gpg key for github: https://docs.gitlab.com/ee/user/project/repository/gpg_signed_commits/
-
-          ```sh
-          mkdir -p ~/.gnupg
-
-    chown -R $(whoami) ~/.gnupg/
-    echo "pinentry-program $(which pinentry-mac)" > ~/.gnupg/gpg-agent.conf
-    chmod 600 ~/.gnupg/\*
-    chmod 700 ~/.gnupg
-    ```
-
-  - After setting gpg in git, set for npm: `npm config set sign-git-tag true`
-
-- don't forget to install Adobe things if necessary
 - Dash license from 1Password
 - increase the system file descriptor limits for dev https://facebook.github.io/watchman/docs/install.html#max-os-file-descriptor-limits
 
