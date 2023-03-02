@@ -68,7 +68,7 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
           mkdir -p ~/.gnupg
 
           chown -R $(whoami) ~/.gnupg/
-          echo "pinentry-program $(which pinentry-mac)" > ~/.gnupg/gpg-agent.conf
+          echo "pinentry-program $(which pinentry)" > ~/.gnupg/gpg-agent.conf
           chmod 600 ~/.gnupg/\*
           chmod 700 ~/.gnupg
           ```
