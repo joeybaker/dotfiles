@@ -73,20 +73,25 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
           chmod 700 ~/.gnupg
           gpgconf --kill gpg-agent
           gpg --full-gen-key
+	  # Add gpg and ssh key to github
           ```
 
-  - After setting gpg in git, set for npm: `npm config set sign-git-tag true`
 - dotfile link
-  - `cd ~ && git clone git@github.com:joeybaker/dotfiles.git && cd dotfiles`
-  - NOTE: with symlinks and such, the zsh dotfiles might need to be moved to another location inside the `.zprezto` folder
-  - `sh ~/dotfiles/link.sh "my-computer-name"`
+          ```sh
+	  cd ~ && git clone git@github.com:joeybaker/dotfiles.git && cd dotfiles`
+          # NOTE: with symlinks and such, the zsh dotfiles might need to be moved to another location inside the `.zprezto` folder
+          sh ~/dotfiles/link.sh "my-computer-name"`
+  	  gpg --list-secret-keys --keyid-format LONG <<email>>
+	  git config --file .gitconfig.local user.signingkey <<id>>
+	  npm config set sign-git-tag true
+	  ```
 - Install vim plugins
   ```
   mkdir ~/.vim-tmp
   nvim +PlugInstall
   cd ~/.config/coc/extensions && yarn install --frozen-lockfile
   ```
-- configure git: edit `~/dotfiles/gitconfig.local` with overrides. You can use `~/dotfiles/gitconfig` as a reference.
+- configure git: edit `~/dotfiles/gitconfig.local` with overrides. You can use `~/dotfiles/gitconfig` as a reference. You may want to change the email locally.
 - Install tmux plugin manager `git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`
   - start tmux with `tmux`
   - then: `<prefix> <shift-I>`
