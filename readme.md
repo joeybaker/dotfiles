@@ -86,6 +86,7 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
           git config --file .gitconfig.local user.signingkey <<id>>
           npm config set sign-git-tag true
 	  ```
+- [Karabiner](https://github.com/tekezo/Karabiner-Elements) configs in dotfiles. Just open the app and all should be good.
 - Install vim plugins
   ```
   mkdir ~/.vim-tmp
@@ -114,30 +115,6 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
   # authorize ghcopy, will prompt
   ghcopy-authorize
   ```
-
-- [Karabiner](https://github.com/tekezo/Karabiner-Elements) configs in dotfiles. Just open the app and all should be good.
-- chrome canary
-
-  - settings > on startup > continue where I left off
-  - settings > search > enable instant
-  - ![check for certification revocation](http://i.imgur.com/DsB8Oz0.png)
-  - vimium options, add to the css:
-
-    ```css
-    div.vimiumHUD {
-      width: 100vw;
-      max-width: 100vw;
-      padding: 0.5em 0.5em 0.75em;
-      right: 0 !important;
-      left: 0 !important;
-      border-radius: 0;
-      background: rgba(250, 150, 60, 0.9);
-      font-size: 14px;
-      font-family: "Source Sans Pro", monospace;
-      bottom: 0;
-    }
-    ```
-
 - [iterm2](http://www.iterm2.com/#/section/home)
   - link to preferences on Sync
   - ensure sourcecode pro powerline font is selected
