@@ -160,7 +160,6 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
   - start at login
   - move select apps inside
 - [github notifier](https://github.com/manosim/gitify)
-- cloudup: start and loginHHHHHHHLLLHHL
 - syncthing: start and login
 - airmail: start and add accounts
 - phoenix: start
