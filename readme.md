@@ -134,18 +134,10 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
   ```
 
   - 1blocker
-  - the hit list
+  - Things
     - enable sync from 1P
     - enable global shortcut
     - enable dock badge count
-  - atext
-    - hide in dock
-    - launch on startup
-    - setup sync
-  - tweetbot
-    - account signin
-    - cloudapp & instapaper accounts
-    - turn on notifications
   - The Unarchiver
   - stay
     - store windows
