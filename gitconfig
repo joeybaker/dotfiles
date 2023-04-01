@@ -1,6 +1,6 @@
 [user]
   name = Joey Baker
-	email = joey@byjoeybaker.com
+	email = joey@joeybaker.co
 [merge]
   renamelimit = 5000
 [alias]
@@ -38,8 +38,6 @@
 [diff]
   ; better line matching
 	algorithm = patience
-[url "git://github.com/"]
-	insteadOf = gh:
 [help]
 	autocorrect = 1
 ; http://travisjeffery.com/b/2012/02/search-a-git-repo-like-a-ninja/
@@ -65,11 +63,16 @@
 
 [include]
   path = ~/.gitconfig.local
-[url "git@github.com:"]
-	insteadOf = https://github.com/
-[url "\"git@github.com:\""]
-	insteadOf = \"https://github.com/\"
+; [url "git://github.com/"]
+;  insteadOf = gh:
+; [url "git@github.com:"]
+;  insteadOf = https://github.com/
+;[url "\"git@github.com:\""]
+;	insteadOf = \"https://github.com/\"
+[url "https://github.com/"]
+	insteadOf = git://github.com/
 [hub]
 	protocol = ssh
 [commit]
 	gpgsign = true
+;  template = /Users/joeybaker/.git_commit_template.txt
