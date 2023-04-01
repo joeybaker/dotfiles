@@ -31,7 +31,7 @@
 
 [core]
   excludesfile = ~/.gitignore_global
-	editor = /usr/local/bin/nvim
+  editor = /opt/homebrew/bin/nvim
 	pager = diff-highlight | diff-so-fancy | less --tabs=1,5 -R
 [push]
 	default = simple
