@@ -87,11 +87,9 @@ bindkey "^I" expand-or-complete-with-dots
 # prefer the brew vim to the system vim
 # Actually, replace vim with nvim
 if type nvim > /dev/null; then
-  alias vi='session_file=Session$(echo ${TMUX_PANE-} | sed "s/\%//").vim; [ -f $session_file ] && nvim -S "$session_file" || nvim'
-  alias vim=vi
+  alias v='session_file=Session$(echo ${TMUX_PANE-} | sed "s/\%//").vim; [ -f $session_file ] && nvim -S "$session_file" || nvim'
 elif type vim > /dev/null; then
-  alias vi='session_file=Session$(echo ${TMUX_PANE-} | sed "s/\%//").vim; [ -f $session_file ] && vim -S "$session_file" || vim'
-  alias vim=vi
+  alias v='session_file=Session$(echo ${TMUX_PANE-} | sed "s/\%//").vim; [ -f $session_file ] && vim -S "$session_file" || vim'
 fi
 
 alias tolf="find . -type f -not -iname '*.png' -not -iname '*.jpg' -not -iname '*.jpeg' -not -iname '*.gif' -not -iname '*.tif' -not -iname '*.tiff' -not -iname '.git' -exec perl -pi -e 's/\r\n?/\n/g' {} \;"
