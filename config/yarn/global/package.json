@@ -18,6 +18,7 @@
     "localhapi": "^1.1.1",
     "markdown-to-slides-server": "^1.0.0",
     "neovim": "^4.9.0",
+    "node-gyp": "^9.3.1",
     "nodemon": "^2.0.15",
     "prettier": "^2.2.1",
     "prettier_d": "https://github.com/josephfrazier/prettier_d#faf45d2ac9acc9b919d13ea058f8b28d4d947baa",
