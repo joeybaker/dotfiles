@@ -18,6 +18,7 @@ config/oni
 config/coc/list-*
 config/coc/memos.json
 config/coc/*-mru
+config/coc/extensions/coc-json-data/
 config/thefuck
 config/iterm2
 config/coc/extensions/db.json
