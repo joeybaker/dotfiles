@@ -483,7 +483,6 @@ Key.on('l', SUPER, () => {
 
 Key.on('h', SHIFT_SUPER, () => {
   const window = Window.focused();
-  Phoenix.log('hi')
   if (window) {
     window.move({ width: -INCREMENT_PERCENT });
   }
