@@ -51,8 +51,9 @@ Plug 'scrooloose/nerdcommenter'
 
 " snippets
 " used by coc-snippets
-Plug 'Shougo/neosnippet'
-Plug 'Shougo/neosnippet-snippets'
+" but these really mess with better coc-autocompletion options; disable
+" Plug 'Shougo/neosnippet'
+" Plug 'Shougo/neosnippet-snippets'
 " More autocompletion sources
 Plug 'wellle/tmux-complete.vim'
 
@@ -1022,11 +1023,6 @@ endfunction
 
 let g:coc_snippet_next = '<tab>'
 
-" trigger completion for snippets:
-" inoremap <silent><expr> <c-l> coc#refresh()
-" inoremap <silent><C-l> <Plug>(coc-snippets-expand-jump)
-inoremap <silent><expr> <C-l> coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" : coc#refresh()
-
 
 
 
@@ -1350,10 +1346,16 @@ augroup writingMode
   autocmd!
   " disable cursorline in text filetypes because of our theme
   autocmd FileType markdown,md,text,txt setlocal nocursorline
+  autocmd FileType * set termguicolors
   " we don't need 24-bit color here, it actually makes the contrast worse
-  autocmd FileType markdown,md,text,txt setlocal notermguicolors
+  autocmd BufEnter *
+        \  if &ft == 'markdown' || &ft == 'md' || &ft == 'text' || &ft == 'txt'
+        \|     set notermguicolors
+        \| else
+        \|     set termguicolors
+        \| endif
   " Fix for airline re-asserting itself https://github.com/junegunn/goyo.vim/issues/198
-  autocmd FileType markdown,md,text,txt setlocal eventignore=FocusGained
+  " autocmd FileType markdown,md,text,txt setlocal eventignore=FocusGained
   " disable airline
   autocmd FileType markdown,md,text,txt setlocal laststatus=1
 augroup end
