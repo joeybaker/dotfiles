@@ -19,7 +19,7 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
     brew tap homebrew/cask-fonts
 
     # lua is for the neocomplete plugin vim plugin
-    brew install reattach-to-user-namespace z ccat node tmux git zsh ack findutils bash shellcheck httpie jo mas autoenv coreutils cmake gpg rbenv yarn thefuck neovim python3 vale fd ripgrep fzf pgcli progress prettyping tldr bat hub gnu-sed grep pinentrya
+    brew install reattach-to-user-namespace z ccat node tmux git zsh ack findutils bash shellcheck httpie jo mas autoenv coreutils cmake gpg rbenv yarn thefuck neovim python3 vale fd ripgrep fzf pgcli progress prettyping tldr bat hub gnu-sed grep
     brew install --cask gitify google-chrome firefox iterm2 phoenix istat-menus cloudup karabiner-elements flux sidestep bartender 1password alfred syncthing atext dash SensibleSideButtons
     # fonts
     # [Source Code Pro](https://github.com/adobe/source-code-pro/downloads)
@@ -38,7 +38,7 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
     pip3 install diff-highlight
     pip3 install 'python-language-server[all]'
     ```
-
+- setup 1password
 - install oceanic-next iTerm theme (the main theme is in the sync folder)
 
   ```sh
@@ -57,43 +57,27 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
   done
   ```
 
-- setup 1password
-- setup syncthing
+- syncthing: start and login
 - [install github ssh keys](https://help.github.com/articles/generating-ssh-keys)
-
   - Set a secure SSH key: https://blog.g3rt.nl/upgrade-your-ssh-keys.html
-  - Set a gpg key for github: https://docs.gitlab.com/ee/user/project/repository/gpg_signed_commits/
-
-          ```sh
-          mkdir -p ~/.gnupg
-
-          chown -R $(whoami) ~/.gnupg/
-          echo "pinentry-program $(which pinentry)" > ~/.gnupg/gpg-agent.conf
-          chmod 600 ~/.gnupg/\*
-          chmod 700 ~/.gnupg
-          gpgconf --kill gpg-agent
-          gpg --full-gen-key
-          # Add gpg and ssh key to github
-          ```
-
+  - Set a ssh key to sign commits
 - dotfile link
 
           ```sh
-          cd ~ && git clone git@github.com:joeybaker/dotfiles.git && cd dotfiles`
+          cd ~ && git clone git@github.com:joeybaker/dotfiles.git && cd dotfiles
           # NOTE: with symlinks and such, the zsh dotfiles might need to be moved to another location inside the `.zprezto` folder
           sh ~/dotfiles/link.sh "my-computer-name"`
-  	  gpg --list-secret-keys --keyid-format LONG <<email>>
-          git config --file .gitconfig.local user.signingkey <<id>>
+          git config --file .gitconfig.local user.signingkey /Users/joeybaker/.ssh/id_ed25519
           npm config set sign-git-tag true
 	  ```
 - [Karabiner](https://github.com/tekezo/Karabiner-Elements) configs in dotfiles. Just open the app and all should be good.
+- configure git: edit `~/dotfiles/gitconfig.local` with overrides. You can use `~/dotfiles/gitconfig` as a reference. You may want to change the email locally.
 - Install vim plugins
   ```
   mkdir ~/.vim-tmp
   nvim +PlugInstall
   cd ~/.config/coc/extensions && yarn install --frozen-lockfile
   ```
-- configure git: edit `~/dotfiles/gitconfig.local` with overrides. You can use `~/dotfiles/gitconfig` as a reference. You may want to change the email locally.
 - Install tmux plugin manager `git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`
   - start tmux with `tmux`
   - then: `<prefix> <shift-I>`
@@ -126,11 +110,12 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
 - app store
 
   ```sh
-  mas install 1107421413 #1blocker
+  mas install 1365531024 #1blocker
   mas install 425424353 #The Unarchiver
   mas install 435410196 #stay
   mas install 975937182 #fantastical
   mas install 918858936 #airmail
+  mas install 904280696 #things
   ```
 
   - 1blocker
@@ -138,14 +123,12 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
     - enable sync from 1P
     - enable global shortcut
     - enable dock badge count
-  - The Unarchiver
   - stay
     - store windows
     - start on login
     - uncheck restore windows as applications are launched
   - fantastical
     - setup pwds for google accounts
-
 - istatmenus
   - register from 1P
   - change theme
@@ -160,11 +143,9 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
   - start at login
   - move select apps inside
 - [github notifier](https://github.com/manosim/gitify)
-- syncthing: start and login
 - airmail: start and add accounts
 - phoenix: start
 - d/l and start http://privateinternetaccess.com
-
 - [hosts file](http://someonewhocares.org/hosts/hosts)
   - `sudo curl -sS http://someonewhocares.org/hosts/hosts -o /etc/hosts && dscacheutil -flushcache`
 - [sidestep](http://chetansurpur.com/projects/sidestep/)
