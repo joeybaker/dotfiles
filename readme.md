@@ -116,6 +116,7 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
   mas install 975937182 #fantastical
   mas install 918858936 #airmail
   mas install 904280696 #things
+  mas install 533696630 #webcam settings
   ```
 
   - 1blocker
