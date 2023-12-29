@@ -11,98 +11,46 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-#
-# Load stuff in
-#
-
-# lazy loading because nvm takes forever to install, there's a node module in
-# zprezto but it doesn't do lazy load :(
-# via https://gist.github.com/QinMing/364774610afc0e06cc223b467abe83c0
-lazy_load() {
-    # Act as a stub to another shell function/command. When first run, it will
-    # load the actual function/command then execute it. E.g. This made my zsh
-    # load 0.8 seconds faster by loading `nvm` when "nvm", "npm" or "node" is
-    # used for the first time
-    # $1: space separated list of alias to release after the first load
-    # $2: file to source
-    # $3: name of the command to run after it's loaded
-    # $4+: argv to be passed to $3
-    echo "Lazy loading $1 ..."
-
-    # $1.split(' ') using the s flag. In bash, this can be simply ($1)
-    # #http://unix.stackexchange.com/questions/28854/list-elements-with-spaces-in-zsh
-    # Single line won't work: local names=("${(@s: :)${1}}"). Due to
-    # http://stackoverflow.com/questions/14917501/local-arrays-in-zsh   (zsh
-    # 5.0.8 (x86_64-apple-darwin15.0))
-    local -a names
-    if [[ -n "$ZSH_VERSION" ]]; then
-        names=("${(@s: :)${1}}")
-    else
-        names=($1)
-    fi
-    unalias "${names[@]}"
-    . $2
-    shift 2
-    $*
-}
-
-group_lazy_load() {
-    local script
-    script=$1
-    shift 1
-    for cmd in "$@"; do
-        alias $cmd="lazy_load \"$*\" $script $cmd"
-    done
-}
-
-export NVM_LAZY_LOAD=true
-export NVM_DIR="$HOME/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && group_lazy_load $HOME/.nvm/nvm.sh nvm node npm nodemon  # This loads nvm
-# Not using brew --prefix because it's really slow, even if it is safer
-# [ -s "$(brew --prefix nvm)/nvm.sh" ] && group_lazy_load '$(brew --prefix nvm)/nvm.sh' nvm node npm nodemon  # This loads nvm
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && [ -d "$NVM_DIR" ] && group_lazy_load '/usr/local/opt/nvm/nvm.sh' nvm node npm  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# load rbenv
-eval "$(rbenv init -)"
-# z
-source $(brew --prefix)/etc/profile.d/z.sh
-# set a high ulimit because the OS can handle it an node file watching processes
-# are hungry
-ulimit -n 10000
-
-# This bunch of code displays red dots when autocompleting
-expand-or-complete-with-dots() {
-  # a command with the tab key, "Oh-my-zsh"-style.
-  echo -n "\e[31m......\e[0m"
-  zle expand-or-complete
-  zle redisplay
-}
-zle -N expand-or-complete-with-dots
-bindkey "^I" expand-or-complete-with-dots
-
 # Customize to your needs...
 
-# aliases
+# set the default user
+DEFAULT_USER=joeybaker
+
+# 256 colors
+# if [ -e /usr/share/terminfo/x/xterm-256color ]; then
+  export TERM='screen-256color'
+# else
+  # export TERM='xterm-color'
+# fi
+export GPG_TTY=$(tty)
+
+
 # prefer the brew vim to the system vim
 # Actually, replace vim with nvim
-if type nvim > /dev/null; then
-  alias v='session_file=Session$(echo ${TMUX_PANE-} | sed "s/\%//").vim; [ -f $session_file ] && nvim -S "$session_file" || nvim'
-elif type vim > /dev/null; then
-  alias v='session_file=Session$(echo ${TMUX_PANE-} | sed "s/\%//").vim; [ -f $session_file ] && vim -S "$session_file" || vim'
-fi
 
-alias tolf="find . -type f -not -iname '*.png' -not -iname '*.jpg' -not -iname '*.jpeg' -not -iname '*.gif' -not -iname '*.tif' -not -iname '*.tiff' -not -iname '.git' -exec perl -pi -e 's/\r\n?/\n/g' {} \;"
-alias sshj='ssh joeybaker@byjoeybaker.com'
+function v() {
+  if type nvim > /dev/null; then
+    cmd=nvim
+  elif type vim > /dev/null; then
+    cmd=vim
+  fi
+  if [ $# -eq 0 ]
+    then
+    session_file=Session$(echo ${TMUX_PANE-} | sed "s/\%//").vim; [ -f $session_file ] && ${cmd} -S "$session_file" || ${cmd}
+  else
+    ${cmd} $1
+  fi
+}
 
-# for `brew install thefuck`
-eval "$(thefuck --alias)"
-
-# /usr/local/opt/coreutils/libexec/gnubin/ls
-# ls --group-directories-first --color=auto
-alias l='/bin/ls -AG'
-# sleep 0.1 b/c the cleaning script locks git, and we need to wait for that to clear
+alias l='ls -AG'
 function mkcd() { mkdir -p "$@" && cd "$_"; }
+alias html2text='python /Users/joeybaker/scripts/html2text/html2text.py '
+function findin(){ find ./ -type f -exec grep -Hn "$1" {} \;;}
+alias httpserve="python -m SimpleHTTPServer"
+alias pgstart='postgres -D /usr/local/var/postgres'
+alias pgstop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
+
+# git aliases
 function gitp () {
 git pull --rebase --prune | \
     tee /dev/tty | \
@@ -117,28 +65,25 @@ git pull --rebase --prune | \
 }
 alias gitb='git branch'
 alias gitbd='git branch -D'
-alias gitx='gitup'
 alias gitcleanup='git fsck —unreachable;
 git reflog expire —expire=0 —all;
 git repack -a -d -l;
 git prune;
 git gc —aggressive;'
-alias gitcleanremote='git branch -r --merged | grep -v master | sed "s/origin\///" | xargs -n 1 git push --delete origin'
 alias git status='git status -sb'
-alias html2text='python /Users/joeybaker/scripts/html2text/html2text.py '
-function findin(){ find ./ -type f -exec grep -Hn "$1" {} \;;}
-alias httpserve="python -m SimpleHTTPServer"
-alias pgstart='postgres -D /usr/local/var/postgres'
-alias pgstop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
-alias couchstop='launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.couchdb.plist'
-alias couchstart='launchctl load ~/Library/LaunchAgents/homebrew.mxcl.couchdb.plist'
-alias guard='bundle exec guard'
-# get out of the habbit of gitup in favor of vim-fugitive
-alias gitup='echo "\e[0;31muse vim fugitive!\e[m " 1>&2'
-alias flow-watch="watchman-make --make='clear && npm run flow' --settle=1 -p '**/*.js' '!node_modules/**' -t status"
+alias gc="git commit -a"
+alias gx="git checkout"
+alias gs='git stash'
+alias gsp='git stash pop'
+alias gsl='git stash list'
+alias gitcleanremote='git branch -r --merged | grep -v master | sed "s/origin\///" | xargs -n 1 git push --delete origin'
+
+# tmux
+alias tmux-embed="unset TMUX && tmux"
+
 
 function upgrade_all_the_things () {
-  vim +PlugUpdate
+  nvim +PlugUpdate
   yarn global upgrade-interactive --latest
   command -v npm-check >/dev/null 2>&1 && npm-check -gu || echo "npm-check not installed, skipping npm global dependency updates $(npm ls --depth=0 -g)"
   echo 'Updating brew…'
@@ -161,26 +106,70 @@ function ping() {
   command -v prettyping >/dev/null 2>&1 && prettyping --nolegend $@ || ping $@
 }
 
-# brew-cask
-alias brewcaskup='bash ~/sh/brew-cask-upgrade.sh'
-
-# sshrc
-# alias ssh=sshrc
-
-# git aliases
-alias gc="git commit -a"
-alias gx="git checkout"
-alias gs='git stash'
-alias gsp='git stash pop'
-alias gsl='git stash list'
-alias gre='git rebase -i origin/master'
-
-# tmux
-alias tmux-embed="unset TMUX && tmux"
-
 # I think these were for oh-my-zsh only
 # bindkey '\e[A' history-substring-search-up
 # bindkey '\e[B' history-substring-search-down
+
+# Customize to your needs...
+
+# This bunch of code displays red dots when autocompleting
+expand-or-complete-with-dots() {
+  # a command with the tab key, "Oh-my-zsh"-style.
+  echo -n "\e[31m......\e[0m"
+  zle expand-or-complete
+  zle redisplay
+}
+zle -N expand-or-complete-with-dots
+bindkey "^I" expand-or-complete-with-dots
+
+## default
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH
+## for brew
+export PATH=/opt/homebrew/bin:$PATH
+# for rbenv
+export PATH=$PATH:~/.rbenv/shims
+export PATH=$PATH:./node_modules/.bin
+
+export EDITOR='vi'
+export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+export HOMEBREW_TEMP=~/.homebrew_temp
+export NODE_PATH=/usr/local/lib/node_modules
+# don't put duplicate lines in the history. See bash(1) for more options
+# don't overwrite GNU Midnight Commander's setting of `ignorespace'.
+export HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}ignoredups
+# ... or force ignoredups and ignorespace
+export HISTCONTROL=ignoreboth
+# http://jonisalonen.com/2012/your-bash-prompt-needs-this/
+# export PS1="\[\033[G\]$PS1"
+# geocouch
+export ERL_FLAGS="-pa /usr/local/share/geocouch/ebin"
+
+# set the rack env to dev for ruby (rails)
+export RACK_ENV='development'
+# set node env
+export NODE_ENV='development'
+# misc env vars
+[[ -s "$HOME/.env" ]] && source "$HOME/.env"
+
+#
+# Load stuff in
+#
+
+# load rbenv
+eval "$(rbenv init -)"
+# z
+source /opt/homebrew/etc/profile.d/z.sh
+
+# for `brew install thefuck`
+eval "$(thefuck --alias)"
+
+
+#zmv
+autoload zmv
+# easier access to online help
+# unalias run-help
+autoload run-helpd
+HELPDIR=/usr/local/share/zsh/helpfiles
 
 # easier file creation
 # recursively touch, e.g. touch + mkdir -p
@@ -200,33 +189,6 @@ function update_zprezto() {
   git pull --rebase upstream master && git submodule update --recursive --remote
   cd $cwd
 }
-
-# setup iterm for 256 colors for the oceanic-next theme
-# https://github.com/mhartington/oceanic-next-shell
-# if [ -f "$HOME/.config/oceanic-next-shell/oceanic-next.dark.sh" ]; then
-#  BASE16_SHELL="$HOME/.config/oceanic-next-shell/oceanic-next.dark.sh"
-#  [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
-# fi
-
-# npm
-# npm install autocomplete https://medium.com/@jamischarles/adding-autocomplete-to-npm-install-5efd3c424067#.sc3eethvx
-_npm_install_completion() {
-  local si=$IFS
-
-  # if 'install' or 'i ' is one of the subcommands, then...
-  if [[ ${words} =~ 'install' ]] || [[ ${words} =~ 'i ' ]]; then
-
-    # add the result of `ls ~/.npm` (npm cache) as completion options
-    compadd -- $(COMP_CWORD=$((CURRENT-1)) \
-      COMP_LINE=$BUFFER \
-      COMP_POINT=0 \
-      /bin/ls $(cat ~/.npmrc | grep cache= | sed s/cache=//) -- "${words[@]}" \
-      2>/dev/null)
-  fi
-
-  IFS=$si
-}
-compdef _npm_install_completion 'npm'
 
 ###-begin-npm-completion-###
 #
@@ -290,9 +252,10 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 # tabtab source for yarn package
 # uninstall by removing these lines or running `tabtab uninstall yarn`
-[[ -f /Users/joeybaker/server/dotfiles/config/yarn/global/node_modules/tabtab/.completions/yarn.zsh ]] && . /Users/joeybaker/server/dotfiles/config/yarn/global/node_modules/tabtab/.completions/yarn.zsh
+[[ -f /Users/joeybaker/dotfiles/config/yarn/global/node_modules/tabtab/.completions/yarn.zsh ]] && . /Users/joeybaker/dotfiles/config/yarn/global/node_modules/tabtab/.completions/yarn.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 # fzf via Homebrew
 if [ -e /usr/local/bin/fzf/shell/completion.zsh ]; then
   source /usr/local/bin/fzf/shell/key-bindings.zsh
