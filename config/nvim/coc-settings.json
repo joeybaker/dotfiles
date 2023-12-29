@@ -1,11 +1,6 @@
 {
-  "coc.preferences.formatOnSaveFiletypes": [
-    "css",
-    "markdown",
-    "typescript",
-    "typescriptreact",
-    "json"
-  ],
+  "coc.preferences.formatOnSaveFiletypes": [ "*" ],
   "coc.preferences.jumpCommand": "edit",
-  "eslint.autoFixOnSave": true
+  "eslint.autoFixOnSave": true,
+  "stylelint.enable": false
 }
