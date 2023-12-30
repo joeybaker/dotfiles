@@ -766,7 +766,7 @@ let g:fzf_layout = { 'down': '40%' }
 " map this just like ctrl-p
 nnoremap <silent> <leader>p :FzfFiles<CR>
 nnoremap <silent> <c-p> :FzfFiles<CR>
-nnoremap <silent> ; :FzfBuffers<CR>
+nnoremap <silent> <tab> :FzfBuffers<CR>
 
 nnoremap <silent> <leader>a :FzfRg<CR>
 " enable searching the word under the cursor
