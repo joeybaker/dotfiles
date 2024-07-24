@@ -648,6 +648,8 @@ augroup customSyntax
   au BufRead,BufNewFile */nginx/*.conf if &ft == '' | setfiletype nginx | endif
   " recognize styl files
   au BufRead,BufNewFile *.styl if &ft == '' | setfiletype css | endif
+  " in css, words can contain dashes
+  autocmd FileType css setl iskeyword+=-
 augroup END
 
 
