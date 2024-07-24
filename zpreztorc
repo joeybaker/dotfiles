@@ -173,7 +173,8 @@ zstyle ':prezto:module:tmux:auto-start' local 'yes'
 # zstyle ':prezto:module:tmux:auto-start' remote 'yes'
 
 # for iterm2
-zstyle ':prezto:module:tmux:iterm' integrate 'yes'
+# don't use the iterm2 integration. It doesn't work with tmux aggressive resize, and it's better to just learn the tumx commands… which are more ergonomic anyway
+# zstyle ':prezto:module:tmux:iterm' integrate 'yes'
 
 
 #
