@@ -64,6 +64,9 @@ zstyle ':prezto:module:editor' dot-expansion 'no'
 # Ignore submodules when they are 'dirty', 'untracked', 'all', or 'none'.
 # zstyle ':prezto:module:git:status:ignore' submodules 'all'
 
+# don't use the builtin aliases, they can conflict with other commands
+zstyle ':prezto:module:git:alias' skip 'yes'
+
 #
 # GNU Utility
 #
