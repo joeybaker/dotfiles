@@ -16,7 +16,7 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
     ```sh
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     mkdir ~/.homebrew_temp/
-    brew tap homebrew/cask-fonts
+
 
     # lua is for the neocomplete plugin vim plugin
     brew install reattach-to-user-namespace z ccat node tmux git zsh ack findutils bash shellcheck httpie jo mas autoenv coreutils cmake gpg rbenv yarn thefuck neovim python3 vale fd ripgrep fzf pgcli progress prettyping tldr bat hub gnu-sed grep
