@@ -85,7 +85,7 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
 - install [nodejs](http://nodejs.org) & relevant global packages
 
   ```bash
-  yarn global add supervisor nodemon ghwd ghcopy json trash-cli irish-pub localhapi diff-so-fancy concurrently alfred-npms alfred-github bash-language-server
+  npm i -g supervisor nodemon ghwd ghcopy json trash-cli diff-so-fancy concurrently alfred-npms alfred-github bash-language-server
   npm config set init.author.name 'Joey Baker'
   npm config set init.author.email 'joey@byjoeybaker.com'
   npm config set init.author.site 'http://byjoeybaker.com'
