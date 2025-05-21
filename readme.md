@@ -19,7 +19,7 @@ _This might be useful to turn this readme into a script: https://github.com/bkuh
 
 
     # lua is for the neocomplete plugin vim plugin
-    brew install reattach-to-user-namespace z ccat node tmux git zsh ack findutils bash shellcheck httpie jo mas autoenv coreutils cmake gpg rbenv yarn thefuck neovim python3 vale fd ripgrep fzf pgcli progress prettyping tldr bat hub gnu-sed grep 1password-cli
+    brew install reattach-to-user-namespace z ccat node tmux git zsh ack findutils bash shellcheck httpie jo mas autoenv coreutils cmake gpg rbenv yarn thefuck neovim python3 vale fd ripgrep fzf pgcli progress prettyping tldr bat hub gnu-sed grep 1password-cli jordanbaird-ice
     brew install --cask gitify google-chrome firefox iterm2 phoenix istat-menus karabiner-elements flux 1password alfred syncthing dash sanesidebuttons
     # fonts
     # [Source Code Pro](https://github.com/adobe/source-code-pro/downloads)
