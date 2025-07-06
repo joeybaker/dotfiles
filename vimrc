@@ -386,21 +386,25 @@ function! BufferDelete()
     echomsg 'No write since last change. Not closing buffer.'
     echohl NONE
   else
-    let s:closing_filetype = &filetype
+    let l:closing_filetype = &filetype
 
     " if we're in a split, just close the split
     " https://stackoverflow.com/questions/4198503/number-of-windows-in-vim#4198963
     " But, fugitive :Gstatus is special. We want to actually close the buffer
     " so we don't leave it around
-    if winnr() > 1 && s:closing_filetype !=? 'fugitive'
-      echomsg 'closing' . s:closing_filetype
+    if winnr() > 1 && l:closing_filetype !=? 'fugitive'
+      echomsg 'closing' . l:closing_filetype
       close
       return
     endif
 
-    let s:total_nr_buffers = len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))
+    let l:total_nr_buffers = len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))
+    let l:is_split = winnr() > 1
+    let l:is_vertical_split = winlayout()[0] == 'row'
 
-    if s:total_nr_buffers == 1
+    if l:is_vertical_split
+      silent! bprevious!
+    elseif l:total_nr_buffers == 1
       silent! bdelete!
       echomsg 'Buffer deleted. Created new buffer.'
     else
@@ -413,7 +417,7 @@ function! BufferDelete()
 
       " for some reason git gutter doesn't refresh when closing fugitive;
       " force it.
-      if s:closing_filetype ==? 'fugitive' && exists('#gitgutter')
+      if l:closing_filetype ==? 'fugitive' && exists('#gitgutter')
         execute 'GitGutter'
       else
         " we don't need to announce this when closing fugitive
@@ -1032,10 +1036,6 @@ let g:coc_snippet_next = '<tab>'
 
 
 
-" javascript syntax highlighting
-" enable flow support
-let g:javascript_plugin_flow = 1
-
 
 
 
@@ -1052,8 +1052,6 @@ let g:javascript_plugin_flow = 1
 let g:LanguageClient_autoStart = 1
 let g:LanguageClient_serverCommands = {
       \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
-      \ 'javascript': ['npx', 'flow', 'lsp', '--from=nvim'],
-      \ 'javascript.jsx': ['npx', 'flow', 'lsp', '--from=nvim'],
       \ 'python': ['pyls'],
       \ 'sh': ['bash-language-server', 'start'],
       \ 'zsh': ['bash-language-server', 'start']

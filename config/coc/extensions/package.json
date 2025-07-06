@@ -13,7 +13,9 @@
     "coc-styled-components": ">=0.4.0",
     "coc-stylelint": ">=1.2.0",
     "coc-tsserver": ">=2.1.3",
-    "coc-html-css-support": ">=0.5.3"
+    "coc-html-css-support": ">=0.5.3",
+    "coc-pyright": ">=1.1.390",
+    "coc-biome": ">=1.8.0"
   },
-  "lastUpdate": 1703430019911
+  "lastUpdate": 1748731826709
 }

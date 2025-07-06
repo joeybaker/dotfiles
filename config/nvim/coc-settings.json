@@ -1,6 +1,14 @@
 {
-  "coc.preferences.formatOnSaveFiletypes": [ "*" ],
+  "coc.preferences.formatOnSaveFiletypes": ["*"],
   "coc.preferences.jumpCommand": "edit",
   "eslint.autoFixOnSave": true,
-  "stylelint.enable": false
+  "stylelint.enable": false,
+  "suggest.floatEnable": true,
+  "suggest.enablePreview": true,
+  "suggest.maxCompleteItemCount": 20,
+  "suggest.labelMaxLength": 50,
+  "suggest.detailMaxLength": 50,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  }
 }
