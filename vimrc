@@ -223,7 +223,7 @@ Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 Plug 'rhysd/git-messenger.vim'
 
 " coc might be better than ale or language server?
-Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': 'yarn install --frozen-lockfile' }
+Plug 'neoclide/coc.nvim', {'branch': 'release' }
 
 " Initialize plugin system
 call plug#end()
