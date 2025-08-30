@@ -128,7 +128,11 @@ export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH
 export PATH=/opt/homebrew/bin:$PATH
 # for rbenv
 export PATH=$PATH:~/.rbenv/shims
-export PATH=$PATH:./node_modules/.bin
+## look in local node modules first
+export PATH="./node_modules/.bin:$PATH"
+
+
+export PATH="/opt/homebrew/opt/node@22/bin:$PATH"
 
 export EDITOR='vi'
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
@@ -262,3 +266,5 @@ if [ -e /usr/local/bin/fzf/shell/completion.zsh ]; then
   source /usr/local/bin/fzf/shell/completion.zsh
 fi
 
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/joeybaker/.cache/lm-studio/bin"

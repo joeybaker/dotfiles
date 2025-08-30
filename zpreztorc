@@ -41,8 +41,8 @@ zstyle ':prezto:load' pmodule \
   'syntax-highlighting' \
   'history-substring-search' \
   'autosuggestions' \
-  'prompt' \
   'python' \
+  'prompt' \
   # not using the node module because nvm takes forever to load + `brew
   # --prefix nvm` is super slow. There's lazy loading in zshrc instead.
   # 'node'
